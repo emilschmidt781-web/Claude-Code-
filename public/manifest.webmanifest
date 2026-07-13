@@ -1,17 +1,18 @@
 {
-  "name": "Angel-App – Fischerkennung & Beißprognose",
-  "short_name": "Angel-App",
-  "description": "Fische per Foto erkennen und sehen, wann und wo du am besten angelst.",
-  "start_url": "./",
-  "scope": "./",
+  "name": "Fokusfuchs – dein Fokus-Kumpel",
+  "short_name": "Fokusfuchs",
+  "description": "Neuroinklusiver Tagesplaner mit Body-Doubling-Fokusraum, Streaks und Belohnungen.",
+  "start_url": "/",
   "display": "standalone",
+  "background_color": "#f6f4ff",
+  "theme_color": "#7c6ff0",
   "orientation": "portrait",
-  "background_color": "#061820",
-  "theme_color": "#0c8497",
-  "lang": "de",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ]
 }

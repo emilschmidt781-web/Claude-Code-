@@ -1,13 +1,12 @@
 {
-  "name": "angel-app",
+  "name": "fokusfuchs",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Angel-App mit KI-Fischerkennung und Beißprognose (wann & wo am besten angeln)",
+  "description": "Fokusfuchs – neuroinklusiver Tagesplaner mit Body-Doubling-Fokusraum, Streaks und Belohnungen",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:single": "vite build --config vite.single.config.js && node scripts/inline-singlefile.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

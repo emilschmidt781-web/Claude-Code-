@@ -1,55 +1,68 @@
-# 🎣 Angel-App
+# 🦊 Fokusfuchs
 
-Eine Web-App fürs Angeln mit **KI-Fischerkennung** und **Beißprognose** – sie
-hilft dir zu erkennen, *welchen* Fisch du gefangen hast und zeigt dir, *wann*
-und *wo* du am besten angelst.
+Ein **neuroinklusiver Tagesplaner** für ADHS-, autistische und alle anderen
+Gehirne – mit einem kleinen Fuchs, der beim Fokussieren **neben dir sitzt**.
 
-Gebaut mit **React + Vite**. Läuft vollständig offline im Browser – es werden
-keine Daten an einen Server gesendet.
+Das Besondere: Fokusfuchs setzt nicht auf Zeitdruck, sondern auf **Body-Doubling
+und Belohnung**. Dein Fokus-Buddy macht mit, feuert dich an und du sammelst
+Münzen, Streaks und XP – ganz ohne schlechtes Gewissen.
+
+Gebaut mit **React + Vite**. Läuft vollständig lokal im Browser (PWA,
+installierbar) – es werden **keine Daten an einen Server gesendet**.
 
 ## Funktionen
 
 | Tab | Funktion |
 | --- | --- |
-| 📷 **Erkennung** | Foto des Fangs hochladen → die App analysiert Farbe & Form on-device und schlägt die wahrscheinlichste Art vor (mit Konfidenz-Ranking). |
-| 🕐 **Beißprognose** | Berechnet einen Beiß-Score (0–100) aus Mondphase (Solunar), Tageszeit, Jahreszeit und Wetter – inkl. 24-Stunden-Verlauf. Optional pro Zielfisch. |
-| 📖 **Guide** | Steckbriefe heimischer Arten: Lebensraum, beste Monate, Tageszeiten, Köder, Mindestmaß und Tipps. |
-| 📍 **Plätze** | Eigene Angelplätze mit Gewässer, Zielfisch und Notizen speichern (lokal via `localStorage`). |
+| 📅 **Tag** | Farbkodierte Zeitleiste. Aufgaben mit Uhrzeit landen im Tagesplan, flexible Aufgaben in „Wann immer es passt" – kein Zeitdruck. |
+| ✅ **To-do** | Alles aus dem Kopf in eine Liste. Kategorien, Energie-Level (🪫/🔋/⚡), Wichtig-Markierung, Drag-and-drop-Sortierung und **KI-Plan**, der sanft eine machbare Reihenfolge vorschlägt. Große Aufgaben lassen sich in kleine Schritte zerlegen (gegen Overwhelm). |
+| 🦊 **Fokus** | **Der Herzstück-Body-Doubling-Raum.** Wähl eine Aufgabe und eine Dauer, dann startet ein ruhiger visueller Countdown. Der Fuchs atmet neben dir und schickt druckfreie Mutmach-Nachrichten. Am Ende: Konfetti, Münzen, XP und Streak. |
+| 🎁 **Belohnung** | Münz-Shop: Fokusräume (Wald, Café, Weltall …), Hüte für den Fuchs und Farbthemen freischalten. Rein zum Spaß, kein Pay-to-win. |
+| 📈 **Einblick** | Streak, Fokus-Stunden, erledigte Aufgaben und ein 7-Tage-Verlauf – zum Muster-Erkennen, ausdrücklich **ohne Wertung**. |
+
+Dazu: **bis zu 5 Profile** (z. B. für die Familie), automatische Hell-/Dunkel-
+Darstellung und ein **Ruhemodus** über `prefers-reduced-motion`.
+
+## Warum „anders" als klassische Planer?
+
+- **Body-Doubling statt Alleinsein:** Der Fuchs „arbeitet mit" – das bekannte
+  Prinzip, das vielen neurodivergenten Menschen beim Anfangen hilft.
+- **Belohnung statt Druck:** Erfolge werden gefeiert, ein ruhiger Tag ist okay.
+- **Energie statt nur Uhrzeit:** Aufgaben tragen ein Energie-Level, der KI-Plan
+  startet bewusst klein für einen leichten Einstieg.
 
 ## Entwicklung
 
 ```bash
 npm install     # Abhängigkeiten installieren
-npm run dev     # Dev-Server starten (http://localhost:5173)
+npm run dev     # Dev-Server (http://localhost:5173)
 npm run build   # Produktions-Build nach dist/
 npm run preview # Build lokal testen
 ```
 
-## Wie funktioniert die Erkennung?
+## Technik & Datenschutz
 
-Die Fischerkennung (`src/lib/recognition.js`) ist ein **heuristischer
-Bildklassifikator**: Das Foto wird auf ein kleines Canvas gezeichnet, daraus
-werden dominanter Farbton, Sättigung, Helligkeit und die Form/Elongation des
-Motivs extrahiert und mit den Signaturen in der Fisch-Datenbank
-(`src/data/fishes.js`) verglichen. Das läuft komplett offline und benötigt kein
-trainiertes Modell.
+- **React 18 + Vite**, keine weiteren Laufzeit-Abhängigkeiten.
+- Zustand liegt in `localStorage` (`src/lib/store.js`), pro Profil getrennt.
+- Der „KI-Plan" und die Aufgaben-Zerlegung sind **erklärbare Heuristiken**
+  (`src/lib/buddy.js`) – kein Netzwerk-Call, keine Tracker, werbefrei.
 
-> Für eine echte, hochgenaue Erkennung würde man hier ein trainiertes
-> Bildmodell (z.B. TensorFlow.js) einbinden. Die aktuelle Heuristik ersetzt
-> **keine** sichere Artbestimmung.
+## Aufbau
 
-## Wie funktioniert die Beißprognose?
-
-`src/lib/solunar.js` kombiniert mehrere Faktoren, die die Fressaktivität von
-Fischen beeinflussen, zu einem Score:
-
-1. **Solunar** – Mondphase (Voll- und Neumond = höhere Aktivität), deterministisch berechnet.
-2. **Tageszeit** – Morgen- und Abenddämmerung als Prime-Time.
-3. **Jahreszeit** – art- bzw. saisonabhängig aus der Fisch-Datenbank.
-4. **Wetter** – Luftdruck-Tendenz, Bewölkung und Wind (Nutzereingabe).
-
-## Hinweis
-
-Schonzeiten, Mindestmaße und Regeln unterscheiden sich je nach Bundesland und
-Gewässer. Angle immer mit gültigem Angelschein und beachte die örtlichen
-Vorschriften. **Petri Heil!** 🐟
+```
+src/
+  state.jsx            # zentraler App-State + Aktionen (Context)
+  lib/store.js         # Persistenz, Kategorien, Belohnungen, Level-Kurve
+  lib/buddy.js         # Fokus-Buddy-Nachrichten + KI-Plan-Heuristik
+  components/
+    FocusRoom.jsx      # Body-Doubling-Fokusraum (Herzstück)
+    DayPlanner.jsx     # farbkodierte Tages-Zeitleiste
+    TaskList.jsx       # To-do-Liste + Sortierung + KI-Plan
+    TaskModal.jsx      # Aufgabe anlegen/bearbeiten + Schritte
+    Rewards.jsx        # Münz-Shop
+    Insights.jsx       # Statistiken
+    Buddy.jsx          # der Fuchs (mit Hut)
+    Confetti.jsx       # Feier-Animation
+    Onboarding.jsx     # erster Start
+    ProfileSheet.jsx   # bis zu 5 Profile
+```
