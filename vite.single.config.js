@@ -10,6 +10,8 @@ export default defineConfig({
     outDir: 'dist-single',
     emptyOutDir: true,
     modulePreload: false,
+    // Breite Browser-Kompatibilität (auch ältere Handys/Browser).
+    target: 'es2015',
     rollupOptions: {
       output: {
         format: 'iife',
