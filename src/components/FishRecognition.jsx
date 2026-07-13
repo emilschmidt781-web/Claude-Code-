@@ -38,11 +38,8 @@ export default function FishRecognition() {
 
   return (
     <div className="card">
-      <h2>📷 KI-Fischerkennung</h2>
-      <p className="muted">
-        Lade ein Foto deines Fangs hoch – die App analysiert Farbe und Form und
-        schlägt die wahrscheinlichste Art vor.
-      </p>
+      <h2>📷 Fischerkennung</h2>
+      <p className="muted">Foto vom Fang hochladen – wir erkennen die Art.</p>
 
       {!preview && (
         <div
@@ -126,13 +123,6 @@ export default function FishRecognition() {
           </div>
         </div>
       )}
-
-      <div className="note">
-        ⚙️ Hinweis: Die Erkennung läuft vollständig offline auf deinem Gerät
-        (heuristische Farb-/Formanalyse). Sie ersetzt keine sichere
-        Artbestimmung – im Zweifel Fisch schonend zurücksetzen und einen Experten
-        fragen.
-      </div>
     </div>
   )
 }

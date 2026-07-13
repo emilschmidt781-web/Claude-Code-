@@ -31,11 +31,8 @@ export default function BiteForecast() {
 
   return (
     <div className="card">
-      <h2>🕐 Beißprognose – wann angeln?</h2>
-      <p className="muted">
-        Berechnet aus Mondphase (Solunar), Tageszeit, Jahreszeit und Wetter, wie
-        gut die Chancen stehen.
-      </p>
+      <h2>🕐 Beißprognose</h2>
+      <p className="muted">Wie gut stehen die Chancen gerade?</p>
 
       <div className="grid-2">
         <div className="field">
@@ -131,11 +128,6 @@ export default function BiteForecast() {
         ))}
       </div>
 
-      {fish && (
-        <div className="tip" style={{ marginTop: 16 }}>
-          💡 {fish.name}: {fish.tips}
-        </div>
-      )}
     </div>
   )
 }

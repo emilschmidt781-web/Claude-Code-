@@ -43,10 +43,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <p>
-          Petri Heil! 🐟 · Erstellt mit React + Vite · Alle Daten bleiben lokal
-          auf deinem Gerät
-        </p>
+        <p>Petri Heil! 🐟</p>
       </footer>
     </div>
   )

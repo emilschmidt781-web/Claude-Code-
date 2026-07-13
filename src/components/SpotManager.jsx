@@ -47,11 +47,8 @@ export default function SpotManager() {
 
   return (
     <div className="card">
-      <h2>📍 Meine Angelplätze</h2>
-      <p className="muted">
-        Speichere deine besten Spots mit Gewässer, Zielfisch und Notizen. Alles
-        bleibt lokal auf deinem Gerät.
-      </p>
+      <h2>📍 Meine Plätze</h2>
+      <p className="muted">Deine besten Spots – gespeichert auf dem Gerät.</p>
 
       <form onSubmit={addSpot}>
         <div className="grid-2">
