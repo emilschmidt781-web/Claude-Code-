@@ -179,6 +179,41 @@ input:focus {
 }
 
 /* ---------- Recognition ---------- */
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-dim);
+}
+.ai-badge[data-state='ready'] {
+  border-color: rgba(53, 208, 127, 0.4);
+  color: var(--good);
+  background: rgba(53, 208, 127, 0.08);
+}
+.ai-badge[data-state='loading'] {
+  border-color: rgba(35, 200, 216, 0.4);
+  color: var(--accent);
+}
+.ai-badge[data-state='failed'] {
+  border-color: rgba(245, 196, 81, 0.4);
+  color: var(--warn);
+}
+.raw-detect {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin: 10px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-soft);
+  font-style: italic;
+}
+
 .dropzone {
   border: 2px dashed var(--border);
   border-radius: var(--radius);
