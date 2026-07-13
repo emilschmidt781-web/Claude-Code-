@@ -6,11 +6,6 @@ function catOf(id) {
   return CATEGORIES.find((c) => c.id === id) || CATEGORIES[0]
 }
 
-// Farbe leicht aufhellen für lesbaren Block-Hintergrund
-function tint(hex) {
-  return hex + '33'
-}
-
 export default function DayPlanner() {
   const { data, profile, toggleTask } = useApp()
 
@@ -63,12 +58,11 @@ export default function DayPlanner() {
                         <div
                           key={t.id}
                           className="tl-block"
-                          style={{ background: tint(c.color), border: `1px solid ${c.color}` }}
                           onClick={() => toggleTask(t.id)}
                           title="Antippen zum Abhaken"
                         >
-                          <span>{c.emoji}</span>
-                          <span style={{ flex: 1 }}>{t.title}</span>
+                          <span className="swatch" style={{ background: c.color }} />
+                          <span style={{ flex: 1 }}>{c.emoji} {t.title}</span>
                           <small>{t.time} · {t.duration}′</small>
                         </div>
                       )
@@ -91,11 +85,11 @@ export default function DayPlanner() {
                 <div
                   key={t.id}
                   className="tl-block"
-                  style={{ background: tint(c.color), border: `1px solid ${c.color}`, marginBottom: 8 }}
+                  style={{ marginBottom: 8 }}
                   onClick={() => toggleTask(t.id)}
                 >
-                  <span>{c.emoji}</span>
-                  <span style={{ flex: 1 }}>{t.title}</span>
+                  <span className="swatch" style={{ background: c.color }} />
+                  <span style={{ flex: 1 }}>{c.emoji} {t.title}</span>
                   <small>{t.duration}′</small>
                 </div>
               )

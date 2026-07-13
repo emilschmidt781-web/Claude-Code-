@@ -46,7 +46,7 @@ export default function Insights() {
                 style={{
                   width: '100%',
                   height: `${Math.max(4, (d.min / stats.maxMin) * 100)}%`,
-                  background: d.min ? 'linear-gradient(180deg, var(--primary), var(--accent))' : 'var(--bg-soft)',
+                  background: d.min ? 'var(--primary)' : 'var(--bg-soft)',
                   borderRadius: 8,
                   transition: 'height 0.4s ease',
                 }}
