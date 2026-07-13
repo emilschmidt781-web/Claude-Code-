@@ -19,7 +19,8 @@ export default function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🎣 Angel-App</h1>
+        <span className="logo">🎣</span>
+        <h1>Angel-App</h1>
         <p>KI-Fischerkennung &amp; Beißprognose – wann und wo du am besten angelst</p>
       </header>
 

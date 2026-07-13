@@ -90,16 +90,16 @@ export default function BiteForecast() {
         </select>
       </div>
 
-      {/* Gauge */}
+      {/* Gauge – kreisförmiges Beiß-Score-Rad */}
       <div className="gauge">
-        <div className="score" style={{ color: forecast.rating.color }}>
-          {forecast.percent}
-        </div>
-        <div className="rating" style={{ color: forecast.rating.color }}>
-          {forecast.rating.emoji} {forecast.rating.label}
-        </div>
-        <div className="muted">
-          {forecast.moon.emoji} {forecast.moon.name}
+        <RingGauge percent={forecast.percent} color={forecast.rating.color} />
+        <div className="gauge-meta">
+          <div className="rating" style={{ color: forecast.rating.color }}>
+            {forecast.rating.emoji} {forecast.rating.label}
+          </div>
+          <div className="muted">
+            {forecast.moon.emoji} {forecast.moon.name}
+          </div>
         </div>
       </div>
 
@@ -136,6 +136,32 @@ export default function BiteForecast() {
           💡 {fish.name}: {fish.tips}
         </div>
       )}
+    </div>
+  )
+}
+
+function RingGauge({ percent, color }) {
+  const r = 52
+  const circ = 2 * Math.PI * r
+  const dash = (percent / 100) * circ
+  return (
+    <div className="ring">
+      <svg viewBox="0 0 120 120" role="img" aria-label={`Beiß-Score ${percent} von 100`}>
+        <circle className="ring-track" cx="60" cy="60" r={r} />
+        <circle
+          className="ring-value"
+          cx="60"
+          cy="60"
+          r={r}
+          stroke={color}
+          strokeDasharray={`${dash} ${circ}`}
+          transform="rotate(-90 60 60)"
+        />
+      </svg>
+      <div className="ring-center">
+        <span className="ring-num" style={{ color }}>{percent}</span>
+        <span className="ring-unit">/ 100</span>
+      </div>
     </div>
   )
 }
