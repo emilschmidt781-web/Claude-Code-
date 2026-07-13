@@ -1,0 +1,17 @@
+{
+  "name": "Angel-App – Fischerkennung & Beißprognose",
+  "short_name": "Angel-App",
+  "description": "Fische per Foto erkennen und sehen, wann und wo du am besten angelst.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#061820",
+  "theme_color": "#0c8497",
+  "lang": "de",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
