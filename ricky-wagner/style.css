@@ -259,13 +259,157 @@ blockquote {
 .legal h2 { font-size: 1.2rem; font-weight: 600; margin-top: 2.2rem; }
 .legal p { color: var(--muted); }
 
-/* Einblenden beim Scrollen */
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: none; }
+/* ---------- Animationen ---------- */
+
+/* Einblenden beim Scrollen (nur mit JavaScript, sonst bleibt alles sichtbar) */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0s);
+}
+.js .reveal.visible { opacity: 1; transform: none; }
+
+/* Fortschrittsbalken beim Scrollen */
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 100%;
+  background: var(--white);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p, 0));
+}
+
+/* Header wird beim Scrollen kompakter */
+.nav { transition: height 0.3s ease; }
+.site-header.scrolled .nav { height: 58px; }
+
+/* Unterstrich in der Navigation */
+.nav-menu a:not(.btn) { position: relative; }
+.nav-menu a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+.nav-menu a:not(.btn):hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Buttons mit Pfeil */
+.btn .arrow { display: inline-block; margin-left: 0.4em; transition: transform 0.3s ease; }
+.btn:hover .arrow { transform: translateX(5px); }
+
+/* Hero: Netzwerk im Hintergrund */
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero-net { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--navy) 15%, rgba(11, 31, 58, 0.55) 55%, rgba(11, 31, 58, 0.1));
+}
+
+/* Hero: Überschrift Wort für Wort */
+.split-words .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.split-words .w > span { display: inline-block; }
+.js .split-words .w > span { transform: translateY(110%); animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; animation-delay: calc(0.15s + var(--i) * 0.08s); }
+.js .hero-in { opacity: 0; animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+.js .hero .eyebrow.hero-in { animation-delay: 0.05s; }
+.js .hero .lead.hero-in { animation-delay: 0.65s; }
+.js .hero-actions.hero-in { animation-delay: 0.8s; }
+.js .hero-points.hero-in { animation-delay: 0.95s; }
+@keyframes rise { to { transform: none; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* Karten: Linie fährt beim Hover ein */
+.card { position: relative; }
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--navy);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease;
+}
+.card:hover::before { transform: scaleX(1); }
+.card h3 { transition: transform 0.3s ease; }
+.card:hover h3 { transform: translateX(4px); }
+
+/* Checkliste: Haken wird gezeichnet */
+.js .checklist li::before { width: 0; height: 0; transition: height 0.15s ease, width 0.2s ease; transition-delay: calc(var(--d, 0s) + 0.4s), calc(var(--d, 0s) + 0.55s); }
+.js .checklist li.visible::before { width: 10px; height: 5px; }
+
+/* Laufband mit den Schwerpunkten */
+.marquee {
+  overflow: hidden;
+  display: flex;
+  padding-block: 0.3rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee + .marquee { margin-top: 0.6rem; }
+.marquee .tags { flex-wrap: nowrap; flex-shrink: 0; padding-right: 0.6rem; animation: marquee 38s linear infinite; }
+.marquee-reverse .tags { animation-direction: reverse; }
+.marquee:hover .tags { animation-play-state: paused; }
+.marquee .tags li { white-space: nowrap; }
+@keyframes marquee { to { transform: translateX(-100%); } }
+
+/* Ablauf: Linie füllt sich nacheinander */
+.steps li { position: relative; }
+.steps li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 1px;
+  width: 100%;
+  background: var(--white);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--d, 0s) + 0.3s);
+}
+.steps li.visible::before { transform: scaleX(1); }
+
+/* Über mich: Bild wird aufgedeckt */
+.about-photo { position: relative; }
+.js .about-photo.reveal { opacity: 1; transform: none; }
+.js .about-photo.reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  transform-origin: top;
+  transition: transform 1.2s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.js .about-photo.reveal.visible::after { transform: scaleY(0); }
+.about-photo span { transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.js .about-photo.reveal span { transform: scale(1.3); }
+.js .about-photo.reveal.visible span { transform: none; }
+
+/* FAQ: Antwort gleitet herein */
+.faq details[open] p { animation: fade-up 0.45s ease; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal, .js .hero-in, .js .split-words .w > span { opacity: 1; transform: none; }
+  .js .about-photo.reveal::after { display: none; }
+  .js .checklist li::before { width: 10px; height: 5px; }
+  .steps li::before { transform: scaleX(1); }
 }
 
 /* Responsiv */
