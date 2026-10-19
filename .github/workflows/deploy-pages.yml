@@ -5,7 +5,6 @@ on:
     branches:
       - claude/angel-app-tqz8ao
       - claude/schneiderei-yasin-website-ow4ekq
-      - claude/ricky-wagner-website
   workflow_dispatch:
 
 # Rechte, die der Deploy auf GitHub Pages benötigt.
