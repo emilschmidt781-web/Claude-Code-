@@ -198,7 +198,7 @@ if (canvas && canvas.getContext) {
 // als vorausgefüllte E-Mail im Mailprogramm des Besuchers geöffnet.
 const form = document.getElementById("contact-form");
 const note = document.getElementById("form-note");
-const RECIPIENT = "kontakt@ricky-wagner.de";
+const RECIPIENT = "wskarrierepartner@icloud.com";
 
 if (form && note) {
   form.addEventListener("submit", (event) => {

@@ -1,6 +1,6 @@
-# Ricky Wagner Personalvermittlung – Website
+# W&S Karrierepartner – Website
 
-Statische One-Page-Website für den Personalvermittler Ricky Wagner.
+Statische One-Page-Website für W&S Karrierepartner (Ricky Wagner), Personalvermittlung in Kitzingen.
 Reines HTML, CSS und JavaScript, ohne Build-Schritt.
 
 ## Ansehen
@@ -14,9 +14,10 @@ python3 -m http.server 8000   # http://localhost:8000
 
 ## Noch offen
 
-- **Kontaktdaten**: Telefon, E-Mail und Adresse sind Platzhalter – in `index.html`,
-  `impressum.html`, `datenschutz.html` und `RECIPIENT` in `script.js` ersetzen.
-- **Foto**: Im Abschnitt „Über mich“ den Platzhalter durch ein `<img>` ersetzen.
+- **Impressum**: Straße/Hausnummer, ggf. weitere Inhaber und USt-ID ergänzen.
+- **Telefon**: optional im Kontaktbereich von `index.html` ergänzen.
+- **Logo** liegt freigestellt in `img/` (`logo.png` farbig, `logo-white.png` und
+  `mark-white.png` für dunklen Hintergrund, `favicon.png`).
 - **Rechtstexte** sind Vorlagen, bitte rechtlich prüfen lassen.
 - **Kontaktformular** öffnet das Mailprogramm des Besuchers (statische Seite,
   kein Server). Für echten Versand z. B. Formspree o. Ä. anbinden.

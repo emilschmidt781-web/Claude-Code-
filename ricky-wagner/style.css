@@ -7,6 +7,7 @@
   --line: #e3e7ee;
   --line-dark: rgba(255, 255, 255, 0.16);
   --sans: "Inter", system-ui, -apple-system, sans-serif;
+  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 * { box-sizing: border-box; }
@@ -26,8 +27,9 @@ img { max-width: 100%; display: block; }
 a { color: inherit; }
 
 h1, h2, h3 { color: var(--navy); line-height: 1.12; margin: 0 0 0.6em; letter-spacing: -0.025em; }
+h1, h2 { font-family: var(--serif); letter-spacing: -0.01em; }
 h1 { font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 500; }
-h1 em { font-style: normal; font-weight: 300; opacity: 0.6; }
+h1 em { font-style: italic; font-weight: 400; opacity: 0.65; }
 h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 500; }
 h3 { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
 p { margin: 0 0 1em; }
@@ -79,18 +81,9 @@ p { margin: 0 0 1em; }
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-.logo-mark {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--white);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-.logo strong { display: block; font-size: 1rem; font-weight: 600; line-height: 1.1; }
-.logo small { color: rgba(255, 255, 255, 0.6); font-size: 0.75rem; letter-spacing: 0.04em; }
+.logo-mark { width: 44px; height: auto; }
+.logo strong { display: block; font-family: var(--serif); font-size: 1.2rem; font-weight: 500; line-height: 1.05; letter-spacing: 0.06em; }
+.logo small { display: block; color: rgba(255, 255, 255, 0.65); font-family: var(--serif); font-size: 0.66rem; letter-spacing: 0.32em; text-transform: uppercase; }
 
 .nav-menu { display: flex; align-items: center; gap: 2rem; }
 .nav-menu a:not(.btn) { text-decoration: none; font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); }
@@ -176,15 +169,17 @@ p { margin: 0 0 1em; }
 
 .about { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 4.5rem; align-items: center; }
 .about-photo { aspect-ratio: 4 / 5; background: var(--navy); display: grid; place-items: center; overflow: hidden; }
-.about-photo span { font-size: 3.5rem; font-weight: 300; letter-spacing: 0.06em; color: var(--white); }
-.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-photo img { width: 72%; height: auto; }
+.about-role { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; margin-top: -0.6rem; }
 .about p { color: var(--muted); }
 blockquote {
   margin: 2rem 0 0;
   padding: 1.4rem 0 0;
   border-top: 1px solid var(--line);
-  font-size: 1.2rem;
-  font-weight: 300;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  font-weight: 400;
   line-height: 1.5;
   color: var(--navy);
 }
@@ -319,7 +314,7 @@ blockquote {
 }
 
 /* Hero: Überschrift Wort für Wort */
-.split-words .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.split-words .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.12em 0.1em; margin: 0 -0.12em -0.1em; }
 .split-words .w > span { display: inline-block; }
 .js .split-words .w > span { transform: translateY(110%); animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; animation-delay: calc(0.15s + var(--i) * 0.08s); }
 .js .hero-in { opacity: 0; animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
@@ -396,9 +391,9 @@ blockquote {
   transition: transform 1.2s cubic-bezier(0.7, 0, 0.2, 1);
 }
 .js .about-photo.reveal.visible::after { transform: scaleY(0); }
-.about-photo span { transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
-.js .about-photo.reveal span { transform: scale(1.3); }
-.js .about-photo.reveal.visible span { transform: none; }
+.about-photo img { transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.js .about-photo.reveal img { transform: scale(1.2); }
+.js .about-photo.reveal.visible img { transform: none; }
 
 /* FAQ: Antwort gleitet herein */
 .faq details[open] p { animation: fade-up 0.45s ease; }
