@@ -45,6 +45,14 @@ jobs:
             cp schneiderei-yasin/*.html schneiderei-yasin/*.css schneiderei-yasin/*.js dist-pages/schneiderei-yasin/
           fi
 
+      # Website von Ricky Wagner unter /ricky-wagner/ mitveröffentlichen
+      - name: Ricky-Wagner-Website hinzufügen
+        run: |
+          if [ -d ricky-wagner ]; then
+            mkdir -p dist-pages/ricky-wagner
+            cp ricky-wagner/*.html ricky-wagner/*.css ricky-wagner/*.js dist-pages/ricky-wagner/
+          fi
+
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)
         uses: actions/configure-pages@v5
         with:
