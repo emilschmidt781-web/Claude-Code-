@@ -12,15 +12,12 @@ cd schneiderei-yasin
 python3 -m http.server 8000   # http://localhost:8000
 ```
 
-## Vor der Veröffentlichung anpassen
+## Noch offen
 
-Alle Stellen sind im HTML mit `TODO` markiert:
-
-- **Adresse, Telefon, E-Mail**: `index.html`, Bereich „Kontakt“
-- **Öffnungszeiten**: Tabelle in `index.html`. Die Anzeige „Jetzt geöffnet“
-  liest die Zeiten automatisch aus der Tabelle.
-- **Impressum / Datenschutz**: `impressum.html`, `datenschutz.html`
-  (Platzhalter, bitte rechtlich prüfen lassen)
+- **Impressum**: Name des Inhabers, E-Mail und ggf. USt-ID in `impressum.html`
+  ergänzen. Impressum und Datenschutz sind Vorlagen, bitte rechtlich prüfen lassen.
+- **Öffnungszeiten** stehen in der Tabelle in `index.html`. Die Anzeige
+  „Jetzt geöffnet“ liest die Zeiten (auch mehrere pro Tag) automatisch daraus.
 
 ## Dateien
 

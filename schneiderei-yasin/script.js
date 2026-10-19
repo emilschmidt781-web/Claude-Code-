@@ -42,11 +42,11 @@ if (hours && status) {
   const row = hours.querySelector(`tr[data-day="${day}"]`);
   if (row) {
     row.classList.add("today");
-    const match = row.querySelector("td").textContent.match(/(\d{1,2}):(\d{2})\s*[–-]\s*(\d{1,2}):(\d{2})/);
-    const open =
-      match &&
-      minutes >= Number(match[1]) * 60 + Number(match[2]) &&
-      minutes < Number(match[3]) * 60 + Number(match[4]);
+    // Ein Tag kann mehrere Zeitfenster haben (z. B. mit Mittagspause)
+    const ranges = row.querySelector("td").textContent.matchAll(/(\d{1,2}):(\d{2})\s*[–-]\s*(\d{1,2}):(\d{2})/g);
+    const open = [...ranges].some(
+      (m) => minutes >= Number(m[1]) * 60 + Number(m[2]) && minutes < Number(m[3]) * 60 + Number(m[4])
+    );
     status.textContent = open ? "Jetzt geöffnet" : "Derzeit geschlossen";
     status.classList.add(open ? "is-open" : "is-closed");
   }
