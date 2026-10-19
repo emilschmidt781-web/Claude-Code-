@@ -1,9 +1,10 @@
-name: Deploy Angel-App to GitHub Pages
+name: Deploy Angel-App & Schneiderei Yasin to GitHub Pages
 
 on:
   push:
     branches:
       - claude/angel-app-tqz8ao
+      - claude/schneiderei-yasin-website-ow4ekq
   workflow_dispatch:
 
 # Rechte, die der Deploy auf GitHub Pages benötigt.
@@ -35,6 +36,14 @@ jobs:
 
       - name: Eigenständige Einzeldatei bauen
         run: npm run build:single
+
+      # Website der Schneiderei Yasin unter /schneiderei-yasin/ mitveröffentlichen
+      - name: Schneiderei-Website hinzufügen
+        run: |
+          if [ -d schneiderei-yasin ]; then
+            mkdir -p dist-pages/schneiderei-yasin
+            cp schneiderei-yasin/*.html schneiderei-yasin/*.css schneiderei-yasin/*.js dist-pages/schneiderei-yasin/
+          fi
 
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)
         uses: actions/configure-pages@v5
