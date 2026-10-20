@@ -29,9 +29,9 @@
         <nav id="nav-menu" class="nav-menu" aria-label="Hauptnavigation">
           <a href="#unternehmen">Für Unternehmen</a>
           <a href="#bewerber">Für Bewerber</a>
-          <a href="#ablauf">Ablauf</a>
+          <a href="#stellen">Stellen</a>
+          <a href="#kandidaten">Kandidaten</a>
           <a href="#ueber-mich">Über mich</a>
-          <a href="#faq">FAQ</a>
           <a href="#kontakt" class="btn btn-small">Kontakt</a>
         </nav>
       </div>
@@ -52,8 +52,8 @@
               immer kostenfrei.
             </p>
             <div class="hero-actions hero-in">
-              <a href="#unternehmen" class="btn">Ich suche Personal <span class="arrow" aria-hidden="true">→</span></a>
-              <a href="#bewerber" class="btn btn-outline">Ich suche einen Job <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#kandidaten" class="btn">Ich suche Personal <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#stellen" class="btn btn-outline">Ich suche einen Job <span class="arrow" aria-hidden="true">→</span></a>
             </div>
             <ul class="hero-points hero-in">
             <li>Persönlicher Ansprechpartner</li>
@@ -155,6 +155,45 @@
         </div>
       </section>
 
+      <!-- Stellenangebote -->
+      <section class="section section-alt" id="stellen">
+        <div class="container">
+          <div class="section-head section-head-row">
+            <div>
+              <p class="eyebrow">Aktuelle Stellen</p>
+              <h2>Verfügbare Stellenprofile</h2>
+              <p class="section-lead">Interesse an einer Stelle? Bewerben Sie sich direkt per E-Mail oder WhatsApp – ganz ohne Anschreiben.</p>
+            </div>
+            <div class="filter" role="group" aria-label="Stellen filtern" data-target="stellen-liste">
+              <button type="button" class="chip active" data-filter="alle" aria-pressed="true">Alle</button>
+              <button type="button" class="chip" data-filter="technisch" aria-pressed="false">Gewerblich-technisch</button>
+              <button type="button" class="chip" data-filter="kaufmaennisch" aria-pressed="false">Kaufmännisch</button>
+            </div>
+          </div>
+          <div class="profiles" id="stellen-liste" aria-live="polite"></div>
+          <p class="profiles-note">Nicht das Richtige dabei? <a href="#kontakt">Senden Sie uns Ihren Lebenslauf</a> – viele Stellen werden nicht öffentlich ausgeschrieben.</p>
+        </div>
+      </section>
+
+      <!-- Bewerberprofile -->
+      <section class="section" id="kandidaten">
+        <div class="container">
+          <div class="section-head section-head-row">
+            <div>
+              <p class="eyebrow">Für Unternehmen</p>
+              <h2>Verfügbare Bewerberprofile</h2>
+              <p class="section-lead">Eine Auswahl geprüfter Kandidatinnen und Kandidaten – anonymisiert. Fragen Sie ein Profil an und erhalten Sie die vollständigen Unterlagen.</p>
+            </div>
+            <div class="filter" role="group" aria-label="Bewerberprofile filtern" data-target="kandidaten-liste">
+              <button type="button" class="chip active" data-filter="alle" aria-pressed="true">Alle</button>
+              <button type="button" class="chip" data-filter="technisch" aria-pressed="false">Gewerblich-technisch</button>
+              <button type="button" class="chip" data-filter="kaufmaennisch" aria-pressed="false">Kaufmännisch</button>
+            </div>
+          </div>
+          <div class="profiles" id="kandidaten-liste" aria-live="polite"></div>
+        </div>
+      </section>
+
       <!-- Ablauf -->
       <section class="section section-dark" id="ablauf">
         <div class="container">
@@ -252,7 +291,12 @@
             <p class="eyebrow">Kontakt</p>
             <h2>Lassen Sie uns sprechen.</h2>
             <p>Ob offene Stelle oder neuer Job: Ich freue mich über Ihren Anruf – oder schreiben Sie mir einfach. Ich melde mich innerhalb von 24 Stunden.</p>
-            <ul class="contact-list">
+            <div class="quick-links">
+            <a class="quick" href="tel:+491776880175"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg><span>Anrufen</span></a>
+            <a class="quick" href="https://wa.me/491776880175" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.1.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span>WhatsApp</span></a>
+            <a class="quick" href="mailto:wskarrierepartner@icloud.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.5l8 5 8-5V6H4Zm16 2.85-7.47 4.67a1 1 0 0 1-1.06 0L4 8.85V18h16V8.85Z"/></svg><span>E-Mail</span></a>
+          </div>
+          <ul class="contact-list">
             <li><span>Telefon</span><a href="tel:+491776880175">+49 177 6880175</a></li>
             <li><span>E-Mail</span><a href="mailto:wskarrierepartner@icloud.com">wskarrierepartner@icloud.com</a></li>
             <li><span>Standort</span>97318 Kitzingen</li>
@@ -301,6 +345,13 @@
       </div>
     </footer>
 
+    <div class="fab" aria-label="Schnellkontakt">
+      <a href="https://wa.me/491776880175" target="_blank" rel="noopener" class="fab-btn fab-wa" aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.1.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+      <a href="tel:+491776880175" class="fab-btn" aria-label="Anrufen"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg></a>
+    </div>
+    <div class="toast" id="toast" role="status" hidden></div>
+
+    <script src="profile.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

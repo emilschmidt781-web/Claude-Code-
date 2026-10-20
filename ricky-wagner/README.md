@@ -12,6 +12,15 @@ cd ricky-wagner
 python3 -m http.server 8000   # http://localhost:8000
 ```
 
+## Stellen- und Bewerberprofile pflegen
+
+Alle Profile stehen in `profile.js` (`window.STELLEN` und `window.KANDIDATEN`).
+Einträge hinzufügen, ändern oder löschen – die Website zeigt sie automatisch an,
+inklusive Filter, „Jetzt bewerben“/„Profil anfragen“ (E-Mail), WhatsApp und
+Direktlink (z. B. `#stelle-S-101`). Die mitgelieferten Einträge sind **Beispiele**
+(`beispiel: true` zeigt ein Label) und müssen vor dem Livegang ersetzt werden.
+Bewerberprofile nur anonymisiert und mit Einverständnis veröffentlichen.
+
 ## Noch offen
 
 - **Impressum**: Straße/Hausnummer, ggf. weitere Inhaber und USt-ID ergänzen.
@@ -27,5 +36,6 @@ python3 -m http.server 8000   # http://localhost:8000
 | --- | --- |
 | `index.html` | Startseite: Unternehmen, Bewerber, Bereiche, Ablauf, Über mich, FAQ, Kontakt |
 | `style.css` | Gestaltung, responsiv für Handy bis Desktop |
-| `script.js` | Mobiles Menü, Einblend-Animationen, Kontaktformular |
+| `script.js` | Menü, Animationen, Profile, Filter, Kontaktformular |
+| `profile.js` | Daten der Stellen- und Bewerberprofile |
 | `impressum.html`, `datenschutz.html` | Rechtstexte (Platzhalter) |

@@ -50,6 +50,186 @@ document.querySelectorAll(".split-words").forEach((el) => {
   wrap(el);
 });
 
+// ---------- Stellen- und Bewerberprofile (Daten in profile.js) ----------
+const PHONE_WA = "491776880175";
+const MAIL = "wskarrierepartner@icloud.com";
+const BEREICHE = { technisch: "Gewerblich-technisch", kaufmaennisch: "Kaufmännisch" };
+const ICONS = {
+  mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.5l8 5 8-5V6H4Zm16 2.85-7.47 4.67a1 1 0 0 1-1.06 0L4 8.85V18h16V8.85Z"/></svg>',
+  wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>',
+  link: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0ZM8 21a5 5 0 0 1-3.5-8.5l2.1-2.1a1 1 0 1 1 1.4 1.4l-2.1 2.1a3 3 0 0 0 4.2 4.2l2.1-2.1a1 1 0 1 1 1.4 1.4l-2.1 2.1A5 5 0 0 1 8 21Zm9.4-7.6a1 1 0 0 1-.7-1.7l2.1-2.1a3 3 0 0 0-4.2-4.2l-2.1 2.1a1 1 0 1 1-1.4-1.4l2.1-2.1a5 5 0 0 1 7 7l-2.1 2.1a1 1 0 0 1-.7.3Z"/></svg>',
+};
+
+const el = (tag, cls, text) => {
+  const node = document.createElement(tag);
+  if (cls) node.className = cls;
+  if (text != null) node.textContent = text;
+  return node;
+};
+
+const toast = document.getElementById("toast");
+let toastTimer;
+const showToast = (msg) => {
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => (toast.hidden = true), 2600);
+};
+
+const actionLink = (href, icon, label, external) => {
+  const a = el("a");
+  a.href = href;
+  a.innerHTML = ICONS[icon];
+  a.append(el("span", null, label));
+  if (external) {
+    a.target = "_blank";
+    a.rel = "noopener";
+  }
+  return a;
+};
+
+const copyLinkButton = (anchor) => {
+  const btn = el("button", "link-btn");
+  btn.type = "button";
+  btn.innerHTML = ICONS.link;
+  btn.title = "Link kopieren";
+  btn.setAttribute("aria-label", "Direktlink zu diesem Profil kopieren");
+  btn.addEventListener("click", async () => {
+    const url = `${location.origin}${location.pathname}#${anchor}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      showToast("Link kopiert – jetzt einfach weiterschicken.");
+    } catch {
+      history.replaceState(null, "", `#${anchor}`);
+      showToast("Link steht jetzt in der Adresszeile.");
+    }
+  });
+  return btn;
+};
+
+const card = (bereich, id, anchor, beispiel) => {
+  const art = el("article", "profile reveal");
+  art.id = anchor;
+  art.dataset.bereich = bereich;
+  const top = el("div", "profile-top");
+  const label = el("span", null, `${BEREICHE[bereich] || ""} · `);
+  label.append(el("span", "nowrap", id));
+  top.append(label);
+  if (beispiel) top.append(el("span", "badge", "Beispiel"));
+  art.append(top);
+  return art;
+};
+
+const renderStellen = (list, root) => {
+  list.forEach((s) => {
+    const anchor = `stelle-${s.id}`;
+    const art = card(s.bereich, s.id, anchor, s.beispiel);
+    art.append(el("h3", null, s.titel));
+    const meta = el("div", "meta");
+    [s.ort, s.art].filter(Boolean).forEach((m) => meta.append(el("span", null, m)));
+    art.append(meta);
+    if (s.text) art.append(el("p", null, s.text));
+    if (s.punkte?.length) {
+      const ul = el("ul");
+      s.punkte.forEach((p) => ul.append(el("li", null, p)));
+      art.append(ul);
+    }
+    const subject = `Bewerbung: ${s.titel} (${s.id})`;
+    const body = `Guten Tag Herr Wagner,\n\nich interessiere mich für die Stelle „${s.titel}“ (${s.id}) in ${s.ort}.\n\nMein Name:\nTelefon:\n\nViele Grüße`;
+    const wa = `Hallo Herr Wagner, ich interessiere mich für die Stelle „${s.titel}“ (${s.id}).`;
+    const actions = el("div", "profile-actions");
+    actions.append(
+      actionLink(`mailto:${MAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, "mail", "Jetzt bewerben"),
+      actionLink(`https://wa.me/${PHONE_WA}?text=${encodeURIComponent(wa)}`, "wa", "WhatsApp", true),
+      copyLinkButton(anchor)
+    );
+    art.append(actions);
+    root.append(art);
+  });
+};
+
+const renderKandidaten = (list, root) => {
+  list.forEach((k) => {
+    const anchor = `kandidat-${k.id}`;
+    const art = card(k.bereich, k.id, anchor, k.beispiel);
+    art.append(el("h3", null, k.beruf));
+    const meta = el("div", "meta");
+    [k.erfahrung, k.region, k.verfuegbar && `Verfügbar ${k.verfuegbar}`].filter(Boolean).forEach((m) => meta.append(el("span", null, m)));
+    art.append(meta);
+    if (k.staerken?.length) {
+      const ul = el("ul");
+      k.staerken.forEach((p) => ul.append(el("li", null, p)));
+      art.append(ul);
+    }
+    const subject = `Anfrage Bewerberprofil ${k.id} (${k.beruf})`;
+    const body = `Guten Tag Herr Wagner,\n\nwir interessieren uns für das Bewerberprofil ${k.id} (${k.beruf}).\n\nUnternehmen:\nAnsprechpartner:\nTelefon:\n\nViele Grüße`;
+    const wa = `Hallo Herr Wagner, wir interessieren uns für das Bewerberprofil ${k.id} (${k.beruf}).`;
+    const actions = el("div", "profile-actions");
+    actions.append(
+      actionLink(`mailto:${MAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, "mail", "Profil anfragen"),
+      actionLink(`https://wa.me/${PHONE_WA}?text=${encodeURIComponent(wa)}`, "wa", "WhatsApp", true),
+      copyLinkButton(anchor)
+    );
+    art.append(actions);
+    root.append(art);
+  });
+};
+
+const stellenRoot = document.getElementById("stellen-liste");
+const kandidatenRoot = document.getElementById("kandidaten-liste");
+if (stellenRoot) renderStellen(window.STELLEN || [], stellenRoot);
+if (kandidatenRoot) renderKandidaten(window.KANDIDATEN || [], kandidatenRoot);
+
+// Filter nach Bereich
+document.querySelectorAll(".filter").forEach((group) => {
+  const root = document.getElementById(group.dataset.target);
+  if (!root) return;
+  const empty = el("p", "profiles-empty", "Aktuell keine Profile in diesem Bereich – sprechen Sie mich gern direkt an.");
+  group.addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    group.querySelectorAll(".chip").forEach((c) => {
+      const on = c === chip;
+      c.classList.toggle("active", on);
+      c.setAttribute("aria-pressed", String(on));
+    });
+    const f = chip.dataset.filter;
+    let shown = 0;
+    root.querySelectorAll(".profile").forEach((p) => {
+      const show = f === "alle" || p.dataset.bereich === f;
+      p.hidden = !show;
+      if (show) {
+        shown++;
+        p.classList.add("visible");
+      }
+    });
+    if (shown === 0) root.append(empty);
+    else empty.remove();
+  });
+});
+
+// Direktlink (#stelle-… / #kandidat-…) hervorheben
+const highlightFromHash = () => {
+  const target = location.hash && document.getElementById(location.hash.slice(1));
+  if (!target || !target.classList.contains("profile")) return;
+  target.hidden = false;
+  target.classList.add("visible", "highlight");
+  setTimeout(() => target.scrollIntoView({ block: "center" }), 50);
+  setTimeout(() => target.classList.remove("highlight"), 3000);
+};
+window.addEventListener("hashchange", highlightFromHash);
+highlightFromHash();
+
+// Schwebende Kontakt-Buttons erst nach dem Hero einblenden
+const fab = document.querySelector(".fab");
+const heroSection = document.querySelector(".hero");
+if (fab && heroSection && "IntersectionObserver" in window) {
+  new IntersectionObserver(([entry]) => fab.classList.toggle("show", !entry.isIntersecting)).observe(heroSection);
+} else if (fab) {
+  fab.classList.add("show");
+}
+
 // Einblend-Animationen beim Scrollen, Geschwister nacheinander
 const revealItems = document.querySelectorAll(".reveal");
 revealItems.forEach((el) => {
