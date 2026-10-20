@@ -299,6 +299,14 @@ document.querySelectorAll("form.search").forEach((form) => {
   setupSearch(form, items);
 });
 
+// Startseite: Anzahl auf den Kacheln; alte Direktlinks auf die Unterseiten umleiten
+document.querySelectorAll(".portal-count").forEach((n) => {
+  const list = n.dataset.count === "stellen" ? window.STELLEN || [] : window.KANDIDATEN || [];
+  n.textContent = n.dataset.count === "stellen" ? `${list.length} offene Stellen` : `${list.length} verfügbare Profile`;
+});
+if (/^#stelle-/.test(location.hash) && !stellenRoot) location.replace(`stellen.html${location.hash}`);
+if (/^#kandidat-/.test(location.hash) && !kandidatenRoot) location.replace(`bewerberprofile.html${location.hash}`);
+
 // Direktlink (#stelle-… / #kandidat-…) hervorheben
 const highlightFromHash = () => {
   const target = location.hash && document.getElementById(location.hash.slice(1));

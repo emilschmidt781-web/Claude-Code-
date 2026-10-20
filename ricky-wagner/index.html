@@ -29,8 +29,8 @@
         <nav id="nav-menu" class="nav-menu" aria-label="Hauptnavigation">
           <a href="#unternehmen">Für Unternehmen</a>
           <a href="#bewerber">Für Bewerber</a>
-          <a href="#stellen">Stellen</a>
-          <a href="#kandidaten">Kandidaten</a>
+          <a href="stellen.html">Stellen</a>
+          <a href="bewerberprofile.html">Bewerberprofile</a>
           <a href="#ueber-mich">Über mich</a>
           <a href="#kontakt" class="btn btn-small">Kontakt</a>
         </nav>
@@ -52,8 +52,8 @@
               immer kostenfrei.
             </p>
             <div class="hero-actions hero-in">
-              <a href="#kandidaten" class="btn">Ich suche Personal <span class="arrow" aria-hidden="true">→</span></a>
-              <a href="#stellen" class="btn btn-outline">Ich suche einen Job <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="bewerberprofile.html" class="btn">Ich suche Personal <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="stellen.html" class="btn btn-outline">Ich suche einen Job <span class="arrow" aria-hidden="true">→</span></a>
             </div>
             <ul class="hero-points hero-in">
             <li>Persönlicher Ansprechpartner</li>
@@ -155,64 +155,27 @@
         </div>
       </section>
 
-      <!-- Stellenangebote -->
-      <section class="section section-alt" id="stellen">
+      <!-- Stellen & Bewerberprofile (eigene Seiten) -->
+      <section class="section section-alt" id="profile">
         <div class="container">
-          <div class="section-head section-head-row">
-            <div>
-              <p class="eyebrow">Aktuelle Stellen</p>
-              <h2>Verfügbare Stellenprofile</h2>
-              <p class="section-lead">Interesse an einer Stelle? Bewerben Sie sich direkt per E-Mail oder WhatsApp – ganz ohne Anschreiben.</p>
-            </div>
+          <div class="section-head">
+            <p class="eyebrow">Stellen &amp; Profile</p>
+            <h2>Direkt zum Ziel</h2>
           </div>
-          <form class="search" data-target="stellen-liste" role="search" aria-label="Stellen durchsuchen" onsubmit="return false">
-            <div class="search-row">
-              <label class="search-field">
-                <span class="sr-only">Suchbegriff</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.42 1.4-5.39-5.38A8 8 0 1 1 10 2Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/></svg>
-                <input type="search" id="stellen-q" name="q" placeholder="Beruf, Stichwort oder Ort …" autocomplete="off" />
-              </label>
-              <label class="search-select">
-                <span class="sr-only">Ort</span>
-                <select id="stellen-ort" name="ort"><option value="">Ort: alle</option></select>
-              </label>
-              <button type="button" class="search-reset" hidden>Zurücksetzen</button>
-            </div>
-            <div class="cats" role="group" aria-label="Kategorien"></div>
-            <p class="search-count" aria-live="polite"></p>
-          </form>
-          <div class="profiles" id="stellen-liste"></div>
-          <p class="profiles-note">Nicht das Richtige dabei? <a href="#kontakt">Senden Sie uns Ihren Lebenslauf</a> – viele Stellen werden nicht öffentlich ausgeschrieben.</p>
-        </div>
-      </section>
-
-      <!-- Bewerberprofile -->
-      <section class="section" id="kandidaten">
-        <div class="container">
-          <div class="section-head section-head-row">
-            <div>
-              <p class="eyebrow">Für Unternehmen</p>
-              <h2>Verfügbare Bewerberprofile</h2>
-              <p class="section-lead">Eine Auswahl geprüfter Kandidatinnen und Kandidaten – anonymisiert. Fragen Sie ein Profil an und erhalten Sie die vollständigen Unterlagen.</p>
-            </div>
+          <div class="portals">
+            <a class="portal reveal" href="stellen.html">
+              <span class="portal-kicker">Für Bewerberinnen &amp; Bewerber</span>
+              <strong>Aktuelle Stellenangebote</strong>
+              <span class="portal-text">Offene Stellen im gewerblich-technischen und kaufmännischen Bereich – mit Suche nach Beruf, Kategorie und Ort.</span>
+              <span class="portal-foot"><span class="portal-count" data-count="stellen"></span><span class="arrow" aria-hidden="true">→</span></span>
+            </a>
+            <a class="portal reveal" href="bewerberprofile.html">
+              <span class="portal-kicker">Für Unternehmen</span>
+              <strong>Verfügbare Bewerberprofile</strong>
+              <span class="portal-text">Geprüfte Fachkräfte, anonymisiert. Profil anfragen und vollständige Unterlagen erhalten.</span>
+              <span class="portal-foot"><span class="portal-count" data-count="kandidaten"></span><span class="arrow" aria-hidden="true">→</span></span>
+            </a>
           </div>
-          <form class="search" data-target="kandidaten-liste" role="search" aria-label="Bewerberprofile durchsuchen" onsubmit="return false">
-            <div class="search-row">
-              <label class="search-field">
-                <span class="sr-only">Suchbegriff</span>
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.42 1.4-5.39-5.38A8 8 0 1 1 10 2Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/></svg>
-                <input type="search" id="kandidaten-q" name="q" placeholder="Beruf, Stärke oder Region …" autocomplete="off" />
-              </label>
-              <label class="search-select">
-                <span class="sr-only">Region</span>
-                <select id="kandidaten-ort" name="ort"><option value="">Region: alle</option></select>
-              </label>
-              <button type="button" class="search-reset" hidden>Zurücksetzen</button>
-            </div>
-            <div class="cats" role="group" aria-label="Kategorien"></div>
-            <p class="search-count" aria-live="polite"></p>
-          </form>
-          <div class="profiles" id="kandidaten-liste"></div>
         </div>
       </section>
 
