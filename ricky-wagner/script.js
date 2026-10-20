@@ -370,6 +370,7 @@ if (match) {
   const right = [...match.querySelectorAll(".match-right .match-card")];
   const path = match.querySelector(".match-path");
   const pairs = left.map((_, n) => [n, n]);
+  const visiblePairs = () => pairs.filter(([a]) => left[a].offsetParent !== null);
   let step = 0;
 
   const drawPair = ([a, b]) => {
@@ -389,11 +390,13 @@ if (match) {
 
   const run = () => {
     match.classList.remove("drawing", "matched");
-    drawPair(pairs[step]);
+    const list = visiblePairs();
+    step %= list.length;
+    drawPair(list[step]);
     void path.getBoundingClientRect(); // Neustart der Strich-Animation erzwingen
     requestAnimationFrame(() => match.classList.add("drawing"));
     setTimeout(() => match.classList.add("matched"), 900);
-    step = (step + 1) % pairs.length;
+    step = (step + 1) % list.length;
   };
 
   if (reducedMotion) {
@@ -405,7 +408,56 @@ if (match) {
       setInterval(run, 3200);
     }, 1200);
   }
-  window.addEventListener("resize", () => drawPair(pairs[(step + pairs.length - 1) % pairs.length]));
+  window.addEventListener("resize", () => {
+    const list = visiblePairs();
+    drawPair(list[(step + list.length - 1) % list.length]);
+  });
+}
+
+// Leistungen: Umschalter „Für Unternehmen“ / „Für Bewerber“
+const switcher = document.querySelector(".switch");
+if (switcher) {
+  const tabs = [...switcher.querySelectorAll('[role="tab"]')];
+  const pill = switcher.querySelector(".switch-pill");
+  const movePill = (tab) => {
+    switcher.style.setProperty("--pw", `${tab.offsetWidth}px`);
+    switcher.style.setProperty("--px", `${tab.offsetLeft - 5}px`);
+  };
+  const select = (tab, focus) => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute("aria-controls"));
+      if (on && panel.hidden) {
+        panel.hidden = false;
+        panel.classList.remove("enter");
+        void panel.offsetWidth;
+        panel.classList.add("enter");
+      } else if (!on) panel.hidden = true;
+    });
+    movePill(tab);
+    if (focus) tab.focus();
+  };
+  tabs.forEach((t, n) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      select(tabs[(n + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length], true);
+    });
+  });
+  // Links auf #unternehmen / #bewerber öffnen den passenden Reiter
+  const fromHash = () => {
+    const id = location.hash.slice(1);
+    const tab = tabs.find((t) => t.id === `tab-${id}`);
+    if (tab) select(tab);
+  };
+  window.addEventListener("hashchange", fromHash);
+  window.addEventListener("resize", () => movePill(tabs.find((t) => t.getAttribute("aria-selected") === "true")));
+  fromHash();
+  movePill(tabs.find((t) => t.getAttribute("aria-selected") === "true"));
+  if (pill && document.fonts) document.fonts.ready.then(() => movePill(tabs.find((t) => t.getAttribute("aria-selected") === "true")));
 }
 
 // Zahlen hochzählen, sobald sie sichtbar werden

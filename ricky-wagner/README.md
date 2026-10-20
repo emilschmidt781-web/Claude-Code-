@@ -34,7 +34,7 @@ Bewerberprofile nur anonymisiert und mit Einverständnis veröffentlichen.
 
 | Datei | Inhalt |
 | --- | --- |
-| `index.html` | Startseite: Unternehmen, Bewerber, Bereiche, Kacheln zu Stellen/Profilen, Ablauf, Über mich, FAQ, Kontakt |
+| `index.html` | Startseite: Hero mit Kennzahlen, Leistungen (Umschalter Unternehmen/Bewerber), Ablauf, Über mich, FAQ, Kontakt |
 | `stellen.html` | Unterseite Stellenangebote mit Suche |
 | `bewerberprofile.html` | Unterseite Bewerberprofile mit Suche |
 | `style.css` | Gestaltung, responsiv für Handy bis Desktop |

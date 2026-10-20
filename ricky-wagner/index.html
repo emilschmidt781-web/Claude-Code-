@@ -89,6 +89,12 @@
             <div class="match-badge"><span>✓</span> Passt!</div>
           </div>
         </div>
+        <div class="container hero-stats">
+          <div class="stat"><strong><span data-count="6">6</span>+</strong><span>Jahre Erfahrung</span></div>
+          <div class="stat"><strong>Täglich</strong><span>aktiv am Bewerbermarkt</span></div>
+          <div class="stat"><strong><span data-count="2">2</span></strong><span>Bereiche: technisch &amp; kaufmännisch</span></div>
+          <div class="stat"><strong><span data-count="0">0</span>&nbsp;€</strong><span>für Bewerber</span></div>
+        </div>
       </section>
 
       <!-- Laufband -->
@@ -101,78 +107,62 @@
         </div>
       </div>
 
-      <!-- Zwei Wege -->
+      <!-- Leistungen: Umschalter Unternehmen / Bewerber -->
       <section class="section" id="wege">
         <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Zwei Wege, ein Ziel</p>
-            <h2>Die passende Verbindung – für beide Seiten.</h2>
+          <div class="section-head section-head-row reveal">
+            <div>
+              <p class="eyebrow">Leistungen</p>
+              <h2>Die passende Verbindung – für beide Seiten.</h2>
+            </div>
+            <div class="switch" role="tablist" aria-label="Zielgruppe wählen">
+              <button type="button" role="tab" id="tab-unternehmen" aria-controls="panel-unternehmen" aria-selected="true">Für Unternehmen</button>
+              <button type="button" role="tab" id="tab-bewerber" aria-controls="panel-bewerber" aria-selected="false" tabindex="-1">Für Bewerber</button>
+              <span class="switch-pill" aria-hidden="true"></span>
+            </div>
           </div>
-          <div class="ways">
-            <article class="way way-dark reveal" id="unternehmen">
-              <p class="way-kicker">Für Unternehmen</p>
-              <h3>Offene Stellen besetzen, ohne Zeit zu verlieren.</h3>
-              <p class="way-text">Sie konzentrieren sich auf Ihr Geschäft – ich übernehme die Suche. Von der Anforderungsanalyse bis zur Vertragsunterschrift erhalten Sie nur Kandidaten, die fachlich und menschlich passen.</p>
-              <ul class="way-list">
-                <li><b>Direktansprache</b> – auch Fachkräfte, die nicht aktiv suchen</li>
-                <li><b>Sorgfältige Vorauswahl</b> mit Interviews und Qualifikationscheck</li>
-                <li><b>Honorar nur bei Erfolg</b> – transparent, ohne versteckte Kosten</li>
-                <li><b>Diskretion</b> bei vertraulichen Nachbesetzungen</li>
-              </ul>
-              <div class="way-actions">
+
+          <div class="panels reveal">
+            <div class="panel" role="tabpanel" id="panel-unternehmen" aria-labelledby="tab-unternehmen">
+              <span class="anchor" id="unternehmen"></span>
+              <div class="panel-main">
+                <h3>Offene Stellen besetzen, ohne Zeit zu verlieren.</h3>
+                <p class="panel-text">Sie konzentrieren sich auf Ihr Geschäft – ich übernehme die Suche. Sie erhalten nur Kandidaten, die fachlich und menschlich passen.</p>
+                <ul class="way-list">
+                  <li><b>Direktansprache</b> – auch Fachkräfte, die nicht aktiv suchen</li>
+                  <li><b>Sorgfältige Vorauswahl</b> mit Interviews und Qualifikationscheck</li>
+                  <li><b>Honorar nur bei Erfolg</b> – transparent, ohne versteckte Kosten</li>
+                  <li><b>Diskretion</b> bei vertraulichen Nachbesetzungen</li>
+                </ul>
                 <a href="#kontakt" class="btn">Unverbindlich anfragen <span class="arrow" aria-hidden="true">→</span></a>
-                <a href="bewerberprofile.html" class="link-arrow">Bewerberprofile ansehen <span aria-hidden="true">→</span></a>
               </div>
-            </article>
-            <article class="way way-light reveal" id="bewerber">
-              <p class="way-kicker">Für Bewerberinnen &amp; Bewerber</p>
-              <h3>Ihr nächster Karriereschritt – mit jemandem an Ihrer Seite.</h3>
-              <p class="way-text">Ich höre zu, was Sie wirklich wollen, und stelle Ihnen nur Stellen vor, die dazu passen. Ihre Daten gebe ich nur mit Ihrer Zustimmung weiter.</p>
-              <ul class="way-list">
-                <li><b>100&nbsp;% kostenfrei</b> für Bewerberinnen und Bewerber</li>
-                <li><b>Stellen</b>, die nicht öffentlich ausgeschrieben sind</li>
-                <li><b>Ehrliches Feedback</b> und Vorbereitung auf Gespräche</li>
-                <li><b>Diskret</b> aus ungekündigter Stellung</li>
-              </ul>
-              <div class="way-actions">
+              <a class="portal" href="bewerberprofile.html">
+                <span class="portal-kicker">Bewerberprofile</span>
+                <strong>Geprüfte Fachkräfte ansehen</strong>
+                <span class="portal-text">Anonymisierte Profile – mit Suche nach Beruf, Kategorie und Region.</span>
+                <span class="portal-foot"><span class="portal-count" data-count-list="kandidaten"></span><span class="portal-go" aria-hidden="true">→</span></span>
+              </a>
+            </div>
+            <div class="panel" role="tabpanel" id="panel-bewerber" aria-labelledby="tab-bewerber" hidden>
+              <span class="anchor" id="bewerber"></span>
+              <div class="panel-main">
+                <h3>Ihr nächster Karriereschritt – mit jemandem an Ihrer Seite.</h3>
+                <p class="panel-text">Ich stelle Ihnen nur Stellen vor, die wirklich zu Ihnen passen. Ihre Daten gebe ich nur mit Ihrer Zustimmung weiter.</p>
+                <ul class="way-list">
+                  <li><b>100&nbsp;% kostenfrei</b> für Bewerberinnen und Bewerber</li>
+                  <li><b>Stellen</b>, die nicht öffentlich ausgeschrieben sind</li>
+                  <li><b>Ehrliches Feedback</b> und Vorbereitung auf Gespräche</li>
+                  <li><b>Diskret</b> aus ungekündigter Stellung</li>
+                </ul>
                 <a href="#kontakt" class="btn">Lebenslauf senden <span class="arrow" aria-hidden="true">→</span></a>
-                <a href="stellen.html" class="link-arrow">Stellenangebote ansehen <span aria-hidden="true">→</span></a>
               </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Zahlen -->
-      <section class="stats" aria-label="Kennzahlen">
-        <div class="container stats-grid">
-          <div class="stat reveal"><strong><span data-count="6">6</span>+</strong><span>Jahre Erfahrung in der Personalvermittlung</span></div>
-          <div class="stat reveal"><strong>Täglich</strong><span>aktiv am Bewerbermarkt</span></div>
-          <div class="stat reveal"><strong><span data-count="2">2</span></strong><span>Bereiche: gewerblich-technisch &amp; kaufmännisch</span></div>
-          <div class="stat reveal"><strong><span data-count="0">0</span>&nbsp;€</strong><span>Kosten für Bewerberinnen und Bewerber</span></div>
-        </div>
-      </section>
-
-      <!-- Stellen & Bewerberprofile -->
-      <section class="section section-mist" id="profile">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Stellen &amp; Profile</p>
-            <h2>Direkt zum Ziel</h2>
-          </div>
-          <div class="portals">
-            <a class="portal reveal" href="stellen.html">
-              <span class="portal-kicker">Für Bewerberinnen &amp; Bewerber</span>
-              <strong>Aktuelle Stellenangebote</strong>
-              <span class="portal-text">Offene Stellen im gewerblich-technischen und kaufmännischen Bereich – mit Suche nach Beruf, Kategorie und Ort.</span>
-              <span class="portal-foot"><span class="portal-count" data-count-list="stellen"></span><span class="portal-go" aria-hidden="true">→</span></span>
-            </a>
-            <a class="portal reveal" href="bewerberprofile.html">
-              <span class="portal-kicker">Für Unternehmen</span>
-              <strong>Verfügbare Bewerberprofile</strong>
-              <span class="portal-text">Geprüfte Fachkräfte, anonymisiert. Profil anfragen und vollständige Unterlagen erhalten.</span>
-              <span class="portal-foot"><span class="portal-count" data-count-list="kandidaten"></span><span class="portal-go" aria-hidden="true">→</span></span>
-            </a>
+              <a class="portal" href="stellen.html">
+                <span class="portal-kicker">Stellenangebote</span>
+                <strong>Aktuelle Stellen ansehen</strong>
+                <span class="portal-text">Gewerblich-technisch und kaufmännisch – mit Suche nach Beruf, Kategorie und Ort.</span>
+                <span class="portal-foot"><span class="portal-count" data-count-list="stellen"></span><span class="portal-go" aria-hidden="true">→</span></span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -203,7 +193,6 @@
             <div class="about-card">
               <img src="img/logo.png" alt="Logo W&amp;S Karrierepartner" width="700" height="689" />
             </div>
-            <div class="about-quote">„Eine gute Vermittlung erkennt man daran, dass beide Seiten nach einem Jahr noch zufrieden sind.“</div>
           </div>
           <div class="about-text">
             <p class="eyebrow reveal">Über mich</p>
@@ -224,6 +213,7 @@
               Statt Masse setze ich auf Qualität, Ehrlichkeit und kurze Wege. Bei mir haben Sie immer
               einen festen Ansprechpartner – vom ersten Telefonat bis nach dem ersten Arbeitstag.
             </p>
+            <blockquote class="about-quote reveal">„Eine gute Vermittlung erkennt man daran, dass beide Seiten nach einem Jahr noch zufrieden sind.“</blockquote>
           </div>
         </div>
       </section>
@@ -285,21 +275,23 @@
               <label><input type="radio" name="rolle" value="Unternehmen" checked /> Unternehmen</label>
               <label><input type="radio" name="rolle" value="Bewerber/in" /> Bewerber/in</label>
             </fieldset>
-            <label>
-              Name
-              <input type="text" name="name" required autocomplete="name" />
-            </label>
+            <div class="form-row">
+              <label>
+                Name
+                <input type="text" name="name" required autocomplete="name" />
+              </label>
+              <label>
+                Telefon <small>(optional)</small>
+                <input type="tel" name="telefon" autocomplete="tel" />
+              </label>
+            </div>
             <label>
               E-Mail
               <input type="email" name="email" required autocomplete="email" />
             </label>
             <label>
-              Telefon <small>(optional)</small>
-              <input type="tel" name="telefon" autocomplete="tel" />
-            </label>
-            <label>
               Nachricht
-              <textarea name="nachricht" rows="4" required></textarea>
+              <textarea name="nachricht" rows="3" required></textarea>
             </label>
             <label class="consent">
               <input type="checkbox" name="consent" required />
