@@ -164,13 +164,24 @@
               <h2>Verfügbare Stellenprofile</h2>
               <p class="section-lead">Interesse an einer Stelle? Bewerben Sie sich direkt per E-Mail oder WhatsApp – ganz ohne Anschreiben.</p>
             </div>
-            <div class="filter" role="group" aria-label="Stellen filtern" data-target="stellen-liste">
-              <button type="button" class="chip active" data-filter="alle" aria-pressed="true">Alle</button>
-              <button type="button" class="chip" data-filter="technisch" aria-pressed="false">Gewerblich-technisch</button>
-              <button type="button" class="chip" data-filter="kaufmaennisch" aria-pressed="false">Kaufmännisch</button>
-            </div>
           </div>
-          <div class="profiles" id="stellen-liste" aria-live="polite"></div>
+          <form class="search" data-target="stellen-liste" role="search" aria-label="Stellen durchsuchen" onsubmit="return false">
+            <div class="search-row">
+              <label class="search-field">
+                <span class="sr-only">Suchbegriff</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.42 1.4-5.39-5.38A8 8 0 1 1 10 2Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/></svg>
+                <input type="search" id="stellen-q" name="q" placeholder="Beruf, Stichwort oder Ort …" autocomplete="off" />
+              </label>
+              <label class="search-select">
+                <span class="sr-only">Ort</span>
+                <select id="stellen-ort" name="ort"><option value="">Ort: alle</option></select>
+              </label>
+              <button type="button" class="search-reset" hidden>Zurücksetzen</button>
+            </div>
+            <div class="cats" role="group" aria-label="Kategorien"></div>
+            <p class="search-count" aria-live="polite"></p>
+          </form>
+          <div class="profiles" id="stellen-liste"></div>
           <p class="profiles-note">Nicht das Richtige dabei? <a href="#kontakt">Senden Sie uns Ihren Lebenslauf</a> – viele Stellen werden nicht öffentlich ausgeschrieben.</p>
         </div>
       </section>
@@ -184,13 +195,24 @@
               <h2>Verfügbare Bewerberprofile</h2>
               <p class="section-lead">Eine Auswahl geprüfter Kandidatinnen und Kandidaten – anonymisiert. Fragen Sie ein Profil an und erhalten Sie die vollständigen Unterlagen.</p>
             </div>
-            <div class="filter" role="group" aria-label="Bewerberprofile filtern" data-target="kandidaten-liste">
-              <button type="button" class="chip active" data-filter="alle" aria-pressed="true">Alle</button>
-              <button type="button" class="chip" data-filter="technisch" aria-pressed="false">Gewerblich-technisch</button>
-              <button type="button" class="chip" data-filter="kaufmaennisch" aria-pressed="false">Kaufmännisch</button>
-            </div>
           </div>
-          <div class="profiles" id="kandidaten-liste" aria-live="polite"></div>
+          <form class="search" data-target="kandidaten-liste" role="search" aria-label="Bewerberprofile durchsuchen" onsubmit="return false">
+            <div class="search-row">
+              <label class="search-field">
+                <span class="sr-only">Suchbegriff</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.42 1.4-5.39-5.38A8 8 0 1 1 10 2Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/></svg>
+                <input type="search" id="kandidaten-q" name="q" placeholder="Beruf, Stärke oder Region …" autocomplete="off" />
+              </label>
+              <label class="search-select">
+                <span class="sr-only">Region</span>
+                <select id="kandidaten-ort" name="ort"><option value="">Region: alle</option></select>
+              </label>
+              <button type="button" class="search-reset" hidden>Zurücksetzen</button>
+            </div>
+            <div class="cats" role="group" aria-label="Kategorien"></div>
+            <p class="search-count" aria-live="polite"></p>
+          </form>
+          <div class="profiles" id="kandidaten-liste"></div>
         </div>
       </section>
 

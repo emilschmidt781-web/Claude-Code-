@@ -16,7 +16,7 @@ python3 -m http.server 8000   # http://localhost:8000
 
 Alle Profile stehen in `profile.js` (`window.STELLEN` und `window.KANDIDATEN`).
 Einträge hinzufügen, ändern oder löschen – die Website zeigt sie automatisch an,
-inklusive Filter, „Jetzt bewerben“/„Profil anfragen“ (E-Mail), WhatsApp und
+inklusive Suche (Freitext, Kategorie, Ort), „Jetzt bewerben“/„Profil anfragen“ (E-Mail), WhatsApp und
 Direktlink (z. B. `#stelle-S-101`). Die mitgelieferten Einträge sind **Beispiele**
 (`beispiel: true` zeigt ein Label) und müssen vor dem Livegang ersetzt werden.
 Bewerberprofile nur anonymisiert und mit Einverständnis veröffentlichen.

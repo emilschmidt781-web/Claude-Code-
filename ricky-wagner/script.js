@@ -108,12 +108,23 @@ const copyLinkButton = (anchor) => {
   return btn;
 };
 
-const card = (bereich, id, anchor, beispiel) => {
+// Für die Suche: Kleinschreibung, Umlaute und Akzente vereinheitlichen
+const norm = (t) =>
+  String(t || "")
+    .toLowerCase()
+    .replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+const card = (item, anchor, ort, fields) => {
+  const { bereich, id, beispiel, kategorie } = item;
   const art = el("article", "profile reveal");
   art.id = anchor;
   art.dataset.bereich = bereich;
+  art.dataset.kategorie = kategorie || "";
+  art.dataset.ort = ort || "";
+  art.dataset.search = norm([...fields, kategorie, BEREICHE[bereich], ort, id].flat().join(" "));
   const top = el("div", "profile-top");
-  const label = el("span", null, `${BEREICHE[bereich] || ""} · `);
+  const label = el("span", null, `${kategorie || BEREICHE[bereich] || ""} · `);
   label.append(el("span", "nowrap", id));
   top.append(label);
   if (beispiel) top.append(el("span", "badge", "Beispiel"));
@@ -124,7 +135,7 @@ const card = (bereich, id, anchor, beispiel) => {
 const renderStellen = (list, root) => {
   list.forEach((s) => {
     const anchor = `stelle-${s.id}`;
-    const art = card(s.bereich, s.id, anchor, s.beispiel);
+    const art = card(s, anchor, s.ort, [s.titel, s.text, s.art, s.punkte || []]);
     art.append(el("h3", null, s.titel));
     const meta = el("div", "meta");
     [s.ort, s.art].filter(Boolean).forEach((m) => meta.append(el("span", null, m)));
@@ -152,7 +163,7 @@ const renderStellen = (list, root) => {
 const renderKandidaten = (list, root) => {
   list.forEach((k) => {
     const anchor = `kandidat-${k.id}`;
-    const art = card(k.bereich, k.id, anchor, k.beispiel);
+    const art = card(k, anchor, k.region, [k.beruf, k.erfahrung, k.verfuegbar, k.staerken || []]);
     art.append(el("h3", null, k.beruf));
     const meta = el("div", "meta");
     [k.erfahrung, k.region, k.verfuegbar && `Verfügbar ${k.verfuegbar}`].filter(Boolean).forEach((m) => meta.append(el("span", null, m)));
@@ -181,32 +192,111 @@ const kandidatenRoot = document.getElementById("kandidaten-liste");
 if (stellenRoot) renderStellen(window.STELLEN || [], stellenRoot);
 if (kandidatenRoot) renderKandidaten(window.KANDIDATEN || [], kandidatenRoot);
 
-// Filter nach Bereich
-document.querySelectorAll(".filter").forEach((group) => {
-  const root = document.getElementById(group.dataset.target);
+// ---------- Suchsystem: Freitext + Kategorie + Ort ----------
+const setupSearch = (form, items) => {
+  const root = document.getElementById(form.dataset.target);
   if (!root) return;
-  const empty = el("p", "profiles-empty", "Aktuell keine Profile in diesem Bereich – sprechen Sie mich gern direkt an.");
-  group.addEventListener("click", (e) => {
-    const chip = e.target.closest(".chip");
-    if (!chip) return;
-    group.querySelectorAll(".chip").forEach((c) => {
-      const on = c === chip;
-      c.classList.toggle("active", on);
-      c.setAttribute("aria-pressed", String(on));
-    });
-    const f = chip.dataset.filter;
+  const cards = [...root.querySelectorAll(".profile")];
+  const input = form.querySelector('input[type="search"]');
+  const select = form.querySelector("select");
+  const reset = form.querySelector(".search-reset");
+  const count = form.querySelector(".search-count");
+  const cats = form.querySelector(".cats");
+  const state = { q: "", bereich: "", kategorie: "", ort: "" };
+
+  // Orte/Regionen aus den Daten
+  [...new Set(cards.map((c) => c.dataset.ort).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b, "de"))
+    .forEach((o) => select.append(new Option(o, o)));
+
+  // Kategorien nach Bereich gruppiert: [Alle] | Gewerblich-technisch: Handwerk … | Kaufmännisch: Büro …
+  const chip = (label, bereich, kategorie, n) => {
+    const b = el("button", "chip");
+    b.type = "button";
+    b.dataset.bereich = bereich;
+    b.dataset.kategorie = kategorie;
+    b.append(document.createTextNode(label));
+    if (n != null) b.append(el("span", "chip-n", String(n)));
+    return b;
+  };
+  const allChip = chip("Alle", "", "", items.length);
+  const allGroup = el("div", "cat-group");
+  allGroup.append(allChip);
+  cats.append(allGroup);
+  Object.entries(BEREICHE).forEach(([key, name]) => {
+    const inBereich = items.filter((i) => i.bereich === key);
+    if (!inBereich.length) return;
+    const group = el("div", "cat-group");
+    group.append(chip(name, key, "", inBereich.length));
+    const kats = [...new Set(inBereich.map((i) => i.kategorie).filter(Boolean))];
+    kats.forEach((k) => group.append(chip(k, key, k, inBereich.filter((i) => i.kategorie === k).length)));
+    group.firstChild.classList.add("chip-head");
+    cats.append(group);
+  });
+
+  const empty = el("div", "profiles-empty");
+  empty.append(el("p", null, "Keine passenden Profile gefunden."));
+  const emptyBtn = el("button", "chip", "Suche zurücksetzen");
+  emptyBtn.type = "button";
+  empty.append(emptyBtn);
+
+  const apply = () => {
+    const words = norm(state.q).split(/\s+/).filter(Boolean);
     let shown = 0;
-    root.querySelectorAll(".profile").forEach((p) => {
-      const show = f === "alle" || p.dataset.bereich === f;
-      p.hidden = !show;
-      if (show) {
+    cards.forEach((c) => {
+      const ok =
+        (!state.bereich || c.dataset.bereich === state.bereich) &&
+        (!state.kategorie || c.dataset.kategorie === state.kategorie) &&
+        (!state.ort || c.dataset.ort === state.ort) &&
+        words.every((w) => c.dataset.search.includes(w));
+      c.hidden = !ok;
+      if (ok) {
         shown++;
-        p.classList.add("visible");
+        c.classList.add("visible");
       }
     });
+    cats.querySelectorAll(".chip").forEach((b) => {
+      const on = b.dataset.bereich === state.bereich && b.dataset.kategorie === state.kategorie;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+    const filtered = state.q || state.bereich || state.ort;
+    reset.hidden = !filtered;
+    count.textContent = filtered ? `${shown} von ${cards.length} Profilen` : `${cards.length} Profile`;
     if (shown === 0) root.append(empty);
     else empty.remove();
+  };
+
+  const clear = () => {
+    Object.assign(state, { q: "", bereich: "", kategorie: "", ort: "" });
+    input.value = "";
+    select.value = "";
+    apply();
+  };
+
+  input.addEventListener("input", () => {
+    state.q = input.value;
+    apply();
   });
+  select.addEventListener("change", () => {
+    state.ort = select.value;
+    apply();
+  });
+  cats.addEventListener("click", (e) => {
+    const b = e.target.closest(".chip");
+    if (!b) return;
+    state.bereich = b.dataset.bereich;
+    state.kategorie = b.dataset.kategorie;
+    apply();
+  });
+  reset.addEventListener("click", clear);
+  emptyBtn.addEventListener("click", clear);
+  apply();
+};
+
+document.querySelectorAll("form.search").forEach((form) => {
+  const items = form.dataset.target === "stellen-liste" ? window.STELLEN || [] : window.KANDIDATEN || [];
+  setupSearch(form, items);
 });
 
 // Direktlink (#stelle-… / #kandidat-…) hervorheben
