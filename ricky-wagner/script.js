@@ -23,33 +23,6 @@ if (year) year.textContent = new Date().getFullYear();
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Hero-Überschrift in Wörter zerlegen, damit sie nacheinander einfliegen
-document.querySelectorAll(".split-words").forEach((el) => {
-  let i = 0;
-  const wrap = (node) => {
-    [...node.childNodes].forEach((child) => {
-      if (child.nodeType === Node.TEXT_NODE) {
-        const frag = document.createDocumentFragment();
-        child.textContent.split(/(\s+)/).forEach((part) => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) return frag.append(" ");
-          const w = document.createElement("span");
-          w.className = "w";
-          const inner = document.createElement("span");
-          inner.textContent = part;
-          inner.style.setProperty("--i", i++);
-          w.append(inner);
-          frag.append(w);
-        });
-        child.replaceWith(frag);
-      } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== "BR") {
-        wrap(child);
-      }
-    });
-  };
-  wrap(el);
-});
-
 // ---------- Stellen- und Bewerberprofile (Daten in profile.js) ----------
 const PHONE_WA = "491776880175";
 const MAIL = "wskarrierepartner@icloud.com";
@@ -301,8 +274,9 @@ document.querySelectorAll("form.search").forEach((form) => {
 
 // Startseite: Anzahl auf den Kacheln; alte Direktlinks auf die Unterseiten umleiten
 document.querySelectorAll(".portal-count").forEach((n) => {
-  const list = n.dataset.count === "stellen" ? window.STELLEN || [] : window.KANDIDATEN || [];
-  n.textContent = n.dataset.count === "stellen" ? `${list.length} offene Stellen` : `${list.length} verfügbare Profile`;
+  const isStellen = n.dataset.countList === "stellen";
+  const list = isStellen ? window.STELLEN || [] : window.KANDIDATEN || [];
+  n.textContent = isStellen ? `${list.length} offene Stellen` : `${list.length} verfügbare Profile`;
 });
 if (/^#stelle-/.test(location.hash) && !stellenRoot) location.replace(`stellen.html${location.hash}`);
 if (/^#kandidat-/.test(location.hash) && !kandidatenRoot) location.replace(`bewerberprofile.html${location.hash}`);
@@ -373,104 +347,126 @@ const onScroll = () => {
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
-// Hero: Netzwerk aus Punkten, die sich verbinden – Menschen und Unternehmen
-const canvas = document.querySelector(".hero-net");
-if (canvas && canvas.getContext) {
-  const ctx = canvas.getContext("2d");
-  const hero = canvas.parentElement;
-  const mouse = { x: -9999, y: -9999 };
-  let points = [];
-  let width = 0;
-  let height = 0;
-  let running = false;
-
-  const resize = () => {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = hero.offsetWidth;
-    height = hero.offsetHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = Math.round(Math.min(90, (width * height) / 14000));
-    points = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      r: Math.random() * 1.4 + 0.8,
-    }));
-  };
-
-  const LINK = 140;
-  const draw = () => {
-    ctx.clearRect(0, 0, width, height);
-    for (const p of points) {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > width) p.vx *= -1;
-      if (p.y < 0 || p.y > height) p.vy *= -1;
-    }
-    for (let a = 0; a < points.length; a++) {
-      const p = points[a];
-      for (let b = a + 1; b < points.length; b++) {
-        const q = points[b];
-        const d = Math.hypot(p.x - q.x, p.y - q.y);
-        if (d < LINK) {
-          ctx.strokeStyle = `rgba(255,255,255,${(1 - d / LINK) * 0.22})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.stroke();
-        }
-      }
-      const dm = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-      if (dm < LINK * 1.4) {
-        ctx.strokeStyle = `rgba(255,255,255,${(1 - dm / (LINK * 1.4)) * 0.5})`;
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(mouse.x, mouse.y);
-        ctx.stroke();
-      }
-      ctx.fillStyle = "rgba(255,255,255,0.7)";
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    if (running) requestAnimationFrame(draw);
-  };
-
-  const start = () => {
-    if (running || reducedMotion) return;
-    running = true;
-    requestAnimationFrame(draw);
-  };
-
-  resize();
-  if (reducedMotion) draw();
-  window.addEventListener("resize", () => {
-    resize();
-    if (!running) draw();
-  });
-  hero.addEventListener("pointermove", (e) => {
-    const rect = hero.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  hero.addEventListener("pointerleave", () => {
-    mouse.x = mouse.y = -9999;
-  });
-
-  // Nur animieren, solange der Hero sichtbar ist
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) start();
-      else running = false;
-    }).observe(hero);
-  } else {
-    start();
-  }
+// Hero: wechselnder Beruf in der Überschrift
+const rotator = document.querySelector(".rotator");
+if (rotator && !reducedMotion) {
+  const words = [...rotator.querySelectorAll(".rot-word")];
+  let i = 0;
+  setInterval(() => {
+    const current = words[i];
+    i = (i + 1) % words.length;
+    current.classList.remove("is-active");
+    current.classList.add("is-leaving");
+    words[i].classList.remove("is-leaving");
+    words[i].classList.add("is-active");
+    setTimeout(() => current.classList.remove("is-leaving"), 700);
+  }, 2400);
 }
+
+// Hero: Unternehmen und Fachkräfte werden nacheinander „gematcht“
+const match = document.querySelector(".match");
+if (match) {
+  const left = [...match.querySelectorAll(".match-left .match-card")];
+  const right = [...match.querySelectorAll(".match-right .match-card")];
+  const path = match.querySelector(".match-path");
+  const pairs = left.map((_, n) => [n, n]);
+  let step = 0;
+
+  const drawPair = ([a, b]) => {
+    const box = match.getBoundingClientRect();
+    const l = left[a].getBoundingClientRect();
+    const r = right[b].getBoundingClientRect();
+    const x1 = l.right - box.left, y1 = l.top + l.height / 2 - box.top;
+    const x2 = r.left - box.left, y2 = r.top + r.height / 2 - box.top;
+    const mx = (x1 + x2) / 2;
+    path.setAttribute("d", `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`);
+    const len = path.getTotalLength();
+    match.style.setProperty("--len", len);
+    match.style.setProperty("--by", `${(y1 + y2) / 2}px`);
+    left.forEach((c, n) => c.classList.toggle("on", n === a));
+    right.forEach((c, n) => c.classList.toggle("on", n === b));
+  };
+
+  const run = () => {
+    match.classList.remove("drawing", "matched");
+    drawPair(pairs[step]);
+    void path.getBoundingClientRect(); // Neustart der Strich-Animation erzwingen
+    requestAnimationFrame(() => match.classList.add("drawing"));
+    setTimeout(() => match.classList.add("matched"), 900);
+    step = (step + 1) % pairs.length;
+  };
+
+  if (reducedMotion) {
+    drawPair(pairs[0]);
+    match.classList.add("matched");
+  } else {
+    setTimeout(() => {
+      run();
+      setInterval(run, 3200);
+    }, 1200);
+  }
+  window.addEventListener("resize", () => drawPair(pairs[(step + pairs.length - 1) % pairs.length]));
+}
+
+// Zahlen hochzählen, sobald sie sichtbar werden
+const counters = document.querySelectorAll("[data-count]");
+if (counters.length && "IntersectionObserver" in window && !reducedMotion) {
+  const io = new IntersectionObserver((entries) =>
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      io.unobserve(entry.target);
+      const el = entry.target;
+      const target = Number(el.dataset.count);
+      if (!target) return;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / 1200);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      el.textContent = "0";
+      requestAnimationFrame(tick);
+    }), { threshold: 0.6 });
+  counters.forEach((c) => io.observe(c));
+}
+
+// Ablauf: Linie füllt sich beim Scrollen, Schritte leuchten nacheinander auf
+const timeline = document.querySelector(".timeline");
+if (timeline) {
+  const line = timeline.querySelector(".timeline-line span");
+  const stepsEls = [...timeline.querySelectorAll(".steps li")];
+  const updateTimeline = () => {
+    const r = timeline.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
+    if (line) line.parentElement.style.setProperty("--tl", reducedMotion ? 1 : p);
+    stepsEls.forEach((li, n) => li.classList.toggle("lit", reducedMotion || p >= (n + 0.5) / stepsEls.length));
+  };
+  window.addEventListener("scroll", updateTimeline, { passive: true });
+  window.addEventListener("resize", updateTimeline);
+  updateTimeline();
+}
+
+// FAQ: weich auf- und zuklappen
+document.querySelectorAll(".faq details").forEach((d) => {
+  const summary = d.querySelector("summary");
+  const body = d.querySelector(".faq-body");
+  if (!summary || !body || reducedMotion) return;
+  summary.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (d.open) {
+      const anim = body.animate([{ height: `${body.offsetHeight}px` }, { height: "0px" }], { duration: 320, easing: "ease" });
+      d.classList.add("closing");
+      anim.onfinish = () => {
+        d.open = false;
+        d.classList.remove("closing");
+      };
+    } else {
+      d.open = true;
+      body.animate([{ height: "0px" }, { height: `${body.offsetHeight}px` }], { duration: 380, easing: "cubic-bezier(0.2, 0.7, 0.2, 1)" });
+    }
+  });
+});
 
 // Kontaktformular: Die Seite ist statisch, deshalb wird die Nachricht
 // als vorausgefüllte E-Mail im Mailprogramm des Besuchers geöffnet.

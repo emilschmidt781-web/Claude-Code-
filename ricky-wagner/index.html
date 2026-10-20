@@ -6,14 +6,14 @@
     <title>W&amp;S Karrierepartner – Personalvermittlung in Kitzingen</title>
     <meta
       name="description"
-      content="W&amp;S Karrierepartner – Personalvermittlung in Kitzingen: Fach- und Führungskräfte für Unternehmen, neue Perspektiven für Bewerberinnen und Bewerber. Persönlich, diskret und ohne Kosten für Kandidaten."
+      content="W&amp;S Karrierepartner – Personalvermittlung in Kitzingen: Fach- und Führungskräfte im gewerblich-technischen und kaufmännischen Bereich. Persönlich, diskret und für Bewerber kostenfrei."
     />
     <meta name="theme-color" content="#0b1f3a" />
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -22,15 +22,18 @@
   <body>
     <header class="site-header" id="top">
       <div class="container nav">
-        <a href="#top" class="logo" aria-label="W&amp;S Karrierepartner – zur Startseite"><img class="logo-mark" src="img/mark-white.png" alt="" width="44" height="34" /><span><strong>W&amp;S</strong><small>Karrierepartner</small></span></a>
+        <a href="#top" class="logo" aria-label="W&amp;S Karrierepartner – zur Startseite">
+          <img class="logo-mark" src="img/mark.png" alt="" width="48" height="37" />
+          <span><strong>W&amp;S</strong><small>Karrierepartner</small></span>
+        </a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
           <span></span><span></span><span></span>
         </button>
         <nav id="nav-menu" class="nav-menu" aria-label="Hauptnavigation">
-          <a href="#unternehmen">Für Unternehmen</a>
-          <a href="#bewerber">Für Bewerber</a>
+          <a href="#wege">Leistungen</a>
           <a href="stellen.html">Stellen</a>
           <a href="bewerberprofile.html">Bewerberprofile</a>
+          <a href="#ablauf">Ablauf</a>
           <a href="#ueber-mich">Über mich</a>
           <a href="#kontakt" class="btn btn-small">Kontakt</a>
         </nav>
@@ -41,124 +44,119 @@
     <main>
       <!-- Hero -->
       <section class="hero">
-        <canvas class="hero-net" aria-hidden="true"></canvas>
-        <div class="container">
+        <div class="hero-bg" aria-hidden="true"><span></span><span></span></div>
+        <div class="container hero-grid">
           <div class="hero-text">
             <p class="eyebrow hero-in">Personalvermittlung · Kitzingen &amp; Mainfranken</p>
-            <h1 class="split-words">Die richtigen Menschen.<br /><em>Am richtigen Platz.</em></h1>
+            <h1 class="hero-in">
+              Wir finden
+              <span class="rotator" aria-hidden="true"
+                ><span class="rot-word is-active">Elektroniker</span><span class="rot-word">Buchhalter</span><span class="rot-word">Mechatroniker</span><span class="rot-word">Sachbearbeiter</span><span class="rot-word">Lageristen</span><span class="rot-word">Fachkräfte</span></span
+              >
+              <span class="sr-only">Fachkräfte</span>
+              für Ihr Team.
+            </h1>
             <p class="lead hero-in">
-              Ich bringe Unternehmen und Fachkräfte zusammen, die wirklich zueinander passen –
-              persönlich, schnell und diskret. Für Bewerberinnen und Bewerber ist mein Service
-              immer kostenfrei.
+              Ob Werkhalle oder Büro – ich bringe Unternehmen und Fachkräfte zusammen, die wirklich
+              zueinander passen. Persönlich, schnell und diskret. Für Bewerber immer kostenfrei.
             </p>
             <div class="hero-actions hero-in">
               <a href="bewerberprofile.html" class="btn">Ich suche Personal <span class="arrow" aria-hidden="true">→</span></a>
               <a href="stellen.html" class="btn btn-outline">Ich suche einen Job <span class="arrow" aria-hidden="true">→</span></a>
             </div>
-            <ul class="hero-points hero-in">
-            <li>Persönlicher Ansprechpartner</li>
-            <li>Vorauswahl nach Fachlichkeit &amp; Persönlichkeit</li>
-            <li>Honorar nur bei Erfolg</li>
-            </ul>
+            <a class="hero-call hero-in" href="tel:+491776880175">
+              <span class="pulse" aria-hidden="true"></span>
+              <span><small>Ich freue mich über Ihren Anruf</small><strong>+49 177 6880175</strong></span>
+            </a>
+          </div>
+
+          <div class="match hero-in" aria-hidden="true">
+            <svg class="match-lines"><path class="match-path" /></svg>
+            <div class="match-col match-left">
+              <p class="match-label">Unternehmen</p>
+              <div class="match-card"><b>Metallbau-Betrieb</b><span>sucht Schweißer/in</span></div>
+              <div class="match-card"><b>Steuerkanzlei</b><span>sucht Buchhalter/in</span></div>
+              <div class="match-card"><b>Logistikzentrum</b><span>sucht Lagerfachkraft</span></div>
+              <div class="match-card"><b>Industriebetrieb</b><span>sucht Elektroniker/in</span></div>
+            </div>
+            <div class="match-col match-right">
+              <p class="match-label">Fachkräfte</p>
+              <div class="match-card"><b>Schweißer</b><span>5 Jahre Erfahrung</span></div>
+              <div class="match-card"><b>Buchhalterin</b><span>DATEV-Profi</span></div>
+              <div class="match-card"><b>Fachkraft Lager</b><span>mit Staplerschein</span></div>
+              <div class="match-card"><b>Elektroniker</b><span>Betriebstechnik</span></div>
+            </div>
+            <div class="match-badge"><span>✓</span> Passt!</div>
           </div>
         </div>
       </section>
 
-      <!-- Zielgruppen -->
-      <section class="section" id="unternehmen">
-        <div class="container split">
-          <div class="split-head">
-            <p class="eyebrow">Für Unternehmen</p>
-            <h2>Offene Stellen besetzen, ohne Zeit zu verlieren.</h2>
-            <p>
-              Sie konzentrieren sich auf Ihr Geschäft – ich übernehme die Suche. Von der
-              Anforderungsanalyse bis zur Vertragsunterschrift erhalten Sie nur Kandidaten,
-              die fachlich und menschlich in Ihr Team passen.
-            </p>
-            <a href="#kontakt" class="btn">Unverbindlich anfragen <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-          <div class="cards">
-            <article class="card reveal">
-              <h3>Gezielte Direktansprache</h3>
-              <p>Ich erreiche auch Fachkräfte, die nicht aktiv suchen – über mein Netzwerk und persönliche Ansprache.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Sorgfältige Vorauswahl</h3>
-              <p>Interviews, Qualifikationscheck und Referenzen: Sie sprechen nur mit Menschen, die wirklich in Frage kommen.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Erfolgsbasiertes Honorar</h3>
-              <p>Sie zahlen erst, wenn die Stelle erfolgreich besetzt ist. Transparent und ohne versteckte Kosten.</p>
-            </article>
-            <article class="card reveal">
-              <h3>Diskretion</h3>
-              <p>Vertrauliche Suchen, z.&nbsp;B. für Nachbesetzungen oder Führungspositionen, behandle ich absolut diskret.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="bewerber">
-        <div class="container split split-reverse">
-          <div class="split-head">
-            <p class="eyebrow">Für Bewerberinnen &amp; Bewerber</p>
-            <h2>Ihr nächster Karriereschritt – mit jemandem an Ihrer Seite.</h2>
-            <p>
-              Ich höre zu, was Sie wirklich wollen, und stelle Ihnen nur Stellen vor, die dazu
-              passen. Für Sie ist das komplett kostenlos – und Ihre Daten gebe ich nur mit
-              Ihrer Zustimmung weiter.
-            </p>
-            <a href="#kontakt" class="btn">Lebenslauf senden <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-          <ul class="checklist">
-            <li class="reveal"><strong>100&nbsp;% kostenfrei</strong> für Bewerberinnen und Bewerber</li>
-            <li class="reveal"><strong>Zugang zu Stellen</strong>, die nicht öffentlich ausgeschrieben sind</li>
-            <li class="reveal"><strong>Ehrliches Feedback</strong> zu Lebenslauf und Gehaltsvorstellung</li>
-            <li class="reveal"><strong>Vorbereitung</strong> auf Vorstellungsgespräche</li>
-            <li class="reveal"><strong>Diskrete Suche</strong> aus ungekündigter Stellung</li>
-            <li class="reveal"><strong>Begleitung</strong> auch nach dem Start im neuen Job</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Bereiche -->
-      <section class="section" id="bereiche">
-        <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Schwerpunkte</p>
-            <h2>Bereiche, in denen ich vermittle</h2>
-          </div>
-        </div>
-        <div class="marquee reveal">
+      <!-- Laufband -->
+      <div class="band" aria-label="Schwerpunkte">
+        <div class="marquee">
           <ul class="tags">
-            <li>Handwerk &amp; Technik</li>
-            <li>Industrie &amp; Produktion</li>
-            <li>Logistik &amp; Lager</li>
-            <li>Kaufmännische Berufe</li>
-            <li>Vertrieb &amp; Kundenservice</li>
-            <li>IT &amp; Digitales</li>
-            <li>Gesundheit &amp; Pflege</li>
-            <li>Fach- &amp; Führungskräfte</li>
+            <li>Handwerk</li><li>Industrie &amp; Produktion</li><li>Elektro &amp; Technik</li><li>Logistik &amp; Lager</li>
+            <li>Büro &amp; Verwaltung</li><li>Buchhaltung &amp; Finanzen</li><li>Vertrieb &amp; Kundenservice</li><li>Fach- &amp; Führungskräfte</li>
           </ul>
         </div>
-        <div class="marquee marquee-reverse reveal">
-          <ul class="tags">
-            <li>Fach- &amp; Führungskräfte</li>
-            <li>Gesundheit &amp; Pflege</li>
-            <li>IT &amp; Digitales</li>
-            <li>Vertrieb &amp; Kundenservice</li>
-            <li>Kaufmännische Berufe</li>
-            <li>Logistik &amp; Lager</li>
-            <li>Industrie &amp; Produktion</li>
-            <li>Handwerk &amp; Technik</li>
-          </ul>
+      </div>
+
+      <!-- Zwei Wege -->
+      <section class="section" id="wege">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Zwei Wege, ein Ziel</p>
+            <h2>Die passende Verbindung – für beide Seiten.</h2>
+          </div>
+          <div class="ways">
+            <article class="way way-dark reveal" id="unternehmen">
+              <p class="way-kicker">Für Unternehmen</p>
+              <h3>Offene Stellen besetzen, ohne Zeit zu verlieren.</h3>
+              <p class="way-text">Sie konzentrieren sich auf Ihr Geschäft – ich übernehme die Suche. Von der Anforderungsanalyse bis zur Vertragsunterschrift erhalten Sie nur Kandidaten, die fachlich und menschlich passen.</p>
+              <ul class="way-list">
+                <li><b>Direktansprache</b> – auch Fachkräfte, die nicht aktiv suchen</li>
+                <li><b>Sorgfältige Vorauswahl</b> mit Interviews und Qualifikationscheck</li>
+                <li><b>Honorar nur bei Erfolg</b> – transparent, ohne versteckte Kosten</li>
+                <li><b>Diskretion</b> bei vertraulichen Nachbesetzungen</li>
+              </ul>
+              <div class="way-actions">
+                <a href="#kontakt" class="btn">Unverbindlich anfragen <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="bewerberprofile.html" class="link-arrow">Bewerberprofile ansehen <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article class="way way-light reveal" id="bewerber">
+              <p class="way-kicker">Für Bewerberinnen &amp; Bewerber</p>
+              <h3>Ihr nächster Karriereschritt – mit jemandem an Ihrer Seite.</h3>
+              <p class="way-text">Ich höre zu, was Sie wirklich wollen, und stelle Ihnen nur Stellen vor, die dazu passen. Ihre Daten gebe ich nur mit Ihrer Zustimmung weiter.</p>
+              <ul class="way-list">
+                <li><b>100&nbsp;% kostenfrei</b> für Bewerberinnen und Bewerber</li>
+                <li><b>Stellen</b>, die nicht öffentlich ausgeschrieben sind</li>
+                <li><b>Ehrliches Feedback</b> und Vorbereitung auf Gespräche</li>
+                <li><b>Diskret</b> aus ungekündigter Stellung</li>
+              </ul>
+              <div class="way-actions">
+                <a href="#kontakt" class="btn">Lebenslauf senden <span class="arrow" aria-hidden="true">→</span></a>
+                <a href="stellen.html" class="link-arrow">Stellenangebote ansehen <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
-      <!-- Stellen & Bewerberprofile (eigene Seiten) -->
-      <section class="section section-alt" id="profile">
+      <!-- Zahlen -->
+      <section class="stats" aria-label="Kennzahlen">
+        <div class="container stats-grid">
+          <div class="stat reveal"><strong><span data-count="6">6</span>+</strong><span>Jahre Erfahrung in der Personalvermittlung</span></div>
+          <div class="stat reveal"><strong>Täglich</strong><span>aktiv am Bewerbermarkt</span></div>
+          <div class="stat reveal"><strong><span data-count="2">2</span></strong><span>Bereiche: gewerblich-technisch &amp; kaufmännisch</span></div>
+          <div class="stat reveal"><strong><span data-count="0">0</span>&nbsp;€</strong><span>Kosten für Bewerberinnen und Bewerber</span></div>
+        </div>
+      </section>
+
+      <!-- Stellen & Bewerberprofile -->
+      <section class="section section-mist" id="profile">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head reveal">
             <p class="eyebrow">Stellen &amp; Profile</p>
             <h2>Direkt zum Ziel</h2>
           </div>
@@ -167,13 +165,13 @@
               <span class="portal-kicker">Für Bewerberinnen &amp; Bewerber</span>
               <strong>Aktuelle Stellenangebote</strong>
               <span class="portal-text">Offene Stellen im gewerblich-technischen und kaufmännischen Bereich – mit Suche nach Beruf, Kategorie und Ort.</span>
-              <span class="portal-foot"><span class="portal-count" data-count="stellen"></span><span class="arrow" aria-hidden="true">→</span></span>
+              <span class="portal-foot"><span class="portal-count" data-count-list="stellen"></span><span class="portal-go" aria-hidden="true">→</span></span>
             </a>
             <a class="portal reveal" href="bewerberprofile.html">
               <span class="portal-kicker">Für Unternehmen</span>
               <strong>Verfügbare Bewerberprofile</strong>
               <span class="portal-text">Geprüfte Fachkräfte, anonymisiert. Profil anfragen und vollständige Unterlagen erhalten.</span>
-              <span class="portal-foot"><span class="portal-count" data-count="kandidaten"></span><span class="arrow" aria-hidden="true">→</span></span>
+              <span class="portal-foot"><span class="portal-count" data-count-list="kandidaten"></span><span class="portal-go" aria-hidden="true">→</span></span>
             </a>
           </div>
         </div>
@@ -182,123 +180,106 @@
       <!-- Ablauf -->
       <section class="section section-dark" id="ablauf">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head reveal">
             <p class="eyebrow">So funktioniert’s</p>
             <h2>In vier Schritten zur passenden Besetzung</h2>
           </div>
-          <ol class="steps">
-            <li class="reveal">
-              <span class="step-no">01</span>
-              <h3>Kennenlernen</h3>
-              <p>Im persönlichen Gespräch klären wir Anforderungen, Teamkultur und Rahmenbedingungen.</p>
-            </li>
-            <li class="reveal">
-              <span class="step-no">02</span>
-              <h3>Suche &amp; Auswahl</h3>
-              <p>Ich spreche passende Kandidaten an, führe Interviews und prüfe Qualifikationen.</p>
-            </li>
-            <li class="reveal">
-              <span class="step-no">03</span>
-              <h3>Vorstellung</h3>
-              <p>Sie erhalten aussagekräftige Profile und lernen die Favoriten im Gespräch kennen.</p>
-            </li>
-            <li class="reveal">
-              <span class="step-no">04</span>
-              <h3>Start &amp; Nachbetreuung</h3>
-              <p>Ich begleite Vertrag und Einstieg – und bleibe auch danach ansprechbar.</p>
-            </li>
-          </ol>
+          <div class="timeline">
+            <div class="timeline-line" aria-hidden="true"><span></span></div>
+            <ol class="steps">
+              <li class="reveal"><span class="step-no">01</span><h3>Kennenlernen</h3><p>Im persönlichen Gespräch klären wir Anforderungen, Teamkultur und Rahmenbedingungen.</p></li>
+              <li class="reveal"><span class="step-no">02</span><h3>Suche &amp; Auswahl</h3><p>Ich spreche passende Kandidaten an, führe Interviews und prüfe Qualifikationen.</p></li>
+              <li class="reveal"><span class="step-no">03</span><h3>Vorstellung</h3><p>Sie erhalten aussagekräftige Profile und lernen die Favoriten im Gespräch kennen.</p></li>
+              <li class="reveal"><span class="step-no">04</span><h3>Start &amp; Begleitung</h3><p>Ich begleite Vertrag und Einstieg – und bleibe auch danach ansprechbar.</p></li>
+            </ol>
+          </div>
         </div>
       </section>
 
       <!-- Über mich -->
       <section class="section" id="ueber-mich">
         <div class="container about">
-          <div class="about-photo reveal">
-            <img src="img/logo-white.png" alt="Logo W&amp;S Karrierepartner" width="700" height="689" />
+          <div class="about-visual reveal">
+            <div class="about-card">
+              <img src="img/logo.png" alt="Logo W&amp;S Karrierepartner" width="700" height="689" />
+            </div>
+            <div class="about-quote">„Eine gute Vermittlung erkennt man daran, dass beide Seiten nach einem Jahr noch zufrieden sind.“</div>
           </div>
-          <div>
-            <p class="eyebrow">Über mich</p>
-            <h2>Hallo, ich bin Ricky Wagner.</h2>
-            <p class="about-role">Ihr Ansprechpartner bei W&amp;S Karrierepartner</p>
-            <p>
-              Personalvermittlung ist für mich vor allem eines: Menschenarbeit. Hinter jeder
-              offenen Stelle steht ein Team, das Unterstützung braucht – und hinter jedem
-              Lebenslauf ein Mensch mit eigenen Zielen.
+          <div class="about-text">
+            <p class="eyebrow reveal">Über mich</p>
+            <h2 class="reveal">Hallo, ich bin Ricky Wagner.</h2>
+            <p class="about-role reveal">Ihr Ansprechpartner bei W&amp;S Karrierepartner</p>
+            <p class="reveal">
+              Personalvermittlung ist für mich vor allem eines: Menschenarbeit. Hinter jeder offenen
+              Stelle steht ein Team, das Unterstützung braucht – und hinter jedem Lebenslauf ein
+              Mensch mit eigenen Zielen.
             </p>
-            <p>
-              Seit über 6 Jahren rekrutiere und vermittle ich tagtäglich erfolgreich Personal –
-              in der aktiven Personaldienstleistung, im gewerblich-technischen ebenso wie im
-              kaufmännischen Bereich. Durch meine Vernetzung am Bewerbermarkt finde ich schnell
-              die Menschen, die wirklich zu Ihnen passen.
+            <p class="reveal">
+              Seit über 6 Jahren rekrutiere und vermittle ich tagtäglich erfolgreich Personal – in der
+              aktiven Personaldienstleistung, im gewerblich-technischen ebenso wie im kaufmännischen
+              Bereich. Durch meine Vernetzung am Bewerbermarkt finde ich schnell die Menschen, die
+              wirklich zu Ihnen passen.
             </p>
-            <ul class="about-facts">
-              <li><strong>6+ Jahre</strong><span>Erfahrung in der Personalvermittlung</span></li>
-              <li><strong>Täglich</strong><span>aktiv am Bewerbermarkt</span></li>
-              <li><strong>2 Bereiche</strong><span>gewerblich-technisch &amp; kaufmännisch</span></li>
-            </ul>
-            <p>
-              Deshalb nehme ich mir Zeit, beide Seiten wirklich kennenzulernen. Statt Masse
-              setze ich auf Qualität, Ehrlichkeit und kurze Wege. Bei mir haben Sie immer
-              einen festen Ansprechpartner – vom ersten Telefonat bis nach dem ersten
-              Arbeitstag.
+            <p class="reveal">
+              Statt Masse setze ich auf Qualität, Ehrlichkeit und kurze Wege. Bei mir haben Sie immer
+              einen festen Ansprechpartner – vom ersten Telefonat bis nach dem ersten Arbeitstag.
             </p>
-            <blockquote>„Eine gute Vermittlung erkennt man daran, dass beide Seiten nach einem Jahr noch zufrieden sind.“</blockquote>
           </div>
         </div>
       </section>
 
       <!-- FAQ -->
-      <section class="section section-alt" id="faq">
-        <div class="container narrow">
-          <div class="section-head">
+      <section class="section section-mist" id="faq">
+        <div class="container faq-wrap">
+          <div class="section-head reveal">
             <p class="eyebrow">Häufige Fragen</p>
             <h2>Gut zu wissen</h2>
+            <p class="section-lead">Ihre Frage ist nicht dabei? Rufen Sie mich einfach an.</p>
           </div>
           <div class="faq">
-            <details>
+            <details class="reveal">
               <summary>Was kostet die Vermittlung für Bewerber?</summary>
-              <p>Nichts. Für Bewerberinnen und Bewerber ist mein Service immer kostenlos. Das Honorar trägt das einstellende Unternehmen.</p>
+              <div class="faq-body"><p>Nichts. Für Bewerberinnen und Bewerber ist mein Service immer kostenlos. Das Honorar trägt das einstellende Unternehmen.</p></div>
             </details>
-            <details>
+            <details class="reveal">
               <summary>Wann zahlt ein Unternehmen?</summary>
-              <p>Erst bei erfolgreicher Besetzung. Die genauen Konditionen besprechen wir vorab transparent im Erstgespräch.</p>
+              <div class="faq-body"><p>Erst bei erfolgreicher Besetzung. Die genauen Konditionen besprechen wir vorab transparent im Erstgespräch.</p></div>
             </details>
-            <details>
+            <details class="reveal">
               <summary>Werden meine Unterlagen ohne mein Wissen weitergegeben?</summary>
-              <p>Nein. Ihr Profil wird nur nach Ihrer ausdrücklichen Zustimmung und nur an das jeweilige Unternehmen weitergeleitet.</p>
+              <div class="faq-body"><p>Nein. Ihr Profil wird nur nach Ihrer ausdrücklichen Zustimmung und nur an das jeweilige Unternehmen weitergeleitet.</p></div>
             </details>
-            <details>
+            <details class="reveal">
               <summary>Wie schnell kann eine Stelle besetzt werden?</summary>
-              <p>Das hängt von Position und Markt ab. Erste passende Profile erhalten Sie in der Regel bereits nach wenigen Wochen.</p>
+              <div class="faq-body"><p>Das hängt von Position und Markt ab. Erste passende Profile erhalten Sie in der Regel bereits nach wenigen Wochen.</p></div>
             </details>
-            <details>
+            <details class="reveal">
               <summary>Ist das Personalvermittlung oder Zeitarbeit?</summary>
-              <p>Personalvermittlung: Die Kandidaten werden direkt und fest bei Ihrem Unternehmen angestellt – nicht über eine Zeitarbeitsfirma.</p>
+              <div class="faq-body"><p>Personalvermittlung: Die Kandidaten werden direkt und fest bei Ihrem Unternehmen angestellt – nicht über eine Zeitarbeitsfirma.</p></div>
             </details>
           </div>
         </div>
       </section>
 
       <!-- Kontakt -->
-      <section class="section" id="kontakt">
+      <section class="section contact-section" id="kontakt">
         <div class="container contact">
-          <div>
-            <p class="eyebrow">Kontakt</p>
-            <h2>Lassen Sie uns sprechen.</h2>
-            <p>Ob offene Stelle oder neuer Job: Ich freue mich über Ihren Anruf – oder schreiben Sie mir einfach. Ich melde mich innerhalb von 24 Stunden.</p>
-            <div class="quick-links">
-            <a class="quick" href="tel:+491776880175"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg><span>Anrufen</span></a>
-            <a class="quick" href="https://wa.me/491776880175" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.1.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span>WhatsApp</span></a>
-            <a class="quick" href="mailto:wskarrierepartner@icloud.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.5l8 5 8-5V6H4Zm16 2.85-7.47 4.67a1 1 0 0 1-1.06 0L4 8.85V18h16V8.85Z"/></svg><span>E-Mail</span></a>
-          </div>
-          <ul class="contact-list">
-            <li><span>Telefon</span><a href="tel:+491776880175">+49 177 6880175</a></li>
-            <li><span>E-Mail</span><a href="mailto:wskarrierepartner@icloud.com">wskarrierepartner@icloud.com</a></li>
-            <li><span>Standort</span>97318 Kitzingen</li>
+          <div class="contact-info">
+            <p class="eyebrow reveal">Kontakt</p>
+            <h2 class="reveal">Lassen Sie uns sprechen.</h2>
+            <p class="reveal">Ob offene Stelle oder neuer Job: Ich freue mich über Ihren Anruf – oder schreiben Sie mir einfach. Ich melde mich innerhalb von 24 Stunden.</p>
+            <div class="quick-links reveal">
+              <a class="quick" href="tel:+491776880175"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg><span>Anrufen</span></a>
+              <a class="quick" href="https://wa.me/491776880175" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg><span>WhatsApp</span></a>
+              <a class="quick" href="mailto:wskarrierepartner@icloud.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.5l8 5 8-5V6H4Zm16 2.85-7.47 4.67a1 1 0 0 1-1.06 0L4 8.85V18h16V8.85Z"/></svg><span>E-Mail</span></a>
+            </div>
+            <ul class="contact-list reveal">
+              <li><span>Telefon</span><a href="tel:+491776880175">+49 177 6880175</a></li>
+              <li><span>E-Mail</span><a href="mailto:wskarrierepartner@icloud.com">wskarrierepartner@icloud.com</a></li>
+              <li><span>Standort</span>97318 Kitzingen</li>
             </ul>
           </div>
-          <form class="contact-form" id="contact-form" novalidate>
+          <form class="contact-form reveal" id="contact-form" novalidate>
             <fieldset class="role">
               <legend>Ich bin …</legend>
               <label><input type="radio" name="rolle" value="Unternehmen" checked /> Unternehmen</label>
@@ -333,11 +314,31 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© <span id="year"></span> W&amp;S Karrierepartner</p>
-        <nav aria-label="Rechtliches">
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
-        </nav>
+        <div class="footer-brand">
+          <img src="img/logo-white.png" alt="W&amp;S Karrierepartner" width="140" height="138" />
+        </div>
+        <div class="footer-cols">
+          <div>
+            <p class="footer-title">Kontakt</p>
+            <a href="tel:+491776880175">+49 177 6880175</a>
+            <a href="mailto:wskarrierepartner@icloud.com">wskarrierepartner@icloud.com</a>
+            <span>97318 Kitzingen</span>
+          </div>
+          <div>
+            <p class="footer-title">Seiten</p>
+            <a href="stellen.html">Stellenangebote</a>
+            <a href="bewerberprofile.html">Bewerberprofile</a>
+            <a href="index.html#ueber-mich">Über mich</a>
+          </div>
+          <div>
+            <p class="footer-title">Rechtliches</p>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© <span id="year"></span> W&amp;S Karrierepartner · Ricky Wagner</p>
       </div>
     </footer>
 

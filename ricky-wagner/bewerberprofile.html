@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -22,15 +22,18 @@
   <body>
     <header class="site-header" id="top">
       <div class="container nav">
-        <a href="index.html" class="logo" aria-label="W&amp;S Karrierepartner – zur Startseite"><img class="logo-mark" src="img/mark-white.png" alt="" width="44" height="34" /><span><strong>W&amp;S</strong><small>Karrierepartner</small></span></a>
+        <a href="index.html" class="logo" aria-label="W&amp;S Karrierepartner – zur Startseite">
+          <img class="logo-mark" src="img/mark.png" alt="" width="48" height="37" />
+          <span><strong>W&amp;S</strong><small>Karrierepartner</small></span>
+        </a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
           <span></span><span></span><span></span>
         </button>
         <nav id="nav-menu" class="nav-menu" aria-label="Hauptnavigation">
-          <a href="index.html#unternehmen">Für Unternehmen</a>
-          <a href="index.html#bewerber">Für Bewerber</a>
+          <a href="index.html#wege">Leistungen</a>
           <a href="stellen.html">Stellen</a>
           <a href="bewerberprofile.html" aria-current="page">Bewerberprofile</a>
+          <a href="index.html#ablauf">Ablauf</a>
           <a href="index.html#ueber-mich">Über mich</a>
           <a href="index.html#kontakt" class="btn btn-small">Kontakt</a>
         </nav>
@@ -42,8 +45,8 @@
       <section class="page-hero">
         <div class="container">
           <nav class="crumbs" aria-label="Brotkrümelnavigation"><a href="index.html">Startseite</a><span aria-hidden="true">/</span><span>Bewerberprofile</span></nav>
-          <h1>Verfügbare Bewerberprofile</h1>
-          <p class="lead">Geprüfte Kandidatinnen und Kandidaten – anonymisiert. Fragen Sie ein Profil an und erhalten Sie die vollständigen Unterlagen.</p>
+          <h1 class="reveal">Verfügbare Bewerberprofile</h1>
+          <p class="lead reveal">Geprüfte Kandidatinnen und Kandidaten – anonymisiert. Fragen Sie ein Profil an und erhalten Sie die vollständigen Unterlagen.</p>
         </div>
       </section>
 
@@ -87,11 +90,31 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© <span id="year"></span> W&amp;S Karrierepartner</p>
-        <nav aria-label="Rechtliches">
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
-        </nav>
+        <div class="footer-brand">
+          <img src="img/logo-white.png" alt="W&amp;S Karrierepartner" width="140" height="138" />
+        </div>
+        <div class="footer-cols">
+          <div>
+            <p class="footer-title">Kontakt</p>
+            <a href="tel:+491776880175">+49 177 6880175</a>
+            <a href="mailto:wskarrierepartner@icloud.com">wskarrierepartner@icloud.com</a>
+            <span>97318 Kitzingen</span>
+          </div>
+          <div>
+            <p class="footer-title">Seiten</p>
+            <a href="stellen.html">Stellenangebote</a>
+            <a href="bewerberprofile.html">Bewerberprofile</a>
+            <a href="index.html#ueber-mich">Über mich</a>
+          </div>
+          <div>
+            <p class="footer-title">Rechtliches</p>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© <span id="year"></span> W&amp;S Karrierepartner · Ricky Wagner</p>
       </div>
     </footer>
 
