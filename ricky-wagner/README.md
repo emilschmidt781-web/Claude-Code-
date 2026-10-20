@@ -15,7 +15,6 @@ python3 -m http.server 8000   # http://localhost:8000
 ## Noch offen
 
 - **Impressum**: Straße/Hausnummer, ggf. weitere Inhaber und USt-ID ergänzen.
-- **Telefon**: optional im Kontaktbereich von `index.html` ergänzen.
 - **Logo** liegt freigestellt in `img/` (`logo.png` farbig, `logo-white.png` und
   `mark-white.png` für dunklen Hintergrund, `favicon.png`).
 - **Rechtstexte** sind Vorlagen, bitte rechtlich prüfen lassen.
