@@ -40,4 +40,5 @@ Bewerberprofile nur anonymisiert und mit Einverständnis veröffentlichen.
 | `style.css` | Gestaltung, responsiv für Handy bis Desktop |
 | `script.js` | Menü, Animationen, Profile, Filter, Kontaktformular |
 | `profile.js` | Daten der Stellen- und Bewerberprofile |
+| `berufs-assistent.js` | Chat „Welcher Job passt zu mir?“: 4 Fragen → Berufsvorschläge + passende Stellen; Wissensbasis `BERUFE` oben in der Datei |
 | `impressum.html`, `datenschutz.html` | Rechtstexte (Platzhalter) |
