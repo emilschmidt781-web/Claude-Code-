@@ -58,12 +58,6 @@
   const root = document.createElement("div");
   root.className = "bot";
   root.innerHTML = `
-    <button type="button" class="bot-launch" aria-haspopup="dialog" aria-controls="bot-panel">
-      <span class="bot-launch-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm4 6.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg>
-      </span>
-      <span class="bot-launch-text"><b>Welcher Job passt zu mir?</b><small>Berufs-Check in 1 Minute</small></span>
-    </button>
     <section class="bot-panel" id="bot-panel" role="dialog" aria-modal="false" aria-labelledby="bot-title" hidden>
       <header class="bot-head">
         <img src="img/ricky-small.png" alt="" width="40" height="40" />
@@ -86,7 +80,8 @@
     </section>`;
   document.body.append(root);
 
-  const launch = root.querySelector(".bot-launch");
+  const triggers = [...document.querySelectorAll("[data-open-bot]")];
+  let opener = null;
   const panel = root.querySelector(".bot-panel");
   const log = root.querySelector(".bot-log");
   const choices = root.querySelector(".bot-choices");
@@ -325,28 +320,30 @@
   const open = () => {
     panel.hidden = false;
     root.classList.add("open");
-    launch.setAttribute("aria-expanded", "true");
+    triggers.forEach((t) => t.setAttribute("aria-expanded", "true"));
     if (!log.childElementCount) start();
     setTimeout(() => input.focus({ preventScroll: true }), 50);
   };
   const close = () => {
     panel.hidden = true;
     root.classList.remove("open");
-    launch.setAttribute("aria-expanded", "false");
-    launch.focus({ preventScroll: true });
+    triggers.forEach((t) => t.setAttribute("aria-expanded", "false"));
+    if (opener) opener.focus({ preventScroll: true });
   };
-  launch.addEventListener("click", () => (panel.hidden ? open() : close()));
   root.querySelector(".bot-close").addEventListener("click", close);
   root.querySelector(".bot-restart").addEventListener("click", () => {
     running = false;
     start();
   });
   document.addEventListener("keydown", (e) => e.key === "Escape" && !panel.hidden && close());
-  document.querySelectorAll('[data-open-bot], a[href="#berufs-check"]').forEach((t) =>
+  triggers.forEach((t) => {
+    t.setAttribute("aria-controls", "bot-panel");
+    t.setAttribute("aria-expanded", "false");
     t.addEventListener("click", (e) => {
       e.preventDefault();
-      open();
-    })
-  );
+      opener = t;
+      panel.hidden ? open() : close();
+    });
+  });
   if (location.hash === "#berufs-check") open();
 })();
