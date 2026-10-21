@@ -317,16 +317,40 @@
   };
 
   // ---------- Öffnen / Schließen ----------
+  // iPhone: Chat an den sichtbaren Bereich anpassen (Tastatur) und Seite dahinter sperren
+  const small = window.matchMedia("(max-width: 560px)");
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
+  const vv = window.visualViewport;
+  const fitViewport = () => {
+    if (!vv || panel.hidden || !small.matches) {
+      panel.style.removeProperty("height");
+      panel.style.removeProperty("transform");
+      return;
+    }
+    panel.style.height = `${vv.height}px`;
+    panel.style.transform = `translateY(${vv.offsetTop}px)`;
+    scroll();
+  };
+  if (vv) {
+    vv.addEventListener("resize", fitViewport);
+    vv.addEventListener("scroll", fitViewport);
+  }
+
   const open = () => {
     panel.hidden = false;
     root.classList.add("open");
+    if (small.matches) document.documentElement.classList.add("bot-lock");
+    fitViewport();
     triggers.forEach((t) => t.setAttribute("aria-expanded", "true"));
     if (!log.childElementCount) start();
-    setTimeout(() => input.focus({ preventScroll: true }), 50);
+    // Auf Touch-Geräten nicht automatisch fokussieren, sonst öffnet die Tastatur und verdeckt die Antworten
+    if (finePointer) setTimeout(() => input.focus({ preventScroll: true }), 50);
   };
   const close = () => {
     panel.hidden = true;
     root.classList.remove("open");
+    document.documentElement.classList.remove("bot-lock");
+    fitViewport();
     triggers.forEach((t) => t.setAttribute("aria-expanded", "false"));
     if (opener) opener.focus({ preventScroll: true });
   };
