@@ -1,4 +1,4 @@
-name: Deploy Angel-App, Schneiderei Yasin & Ricky Wagner to GitHub Pages
+name: Deploy Angel-App, Schneiderei Yasin, Ricky Wagner & Brandner Studios to GitHub Pages
 
 on:
   push:
@@ -52,6 +52,14 @@ jobs:
             mkdir -p dist-pages/ricky-wagner
             cp ricky-wagner/*.html ricky-wagner/*.css ricky-wagner/*.js dist-pages/ricky-wagner/
             cp -r ricky-wagner/img dist-pages/ricky-wagner/
+          fi
+
+      # Website von Edgar Brandner unter /brandner-studios/ mitveröffentlichen
+      - name: Brandner-Studios-Website hinzufügen
+        run: |
+          if [ -d brandner-studios ]; then
+            mkdir -p dist-pages/brandner-studios
+            cp brandner-studios/*.html brandner-studios/*.css brandner-studios/*.js dist-pages/brandner-studios/
           fi
 
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)
