@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personalbedarf melden – W&amp;S Karrierepartner</title>
+    <meta
+      name="description"
+      content="Melden Sie Ihren Personalbedarf bei W&amp;S Karrierepartner: gewerblich-technische und kaufmännische Fachkräfte in Kitzingen und Mainfranken – Honorar nur bei Erfolg."
+    />
+    <meta name="theme-color" content="#0b1f3a" />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=202610211900" />
+    <script>document.documentElement.classList.add("js");</script>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container nav">
+        <a href="index.html" class="logo" aria-label="W&amp;S Karrierepartner – zur Startseite">
+          <img class="logo-mark" src="img/mark.png" alt="" width="48" height="37" />
+          <span><strong>W&amp;S</strong><small>Karrierepartner</small></span>
+        </a>
+        <a href="index.html#kontakt" class="nav-bot-mobile" data-open-bot aria-label="Berufs-Check öffnen"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm4 6.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg><span>Job-Check</span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="nav-menu" class="nav-menu" aria-label="Hauptnavigation">
+          <a href="index.html#wege">Leistungen</a>
+          <a href="stellen.html">Stellen</a>
+          <a href="bewerberprofile.html">Bewerberprofile</a>
+          <a href="unternehmen.html" aria-current="page">Personal anfragen</a>
+          <a href="index.html#ueber-mich">Über mich</a>
+          <a href="index.html#kontakt" class="nav-bot" data-open-bot><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm4 6.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg><span>Berufs-Check</span></a>
+          <a href="index.html#kontakt" class="btn btn-small">Kontakt</a>
+        </nav>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <nav class="crumbs" aria-label="Brotkrümelnavigation"><a href="index.html">Startseite</a><span aria-hidden="true">/</span><span>Personalbedarf melden</span></nav>
+          <h1 class="reveal">Personalbedarf melden</h1>
+          <p class="lead reveal">Sie suchen Fachkräfte? Beschreiben Sie in drei kurzen Schritten, wen Sie brauchen – ich melde mich innerhalb von 24 Stunden mit passenden Kandidaten. Honorar nur bei Erfolg.</p>
+        </div>
+      </section>
+
+      <section class="section" id="bedarf">
+        <div class="container bedarf-wrap">
+          <form class="bedarf reveal" id="bedarf-form" novalidate>
+            <ol class="steps-bar" aria-label="Fortschritt">
+              <li class="active" data-step="1"><span>1</span>Unternehmen</li>
+              <li data-step="2"><span>2</span>Gesuchte Stellen</li>
+              <li data-step="3"><span>3</span>Kontakt &amp; Absenden</li>
+            </ol>
+
+            <!-- Schritt 1 -->
+            <fieldset class="step" data-step="1">
+              <legend>Ihr Unternehmen</legend>
+              <div class="form-row">
+                <label>Firmenname<input type="text" name="firma" required autocomplete="organization" /></label>
+                <label>Branche<input type="text" name="branche" placeholder="z. B. Metallbau, Logistik, Steuerkanzlei" required /></label>
+              </div>
+              <div class="form-row">
+                <label>Einsatzort<input type="text" name="ort" placeholder="z. B. Kitzingen" required /></label>
+                <label>Mitarbeiterzahl
+                  <select name="groesse">
+                    <option value="">Bitte wählen</option>
+                    <option>1–9</option><option>10–49</option><option>50–249</option><option>250+</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Schritt 2 -->
+            <fieldset class="step" data-step="2" hidden>
+              <legend>Wen suchen Sie?</legend>
+              <div class="positions"></div>
+              <button type="button" class="add-position">+ Weitere Stelle hinzufügen</button>
+            </fieldset>
+
+            <!-- Schritt 3 -->
+            <fieldset class="step" data-step="3" hidden>
+              <legend>Ihre Kontaktdaten</legend>
+              <div class="form-row">
+                <label>Ansprechpartner/in<input type="text" name="name" required autocomplete="name" /></label>
+                <label>Position <small>(optional)</small><input type="text" name="funktion" placeholder="z. B. Geschäftsführung, HR" /></label>
+              </div>
+              <div class="form-row">
+                <label>Telefon<input type="tel" name="telefon" required autocomplete="tel" /></label>
+                <label>E-Mail<input type="email" name="email" required autocomplete="email" /></label>
+              </div>
+              <fieldset class="role">
+                <legend>Wie sollen wir Kontakt aufnehmen?</legend>
+                <label><input type="radio" name="rueckruf" value="Rückruf" checked /> Rückruf</label>
+                <label><input type="radio" name="rueckruf" value="E-Mail" /> E-Mail</label>
+                <label><input type="radio" name="rueckruf" value="WhatsApp" /> WhatsApp</label>
+              </fieldset>
+              <label>Nachricht <small>(optional)</small><textarea name="nachricht" rows="3" placeholder="Besonderheiten, Zeitdruck, Benefits …"></textarea></label>
+              <div class="summary" aria-live="polite"></div>
+              <label class="consent">
+                <input type="checkbox" name="consent" required />
+                <span>Ich bin mit der Verarbeitung meiner Angaben gemäß <a href="datenschutz.html">Datenschutzerklärung</a> einverstanden.</span>
+              </label>
+            </fieldset>
+
+            <p class="form-note" id="bedarf-note" role="status"></p>
+            <div class="step-nav">
+              <button type="button" class="btn btn-outline step-back" hidden>← Zurück</button>
+              <button type="button" class="btn step-next">Weiter <span class="arrow" aria-hidden="true">→</span></button>
+              <button type="submit" class="btn step-send" hidden>Anfrage senden <span class="arrow" aria-hidden="true">→</span></button>
+            </div>
+          </form>
+
+          <div class="bedarf-done" id="bedarf-done" hidden>
+            <span class="done-check" aria-hidden="true">✓</span>
+            <h2>Fast geschafft!</h2>
+            <p>Ihre Anfrage ist vorbereitet. Senden Sie sie jetzt per E-Mail oder WhatsApp ab – ich melde mich innerhalb von 24 Stunden.</p>
+            <div class="quick-links">
+              <a class="quick done-mail" href="#">E-Mail senden</a>
+              <a class="quick done-wa" href="#" target="_blank" rel="noopener">Per WhatsApp senden</a>
+            </div>
+            <button type="button" class="link-arrow done-edit">← Angaben bearbeiten</button>
+          </div>
+
+          <aside class="bedarf-side">
+            <div class="side-card reveal">
+              <p class="eyebrow">So geht es weiter</p>
+              <ol class="side-steps">
+                <li><b>Rückmeldung in 24 h</b><span>Ich melde mich und kläre offene Fragen.</span></li>
+                <li><b>Passende Profile</b><span>Sie erhalten vorgeprüfte Kandidaten.</span></li>
+                <li><b>Honorar nur bei Erfolg</b><span>Kosten entstehen erst bei erfolgreicher Besetzung.</span></li>
+              </ol>
+            </div>
+            <div class="side-card side-dark reveal">
+              <p><b>Lieber direkt sprechen?</b></p>
+              <a href="tel:+491776880175" class="side-phone">+49 177 6880175</a>
+              <a href="bewerberprofile.html" class="link-arrow">Verfügbare Bewerberprofile ansehen <span aria-hidden="true">→</span></a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="img/logo-white.png" alt="W&amp;S Karrierepartner" width="140" height="138" />
+        </div>
+        <div class="footer-cols">
+          <div>
+            <p class="footer-title">Kontakt</p>
+            <a href="tel:+491776880175">+49 177 6880175</a>
+            <a href="mailto:wskarrierepartner@icloud.com">wskarrierepartner@icloud.com</a>
+            <span>97318 Kitzingen</span>
+          </div>
+          <div>
+            <p class="footer-title">Seiten</p>
+            <a href="stellen.html">Stellenangebote</a>
+            <a href="bewerberprofile.html">Bewerberprofile</a>
+            <a href="unternehmen.html">Personalbedarf melden</a>
+            <a href="index.html#ueber-mich">Über mich</a>
+          </div>
+          <div>
+            <p class="footer-title">Rechtliches</p>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© <span id="year"></span> W&amp;S Karrierepartner · Ricky Wagner</p>
+      </div>
+    </footer>
+
+    <div class="fab" aria-label="Schnellkontakt">
+      <a href="https://wa.me/491776880175" target="_blank" rel="noopener" class="fab-btn fab-wa" aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.1.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+      <a href="tel:+491776880175" class="fab-btn" aria-label="Anrufen"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg></a>
+    </div>
+    <div class="toast" id="toast" role="status" hidden></div>
+
+    <script src="profile.js?v=202610211900"></script>
+    <script src="script.js?v=202610211900"></script>
+    <script src="bedarf.js?v=202610211900"></script>
+    <script src="berufs-assistent.js?v=202610211900"></script>
+  </body>
+</html>

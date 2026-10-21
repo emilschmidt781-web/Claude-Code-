@@ -37,6 +37,7 @@ Bewerberprofile nur anonymisiert und mit Einverständnis veröffentlichen.
 | `index.html` | Startseite: Hero mit Kennzahlen, Leistungen (Umschalter Unternehmen/Bewerber), Ablauf, Über mich, FAQ, Kontakt |
 | `stellen.html` | Unterseite Stellenangebote mit Suche |
 | `bewerberprofile.html` | Unterseite Bewerberprofile mit Suche |
+| `unternehmen.html` + `bedarf.js` | „Personalbedarf melden“: 3-Schritte-Formular für Unternehmen (mehrere Stellen), Versand per E-Mail/WhatsApp; optional Formspree über `FORM_ENDPOINT` |
 | `style.css` | Gestaltung, responsiv für Handy bis Desktop |
 | `script.js` | Menü, Animationen, Profile, Filter, Kontaktformular |
 | `profile.js` | Daten der Stellen- und Bewerberprofile |

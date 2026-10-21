@@ -751,3 +751,70 @@ p { margin: 0 0 1em; }
 @media (prefers-reduced-motion: reduce) {
   .bot-panel, .msg, .nav-bot svg { animation: none; }
 }
+
+/* ---------- Personalbedarf melden ---------- */
+.bedarf-wrap { display: grid; grid-template-columns: 1.5fr 0.8fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+.bedarf, .bedarf-done { background: var(--white); border: 1px solid var(--line); border-radius: 22px; padding: clamp(1.4rem, 3vw, 2.2rem); box-shadow: var(--shadow); scroll-margin-top: 100px; }
+.bedarf { display: grid; gap: 1.2rem; }
+.bedarf[hidden], .step[hidden], .bedarf .step-nav [hidden] { display: none; }
+.bedarf label { display: grid; gap: 0.4rem; font-size: 0.86rem; font-weight: 700; color: var(--navy); }
+.bedarf small { color: var(--muted); font-weight: 500; }
+.bedarf input[type="text"], .bedarf input[type="email"], .bedarf input[type="tel"], .bedarf input[type="number"], .bedarf select, .bedarf textarea {
+  font: 500 1rem var(--sans); padding: 0.8em 1em; border: 1.5px solid var(--line); border-radius: 12px; background: var(--mist); color: var(--ink); width: 100%;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+.bedarf input:focus, .bedarf select:focus, .bedarf textarea:focus { outline: none; border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 4px var(--accent-soft); }
+.bedarf .invalid { border-color: #c0392b !important; }
+.form-row-3 { grid-template-columns: 0.6fr 1fr 1fr; }
+.step { border: 0; padding: 0; margin: 0; display: grid; gap: 1rem; min-width: 0; }
+.step > legend { font-family: var(--serif); font-size: 1.5rem; color: var(--navy); margin-bottom: 0.4rem; padding: 0; }
+.step.enter { animation: panel-in 0.5s var(--ease); }
+.steps-bar { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; counter-reset: s; }
+.steps-bar li { display: flex; align-items: center; gap: 0.55rem; font-size: 0.82rem; font-weight: 700; color: var(--muted); padding-bottom: 0.7rem; border-bottom: 3px solid var(--line); transition: color 0.3s, border-color 0.3s; }
+.steps-bar li span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--mist); border: 1.5px solid var(--line); font-size: 0.8rem; flex-shrink: 0; transition: 0.3s; }
+.steps-bar li.active { color: var(--navy); border-color: var(--accent); }
+.steps-bar li.active span { background: var(--accent); border-color: var(--accent); color: var(--white); }
+.steps-bar li.done { color: var(--navy); border-color: var(--navy); cursor: pointer; }
+.steps-bar li.done span { background: var(--navy); border-color: var(--navy); color: transparent; position: relative; }
+.steps-bar li.done span::after { content: "✓"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--white); }
+.positions { display: grid; gap: 1rem; }
+.position { border: 1.5px dashed var(--line); border-radius: 16px; padding: 1.1rem; display: grid; gap: 0.9rem; animation: panel-in 0.4s var(--ease); }
+.position-head { display: flex; justify-content: space-between; align-items: center; color: var(--navy); }
+.position-remove { background: none; border: 0; color: #c0392b; font: 600 0.85rem var(--sans); cursor: pointer; }
+.add-position { justify-self: start; background: var(--accent-soft); color: var(--accent); border: 0; border-radius: 999px; padding: 0.7em 1.2em; font: 700 0.9rem var(--sans); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.add-position:hover { background: var(--accent); color: var(--white); }
+.summary:empty { display: none; }
+.summary { background: var(--mist); border-radius: 14px; padding: 1rem 1.2rem; font-size: 0.9rem; }
+.summary-title { font-weight: 800; color: var(--navy); margin: 0 0 0.3rem; }
+.summary p { margin: 0 0 0.4rem; }
+.summary ul { margin: 0; padding-left: 1.1rem; color: var(--text); }
+.step-nav { display: flex; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap; }
+.step-nav .step-next, .step-nav .step-send { margin-left: auto; }
+.bedarf-done { text-align: center; display: grid; gap: 0.8rem; justify-items: center; animation: panel-in 0.5s var(--ease); }
+.bedarf-done[hidden] { display: none; }
+.done-check { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: #1fa463; color: var(--white); font-size: 1.8rem; animation: pop 0.5s var(--ease); }
+@keyframes pop { from { transform: scale(0.4); opacity: 0; } }
+.bedarf-done .quick-links { justify-content: center; }
+.done-edit { background: none; border: 0; color: var(--navy); cursor: pointer; font: 700 0.9rem var(--sans); }
+.bedarf-side { display: grid; gap: 1rem; position: sticky; top: 90px; }
+.side-card { background: var(--mist); border-radius: 20px; padding: 1.4rem; }
+.side-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; counter-reset: n; }
+.side-steps li { padding-left: 2.4rem; position: relative; display: grid; gap: 0.1rem; counter-increment: n; }
+.side-steps li::before { content: counter(n); position: absolute; left: 0; top: 0; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--accent); color: var(--white); display: grid; place-items: center; font-size: 0.8rem; font-weight: 700; }
+.side-steps b { color: var(--navy); }
+.side-steps span { font-size: 0.88rem; color: var(--muted); }
+.side-dark { background: var(--navy); color: rgba(255, 255, 255, 0.8); display: grid; gap: 0.5rem; }
+.side-dark p { margin: 0; color: var(--white); }
+.side-phone { font-size: 1.35rem; font-weight: 800; color: var(--white); text-decoration: none; }
+.side-dark .link-arrow { color: #9db7ff; font-size: 0.9rem; }
+@media (max-width: 960px) {
+  .bedarf-wrap { grid-template-columns: 1fr; }
+  .bedarf-side { position: static; }
+}
+@media (max-width: 560px) {
+  .form-row-3 { grid-template-columns: 1fr 1fr; }
+  .form-row-3 label:first-child { grid-column: 1 / -1; }
+  .steps-bar li { flex-direction: column; align-items: flex-start; font-size: 0.72rem; }
+  .step-nav .btn { flex: 1; justify-content: center; }
+  body:has(#bedarf-form) .fab { display: none; }
+}
