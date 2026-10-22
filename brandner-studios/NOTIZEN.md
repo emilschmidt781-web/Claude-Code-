@@ -61,7 +61,7 @@ Stand: 22. Oktober 2026
 ## Messwerte (Lighthouse 12, Oktober 2026, vor dem Livegang)
 
 - Desktop: Performance 100 · Barrierefreiheit 100 · Best Practices 100 · SEO 100
-- Handy: Performance 90–95 · Rest 100
+- Handy: Performance 93–96 · Rest 100
 
 ## Nächste Ideen
 

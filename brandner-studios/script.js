@@ -17,6 +17,30 @@ function onVisible(els, fn, options = { threshold: 0.15, rootMargin: "0px 0px -4
   els.forEach((el) => obs.observe(el));
 }
 
+// Zusatzschriften (Beispiel-Namen, Bildunterschrift) erst laden, wenn man in die Nähe scrollt
+(() => {
+  const load = () => {
+    if (document.getElementById("extra-fonts")) return;
+    const link = document.createElement("link");
+    link.id = "extra-fonts";
+    link.rel = "stylesheet";
+    link.href = "fonts/extra.css";
+    document.head.appendChild(link);
+  };
+  const targets = [document.getElementById("konzepte"), document.getElementById("ueber-mich")].filter(Boolean);
+  if (!io || !targets.length) return load();
+  const obs = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        load();
+        obs.disconnect();
+      }
+    },
+    { rootMargin: "800px 0px" }
+  );
+  targets.forEach((t) => obs.observe(t));
+})();
+
 // Jahreszahl im Footer
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();

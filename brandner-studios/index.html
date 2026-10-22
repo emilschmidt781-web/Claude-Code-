@@ -6,7 +6,7 @@
     <title>Webdesign Würzburg – Brandner Studios | Websites für Unternehmen</title>
     <meta
       name="description"
-      content="Brandner Studios – Webdesign, Entwicklung und Ausbesserungen für Unternehmen in Würzburg, Mainstockheim und Umgebung. Websites, die Vertrauen bringen. Alles aus einer Hand."
+      content="Webdesign aus Mainstockheim bei Würzburg: Websites, Ausbesserungen und SEO für Unternehmen – schnell, mobil, alles aus einer Hand."
     />
     <meta name="theme-color" content="#0a0a0f" />
     <meta property="og:title" content="Brandner Studios – Websites, die Kunden bringen." />
@@ -27,8 +27,8 @@
     <link rel="preload" href="fonts/InstrumentSerif-normal-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/InstrumentSerif-italic-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/Inter-normal-400.woff2" as="font" type="font/woff2" crossorigin />
-    <!-- Schriften der fünf Beispiel-Websites (für die Namen in der Beispiel-Liste) -->
-    <link rel="stylesheet" href="fonts/extra.css" media="print" onload="this.media='all'" />
+    <!-- Schriften der Beispiel-Namen und der Bildunterschrift lädt script.js erst beim Hinscrollen -->
+    <noscript><link rel="stylesheet" href="fonts/extra.css" /></noscript>
     <link rel="stylesheet" href="style.css" />
     <script type="application/ld+json">
       {
@@ -50,6 +50,7 @@
     </script>
   </head>
   <body>
+    <a class="skip" href="#angebot">Zum Inhalt springen</a>
     <!-- HEADER -->
     <header class="site-header" id="top">
       <div class="container nav">
@@ -162,15 +163,6 @@
             <li>Figma</li>
             <li>Betreuung</li>
           </ul>
-          <div class="bignum reveal">
-            <span class="bignum-mark" aria-hidden="true"></span>
-            <strong><span data-count="1">0</span><em>✦</em></strong>
-            <p>Ein Ansprechpartner für alles.<br />Und einer, der dir zuhört.</p>
-            <button type="button" class="codebox copy" data-copy="brandnerstudios@gmail.com">
-              brandnerstudios@gmail.com
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h8" /></svg>
-            </button>
-          </div>
           <div class="offers reveal">
             <a href="#kontakt" class="offer" data-need="Neue Website">
               <span class="offer-num">01</span>
@@ -458,12 +450,11 @@
               <span class="ring-label">SEO</span>
             </div>
           </div>
-          <p class="rings-note reveal">Gemessen mit Google Lighthouse 12 (Desktop) vor dem Livegang, Oktober 2026. Auf dem Handy: Performance 90–95, die anderen drei ebenfalls 100.</p>
-          <div class="facts reveal">
-            <div><b><span data-count="30">0</span> Min.</b><span>Kennenlernen – kostenlos</span></div>
-            <div><b><span data-count="1">0</span></b><span>fester Ansprechpartner</span></div>
+          <p class="rings-note reveal">Gemessen mit Google Lighthouse 12 (Desktop) vor dem Livegang, Oktober 2026. Auf dem Handy: Performance über 90, die anderen drei ebenfalls 100.</p>
+          <div class="facts facts-3 reveal">
+            <div><b><span data-count="4">0</span></b><span>Leistungen aus einer Hand</span></div>
             <div><b><span data-count="5">0</span></b><span>Design-Stile als Demo</span></div>
-            <div><b><span data-count="0">0</span></b><span>Cookies auf dieser Seite</span></div>
+            <div><b><span data-count="0">0</span></b><span>Cookies und Tracker</span></div>
           </div>
         </div>
       </section>
@@ -502,9 +493,9 @@
           </div>
           <div class="flow reveal">
             <div class="stats">
-              <div><span>Kennenlernen</span><b><em data-count="30">0</em> Min.</b></div>
-              <div><span>Kosten fürs Erstgespräch</span><b><em data-count="0">0</em> €</b></div>
-              <div><span>Ansprechpartner</span><b><em data-count="1">0</em></b></div>
+              <div><span>Erstgespräch</span><b>30 Min.</b></div>
+              <div><span>Bis zum Livegang</span><b>ca. 3–7 Wochen</b></div>
+              <div><span>Danach</span><b>Betreuung</b></div>
             </div>
             <ol class="steps">
               <li class="step">
@@ -540,25 +531,6 @@
         </div>
       </section>
 
-      <!-- WERKZEUGE -->
-      <section class="section" id="werkzeuge">
-        <div class="container">
-          <div class="head reveal">
-            <p class="eyebrow">Werkzeuge</p>
-            <h2 class="h2">Die Technik, die<br />zu dir passt.</h2>
-            <p class="sub">Je nach Projekt nehme ich, was für dich am meisten Sinn ergibt.</p>
-          </div>
-          <ul class="tools reveal">
-            <li><span class="tool-ic">&lt;/&gt;</span>HTML &amp; CSS</li>
-            <li><span class="tool-ic">JS</span>JavaScript</li>
-            <li><span class="tool-ic">R</span>React</li>
-            <li><span class="tool-ic">W</span>WordPress</li>
-            <li><span class="tool-ic">S</span>Shopify</li>
-            <li><span class="tool-ic">F</span>Figma</li>
-          </ul>
-        </div>
-      </section>
-
       <!-- ÜBER MICH -->
       <section class="section" id="ueber-mich">
         <div class="container about">
@@ -582,6 +554,15 @@
               Du hast einen Ansprechpartner, der zuhört, mitdenkt und ehrlich sagt, was deine Seite wirklich braucht – aus Mainstockheim bei
               Würzburg, persönlich oder remote.
             </p>
+            <p class="eyebrow tools-label reveal">Damit arbeite ich</p>
+            <ul class="tools tools-mini reveal" aria-label="Werkzeuge">
+            <li><span class="tool-ic">&lt;/&gt;</span>HTML &amp; CSS</li>
+            <li><span class="tool-ic">JS</span>JavaScript</li>
+            <li><span class="tool-ic">R</span>React</li>
+            <li><span class="tool-ic">W</span>WordPress</li>
+            <li><span class="tool-ic">S</span>Shopify</li>
+            <li><span class="tool-ic">F</span>Figma</li>
+          </ul>
             <a href="#kontakt" class="btn btn-primary reveal">
               Projekt besprechen
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>

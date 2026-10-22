@@ -3078,3 +3078,65 @@ mark {
 .check-input input {
   width: 100%;
 }
+
+/* Sprunglink für Tastatur-Nutzer */
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--pink);
+  color: var(--ink);
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+/* Werkzeuge kompakt bei „Über mich“ */
+.tools-label {
+  margin-top: 6px;
+}
+
+.tools-mini {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 10px;
+  margin-bottom: 34px;
+}
+
+.tools-mini li {
+  padding: 10px 12px;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.tools-mini .tool-ic {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .tools-mini {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+.facts-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 860px) {
+  .facts-3 {
+    grid-template-columns: 1fr;
+  }
+  .facts-3 > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--line-strong);
+  }
+}
