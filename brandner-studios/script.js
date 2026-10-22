@@ -432,7 +432,7 @@ if (finePointer && !reduceMotion) {
 
   document.addEventListener("pointerover", (e) => {
     const example = e.target.closest(".example");
-    const ref = e.target.closest(".ref-media, .concept");
+    const ref = e.target.closest(".concept");
     const interactive = e.target.closest("a, button, summary, .card, .chips li");
     ring.querySelector("span").textContent = ref ? "Ansehen" : "Anfragen";
     ring.classList.toggle("label", !!(example || ref));

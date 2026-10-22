@@ -2060,167 +2060,6 @@ body.show-grid h3 {
   background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0b10' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center / 11px no-repeat;
 }
 
-/* ===== Referenzen ===== */
-.refs {
-  display: grid;
-  gap: clamp(56px, 8vw, 96px);
-}
-
-.ref {
-  display: grid;
-  gap: 32px;
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .ref {
-    grid-template-columns: 1.35fr 1fr;
-    gap: 64px;
-  }
-  .ref:nth-child(even) .ref-media {
-    order: 2;
-  }
-}
-
-.ref-media {
-  position: relative;
-  display: block;
-  padding: 0 0 36px;
-}
-
-.ref-browser {
-  border-radius: 16px;
-  overflow: hidden;
-  background: var(--card);
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.9);
-  transition: transform 0.7s var(--ease);
-}
-
-.ref-bar {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--line);
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
-.ref-browser img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top;
-  transition: transform 1.2s var(--ease);
-}
-
-.ref-phone {
-  position: absolute;
-  right: -6px;
-  bottom: 0;
-  width: 26%;
-  max-width: 170px;
-  padding: 6px;
-  border-radius: 24px;
-  background: #050507;
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.9);
-  transition: transform 0.7s var(--ease);
-}
-
-.ref-phone img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 2;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 18px;
-}
-
-.ref:nth-child(even) .ref-phone {
-  right: auto;
-  left: -6px;
-}
-
-.ref-media:hover .ref-browser {
-  transform: translateY(-6px);
-}
-
-.ref-media:hover .ref-browser img {
-  transform: scale(1.03);
-}
-
-.ref-media:hover .ref-phone {
-  transform: translateY(-14px) rotate(-3deg);
-}
-
-.ref-meta {
-  margin: 0 0 10px;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.ref h3 {
-  margin: 0 0 12px;
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-  line-height: 1;
-}
-
-.ref-body > p:not(.ref-meta) {
-  margin: 0;
-  color: var(--muted);
-  max-width: 42ch;
-}
-
-.ref-tags {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 20px 0 26px;
-  padding: 0;
-}
-
-.ref-tags li {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-
-.ref-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 4px;
-}
-
-.ref-link svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  stroke-linecap: round;
-  transition: transform 0.4s var(--ease);
-}
-
-.ref-link:hover svg {
-  transform: translate(3px, -3px);
-}
-
 /* ===== Vorteile ===== */
 .perks-section .display-md em {
   color: var(--accent);
@@ -2799,22 +2638,6 @@ body.show-grid h3 {
   .arrow {
     top: 20px;
     right: 20px;
-  }
-
-  .refs {
-    gap: 48px;
-  }
-
-  .ref {
-    gap: 20px;
-  }
-
-  .ref-media {
-    padding-bottom: 24px;
-  }
-
-  .ref-tags {
-    margin: 14px 0 18px;
   }
 
   /* Vorteile zweispaltig und knapp */
@@ -3835,47 +3658,6 @@ body::after {
   line-height: 1.55;
 }
 
-/* Referenzen */
-.ref-meta {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.ref h3 {
-  text-transform: uppercase;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  line-height: 0.95;
-}
-
-.ref-browser {
-  background: #fff;
-  border: 0;
-  border-radius: 24px;
-  box-shadow: 0 40px 80px -40px rgba(31, 31, 34, 0.45);
-}
-
-.ref-phone {
-  background: var(--ink);
-  border: 0;
-}
-
-.ref-tags li {
-  background: var(--cream);
-  border: 0;
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.ref-link {
-  font-weight: 800;
-  text-transform: uppercase;
-  border-bottom: 3px solid var(--ink);
-}
-
-.ref-link svg {
-  stroke: var(--ink);
-}
-
 /* Angebot */
 .examples .card {
   background: var(--cream);
@@ -4892,26 +4674,8 @@ body.ready.stage-live .stage-card {
 }
 
 /* ===== Design-Konzepte (Demos) ===== */
-.concepts-head {
-  margin: clamp(72px, 10vw, 130px) 0 clamp(28px, 4vw, 44px);
-  text-align: center;
-}
-
-.concepts-head h3 {
-  margin: 0 0 12px;
-  font-size: clamp(2.4rem, 6vw, 4.6rem);
-  font-weight: 900;
-  letter-spacing: -0.05em;
-  line-height: 0.95;
-  text-transform: uppercase;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.concepts-head p {
-  margin: 0 auto;
+.section-note {
+  margin: 18px auto 0;
   max-width: 52ch;
   color: var(--muted);
   font-size: 1.08rem;

@@ -14,7 +14,7 @@ python3 -m http.server 8000   # http://localhost:8000
 
 1. **Hero** mit klarer Botschaft, zwei Knöpfen und Vertrauenszeile (kostenloses Kennenlernen, ein Ansprechpartner, regional)
 2. **Leistungen**
-3. **Referenzen**: Schneiderei Yasin und W&S Karrierepartner mit echten Screenshots (Desktop + Handy), verlinkt auf die Live-Seiten
+3. **Beispiele**: fünf Design-Konzepte als anklickbare Online-Demos (siehe unten)
 4. **Angebot**: Firmenwebsite, Landingpage, Ausbesserung (Klick wählt die Anfrage im Formular vor)
 5. **Was du bekommst**: sechs Vorteile
 6. Würzburg-Skyline, **Ablauf**, **Über mich**
@@ -41,11 +41,10 @@ Lime-Punkt. Schriftzug BRANDNER (Inter Display Black, als Vektorpfade) mit STUDI
 
 Die fünf Karten im Hero zeigen erfundene Startseiten in sehr unterschiedlichen Stilen
 (Weingut, Yogastudio, Architekturbüro, Rösterei, Tattoo-Studio). Sie sind als „Konzept“
-markiert. Echte Kundenprojekte stehen nur im Abschnitt „Referenzen“.
+markiert. Echte Kundenprojekte sind derzeit nicht auf der Seite.
 
 - Bilder: `img/konzept-*.jpg` (1280 × 800)
-- Demos: `konzepte/*.html` sind online anklickbar (Abschnitt „Design-Konzepte“ unter den
-  Referenzen). Sie skalieren sich auf jedes Fenster und tragen unten das Schild
+- Demos: `konzepte/*.html` sind online anklickbar (Abschnitt „Beispiele“). Sie skalieren sich auf jedes Fenster und tragen unten das Schild
   „Design-Konzept von Brandner Studios“. Bitte nicht als echte Kundenprojekte ausgeben.
 - Quellen: `konzepte/*.html`, jeweils eine eigenständige Seite. Nach einer Änderung neu
   abfotografieren, zum Beispiel mit Playwright bei 1280 × 800.
@@ -83,8 +82,6 @@ der Stil-Block am Ende der Datei überschreibt die ältere dunkle Gestaltung.
 
 ## Noch offen
 
-- **Referenzen**: Bitte kurz bei Schneiderei Yasin und Ricky Wagner nachfragen, ob sie als Referenz
-  gezeigt werden dürfen. Die Screenshots liegen in `img/` und lassen sich jederzeit austauschen.
 - **FAQ**: Die Antworten (z. B. „Angebot vor dem Start“, Betreuung nach dem Livegang) bitte prüfen,
   ob sie so zu deinem Angebot passen.
 
