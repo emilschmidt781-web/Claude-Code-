@@ -1,0 +1,29 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1280px;height:800px;overflow:hidden;background:#ffe600;color:#111;font-family:'Space Mono';position:relative}
+nav{display:grid;grid-template-columns:260px 1fr 1fr 1fr 200px;border-bottom:4px solid #111;height:74px}
+nav>*{display:flex;align-items:center;padding:0 22px;border-right:4px solid #111;font-weight:700;text-transform:uppercase;font-size:15px}
+nav .logo{font-family:Anton;font-size:30px;letter-spacing:.02em}
+nav .cart{background:#111;color:#ffe600;justify-content:center;border:0}
+h1{position:absolute;left:30px;top:100px;font-family:Anton;font-size:205px;line-height:1.04;text-transform:uppercase;letter-spacing:-.01em}
+h1 .o{color:#ffe600;-webkit-text-stroke:5px #111}
+.box{position:absolute;right:40px;top:120px;width:350px;background:#fff;border:4px solid #111;box-shadow:12px 12px 0 #111;padding:26px}
+.box h3{font-family:Anton;font-size:40px;text-transform:uppercase;line-height:1}
+.box p{margin:12px 0 18px;font-size:14px;line-height:1.5}
+.tags{display:flex;gap:8px;flex-wrap:wrap}.tags span{border:3px solid #111;padding:4px 10px;font-weight:700;font-size:12px;text-transform:uppercase}
+.buy{display:block;margin-top:18px;background:#ff3d00;border:4px solid #111;padding:14px;text-align:center;font-weight:700;text-transform:uppercase;box-shadow:6px 6px 0 #111}
+.sticker{position:absolute;left:820px;top:430px;width:170px;height:170px;border-radius:50%;background:#ff3d00;border:4px solid #111;display:grid;place-items:center;text-align:center;font-family:Anton;font-size:30px;line-height:1;transform:rotate(-14deg);text-transform:uppercase;color:#fff}
+.bean{position:absolute;right:70px;bottom:120px;width:150px;height:200px;background:#5a3418;border:4px solid #111;border-radius:50%;transform:rotate(28deg)}
+.bean:after{content:"";position:absolute;left:50%;top:10%;bottom:10%;width:0;border-left:5px solid #111;border-radius:50%;transform:translateX(-50%) skewY(-8deg)}
+.strip{position:absolute;left:0;right:0;bottom:0;height:70px;background:#111;color:#ffe600;display:flex;align-items:center;gap:40px;font-family:Anton;font-size:34px;text-transform:uppercase;white-space:nowrap;padding-left:20px}
+.strip b{color:#ff3d00}
+</style></head><body>
+<nav><span class="logo">Bohnenwerk</span><span>Kaffee</span><span>Rösterei</span><span>Kurse</span><span class="cart">Korb (2)</span></nav>
+<h1>Frisch<br><span class="o">ge</span>röstet.</h1>
+<div class="box"><h3>Röstung der Woche</h3><p>Äthiopien Guji — Pfirsich, Jasmin und ein Hauch Bergamotte. Jeden Dienstag frisch aus der Trommel.</p><div class="tags"><span>Filter</span><span>Hell</span><span>250 g</span></div><span class="buy">In den Korb →</span></div>
+<div class="sticker">Direkt<br>vom<br>Röster</div>
+<div class="bean"></div>
+<div class="strip">Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo <b>✱</b> Röstkurse <b>✱</b> Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo</div>
+</body></html>

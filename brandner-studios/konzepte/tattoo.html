@@ -1,0 +1,33 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Unbounded:wght@300;700&family=Pirata+One&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1280px;height:800px;overflow:hidden;background:#0b0b0d;color:#f1f1f1;font-family:Unbounded;position:relative}
+.halftone{position:absolute;right:-120px;top:-60px;width:820px;height:820px;border-radius:50%;
+ background:radial-gradient(circle,#ff2e88 1.6px,transparent 2.2px) 0 0/12px 12px;
+ -webkit-mask:radial-gradient(circle,#000 30%,transparent 70%);mask:radial-gradient(circle,#000 30%,transparent 70%)}
+.halftone2{position:absolute;left:-200px;bottom:-300px;width:700px;height:700px;
+ background:radial-gradient(circle,#39ff88 1.4px,transparent 2px) 0 0/10px 10px;
+ -webkit-mask:radial-gradient(circle,#000 20%,transparent 65%);mask:radial-gradient(circle,#000 20%,transparent 65%)}
+nav{position:absolute;top:34px;left:50px;right:50px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:300}
+nav .logo{font-family:'Pirata One';font-size:34px;letter-spacing:.02em;text-transform:none;margin-top:-12px}
+h1{position:absolute;left:46px;top:150px;font-family:'Rubik Mono One';font-size:132px;line-height:.92;text-transform:uppercase}
+h1 .p{color:#ff2e88}
+h1 .s{color:transparent;-webkit-text-stroke:2px #39ff88}
+.eye{position:absolute;right:170px;top:200px;width:300px;height:300px}
+.info{position:absolute;left:50px;bottom:50px;display:flex;gap:50px;font-size:12px;font-weight:300;letter-spacing:.08em}
+.info b{display:block;font-weight:700;font-size:15px;letter-spacing:0;margin-bottom:6px;color:#39ff88}
+.cta{position:absolute;right:50px;bottom:44px;padding:20px 30px;background:#ff2e88;color:#0b0b0d;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.1em;clip-path:polygon(0 0,100% 0,100% 70%,90% 100%,0 100%)}
+.noise{position:absolute;inset:0;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+</style></head><body>
+<div class="halftone"></div><div class="halftone2"></div>
+<nav><span class="logo">Nachtschicht</span><span>Artists</span><span>Flash</span><span>Termine</span><span>Kontakt</span></nav>
+<h1>Tinte<br><span class="p">für</span><br><span class="s">immer.</span></h1>
+<svg class="eye" viewBox="0 0 200 200" fill="none" stroke="#f1f1f1" stroke-width="3">
+<path d="M10 100 Q100 20 190 100 Q100 180 10 100Z"/><circle cx="100" cy="100" r="34" stroke="#ff2e88" stroke-width="4"/><circle cx="100" cy="100" r="12" fill="#f1f1f1"/>
+<path d="M100 10v28M100 162v28M30 40l18 18M170 40l-18 18M30 160l18-18M170 160l-18-18" stroke="#39ff88"/>
+<path d="M60 186 l40-20 40 20" stroke-width="2"/></svg>
+<div class="info"><div><b>Fineline</b>Feine Linien, kleine Motive</div><div><b>Blackwork</b>Flächen, Ornamente</div><div><b>Walk-in</b>Jeden Freitag ab 14 Uhr</div></div>
+<span class="cta">Termin anfragen</span>
+<div class="noise"></div>
+</body></html>

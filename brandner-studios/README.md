@@ -37,6 +37,16 @@ Lime-Punkt. Schriftzug BRANDNER (Inter Display Black, als Vektorpfade) mit STUDI
 | `img/logo-icon.svg` | App-Icon / Favicon (dunkles Quadrat) |
 | `img/apple-touch-icon.png`, `img/logo.png` | PNG-Versionen |
 
+## Design-Konzepte im Hero
+
+Die fünf Karten im Hero zeigen erfundene Startseiten in sehr unterschiedlichen Stilen
+(Weingut, Yogastudio, Architekturbüro, Rösterei, Tattoo-Studio). Sie sind als „Konzept“
+markiert. Echte Kundenprojekte stehen nur im Abschnitt „Referenzen“.
+
+- Bilder: `img/konzept-*.jpg` (1280 × 800)
+- Quellen: `konzepte/*.html`, jeweils eine eigenständige Seite. Nach einer Änderung neu
+  abfotografieren, zum Beispiel mit Playwright bei 1280 × 800.
+
 ## Stil
 
 Hell und fett: Weiß und Creme (`#f7f3ea`), dunkle Schrift (`#1f1f22`), Inter in Schwarz (900)

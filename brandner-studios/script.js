@@ -677,7 +677,7 @@ if (stage && !reduceMotion) {
     const p = Math.min(Math.max(-r.top / (r.height * 0.7), 0), 1);
     if (p > 0) goLive();
     cards.forEach((c) => {
-      c.style.setProperty("--l", `${p * 180}px`);
+      c.style.setProperty("--l", `${p * (innerWidth < 760 ? 24 : 130)}px`);
       c.style.setProperty("--s", String(1 + p * 0.35));
     });
   };
@@ -690,7 +690,7 @@ if (stage && !reduceMotion) {
       const x = (e.clientX - r.left) / r.width - 0.5;
       const y = (e.clientY - r.top) / r.height - 0.5;
       cards.forEach((c, i) => {
-        const depth = c.classList.contains("sc2") ? 1 : 0.6;
+        const depth = 1 - Math.abs(Number(getComputedStyle(c).getPropertyValue("--k"))) * 0.2;
         c.style.setProperty("--px", String(x * 10 * depth));
         c.style.setProperty("--py", `${y * -14 * depth}px`);
       });
