@@ -4673,7 +4673,7 @@ body.ready.stage-live .stage-card {
   z-index: 1;
 }
 
-/* ===== Design-Konzepte (Demos) ===== */
+/* ===== Beispiele: Liste links, große Vorschau rechts ===== */
 .section-note {
   margin: 18px auto 0;
   max-width: 52ch;
@@ -4681,299 +4681,200 @@ body.ready.stage-live .stage-card {
   font-size: 1.08rem;
 }
 
-.concepts {
+.showcase {
   display: grid;
-  gap: 20px;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
 }
 
-@media (min-width: 760px) {
-  .concepts {
-    grid-template-columns: repeat(2, 1fr);
+@media (min-width: 900px) {
+  .showcase {
+    grid-template-columns: 1.55fr 1fr;
   }
 }
 
-@media (min-width: 1100px) {
-  .concepts {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .concept-big {
-    grid-column: span 2;
-  }
-}
-
-.concept {
+.sc-preview {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  border-radius: 28px;
+  display: block;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px;
   overflow: hidden;
   background: var(--cream);
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  box-shadow: 0 40px 80px -40px rgba(31, 31, 34, 0.5);
 }
 
-.concept:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 60px -30px rgba(31, 31, 34, 0.45);
-}
-
-.concept-img {
-  display: block;
-  overflow: hidden;
-  flex: 1;
-}
-
-.concept-img img {
-  display: block;
+.sc-preview img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top left;
-  transition: transform 1s var(--ease);
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.6s var(--ease), transform 1.2s var(--ease);
 }
 
-.concept:hover .concept-img img {
-  transform: scale(1.05);
+.sc-preview img.on {
+  opacity: 1;
+  transform: none;
 }
 
-.concept-body {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 2px 16px;
-  padding: 18px 22px 20px;
-}
-
-.concept-tag {
-  grid-column: 1 / -1;
-  justify-self: start;
-  margin-bottom: 6px;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: #fff;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.concept-body strong {
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.concept-big .concept-body strong {
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-}
-
-.concept-style {
-  grid-column: 1;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.concept-link {
-  grid-column: 2;
-  grid-row: 2 / span 2;
+.sc-open {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
+  padding: 12px 18px;
   border-radius: 999px;
   background: var(--ink);
   color: #fff;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 800;
   text-transform: uppercase;
-  white-space: nowrap;
+  transition: transform 0.4s var(--ease);
 }
 
-.concept-link svg {
+.sc-open svg {
   width: 15px;
   height: 15px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2.4;
   stroke-linecap: round;
-  transition: transform 0.4s var(--ease);
 }
 
-.concept:hover .concept-link svg {
-  transform: translate(2px, -2px);
+.sc-preview:hover .sc-open {
+  transform: translateY(-3px);
 }
 
-@media (max-width: 759px) {
-  .concepts {
-    display: flex;
-    gap: 12px;
-    margin-inline: -20px;
-    padding: 4px 20px 8px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 20px;
-    scrollbar-width: none;
-  }
-  .concepts::-webkit-scrollbar {
-    display: none;
-  }
-  .concept {
-    flex: 0 0 82%;
-    scroll-snap-align: start;
-  }
-  .concept-body {
-    grid-template-columns: 1fr;
-  }
-  .concept-link {
-    grid-column: 1;
-    grid-row: auto;
-    justify-self: start;
-    margin-top: 12px;
-    padding: 9px 14px;
-  }
+.sc-badge {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-/* ===== Jede Beispiel-Karte im Stil ihrer Website ===== */
-.concept-wein {
-  background: #efe4cf;
-  color: #3b0d1a;
-  border-radius: 4px;
-  outline: 1.5px solid #3b0d1a;
-  outline-offset: -8px;
+.sc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 3px solid var(--ink);
 }
-.concept-wein .concept-body strong {
+
+.sc-list li {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.sc-item {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: baseline;
+  gap: 2px 12px;
+  padding: 18px 8px 18px 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: var(--muted);
+  transition: color 0.25s, padding 0.4s var(--ease);
+}
+
+.sc-item::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  width: 6px;
+  height: 0;
+  border-radius: 3px;
+  background: var(--c);
+  transform: translateY(-50%);
+  transition: height 0.4s var(--ease);
+}
+
+.sc-num {
+  grid-row: span 2;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.sc-name {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.sc-style {
+  font-size: 0.9rem;
+}
+
+.sc-item:hover,
+.sc-item.on {
+  color: var(--ink);
+}
+
+.sc-item.on {
+  padding-left: 8px;
+}
+
+.sc-item.on::before {
+  height: 70%;
+}
+
+.sc-item.on .sc-num {
+  color: var(--ink);
+}
+
+/* Name jeweils in der Schrift der Website */
+.sc-name-wein {
   font-family: "Bodoni Moda", serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 1.7rem;
 }
-.concept-wein .concept-tag {
-  background: #3b0d1a;
-  color: #efe4cf;
-  border-radius: 0;
-}
-.concept-wein .concept-style {
-  color: #8a2a3f;
-}
-.concept-wein .concept-link {
-  background: transparent;
-  color: #3b0d1a;
-  border: 1px solid #3b0d1a;
-  border-radius: 0;
-  letter-spacing: 0.2em;
-}
-
-.concept-kaffee {
-  background: #ffe600;
-  color: #111;
-  border: 4px solid #111;
-  border-radius: 0;
-  box-shadow: 8px 8px 0 #111;
-}
-.concept-kaffee:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 11px 11px 0 #111;
-}
-.concept-kaffee .concept-img {
-  border-bottom: 4px solid #111;
-}
-.concept-kaffee .concept-body strong {
+.sc-name-kaffee {
   font-family: Anton, sans-serif;
   font-weight: 400;
-  font-size: 1.9rem;
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
-.concept-kaffee .concept-tag {
-  border: 3px solid #111;
-  border-radius: 0;
-  background: #fff;
-}
-.concept-kaffee .concept-style {
-  color: #111;
-}
-.concept-kaffee .concept-link {
-  background: #ff3d00;
-  color: #fff;
-  border: 3px solid #111;
-  border-radius: 0;
-  box-shadow: 4px 4px 0 #111;
-}
-
-.concept-yoga {
-  background: #2f2a3a;
-  color: #f6f1ec;
-  border-radius: 48px;
-}
-.concept-yoga .concept-body strong {
+.sc-name-yoga {
   font-family: Fraunces, serif;
   font-style: italic;
   font-weight: 300;
-  font-size: 1.8rem;
 }
-.concept-yoga .concept-tag {
-  background: rgba(246, 241, 236, 0.12);
-  color: #f6f1ec;
-}
-.concept-yoga .concept-style {
-  color: #cfc6dc;
-}
-.concept-yoga .concept-link {
-  background: linear-gradient(120deg, #f4b6cf, #b9a3f0);
-  color: #2f2a3a;
-}
-
-.concept-tattoo {
-  background: #0b0b0d;
-  color: #f1f1f1;
-  border-radius: 0;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%);
-}
-.concept-tattoo .concept-body {
-  background: radial-gradient(circle, rgba(255, 46, 136, 0.35) 1.2px, transparent 1.8px) 0 0 / 10px 10px;
-}
-.concept-tattoo .concept-body strong {
+.sc-name-tattoo {
   font-family: "Rubik Mono One", sans-serif;
   font-weight: 400;
-  font-size: 1.15rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
   text-transform: uppercase;
-  color: #ff2e88;
 }
-.concept-tattoo .concept-tag {
-  background: transparent;
-  color: #39ff88;
-  border: 1.5px solid #39ff88;
-  border-radius: 0;
-}
-.concept-tattoo .concept-style {
-  color: #b9b9b9;
-}
-.concept-tattoo .concept-link {
-  background: #39ff88;
-  color: #0b0b0d;
-  border-radius: 0;
-}
-
-.concept-kubus {
-  background: #f4f2ee;
-  color: #161616;
-  border-radius: 0;
-  border: 1px solid #161616;
-}
-.concept-kubus .concept-body {
-  border-top: 1px solid #161616;
-}
-.concept-kubus .concept-body strong {
+.sc-name-kubus {
   font-family: Archivo, sans-serif;
   font-weight: 900;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
 }
-.concept-kubus .concept-tag {
-  background: #e63b2e;
-  color: #fff;
-  border-radius: 0;
-}
-.concept-kubus .concept-link {
-  border-radius: 0;
+
+@media (max-width: 899px) {
+  .sc-item {
+    padding: 14px 0;
+  }
+  .sc-item.on {
+    padding-left: 12px;
+  }
+  .sc-item::before {
+    left: 0;
+  }
 }

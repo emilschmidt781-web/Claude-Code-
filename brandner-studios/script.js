@@ -432,7 +432,7 @@ if (finePointer && !reduceMotion) {
 
   document.addEventListener("pointerover", (e) => {
     const example = e.target.closest(".example");
-    const ref = e.target.closest(".concept");
+    const ref = e.target.closest(".sc-preview");
     const interactive = e.target.closest("a, button, summary, .card, .chips li");
     ring.querySelector("span").textContent = ref ? "Ansehen" : "Anfragen";
     ring.classList.toggle("label", !!(example || ref));
@@ -620,7 +620,7 @@ if (menuToggle && menu) {
 }
 
 // Punkte unter den Wisch-Karussells
-document.querySelectorAll(".services, .examples, .concepts").forEach((track) => {
+document.querySelectorAll(".services, .examples").forEach((track) => {
   const hint = document.createElement("div");
   hint.className = "swipe-hint";
   hint.setAttribute("aria-hidden", "true");
@@ -702,4 +702,52 @@ if (stage && !reduceMotion) {
       })
     );
   }
+}
+
+// Beispiele: Liste steuert die große Vorschau, wechselt sonst von selbst
+const showcase = document.querySelector(".showcase");
+if (showcase) {
+  const items = [...showcase.querySelectorAll(".sc-item")];
+  const imgs = [...showcase.querySelectorAll(".sc-preview img")];
+  const preview = showcase.querySelector(".sc-preview");
+  let active = 0;
+  let timer;
+  let touched = false;
+  const show = (i) => {
+    active = i;
+    items.forEach((b, k) => {
+      b.classList.toggle("on", k === i);
+      b.setAttribute("aria-pressed", String(k === i));
+    });
+    imgs.forEach((img, k) => img.classList.toggle("on", k === i));
+    preview.href = items[i].dataset.href;
+    preview.setAttribute("aria-label", `Demo ansehen: ${items[i].querySelector(".sc-name").textContent}`);
+  };
+  const stopAuto = () => {
+    touched = true;
+    clearInterval(timer);
+  };
+  items.forEach((b, i) => {
+    b.addEventListener("click", () => {
+      stopAuto();
+      show(i);
+      // Auf dem Handy liegt die Vorschau über der Liste: kurz hinscrollen
+      const r = preview.getBoundingClientRect();
+      if (r.top < 80) preview.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    });
+    if (finePointer) b.addEventListener("pointerenter", () => {
+      stopAuto();
+      show(i);
+    });
+    b.addEventListener("focus", () => show(i));
+  });
+  // Bilder vorladen, damit der Wechsel ohne Flackern klappt
+  imgs.forEach((img) => (img.loading = "eager"));
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      clearInterval(timer);
+      if (entry.isIntersecting && !touched) timer = setInterval(() => show((active + 1) % items.length), 3800);
+    }).observe(showcase);
+  }
+  show(0);
 }
