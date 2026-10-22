@@ -4925,3 +4925,63 @@ body.ready.stage-live .stage-card {
     border-radius: 28px;
   }
 }
+
+/* Zweites, privates Foto als schräg angelegtes Polaroid */
+.about-visual {
+  position: relative;
+}
+
+.polaroid {
+  position: absolute;
+  left: -54px;
+  bottom: -40px;
+  z-index: 2;
+  width: 46%;
+  margin: 0;
+  padding: 10px 10px 0;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 24px 50px -18px rgba(31, 31, 34, 0.55);
+  transform: rotate(-7deg);
+  transition: transform 0.6s var(--ease);
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.polaroid figcaption {
+  padding: 8px 4px 12px;
+  text-align: center;
+  font-family: Caveat, "Comic Sans MS", cursive;
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  color: var(--ink);
+}
+
+.about-visual:hover .polaroid {
+  transform: rotate(-2deg) translateY(-8px) scale(1.04);
+}
+
+@media (max-width: 1100px) {
+  .polaroid {
+    left: -24px;
+  }
+}
+
+@media (max-width: 759px) {
+  .about-visual {
+    margin-bottom: 56px;
+  }
+  .polaroid {
+    left: -18px;
+    bottom: -44px;
+    width: 48%;
+    padding: 7px 7px 0;
+  }
+}
