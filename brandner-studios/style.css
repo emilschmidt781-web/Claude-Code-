@@ -4449,3 +4449,99 @@ body.show-grid h3 {
 .marquee-track {
   letter-spacing: -0.02em;
 }
+
+/* Logo (Bilddatei statt Schriftzug) */
+.logo,
+.menu-open .logo {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: inherit;
+  filter: none;
+}
+
+.logo img {
+  display: block;
+  height: 46px;
+  width: auto;
+  transition: transform 0.4s var(--ease);
+}
+
+.logo:hover img {
+  transform: scale(1.03);
+}
+
+.logo .logo-light,
+.menu-open .logo .logo-dark {
+  display: none;
+}
+
+.menu-open .logo .logo-light {
+  display: block;
+}
+
+.site-footer .logo img {
+  height: 52px;
+}
+
+@media (max-width: 759px) {
+  .logo img {
+    height: 36px;
+  }
+  .nav-actions .btn-small {
+    display: none;
+  }
+}
+
+/* Intro mit animiertem Logo-Zeichen */
+.intro-mark {
+  width: clamp(110px, 22vw, 170px);
+  height: auto;
+  overflow: visible;
+}
+
+.intro-mark .stem {
+  transform-origin: 50% 100%;
+  animation: stemUp 0.5s var(--ease) both;
+}
+
+.intro-mark .bowl {
+  animation: bowlIn 0.55s var(--ease) both;
+}
+
+.intro-mark .bowl.b2 {
+  animation-delay: 0.12s;
+}
+
+.intro-mark .dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dotPop 0.5s cubic-bezier(0.34, 1.8, 0.64, 1) both 0.35s;
+}
+
+@keyframes stemUp {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes bowlIn {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes dotPop {
+  from {
+    transform: scale(0);
+  }
+}
+
+.legal h1 {
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}

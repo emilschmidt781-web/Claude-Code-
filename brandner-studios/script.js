@@ -334,16 +334,14 @@ if (!reduceMotion && !seenIntro) {
   const intro = document.createElement("div");
   intro.className = "intro";
   intro.setAttribute("aria-hidden", "true");
-  intro.innerHTML = '<div class="intro-inner"><div class="intro-logo"></div><div class="intro-bar"><i></i></div></div>';
+  intro.innerHTML =
+    '<div class="intro-inner"><svg class="intro-mark" viewBox="0 0 100 100" aria-hidden="true">' +
+    '<rect class="stem" x="6" y="4" width="22" height="92" rx="6" fill="#fff"/>' +
+    '<path class="bowl" d="M32 4h30a22 22 0 0 1 0 44H32z" fill="#fff"/>' +
+    '<path class="bowl b2" d="M32 52h36a22 22 0 0 1 0 44H32z" fill="#fff"/>' +
+    '<circle class="dot" cx="92" cy="11" r="7" fill="#d8ff3e"/></svg><div class="intro-bar"><i></i></div></div>';
   document.body.appendChild(intro);
   document.documentElement.style.overflow = "hidden";
-  const logo = intro.querySelector(".intro-logo");
-  const text = "<edgar-brandner/>";
-  let n = 0;
-  const type = setInterval(() => {
-    logo.textContent = text.slice(0, ++n);
-    if (n >= text.length) clearInterval(type);
-  }, 28);
   setTimeout(() => {
     intro.classList.add("out");
     document.documentElement.style.overflow = "";

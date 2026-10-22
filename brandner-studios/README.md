@@ -23,6 +23,20 @@ python3 -m http.server 8000   # http://localhost:8000
 9. **Footer** mit Abschluss-Aufruf, Seitenlinks und Kontakt
 10. **Handy**: feste Leiste unten mit Anrufen, WhatsApp und Anfragen
 
+## Logo
+
+Ein „B“ aus dunklem Balken und zwei Bögen im Verlauf Pink–Lavendel–Blau, dazu ein
+Lime-Punkt. Schriftzug BRANDNER (Inter Display Black, als Vektorpfade) mit STUDIOS und Verlaufslinie.
+
+| Datei | Wofür |
+| --- | --- |
+| `img/logo.svg` | Standard auf hellem Grund |
+| `img/logo-dunkel.svg` | auf dunklem Grund (weiße Schrift, Verlauf bleibt) |
+| `img/logo-weiss.svg` | komplett weiß, für Farbverläufe und Fotos |
+| `img/logo-marke.svg` | nur das Zeichen |
+| `img/logo-icon.svg` | App-Icon / Favicon (dunkles Quadrat) |
+| `img/apple-touch-icon.png`, `img/logo.png` | PNG-Versionen |
+
 ## Stil
 
 Hell und fett: Weiß und Creme (`#f7f3ea`), dunkle Schrift (`#1f1f22`), Inter in Schwarz (900)
