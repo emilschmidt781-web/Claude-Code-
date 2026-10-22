@@ -308,7 +308,7 @@ if (form) {
       "",
       message.value.trim() || "(keine Nachricht)",
     ].join("\n");
-    window.location.href = `mailto:edgarbrandner937@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:brandnerstudios@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     showToast("Dein E-Mail-Programm öffnet sich …");
   });
 
