@@ -16,14 +16,15 @@
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="fonts/InstrumentSerif-normal-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/InstrumentSerif-italic-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/Inter-normal-400.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Schriften der fünf Beispiel-Websites (für die Namen in der Beispiel-Liste) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Fraunces:ital,opsz,wght@1,9..144,300&family=Rubik+Mono+One&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
     <link rel="stylesheet" href="style.css" />
     <script type="application/ld+json">
@@ -75,10 +76,11 @@
           <li><a href="#leistungen"><small>02</small>Leistungen</a></li>
           <li><a href="#konzepte"><small>03</small>Beispiele</a></li>
           <li><a href="#warum"><small>04</small>Warum ich</a></li>
-          <li><a href="#ablauf"><small>05</small>Ablauf</a></li>
-          <li><a href="#ueber-mich"><small>06</small>Über mich</a></li>
-          <li><a href="#faq"><small>07</small>FAQ</a></li>
-          <li><a href="#kontakt"><small>08</small>Kontakt</a></li>
+          <li><a href="#zahlen"><small>05</small>Zahlen</a></li>
+          <li><a href="#ablauf"><small>06</small>Ablauf</a></li>
+          <li><a href="#ueber-mich"><small>07</small>Über mich</a></li>
+          <li><a href="#faq"><small>08</small>FAQ</a></li>
+          <li><a href="#kontakt"><small>09</small>Kontakt</a></li>
         </ol>
         <div class="menu-foot">
           <a href="tel:+4915757320820">+49 1575 7320820</a>
@@ -298,11 +300,11 @@
             <a class="sc-preview" href="konzepte/kubus.html" target="_blank" rel="noopener">
               <span class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="sc-url">kubus.html</span><span class="sc-badge">Konzept</span></span>
               <span class="sc-imgs">
-                <img src="img/konzept-kubus.jpg" alt="Startseite Kubus Architektur" width="1280" height="800" data-i="0" class="on" />
-                <img src="img/konzept-kaffee.jpg" alt="Startseite Bohnenwerk Rösterei" width="1280" height="800" data-i="1" />
-                <img src="img/konzept-wein.jpg" alt="Startseite Weingut Rebenhang" width="1280" height="800" data-i="2" />
-                <img src="img/konzept-yoga.jpg" alt="Startseite Atem Yogastudio" width="1280" height="800" data-i="3" />
-                <img src="img/konzept-tattoo.jpg" alt="Startseite Nachtschicht Tattoo" width="1280" height="800" data-i="4" />
+                <img loading="lazy" src="img/konzept-kubus.jpg" alt="Startseite Kubus Architektur" width="1280" height="800" data-i="0" class="on" />
+                <img loading="lazy" src="img/konzept-kaffee.jpg" alt="Startseite Bohnenwerk Rösterei" width="1280" height="800" data-i="1" />
+                <img loading="lazy" src="img/konzept-wein.jpg" alt="Startseite Weingut Rebenhang" width="1280" height="800" data-i="2" />
+                <img loading="lazy" src="img/konzept-yoga.jpg" alt="Startseite Atem Yogastudio" width="1280" height="800" data-i="3" />
+                <img loading="lazy" src="img/konzept-tattoo.jpg" alt="Startseite Nachtschicht Tattoo" width="1280" height="800" data-i="4" />
               </span>
               <span class="sc-open">Demo ansehen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></span>
             </a>
@@ -379,6 +381,75 @@
               <div class="cmp-r"><i class="cmp-check"></i>HTTPS, Rechtstexte, keine unnötigen Tracker</div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- ZAHLEN -->
+      <section class="section" id="zahlen">
+        <div class="container">
+          <div class="head reveal">
+            <p class="eyebrow">Zahlen, die stimmen</p>
+            <h2 class="h2">Messbar<br /><em>schnell.</em></h2>
+            <p class="sub">So bewertet Googles Prüfwerkzeug Lighthouse diese Website. Genau so baue ich auch deine.</p>
+          </div>
+          <div class="rings reveal">
+            <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+              <defs>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fa8" /><stop offset=".5" stop-color="#b69cff" /><stop offset="1" stop-color="#5fb0ec" /></linearGradient>
+              </defs>
+            </svg>
+            <div class="ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
+              <b><span data-count="100">0</span></b>
+              <span class="ring-label">Performance</span>
+            </div>
+            <div class="ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
+              <b><span data-count="100">0</span></b>
+              <span class="ring-label">Barrierefreiheit</span>
+            </div>
+            <div class="ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
+              <b><span data-count="100">0</span></b>
+              <span class="ring-label">Best Practices</span>
+            </div>
+            <div class="ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
+              <b><span data-count="100">0</span></b>
+              <span class="ring-label">SEO</span>
+            </div>
+          </div>
+          <p class="rings-note reveal">Gemessen mit Google Lighthouse 12 (Desktop), Oktober 2026. Auf dem Handy: Performance 90–95, die anderen drei ebenfalls 100.</p>
+          <div class="facts reveal">
+            <div><b><span data-count="30">0</span> Min.</b><span>Kennenlernen – kostenlos</span></div>
+            <div><b><span data-count="1">0</span></b><span>fester Ansprechpartner</span></div>
+            <div><b><span data-count="5">0</span></b><span>Design-Stile als Demo</span></div>
+            <div><b><span data-count="0">0</span></b><span>Cookies auf dieser Seite</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ERFOLGE – noch ausgeblendet.
+        Sobald es echte Projekte und Kundenstimmen gibt: Zahlen und Zitat eintragen
+        und das Attribut "hidden" bei <section> entfernen. Nur echte Angaben verwenden.
+      -->
+      <section class="section" id="erfolge" hidden>
+        <div class="container">
+          <div class="head reveal">
+            <p class="eyebrow">Erfolge</p>
+            <h2 class="h2">Was Kunden<br /><em>sagen.</em></h2>
+          </div>
+          <div class="facts reveal">
+            <div><b><span data-count="0">0</span></b><span>umgesetzte Projekte</span></div>
+            <div><b><span data-count="0">0</span></b><span>zufriedene Kunden</span></div>
+            <div><b><span data-count="0">0</span></b><span>Branchen</span></div>
+            <div><b><span data-count="0">0</span></b><span>Jahre Erfahrung</span></div>
+          </div>
+          <figure class="quote reveal">
+            <blockquote>„Hier steht das Zitat eines echten Kunden.“</blockquote>
+            <figcaption><b>Name</b> · Firma, Ort</figcaption>
+          </figure>
         </div>
       </section>
 

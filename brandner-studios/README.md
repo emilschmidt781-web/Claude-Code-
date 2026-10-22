@@ -50,6 +50,20 @@ bitte stehen lassen, damit kein Eindruck echter Kundenprojekte entsteht (UWG §�
 - Quellen: `konzepte/*.html`, jeweils eine eigenständige Seite. Nach einer Änderung neu
   abfotografieren, zum Beispiel mit Playwright bei 1280 × 800.
 
+## Zahlen und Erfolge
+
+**Lighthouse-Werte** (Abschnitt „Zahlen, die stimmen“): gemessen mit Lighthouse 12, Oktober 2026.
+Desktop 100 / 100 / 100 / 100, Handy Performance 90–95, Rest 100. Nach dem Livegang bitte unter
+https://pagespeed.web.dev mit der echten Adresse neu messen und Werte sowie Datum in `index.html`
+anpassen (`style="--v: …"` und `data-count="…"` je Kreis, dazu der Satz darunter).
+
+**Erfolge** (Abschnitt `id="erfolge"`): ist noch ausgeblendet. Sobald es echte Projekte und eine
+echte Kundenstimme gibt, Zahlen und Zitat eintragen und `hidden` entfernen. Nur wahre Angaben
+verwenden – erfundene Zahlen sind irreführende Werbung (§ 5 UWG).
+
+**Schriften** liegen lokal in `fonts/` (SIL Open Font License). Nur die Schriften für die Namen der
+Beispiele kommen noch von Google Fonts und werden erst nach der Seite geladen.
+
 ## Stil
 
 Dunkel und technisch: fast schwarzer Hintergrund (`#0a0a0f`), schmale Serifen-Überschriften
