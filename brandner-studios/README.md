@@ -52,24 +52,22 @@ bitte stehen lassen, damit kein Eindruck echter Kundenprojekte entsteht (UWG §�
 
 ## Stil
 
-Hell und fett: Weiß und Creme (`#f7f3ea`), dunkle Schrift (`#1f1f22`), Inter in Schwarz (900)
-mit Großbuchstaben für große Überschriften. Farbverläufe von Pink (`#e0337a`) über Lavendel nach
-Blau (`#5fb0ec`) für Abschnittsköpfe und Zahlen, Lime bis Türkis für Logo und Hero-Überschrift.
-Hero, Menü und Kontakt liegen auf einem großen, langsam fließenden Verlauf. Schwarze und weiße
-Pillen-Knöpfe, runder schwarzer Menü-Knopf. Alle Farben stehen oben in `style.css` unter `:root`,
-der Stil-Block am Ende der Datei überschreibt die ältere dunkle Gestaltung.
+Dunkel und technisch: fast schwarzer Hintergrund (`#0a0a0f`), schmale Serifen-Überschriften
+(Instrument Serif), Mono-Labels (JetBrains Mono), Karten mit Raster und Leuchten, Terminal-Fenster
+und eine Vergleichstabelle. Akzent Pink (`#ff5fa8`) mit Verlauf über Violett nach Blau aus dem Logo.
+Alle Farben stehen oben in `style.css` unter `:root`.
 
 ## Animationen
 
-- Intro beim ersten Besuch: Logo tippt sich, Vorhang fährt hoch (einmal pro Sitzung)
-- Hero: Wörter fahren einzeln hoch, „Vertrauen / Kunden / Anfragen“ wechselt, Aurora-Farbwolken
-- Eigener Mauszeiger mit Ring („Anfragen“ über den Beispielen), magnetische Knöpfe
-- Karten kippen in 3D mit Lichtreflex, Knöpfe mit einfahrender Füllung
-- Abschnitts-Labels „entschlüsseln“ sich, Überschriften erscheinen Wort für Wort
-- Laufband wird beim Scrollen schneller und neigt sich
-- Skyline mit Parallax, Sternen, Sternschnuppe, Mond und glitzerndem Main
-- Kontaktfläche wächst beim Scrollen auf volle Breite
-- Bei „Bewegung reduzieren“ und auf Touch-Geräten werden die aufwendigen Effekte abgeschaltet
+- Hero: Wörter fahren hoch, wechselndes Wort mit gemaltem Verlaufs-Marker, wanderndes Raster,
+  Farbwolken und ein Lichtkegel, der der Maus folgt
+- Leistungs-Karten: Farbfelder werden ausgewählt, Dateien leuchten auf, Fehler werden grün,
+  „Dein Betrieb“ klettert im Suchergebnis nach oben
+- Vergleichstabelle baut sich Zeile für Zeile auf, Häkchen springen auf
+- Ablauf: Terminal-Fenster tippen sich selbst, Zahlen zählen hoch
+- Beispiele: Vorschau wischt beim Wechsel ein, wechselt automatisch
+- Lichtkegel auf Karten, magnetische Knöpfe, Glanz auf dem Hauptknopf, Fortschrittsbalken
+- Bei „Bewegung reduzieren“ werden alle Animationen abgeschaltet
 
 ## Was neu ist
 

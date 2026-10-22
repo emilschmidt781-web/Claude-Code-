@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Webdesign Würzburg – Edgar Brandner | Websites für Unternehmen</title>
+    <title>Webdesign Würzburg – Brandner Studios | Websites für Unternehmen</title>
     <meta
       name="description"
-      content="Edgar Brandner – Webdesign, Entwicklung und Ausbesserungen für Unternehmen in Würzburg, Mainstockheim und Umgebung. Websites, die Vertrauen bringen. Alles aus einer Hand."
+      content="Brandner Studios – Webdesign, Entwicklung und Ausbesserungen für Unternehmen in Würzburg, Mainstockheim und Umgebung. Websites, die Vertrauen bringen. Alles aus einer Hand."
     />
-    <meta name="theme-color" content="#f7f3ea" />
-    <meta property="og:title" content="Edgar Brandner – Websites, die Vertrauen bringen." />
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta property="og:title" content="Brandner Studios – Websites, die Vertrauen bringen." />
     <meta property="og:description" content="Webdesign, Entwicklung und Ausbesserungen für Unternehmen. Würzburg & Umgebung." />
     <meta property="og:type" content="website" />
     <link rel="icon" href="img/logo-icon.svg" type="image/svg+xml" />
@@ -17,11 +17,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@600&display=swap"
       rel="stylesheet"
     />
+    <!-- Schriften der fünf Beispiel-Websites (für die Namen in der Beispiel-Liste) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@900&family=Caveat:wght@600&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Fraunces:ital,opsz,wght@1,9..144,300&family=Rubik+Mono+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@900&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Fraunces:ital,opsz,wght@1,9..144,300&family=Rubik+Mono+One&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -44,37 +45,40 @@
     </script>
   </head>
   <body>
-    <div class="progress" aria-hidden="true"></div>
-    <div class="grid-overlay" aria-hidden="true"></div>
-
+    <!-- HEADER -->
     <header class="site-header" id="top">
       <div class="container nav">
-        <a href="#top" class="logo" aria-label="Brandner Studios – zum Seitenanfang"><img class="logo-dark" src="img/logo.svg" alt="Brandner Studios" width="550" height="100" /><img class="logo-light" src="img/logo-weiss.svg" alt="" width="550" height="100" aria-hidden="true" /></a>
-        <nav class="nav-links" aria-label="Hauptnavigation">
-          <a href="#leistungen">Leistungen</a>
-          <a href="#konzepte">Beispiele</a>
-          <a href="#ablauf">Ablauf</a>
-          <a href="#ueber-mich">Über mich</a>
-          <a href="#faq">FAQ</a>
-        </nav>
+        <a href="#top" class="logo" aria-label="Brandner Studios – zum Seitenanfang">
+          <img src="img/logo-dunkel.svg" alt="Brandner Studios" width="550" height="100" />
+        </a>
         <div class="nav-actions">
-          <a href="#kontakt" class="btn btn-light btn-small">Anfragen</a>
+          <span class="pill pill-loc">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></svg>
+            Würzburg <i></i> Remote
+          </span>
+          <a href="#kontakt" class="btn btn-white btn-small">
+            Projekt anfragen
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+          </a>
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
-            <span></span><span></span>
+            <span></span><span></span><span></span>
           </button>
         </div>
       </div>
+      <div class="progress" aria-hidden="true"></div>
     </header>
 
     <div class="menu" id="menu" hidden>
       <nav class="container menu-inner" aria-label="Menü">
         <ol class="menu-links">
-          <li><a href="#leistungen"><small>01</small>Leistungen</a></li>
-          <li><a href="#konzepte"><small>02</small>Beispiele</a></li>
-          <li><a href="#ablauf"><small>03</small>Ablauf</a></li>
-          <li><a href="#ueber-mich"><small>04</small>Über mich</a></li>
-          <li><a href="#faq"><small>05</small>FAQ</a></li>
-          <li><a href="#kontakt"><small>06</small>Kontakt</a></li>
+          <li><a href="#angebot"><small>01</small>Angebot</a></li>
+          <li><a href="#leistungen"><small>02</small>Leistungen</a></li>
+          <li><a href="#konzepte"><small>03</small>Beispiele</a></li>
+          <li><a href="#warum"><small>04</small>Warum ich</a></li>
+          <li><a href="#ablauf"><small>05</small>Ablauf</a></li>
+          <li><a href="#ueber-mich"><small>06</small>Über mich</a></li>
+          <li><a href="#faq"><small>07</small>FAQ</a></li>
+          <li><a href="#kontakt"><small>08</small>Kontakt</a></li>
         </ol>
         <div class="menu-foot">
           <a href="tel:+4915757320820">+49 1575 7320820</a>
@@ -87,72 +91,104 @@
     <main>
       <!-- HERO -->
       <section class="hero">
-        <div class="container hero-copy">
-          <p class="eyebrow-pill reveal">
-            <span class="pulse" aria-hidden="true"></span>
-            Webdesign · Würzburg &amp; Umgebung
-          </p>
-          <h1 class="display hero-title">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-grid"></div>
+          <i class="orb o1"></i><i class="orb o2"></i>
+          <div class="hero-spot"></div>
+        </div>
+        <div class="container hero-inner">
+          <a href="#konzepte" class="announce rise">
+            <span class="announce-dot"></span>
+            <span>Fünf neue Design-Konzepte online</span>
+            <span class="announce-cta">Ansehen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></span>
+          </a>
+          <h1 class="hero-title">
             <span class="sr-only">Websites, die Vertrauen bringen.</span>
-            <span class="hero-lines" aria-hidden="true">
+            <span aria-hidden="true">
               <span class="line"><span class="w"><span>Websites,</span></span> <span class="w"><span>die</span></span></span>
-              <span class="line"><span class="w"><span class="rotator"><em class="accent-text is-active">Vertrauen</em><em class="accent-text">Kunden</em><em class="accent-text">Anfragen</em></span></span> <span class="w"><span>bringen.</span></span></span>
+              <span class="line"
+                ><span class="w"
+                  ><span class="rot"
+                    ><span class="swash"></span><em class="on">Vertrauen</em><em>Kunden</em><em>Anfragen</em></span
+                  ></span
+                >
+                <span class="w"><span>bringen.</span></span></span
+              >
             </span>
           </h1>
-          <p class="lead reveal">
-            Design, Entwicklung und Ausbesserungen für Unternehmen. Alles aus einer Hand.
-          </p>
-          <div class="hero-actions reveal">
-            <a href="#kontakt" class="btn btn-light">
+          <p class="hero-lead rise">Design, Entwicklung und Ausbesserungen für Unternehmen. Alles aus einer Hand – aus Mainstockheim bei Würzburg.</p>
+          <div class="hero-actions rise">
+            <a href="#kontakt" class="btn btn-primary">
               Projekt besprechen
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
-            <a href="#konzepte" class="btn btn-ghost">Beispiele</a>
+            <a href="#konzepte" class="btn btn-outline">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M3 8h18M8 21h8" /></svg>
+              Beispiele ansehen
+            </a>
           </div>
-          <ul class="trust reveal">
-            <li>Kostenloses Kennenlernen (30 Min.)</li>
-            <li>Ein Ansprechpartner für alles</li>
-            <li>Aus Mainstockheim bei Würzburg</li>
+          <ul class="hero-facts rise">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4 3 12l5 8M16 4l5 8-5 8" /></svg>Mobil zuerst</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>30 Min. Kennenlernen – kostenlos</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c1-4 4-6 8-6s7 2 8 6" /></svg>Ein Ansprechpartner</li>
           </ul>
-        </div>
-
-        <!-- Aufgefächerte Design-Konzepte am unteren Rand -->
-        <div class="stage" aria-hidden="true">
-          <div class="stage-card" style="--k: -2; --ak: 2; z-index: 1">
-            <div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span>Weingut Rebenhang<em>Konzept</em></div>
-            <img src="img/konzept-wein.jpg" alt="" width="1280" height="800" />
-          </div>
-          <div class="stage-card" style="--k: -1; --ak: 1; z-index: 2">
-            <div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span>Atem Yogastudio<em>Konzept</em></div>
-            <img src="img/konzept-yoga.jpg" alt="" width="1280" height="800" />
-          </div>
-          <div class="stage-card" style="--k: 0; --ak: 0; z-index: 3">
-            <div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span>Kubus Architektur<em>Konzept</em></div>
-            <img src="img/konzept-kubus.jpg" alt="" width="1280" height="800" />
-          </div>
-          <div class="stage-card" style="--k: 1; --ak: 1; z-index: 2">
-            <div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span>Bohnenwerk Rösterei<em>Konzept</em></div>
-            <img src="img/konzept-kaffee.jpg" alt="" width="1280" height="800" />
-          </div>
-          <div class="stage-card" style="--k: 2; --ak: 2; z-index: 1">
-            <div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span>Nachtschicht Tattoo<em>Konzept</em></div>
-            <img src="img/konzept-tattoo.jpg" alt="" width="1280" height="800" />
-          </div>
         </div>
       </section>
 
-      <!-- MARQUEE -->
-      <section class="marquee" aria-label="Schlagworte">
-        <div class="marquee-row">
-          <div class="marquee-track">
-            <span>Würzburg</span><b>✦</b><span>Webdesign</span><b>✦</b><span>Entwicklung</span><b>✦</b><span>Ausbesserungen</span><b>✦</b><span>Mainstockheim</span><b>✦</b>
-            <span>Würzburg</span><b>✦</b><span>Webdesign</span><b>✦</b><span>Entwicklung</span><b>✦</b><span>Ausbesserungen</span><b>✦</b><span>Mainstockheim</span><b>✦</b>
+      <!-- ANGEBOT -->
+      <section class="section" id="angebot">
+        <div class="container">
+          <div class="head reveal">
+            <p class="eyebrow">Das Angebot</p>
+            <h2 class="h2">Alles aus<br />einer Hand.</h2>
+            <p class="sub">Vom ersten Entwurf über die Technik bis zur Betreuung nach dem Livegang.</p>
           </div>
-        </div>
-        <div class="marquee-row reverse">
-          <div class="marquee-track">
-            <span>Gefunden werden</span><b>✦</b><span>Sicher</span><b>✦</b><span>Schnell</span><b>✦</b><span>Mobil</span><b>✦</b><span>Selbst pflegbar</span><b>✦</b>
-            <span>Gefunden werden</span><b>✦</b><span>Sicher</span><b>✦</b><span>Schnell</span><b>✦</b><span>Mobil</span><b>✦</b><span>Selbst pflegbar</span><b>✦</b>
+          <ul class="chips reveal" aria-label="Themen">
+            <li>Webdesign</li>
+            <li>Entwicklung</li>
+            <li>Ausbesserungen</li>
+            <li>SEO</li>
+            <li>Landingpages</li>
+            <li>WordPress</li>
+            <li>Shopify</li>
+            <li>React</li>
+            <li>Figma</li>
+            <li>Betreuung</li>
+          </ul>
+          <div class="bignum reveal">
+            <span class="bignum-mark" aria-hidden="true"></span>
+            <strong><span data-count="1">0</span><em>✦</em></strong>
+            <p>Ein Ansprechpartner für alles.<br />Und einer, der dir zuhört.</p>
+            <button type="button" class="codebox copy" data-copy="brandnerstudios@gmail.com">
+              brandnerstudios@gmail.com
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h8" /></svg>
+            </button>
+          </div>
+          <div class="offers reveal">
+            <a href="#kontakt" class="offer" data-need="Neue Website">
+              <span class="offer-num">01</span>
+              <span class="offer-txt"><b>Firmenwebsite</b><small>Leistungen, Team, Projekte und Kontakt · Handwerk, Mittelstand</small></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+            <a href="#kontakt" class="offer" data-need="Landingpage">
+              <span class="offer-num">02</span>
+              <span class="offer-txt"><b>Landingpage</b><small>Eine Seite für ein Angebot oder eine Aktion · Gastro, Handel</small></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+            <a href="#kontakt" class="offer" data-need="Ausbesserung">
+              <span class="offer-num">03</span>
+              <span class="offer-txt"><b>Ausbesserung</b><small>Bestehende Seite reparieren und auffrischen · Dienstleister</small></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+            <a href="#kontakt" class="offer" data-need="SEO &amp; Betreuung">
+              <span class="offer-num">04</span>
+              <span class="offer-txt"><b>SEO &amp; Betreuung</b><small>Gefunden werden, sicher bleiben, Updates und kleine Änderungen</small></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+            <a href="#kontakt" class="btn btn-outline btn-block">
+              Projekt anfragen
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
           </div>
         </div>
       </section>
@@ -160,353 +196,328 @@
       <!-- LEISTUNGEN -->
       <section class="section" id="leistungen">
         <div class="container">
-          <div class="section-head reveal">
+          <div class="head reveal">
             <p class="eyebrow">Leistungen</p>
-            <h2 class="display-md">Was ich mache.</h2>
+            <h2 class="h2">Was ich für dich<br />mache.</h2>
+            <p class="sub">Vier Bausteine, die zusammen eine Website ergeben, die für dich arbeitet.</p>
           </div>
-          <div class="carousel-nav" aria-label="Leistungen blättern">
-            <button type="button" class="car-btn" data-dir="-1" aria-label="Zurück"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
-            <button type="button" class="car-btn" data-dir="1" aria-label="Weiter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></button>
-          </div>
-          <div class="services">
-            <article class="card service reveal">
-              <span class="big-num">01</span>
-              <h3>Webdesign</h3>
-              <p>Ein Auftritt, der zu deiner Marke passt – klar aufgebaut, damit Besucher sofort finden, was sie suchen.</p>
+          <div class="features">
+            <!-- 01 Webdesign -->
+            <article class="feature reveal">
+              <div class="viz">
+                <div class="viz-design">
+                  <div class="vrow-head"><span>Farben · Schrift</span><b>Gewählt</b></div>
+                  <div class="swatches"><i style="--c: #ff5fa8"></i><i style="--c: #b69cff"></i><i style="--c: #5fb0ec"></i><i style="--c: #f2f1f6"></i><i style="--c: #17171f"></i></div>
+                  <div class="typo"><span>Aa</span><span class="typo-lines"><i></i><i></i><i></i></span></div>
+                </div>
+              </div>
+              <div class="feature-body">
+                <span class="fnum">01</span>
+                <div class="ftop">
+                  <span class="ficon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.5-.8 1.5-1.5 0-1.5-1-1.5-1-3 0-1 .8-1.5 2-1.5H17a4 4 0 0 0 4-4C21 6 17 3 12 3z" /><circle cx="7.5" cy="11" r="1" /><circle cx="10" cy="7" r="1" /><circle cx="15" cy="7" r="1" /></svg></span>
+                  <div><p class="flabel">Leistung</p><h3>Webdesign</h3></div>
+                </div>
+                <p>Ein Auftritt, der zu deiner Marke passt – klar aufgebaut, damit Besucher sofort finden, was sie suchen.</p>
+                <p class="fnote">Farben, Schrift und Aufbau – passend zu dir.</p>
+              </div>
             </article>
-            <article class="card service reveal">
-              <span class="big-num">02</span>
-              <h3>Entwicklung</h3>
-              <p>Schnell, mobil und selbst pflegbar – sauber umgesetzt mit der Technik, die zu deinem Projekt passt.</p>
+            <!-- 02 Entwicklung -->
+            <article class="feature reveal">
+              <div class="viz">
+                <div class="viz-files">
+                  <div class="file"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4 3 12l5 8M16 4l5 8-5 8" /></svg>index.html<em>/ mobil</em></div>
+                  <div class="file"><i></i>style.css<em>schnell</em></div>
+                  <div class="file"><i></i>script.js<em>sauber</em></div>
+                  <div class="vrow-foot"><span>HTML · CSS · JS</span><b>Gebaut</b></div>
+                </div>
+              </div>
+              <div class="feature-body">
+                <span class="fnum">02</span>
+                <div class="ftop">
+                  <span class="ficon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4 3 12l5 8M16 4l5 8-5 8M14 4l-4 16" /></svg></span>
+                  <div><p class="flabel">Leistung</p><h3>Entwicklung</h3></div>
+                </div>
+                <p>Schnell, mobil und selbst pflegbar – sauber umgesetzt mit der Technik, die zu deinem Projekt passt.</p>
+                <p class="fnote">Von HTML bis WordPress oder Shopify.</p>
+              </div>
             </article>
-            <article class="card service reveal">
-              <span class="big-num">03</span>
-              <h3>Ausbesserungen</h3>
-              <p>Fehler beheben, Inhalte aktualisieren und eine bestehende Seite wieder auf Stand bringen.</p>
+            <!-- 03 Ausbesserungen -->
+            <article class="feature reveal">
+              <div class="viz">
+                <div class="viz-fix">
+                  <div class="fix"><i></i>Bild lädt nicht<em>behoben</em></div>
+                  <div class="fix"><i></i>Kontaktformular<em>repariert</em></div>
+                  <div class="fix"><i></i>Öffnungszeiten<em>aktuell</em></div>
+                </div>
+              </div>
+              <div class="feature-body">
+                <span class="fnum">03</span>
+                <div class="ftop">
+                  <span class="ficon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z" /></svg></span>
+                  <div><p class="flabel">Leistung</p><h3>Ausbesserungen</h3></div>
+                </div>
+                <p>Fehler beheben, Inhalte aktualisieren und eine bestehende Seite wieder auf Stand bringen.</p>
+                <p class="fnote">Du musst nicht gleich alles neu machen.</p>
+              </div>
             </article>
-            <article class="card service reveal">
-              <span class="big-num">04</span>
-              <h3>SEO &amp; Betreuung</h3>
-              <p>Gefunden werden, sicher bleiben – mit SEO-Grundlagen, Updates und einem festen Ansprechpartner.</p>
+            <!-- 04 SEO & Betreuung -->
+            <article class="feature reveal">
+              <div class="viz">
+                <div class="viz-seo">
+                  <div class="vrow-head"><span>Ziel · gefunden werden</span><b>Seite 1</b></div>
+                  <ol class="serp">
+                    <li class="me"><span>Dein Betrieb</span><em>dein-betrieb.de</em></li>
+                    <li><span>Mitbewerber A</span><em>beispiel-a.de</em></li>
+                    <li><span>Mitbewerber B</span><em>beispiel-b.de</em></li>
+                  </ol>
+                </div>
+              </div>
+              <div class="feature-body">
+                <span class="fnum">04</span>
+                <div class="ftop">
+                  <span class="ficon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></svg></span>
+                  <div><p class="flabel">Leistung</p><h3>SEO &amp; Betreuung</h3></div>
+                </div>
+                <p>Gefunden werden, sicher bleiben – mit SEO-Grundlagen, Updates und einem festen Ansprechpartner.</p>
+                <p class="fnote">Auch nach dem Livegang für dich da.</p>
+              </div>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- BEISPIELE: Design-Konzepte als Online-Demos -->
-      <section class="section" id="konzepte">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Beispiele</p>
-            <h2 class="display-md">Fünf Stile, fünf Ideen.</h2>
-            <p class="section-note">Startseiten in fünf Stilen – zum Anklicken.</p>
-          </div>
-          <div class="showcase reveal">
-            <a class="sc-preview" href="konzepte/kubus.html" target="_blank" rel="noopener">
-              <img src="img/konzept-kubus.jpg" alt="Startseite Kubus Architektur" width="1280" height="800" loading="lazy" data-i="0" class="on" />
-              <img src="img/konzept-kaffee.jpg" alt="Startseite Bohnenwerk Rösterei" width="1280" height="800" loading="lazy" data-i="1" />
-              <img src="img/konzept-wein.jpg" alt="Startseite Weingut Rebenhang" width="1280" height="800" loading="lazy" data-i="2" />
-              <img src="img/konzept-yoga.jpg" alt="Startseite Atem Yogastudio" width="1280" height="800" loading="lazy" data-i="3" />
-              <img src="img/konzept-tattoo.jpg" alt="Startseite Nachtschicht Tattoo" width="1280" height="800" loading="lazy" data-i="4" />
-              <span class="sc-open">Demo ansehen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></span>
-              <span class="sc-badge">Konzept</span>
-            </a>
-            <ol class="sc-list" aria-label="Beispiele">
-            <li>
-              <button type="button" class="sc-item on" data-i="0" data-href="konzepte/kubus.html" style="--c: #e63b2e" aria-pressed="true">
-                <span class="sc-num">01</span>
-                <span class="sc-name sc-name-kubus">Kubus Architektur</span>
-                <span class="sc-style">Bauhaus · geometrisch</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="sc-item" data-i="1" data-href="konzepte/kaffee.html" style="--c: #ffe600" aria-pressed="false">
-                <span class="sc-num">02</span>
-                <span class="sc-name sc-name-kaffee">Bohnenwerk Rösterei</span>
-                <span class="sc-style">Brutalistisch · laut</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="sc-item" data-i="2" data-href="konzepte/wein.html" style="--c: #8a2a3f" aria-pressed="false">
-                <span class="sc-num">03</span>
-                <span class="sc-name sc-name-wein">Weingut Rebenhang</span>
-                <span class="sc-style">Editorial · edel</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="sc-item" data-i="3" data-href="konzepte/yoga.html" style="--c: #b9a3f0" aria-pressed="false">
-                <span class="sc-num">04</span>
-                <span class="sc-name sc-name-yoga">Atem Yogastudio</span>
-                <span class="sc-style">Soft · luftig</span>
-              </button>
-            </li>
-            <li>
-              <button type="button" class="sc-item" data-i="4" data-href="konzepte/tattoo.html" style="--c: #ff2e88" aria-pressed="false">
-                <span class="sc-num">05</span>
-                <span class="sc-name sc-name-tattoo">Nachtschicht Tattoo</span>
-                <span class="sc-style">Neon · Siebdruck</span>
-              </button>
-            </li>
-            </ol>
           </div>
         </div>
       </section>
 
       <!-- BEISPIELE -->
-      <section class="section" id="beispiele">
+      <section class="section" id="konzepte">
         <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Angebot</p>
-            <h2 class="display-md">Was ich für dich baue.</h2>
+          <div class="head reveal">
+            <p class="eyebrow">Beispiele</p>
+            <h2 class="h2">Fünf Stile,<br />fünf Ideen.</h2>
+            <p class="sub">Startseiten in fünf Stilen – zum Anklicken.</p>
           </div>
-          <div class="examples">
-            <a href="#kontakt" class="card example reveal" data-need="Neue Website">
-              <div class="example-preview pv-firma" aria-hidden="true">
-                <div class="pv-nav"></div><div class="pv-hero"></div><div class="pv-row"><i></i><i></i><i></i></div>
-              </div>
-              <div class="example-body">
-                <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
-                <h3>Firmenwebsite</h3>
-                <p>Leistungen, Team, Projekte und Kontakt.</p>
-                <p class="tags">Handwerk · Mittelstand</p>
-              </div>
+          <div class="showcase reveal">
+            <a class="sc-preview" href="konzepte/kubus.html" target="_blank" rel="noopener">
+              <span class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="sc-url">kubus.html</span><span class="sc-badge">Konzept</span></span>
+              <span class="sc-imgs">
+                <img src="img/konzept-kubus.jpg" alt="Startseite Kubus Architektur" width="1280" height="800" data-i="0" class="on" />
+                <img src="img/konzept-kaffee.jpg" alt="Startseite Bohnenwerk Rösterei" width="1280" height="800" data-i="1" />
+                <img src="img/konzept-wein.jpg" alt="Startseite Weingut Rebenhang" width="1280" height="800" data-i="2" />
+                <img src="img/konzept-yoga.jpg" alt="Startseite Atem Yogastudio" width="1280" height="800" data-i="3" />
+                <img src="img/konzept-tattoo.jpg" alt="Startseite Nachtschicht Tattoo" width="1280" height="800" data-i="4" />
+              </span>
+              <span class="sc-open">Demo ansehen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></span>
             </a>
-            <a href="#kontakt" class="card example reveal" data-need="Landingpage">
-              <div class="example-preview pv-landing" aria-hidden="true">
-                <div class="pv-big"></div><div class="pv-cta"></div><div class="pv-strip"></div>
-              </div>
-              <div class="example-body">
-                <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
-                <h3>Landingpage</h3>
-                <p>Eine Seite für ein Angebot oder eine Aktion.</p>
-                <p class="tags">Gastro · Handel</p>
-              </div>
-            </a>
-            <a href="#kontakt" class="card example reveal" data-need="Ausbesserung">
-              <div class="example-preview pv-fix" aria-hidden="true">
-                <div class="pv-before"><i></i><i></i><i></i></div>
-                <div class="pv-after"><i></i><i></i><i></i></div>
-                <span class="pv-handle"></span>
-              </div>
-              <div class="example-body">
-                <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
-                <h3>Ausbesserung</h3>
-                <p>Bestehende Seite reparieren und auffrischen.</p>
-                <p class="tags">Dienstleister</p>
-              </div>
-            </a>
+            <ol class="sc-list" aria-label="Beispiele">
+              <li>
+                <button type="button" class="sc-item on" data-i="0" data-href="konzepte/kubus.html" style="--c: #e63b2e" aria-pressed="true">
+                  <span class="sc-num">01</span><span class="sc-name sc-name-kubus">Kubus Architektur</span><span class="sc-style">Bauhaus · geometrisch</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="sc-item" data-i="1" data-href="konzepte/kaffee.html" style="--c: #ffe600" aria-pressed="false">
+                  <span class="sc-num">02</span><span class="sc-name sc-name-kaffee">Bohnenwerk Rösterei</span><span class="sc-style">Brutalistisch · laut</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="sc-item" data-i="2" data-href="konzepte/wein.html" style="--c: #c0485f" aria-pressed="false">
+                  <span class="sc-num">03</span><span class="sc-name sc-name-wein">Weingut Rebenhang</span><span class="sc-style">Editorial · edel</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="sc-item" data-i="3" data-href="konzepte/yoga.html" style="--c: #b9a3f0" aria-pressed="false">
+                  <span class="sc-num">04</span><span class="sc-name sc-name-yoga">Atem Yogastudio</span><span class="sc-style">Soft · luftig</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="sc-item" data-i="4" data-href="konzepte/tattoo.html" style="--c: #ff2e88" aria-pressed="false">
+                  <span class="sc-num">05</span><span class="sc-name sc-name-tattoo">Nachtschicht Tattoo</span><span class="sc-style">Neon · Siebdruck</span>
+                </button>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
 
-      <!-- VORTEILE -->
-      <section class="section perks-section" id="vorteile">
+      <!-- WARUM -->
+      <section class="section" id="warum">
         <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Was du bekommst</p>
-            <h2 class="display-md">Eine Website, die <em>arbeitet</em>.</h2>
+          <div class="head reveal">
+            <p class="eyebrow">Typische Probleme</p>
+            <h2 class="h2">Warum Brandner<br />Studios.</h2>
+            <p class="sub">Was an vielen Websites hakt – und wie ich es löse.</p>
           </div>
-          <ul class="perks">
-            <li class="perk reveal">
-              <span class="perk-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
-              <h3>Mobil zuerst</h3>
-              <p>Sieht auf jedem Handy gut aus und lässt sich mit dem Daumen bedienen.</p>
-            </li>
-            <li class="perk reveal">
-              <span class="perk-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
-              <h3>Schnell</h3>
-              <p>Kurze Ladezeiten und kein Ballast. Besucher springen nicht ab.</p>
-            </li>
-            <li class="perk reveal">
-              <span class="perk-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span>
-              <h3>Bei Google gefunden</h3>
-              <p>Saubere Technik und lokale SEO-Grundlagen, damit Kunden dich finden.</p>
-            </li>
-            <li class="perk reveal">
-              <span class="perk-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
-              <h3>Sicher</h3>
-              <p>HTTPS, Impressum und Datenschutz – und keine Tracker, die du nicht brauchst.</p>
-            </li>
-            <li class="perk reveal">
-              <span class="perk-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13 7 4 4"/></svg></span>
-              <h3>Selbst pflegbar</h3>
-              <p>Texte und Bilder änderst du später selbst, ohne zu programmieren.</p>
-            </li>
-            <li class="perk reveal">
-              <span class="perk-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span>
-              <h3>Ein Ansprechpartner</h3>
-              <p>Von der ersten Skizze bis zum Livegang – und auch danach.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- STATEMENT -->
-      <section class="statement" aria-label="Region">
-        <svg class="skyline" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#5f6fd0" />
-              <stop offset=".4" stop-color="#5fb0ec" />
-              <stop offset=".72" stop-color="#e5a3cf" />
-              <stop offset="1" stop-color="#e0337a" />
-            </linearGradient>
-            <linearGradient id="river" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#4a2a5c" /><stop offset="1" stop-color="#1f1f22" />
-            </linearGradient>
-            <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#fff" stop-opacity="0" /><stop offset="1" stop-color="#fff" />
-            </linearGradient>
-          </defs>
-          <rect width="1440" height="400" fill="url(#dusk)" />
-          <g class="stars" fill="#fff"><circle cx="497" cy="161" r="1" style="--t:1.5s" /><circle cx="1246" cy="131" r="0.8" style="--t:2.4s" /><circle cx="970" cy="76" r="1" style="--t:0.8s" /><circle cx="973" cy="148" r="1.5" style="--t:1.6s" /><circle cx="318" cy="69" r="1" style="--t:3.5s" /><circle cx="1081" cy="109" r="0.8" style="--t:2.7s" /><circle cx="141" cy="50" r="0.8" style="--t:1.2s" /><circle cx="73" cy="78" r="1.5" style="--t:2.4s" /><circle cx="803" cy="192" r="1.5" style="--t:1.6s" /><circle cx="1191" cy="123" r="1" style="--t:3.5s" /><circle cx="209" cy="19" r="1" style="--t:2.0s" /><circle cx="538" cy="182" r="1.5" style="--t:3.1s" /><circle cx="626" cy="117" r="1.5" style="--t:2.3s" /><circle cx="1103" cy="159" r="1.5" style="--t:2.3s" /><circle cx="699" cy="184" r="0.8" style="--t:3.4s" /><circle cx="1250" cy="181" r="1" style="--t:2.8s" /><circle cx="678" cy="148" r="0.8" style="--t:2.9s" /><circle cx="442" cy="172" r="1.2" style="--t:1.1s" /><circle cx="139" cy="133" r="1.5" style="--t:0.4s" /><circle cx="146" cy="115" r="1" style="--t:0.1s" /><circle cx="884" cy="116" r="0.8" style="--t:0.2s" /><circle cx="1268" cy="21" r="1.5" style="--t:2.9s" /><circle cx="687" cy="151" r="1.2" style="--t:2.0s" /><circle cx="83" cy="89" r="0.8" style="--t:0.3s" /><circle cx="1238" cy="147" r="0.8" style="--t:3.8s" /><circle cx="845" cy="84" r="1.2" style="--t:0.6s" /><circle cx="96" cy="96" r="1.2" style="--t:1.4s" /><circle cx="293" cy="106" r="1.5" style="--t:1.8s" /><circle cx="1075" cy="108" r="0.8" style="--t:2.5s" /><circle cx="1048" cy="79" r="1.5" style="--t:2.5s" /><circle cx="496" cy="87" r="1.5" style="--t:3.9s" /><circle cx="1077" cy="87" r="1.2" style="--t:0.0s" /><circle cx="860" cy="158" r="1.2" style="--t:0.1s" /><circle cx="1271" cy="160" r="1" style="--t:0.2s" /><circle cx="1294" cy="95" r="1.5" style="--t:1.4s" /><circle cx="732" cy="165" r="1.2" style="--t:3.0s" /><circle cx="55" cy="160" r="0.8" style="--t:3.8s" /><circle cx="53" cy="104" r="1.2" style="--t:2.5s" /><circle cx="621" cy="161" r="1.2" style="--t:0.7s" /><circle cx="389" cy="90" r="1.2" style="--t:3.4s" /><circle cx="550" cy="86" r="1.5" style="--t:0.4s" /><circle cx="65" cy="155" r="1" style="--t:1.2s" /><circle cx="465" cy="177" r="1.2" style="--t:1.0s" /><circle cx="393" cy="183" r="1.5" style="--t:2.6s" /><circle cx="208" cy="36" r="1.2" style="--t:3.8s" /><circle cx="1392" cy="67" r="1.5" style="--t:3.2s" /><circle cx="356" cy="30" r="1.2" style="--t:3.0s" /><circle cx="456" cy="155" r="1.5" style="--t:1.1s" /><circle cx="257" cy="18" r="1" style="--t:1.3s" /><circle cx="1187" cy="56" r="1.2" style="--t:1.4s" /><circle cx="1324" cy="31" r="1.2" style="--t:2.4s" /><circle cx="872" cy="84" r="1.2" style="--t:1.9s" /><circle cx="1308" cy="116" r="1.2" style="--t:1.7s" /><circle cx="848" cy="19" r="1.5" style="--t:0.6s" /><circle cx="19" cy="132" r="1.5" style="--t:2.2s" /><circle cx="464" cy="18" r="1.5" style="--t:3.3s" /><circle cx="1367" cy="142" r="1.2" style="--t:2.2s" /><circle cx="475" cy="27" r="1.2" style="--t:0.5s" /><circle cx="510" cy="21" r="0.8" style="--t:3.6s" /><circle cx="1430" cy="141" r="1" style="--t:3.6s" /></g>
-          <g class="shooting"><rect x="0" y="0" width="120" height="1.6" rx=".8" fill="url(#trail)" /></g>
-          <circle class="moon" cx="1180" cy="90" r="26" fill="#ffe9c7" />
-          <!-- Hügel mit der Festung Marienberg -->
-          <g class="layer" data-depth="0.18">
-            <path fill="#3b2a63" d="M0 340V290C120 262 230 222 360 214C480 206 560 236 660 270C760 300 900 296 1440 300V340Z" />
-            <path fill="#33245a" d="M330 222V206h26v-12h16v-16l9-14 9 14v16h40v-8h22v-10l7-12 7 12v10h18v20h22v16Z" />
-            <circle cx="372" cy="200" r="1.6" fill="#ffd27a" class="blink" /><circle cx="440" cy="204" r="1.6" fill="#ffd27a" class="blink" />
-          </g>
-          <!-- Altstadt mit Dom-Türmen -->
-          <g class="layer" data-depth="0.08">
-            <path fill="#2a1f4e" d="M560 322V288l10 -10l10 10H580V300H600V300H630V292H640V270h4l9-30l9 30h4V288H666V292l10 -10l10 10H686V292H700V230h4l9-30l9 30h4V288H726V282l15 -10l15 10H756V300l20 -10l20 10H796V292H816V292H836V292H860V262a16 16 0 0 1 32 0V288H892V282H912V300H952V292H980V245h4l9-30l9 30h4V288H1006V288l15 -10l15 10H1036V300l20 -10l20 10H1076V294H1096V292H1120V270h4l9-30l9 30h4V288H1146V294l15 -10l15 10H1176V300l20 -10l20 10H1216V294H1246V292H1260V282a16 16 0 0 1 32 0V288H1292V282l15 -10l15 10H1322V282l15 -10l15 10H1352V294H1392V300l20 -10l20 10H1432V282H1440V322Z" transform="translate(0 8)" />
-            <g class="lights" fill="#ffd27a" transform="translate(0 8)"><circle cx="864" cy="304" r="1.6" /><circle cx="644" cy="288" r="1.6" /><circle cx="1094" cy="298" r="1.6" /><circle cx="738" cy="309" r="1.6" /><circle cx="920" cy="289" r="1.6" /><circle cx="1070" cy="298" r="1.6" /><circle cx="610" cy="306" r="1.6" /><circle cx="649" cy="309" r="1.6" /><circle cx="1141" cy="303" r="1.6" /><circle cx="1378" cy="311" r="1.6" /><circle cx="891" cy="295" r="1.6" /><circle cx="1281" cy="296" r="1.6" /><circle cx="1178" cy="300" r="1.6" /><circle cx="1163" cy="310" r="1.6" /></g>
-          </g>
-          <!-- Main mit Alter Mainbrücke -->
-          <rect y="328" width="1440" height="72" fill="url(#river)" />
-          <path fill="#1f1f22" d="M480 322h620v8H480zM520 330h12v18h-12zM620 330h12v18h-12zM720 330h12v18h-12zM820 330h12v18h-12zM920 330h12v18h-12zM1020 330h12v18h-12z" />
-          <g class="ripples" fill="#ffd27a" opacity=".3"><rect x="600" y="356" width="60" height="1.5" /><rect x="760" y="366" width="90" height="1.5" /><rect x="980" y="360" width="50" height="1.5" /><rect x="360" y="352" width="70" height="1.5" /><rect x="1160" y="372" width="40" height="1.5" /></g>
-        </svg>
-        <div class="container statement-text reveal">
-          <p class="display-md">Aus Würzburg.<br /><em>Für die Region</em> und überall.</p>
+          <div class="compare reveal">
+            <div class="cmp-head cmp-left">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="m6 6 12 12" /></svg>
+              Ohne Plan
+            </div>
+            <div class="cmp-head cmp-right">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>
+              Mit Brandner Studios
+            </div>
+            <div class="cmp-row">
+              <div class="cmp-l"><span>01</span>Die Seite sieht auf dem Handy kaputt aus<i class="cmp-arrow"></i></div>
+              <div class="cmp-r"><i class="cmp-check"></i>Mobil zuerst gebaut, mit dem Daumen bedienbar</div>
+            </div>
+            <div class="cmp-row">
+              <div class="cmp-l"><span>02</span>Kunden finden dich bei Google nicht<i class="cmp-arrow"></i></div>
+              <div class="cmp-r"><i class="cmp-check"></i>Saubere Technik und lokale SEO-Grundlagen</div>
+            </div>
+            <div class="cmp-row">
+              <div class="cmp-l"><span>03</span>Langes Laden – Besucher springen ab<i class="cmp-arrow"></i></div>
+              <div class="cmp-r"><i class="cmp-check"></i>Kurze Ladezeiten, kein Ballast</div>
+            </div>
+            <div class="cmp-row">
+              <div class="cmp-l"><span>04</span>Für jede kleine Änderung brauchst du jemanden<i class="cmp-arrow"></i></div>
+              <div class="cmp-r"><i class="cmp-check"></i>Texte und Bilder pflegst du selbst</div>
+            </div>
+            <div class="cmp-row">
+              <div class="cmp-l"><span>05</span>Viele Beteiligte, keiner fühlt sich zuständig<i class="cmp-arrow"></i></div>
+              <div class="cmp-r"><i class="cmp-check"></i>Ein Ansprechpartner – auch nach dem Livegang</div>
+            </div>
+            <div class="cmp-row">
+              <div class="cmp-l"><span>06</span>Impressum und Datenschutz fehlen oder veralten<i class="cmp-arrow"></i></div>
+              <div class="cmp-r"><i class="cmp-check"></i>HTTPS, Rechtstexte, keine unnötigen Tracker</div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- ABLAUF -->
       <section class="section" id="ablauf">
         <div class="container">
-          <div class="section-head reveal">
+          <div class="head reveal">
             <p class="eyebrow">Ablauf</p>
-            <h2 class="display-md">In vier Schritten online.</h2>
+            <h2 class="h2">Kennenlernen,<br />gestalten, online.</h2>
+            <p class="sub">Vier klare Schritte – du weißt immer, wo dein Projekt gerade steht.</p>
           </div>
-          <ol class="steps">
-            <li class="step reveal">
-              <span class="num">01</span>
-              <h3>Kennenlernen</h3>
-              <p class="meta">30 Min. · kostenlos</p>
-            </li>
-            <li class="step reveal">
-              <span class="num">02</span>
-              <h3>Konzept &amp; Design</h3>
-              <p class="meta">1–3 Wochen</p>
-            </li>
-            <li class="step reveal">
-              <span class="num">03</span>
-              <h3>Entwicklung</h3>
-              <p class="meta">2–4 Wochen</p>
-            </li>
-            <li class="step reveal">
-              <span class="num">04</span>
-              <h3>Launch &amp; Betreuung</h3>
-              <p class="meta">fortlaufend</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- ÜBER MICH -->
-      <section class="section about" id="ueber-mich">
-        <div class="container">
-          <div class="section-head reveal">
-            <p class="eyebrow">Über mich</p>
-            <h2 class="display-md">Hi, ich bin Edgar.</h2>
-          </div>
-          <div class="about-grid">
-          <div class="about-visual reveal">
-            <div class="portrait">
-              <img src="img/edgar-brandner.jpg" alt="Edgar Brandner, Webdesigner aus Mainstockheim bei Würzburg" width="880" height="1100" loading="lazy" />
+          <div class="flow reveal">
+            <div class="stats">
+              <div><span>Kennenlernen</span><b><em data-count="30">0</em> Min.</b></div>
+              <div><span>Kosten fürs Erstgespräch</span><b><em data-count="0">0</em> €</b></div>
+              <div><span>Ansprechpartner</span><b><em data-count="1">0</em></b></div>
             </div>
-            <figure class="polaroid">
-              <img src="img/edgar-privat.jpg" alt="Edgar Brandner lachend im Restaurant" width="640" height="640" loading="lazy" />
-              <figcaption>Abseits vom Bildschirm</figcaption>
-            </figure>
-            <div class="stamp" aria-hidden="true">
-              <svg viewBox="0 0 120 120">
-                <defs><path id="circle" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0" /></defs>
-                <text><textPath href="#circle">· WEBDESIGN · WÜRZBURG · WEBDESIGN · WÜRZBURG</textPath></text>
-              </svg>
-              <span>EB</span>
-            </div>
-          </div>
-          <div class="about-copy">
-            <p class="lead reveal">
-              Ich baue Websites für Unternehmen, von der ersten Skizze bis zum Livegang. Und ich helfe gerne, wenn an
-              deiner Seite <mark>nur etwas klemmt</mark>.
-            </p>
-            <p class="about-more reveal">
-              Du hast einen Ansprechpartner, der zuhört, mitdenkt und ehrlich sagt, was deine Seite wirklich braucht –
-              aus Mainstockheim bei Würzburg, persönlich oder remote.
-            </p>
-            <a href="#kontakt" class="btn btn-light reveal">Projekt besprechen</a>
-          </div>
+            <ol class="steps">
+              <li class="step">
+                <div class="step-head"><span class="step-num">01</span><div><h3>Kennenlernen</h3><p>Wir sprechen 30 Minuten über dein Projekt – kostenlos und unverbindlich.</p></div></div>
+                <div class="term">
+                  <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">brandner: kennenlernen</span><a href="#kontakt" class="term-btn">Termin anfragen</a></div>
+                  <pre class="term-body"><span class="tl cmd" data-type="$ brandner kennenlernen"></span><span class="tl out" data-type="✓ 30 Minuten · kostenlos · unverbindlich"></span></pre>
+                </div>
+              </li>
+              <li class="step">
+                <div class="step-head"><span class="step-num">02</span><div><h3>Konzept &amp; Design</h3><p>Aufbau, Farben und Entwürfe – abgestimmt mit dir.</p></div></div>
+                <div class="term">
+                  <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">brandner: design</span><span class="term-time">1–3 Wochen</span></div>
+                  <pre class="term-body"><span class="tl cmd" data-type="$ brandner design"></span><span class="tl out" data-type="▸ konzept ...... ✓ steht"></span><span class="tl out" data-type="▸ entwurf ...... ✓ abgestimmt"></span></pre>
+                </div>
+              </li>
+              <li class="step">
+                <div class="step-head"><span class="step-num">03</span><div><h3>Entwicklung</h3><p>Die Seite wird gebaut – mobil, schnell und für Google vorbereitet.</p></div></div>
+                <div class="term">
+                  <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">brandner: build</span><span class="term-time">2–4 Wochen</span></div>
+                  <pre class="term-body"><span class="tl cmd" data-type="$ brandner build"></span><span class="tl out" data-type="✓ mobil  ✓ schnell  ✓ seo"></span></pre>
+                </div>
+              </li>
+              <li class="step">
+                <div class="step-head"><span class="step-num">04</span><div><h3>Launch &amp; Betreuung</h3><p>Deine Seite geht online – und ich bleibe dein Ansprechpartner.</p></div></div>
+                <div class="term">
+                  <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">brandner: launch</span><span class="term-time">fortlaufend</span></div>
+                  <pre class="term-body"><span class="tl cmd" data-type="$ brandner launch"></span><span class="tl out" data-type="▸ website .... ✓ online"></span><span class="tl out" data-type="▸ betreuung .. ✓ läuft"></span></pre>
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
 
       <!-- WERKZEUGE -->
-      <section class="section stack" aria-labelledby="stack-title">
+      <section class="section" id="werkzeuge">
         <div class="container">
-          <div class="stack-head reveal">
-            <h2 class="stack-title" id="stack-title">Werkzeuge</h2>
-            <p>Damit baue ich deine Website.</p>
+          <div class="head reveal">
+            <p class="eyebrow">Werkzeuge</p>
+            <h2 class="h2">Die Technik, die<br />zu dir passt.</h2>
+            <p class="sub">Je nach Projekt nehme ich, was für dich am meisten Sinn ergibt.</p>
           </div>
-          <ul class="chips reveal" aria-label="Werkzeuge">
-            <li><span class="chip-icon" aria-hidden="true">&lt;/&gt;</span>HTML &amp; CSS</li>
-            <li><span class="chip-icon" aria-hidden="true">JS</span>JavaScript</li>
-            <li><span class="chip-icon" aria-hidden="true">⚛</span>React</li>
-            <li><span class="chip-icon" aria-hidden="true">W</span>WordPress</li>
-            <li><span class="chip-icon" aria-hidden="true">✦</span>Figma</li>
-            <li><span class="chip-icon" aria-hidden="true">🛍</span>Shopify</li>
+          <ul class="tools reveal">
+            <li><span class="tool-ic">&lt;/&gt;</span>HTML &amp; CSS</li>
+            <li><span class="tool-ic">JS</span>JavaScript</li>
+            <li><span class="tool-ic">R</span>React</li>
+            <li><span class="tool-ic">W</span>WordPress</li>
+            <li><span class="tool-ic">S</span>Shopify</li>
+            <li><span class="tool-ic">F</span>Figma</li>
           </ul>
         </div>
       </section>
 
-      <!-- FAQ -->
-      <section class="section faq" id="faq">
-        <div class="container faq-grid">
-          <div class="section-head reveal">
-            <p class="eyebrow">FAQ</p>
-            <h2 class="display-md">Gute Fragen.</h2>
-            <p class="faq-side">Deine Frage ist nicht dabei? <a href="#kontakt">Schreib mir einfach.</a></p>
+      <!-- ÜBER MICH -->
+      <section class="section" id="ueber-mich">
+        <div class="container about">
+          <div class="about-visual reveal">
+            <div class="portrait">
+              <img src="img/edgar-brandner.jpg" alt="Edgar Brandner, Webdesigner aus Mainstockheim bei Würzburg" width="880" height="1100" loading="lazy" />
+              <span class="portrait-tag"><i></i>Edgar Brandner · Gründer</span>
+            </div>
+            <figure class="polaroid">
+              <img src="img/edgar-privat.jpg" alt="Edgar Brandner lachend im Restaurant" width="640" height="640" loading="lazy" />
+              <figcaption>Abseits vom Bildschirm</figcaption>
+            </figure>
           </div>
-          <div class="faq-list">
-            <details class="faq-item reveal">
-              <summary>Was kostet eine Website?<span class="faq-icon" aria-hidden="true"></span></summary>
+          <div class="about-copy">
+            <div class="head reveal">
+              <p class="eyebrow">Über mich</p>
+              <h2 class="h2">Hi, ich bin<br />Edgar.</h2>
+            </div>
+            <p class="about-lead reveal">
+              Ich baue Websites für Unternehmen, von der ersten Skizze bis zum Livegang. Und ich helfe gerne, wenn an deiner Seite
+              <mark>nur etwas klemmt</mark>.
+            </p>
+            <p class="about-more reveal">
+              Du hast einen Ansprechpartner, der zuhört, mitdenkt und ehrlich sagt, was deine Seite wirklich braucht – aus Mainstockheim bei
+              Würzburg, persönlich oder remote.
+            </p>
+            <a href="#kontakt" class="btn btn-primary reveal">
+              Projekt besprechen
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="container faq">
+          <div class="head reveal">
+            <p class="eyebrow">FAQ</p>
+            <h2 class="h2">Gute Fragen.</h2>
+            <p class="sub">Deine Frage ist nicht dabei? <a href="#kontakt">Schreib mir einfach.</a></p>
+          </div>
+          <div class="faq-list reveal">
+            <details class="faq-item">
+              <summary><span>01</span>Was kostet eine Website?<i class="faq-icon"></i></summary>
               <div class="faq-a"><p>Das hängt vom Umfang ab: Eine Landingpage ist schneller gebaut als eine Firmenwebsite mit vielen Unterseiten. Im kostenlosen Kennenlernen klären wir, was du brauchst. Danach bekommst du ein klares Angebot, bevor es losgeht.</p></div>
             </details>
-            <details class="faq-item reveal">
-              <summary>Wie lange dauert es, bis meine Seite online ist?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <details class="faq-item">
+              <summary><span>02</span>Wie lange dauert es, bis meine Seite online ist?<i class="faq-icon"></i></summary>
               <div class="faq-a"><p>Meist ein paar Wochen: 1–3 Wochen für Konzept und Design, dann 2–4 Wochen für die Entwicklung. Kleinere Ausbesserungen gehen oft deutlich schneller.</p></div>
             </details>
-            <details class="faq-item reveal">
-              <summary>Meine Website gibt es schon. Kannst du sie nur ausbessern?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <details class="faq-item">
+              <summary><span>03</span>Meine Website gibt es schon. Kannst du sie nur ausbessern?<i class="faq-icon"></i></summary>
               <div class="faq-a"><p>Ja. Ich behebe Fehler, aktualisiere Inhalte und frische Design oder Technik auf – du musst nicht gleich alles neu machen.</p></div>
             </details>
-            <details class="faq-item reveal">
-              <summary>Kann ich die Inhalte später selbst ändern?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <details class="faq-item">
+              <summary><span>04</span>Kann ich die Inhalte später selbst ändern?<i class="faq-icon"></i></summary>
               <div class="faq-a"><p>Ja. Ich baue die Seite so, dass du Texte und Bilder selbst pflegen kannst. Wenn du lieber nichts anfassen willst, übernehme ich das.</p></div>
             </details>
-            <details class="faq-item reveal">
-              <summary>Kümmerst du dich auch nach dem Livegang?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <details class="faq-item">
+              <summary><span>05</span>Kümmerst du dich auch nach dem Livegang?<i class="faq-icon"></i></summary>
               <div class="faq-a"><p>Ja. Auf Wunsch betreue ich deine Seite fortlaufend: Updates, Sicherheit, kleine Änderungen und SEO.</p></div>
             </details>
-            <details class="faq-item reveal">
-              <summary>Arbeitest du nur in Würzburg?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <details class="faq-item">
+              <summary><span>06</span>Arbeitest du nur in Würzburg?<i class="faq-icon"></i></summary>
               <div class="faq-a"><p>Ich sitze in Mainstockheim bei Würzburg und treffe Kunden aus der Region gern persönlich. Alles andere läuft problemlos per Telefon und Video.</p></div>
             </details>
-            <details class="faq-item reveal">
-              <summary>Mit welcher Technik arbeitest du?<span class="faq-icon" aria-hidden="true"></span></summary>
+            <details class="faq-item">
+              <summary><span>07</span>Mit welcher Technik arbeitest du?<i class="faq-icon"></i></summary>
               <div class="faq-a"><p>Je nach Projekt mit HTML &amp; CSS, JavaScript und React, mit WordPress oder Shopify. Entworfen wird in Figma. Wir nehmen, was zu dir passt.</p></div>
             </details>
           </div>
@@ -514,26 +525,22 @@
       </section>
 
       <!-- KONTAKT -->
-      <section class="section contact" id="kontakt">
-        <div class="container contact-grid">
+      <section class="section" id="kontakt">
+        <div class="container contact">
           <div class="contact-info">
-            <p class="eyebrow reveal">Kontakt</p>
-            <h2 class="display-md reveal"><em>Lass uns</em> reden.</h2>
-            <p class="contact-lead reveal">Erzähl mir kurz, worum es geht. Das erste Kennenlernen dauert 30 Minuten und ist kostenlos und unverbindlich.</p>
+            <div class="head reveal">
+              <p class="eyebrow">Kontakt</p>
+              <h2 class="h2">Lass uns<br /><em>reden.</em></h2>
+              <p class="sub">Erzähl mir kurz, worum es geht. Das erste Kennenlernen dauert 30 Minuten und ist kostenlos und unverbindlich.</p>
+            </div>
             <dl class="contact-list reveal">
               <div>
                 <dt>E-Mail</dt>
-                <dd>
-                  <a href="mailto:brandnerstudios@gmail.com">brandnerstudios@gmail.com</a>
-                  <button type="button" class="copy" data-copy="brandnerstudios@gmail.com">Kopieren</button>
-                </dd>
+                <dd><a href="mailto:brandnerstudios@gmail.com">brandnerstudios@gmail.com</a><button type="button" class="copy mini" data-copy="brandnerstudios@gmail.com">Kopieren</button></dd>
               </div>
               <div>
                 <dt>Telefon</dt>
-                <dd>
-                  <a href="tel:+4915757320820">+49 1575 7320820</a>
-                  <button type="button" class="copy" data-copy="+49 1575 7320820">Kopieren</button>
-                </dd>
+                <dd><a href="tel:+4915757320820">+49 1575 7320820</a><button type="button" class="copy mini" data-copy="+49 1575 7320820">Kopieren</button></dd>
               </div>
               <div>
                 <dt>Ort</dt>
@@ -541,53 +548,44 @@
               </div>
             </dl>
             <div class="quick reveal">
-              <a class="btn btn-dark" href="tel:+4915757320820">Anrufen</a>
+              <a class="btn btn-outline" href="tel:+4915757320820">Anrufen</a>
               <a class="btn btn-outline" href="https://wa.me/4915757320820" target="_blank" rel="noopener">WhatsApp</a>
             </div>
           </div>
 
-          <form class="contact-form reveal" id="contact-form" novalidate>
-            <label>
-              Name
-              <input type="text" name="name" autocomplete="name" required />
-            </label>
-            <label>
-              E-Mail
-              <input type="email" name="email" autocomplete="email" required />
-            </label>
-            <label>
-              Was brauchst du?
-              <select name="need">
-                <option>Neue Website</option>
-                <option>Landingpage</option>
-                <option>Ausbesserung</option>
-                <option>SEO &amp; Betreuung</option>
-                <option>Etwas anderes</option>
-              </select>
-            </label>
-            <label>
-              Deine aktuelle Website <span class="opt">(falls vorhanden)</span>
-              <input type="text" name="website" inputmode="url" placeholder="z. B. meinbetrieb.de" />
-            </label>
-            <label>
-              Nachricht
-              <textarea name="message" rows="5" placeholder="Worum geht es?"></textarea>
-            </label>
-            <button type="submit" class="btn btn-light btn-block">
-              Anfrage senden
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </button>
-            <p class="form-note" role="status" aria-live="polite">Öffnet dein E-Mail-Programm mit der fertigen Nachricht.</p>
-          </form>
+          <div class="term term-form reveal">
+            <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">anfrage.txt</span><span class="term-time">● bereit</span></div>
+            <form class="contact-form" id="contact-form" novalidate>
+              <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+              <label>E-Mail<input type="email" name="email" autocomplete="email" required /></label>
+              <label>
+                Was brauchst du?
+                <select name="need">
+                  <option>Neue Website</option>
+                  <option>Landingpage</option>
+                  <option>Ausbesserung</option>
+                  <option>SEO &amp; Betreuung</option>
+                  <option>Etwas anderes</option>
+                </select>
+              </label>
+              <label>Deine aktuelle Website <span class="opt">(falls vorhanden)</span><input type="text" name="website" inputmode="url" placeholder="z. B. meinbetrieb.de" /></label>
+              <label>Nachricht<textarea name="message" rows="5" placeholder="Worum geht es?"></textarea></label>
+              <button type="submit" class="btn btn-primary btn-block">
+                Anfrage senden
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </button>
+              <p class="form-note" role="status" aria-live="polite">Öffnet dein E-Mail-Programm mit der fertigen Nachricht.</p>
+            </form>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-cta">
-          <p class="display-md">Bereit für eine Website, die <em>Vertrauen</em> bringt?</p>
-          <a href="#kontakt" class="btn btn-light">
+        <div class="footer-cta reveal">
+          <p class="h2">Bereit für eine Website,<br />die <em>Vertrauen</em> bringt?</p>
+          <a href="#kontakt" class="btn btn-primary">
             Kostenloses Kennenlernen
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </a>
@@ -619,14 +617,12 @@
     </footer>
 
     <nav class="mobile-cta" aria-label="Schnellkontakt">
-      <a href="tel:+4915757320820"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Anrufen</a>
-      <a href="https://wa.me/4915757320820" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/></svg>WhatsApp</a>
+      <a href="tel:+4915757320820"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /></svg>Anrufen</a>
+      <a href="https://wa.me/4915757320820" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z" /></svg>WhatsApp</a>
       <a href="#kontakt" class="primary">Anfragen</a>
     </nav>
 
-    <a href="#top" class="to-top" aria-label="Nach oben">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
-    </a>
+    <a href="#top" class="to-top" aria-label="Nach oben"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg></a>
     <div class="toast" role="status" aria-live="polite"></div>
 
     <script src="script.js"></script>
