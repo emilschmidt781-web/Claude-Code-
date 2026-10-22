@@ -23,6 +23,10 @@ Stand: 22. Oktober 2026
 - [ ] **Gewerbe anmelden** und Finanzamt informieren (falls noch nicht geschehen).
 - [ ] **Foto-Rechte**: kurze Bestätigung von der Person holen, die das Polaroid-Foto gemacht hat.
 - [ ] Nach dem Livegang auf https://pagespeed.web.dev neu messen und Werte im Abschnitt „Zahlen“ anpassen.
+- [ ] **Adresse anpassen**, falls eine eigene Domain kommt: in `index.html` (og:url, og:image, canonical,
+      Strukturdaten), `sitemap.xml` und `robots.txt` steht noch die GitHub-Pages-Adresse.
+- [ ] Nach dem Livegang die Seite in der **Google Search Console** anmelden und `sitemap.xml` einreichen.
+- [ ] Vorschaubild testen: Link an dich selbst per WhatsApp schicken.
 
 ## Veröffentlichung – aktueller Stand
 
@@ -61,9 +65,9 @@ Stand: 22. Oktober 2026
 
 ## Nächste Ideen
 
-1. Vorschaubild für WhatsApp, Instagram, LinkedIn (Open-Graph-Bild)
-2. `sitemap.xml`, `robots.txt`, eigene 404-Seite
-3. Abschnitt „Kostenloser Website-Check“
+1. ~~Vorschaubild für WhatsApp, Instagram, LinkedIn~~ – erledigt (`img/og-bild.jpg`)
+2. ~~`sitemap.xml`, `robots.txt`, eigene 404-Seite~~ – erledigt (404 greift bei eigener Domain/Netlify)
+3. ~~Abschnitt „Kostenloser Website-Check“~~ – erledigt (übernimmt die Adresse ins Kontaktformular)
 4. Visitenkarte und Flyer mit QR-Code als PDF
 5. Eigene Domain (z. B. brandnerstudios.de) und E-Mail kontakt@brandnerstudios.de
 6. Google-Unternehmensprofil anlegen (größter Hebel für „Webdesign Würzburg“)

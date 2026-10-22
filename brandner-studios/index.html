@@ -9,9 +9,19 @@
       content="Brandner Studios – Webdesign, Entwicklung und Ausbesserungen für Unternehmen in Würzburg, Mainstockheim und Umgebung. Websites, die Vertrauen bringen. Alles aus einer Hand."
     />
     <meta name="theme-color" content="#0a0a0f" />
-    <meta property="og:title" content="Brandner Studios – Websites, die Vertrauen bringen." />
+    <meta property="og:title" content="Brandner Studios – Websites, die Kunden bringen." />
     <meta property="og:description" content="Webdesign, Entwicklung und Ausbesserungen für Unternehmen. Würzburg & Umgebung." />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Brandner Studios" />
+    <!-- Adresse anpassen, sobald die eigene Domain steht (auch in sitemap.xml und robots.txt) -->
+    <meta property="og:url" content="https://emilschmidt781-web.github.io/Claude-Code-/brandner-studios/" />
+    <meta property="og:image" content="https://emilschmidt781-web.github.io/Claude-Code-/brandner-studios/img/og-bild.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Brandner Studios – Websites, die Kunden bringen." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://emilschmidt781-web.github.io/Claude-Code-/brandner-studios/" />
     <link rel="icon" href="img/logo-icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
     <link rel="preload" href="fonts/InstrumentSerif-normal-400.woff2" as="font" type="font/woff2" crossorigin />
@@ -25,8 +35,9 @@
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "Brandner Studios – Edgar Brandner",
-        "image": "img/edgar-privat.jpg",
-        "logo": "img/logo.png",
+        "url": "https://emilschmidt781-web.github.io/Claude-Code-/brandner-studios/",
+        "image": "https://emilschmidt781-web.github.io/Claude-Code-/brandner-studios/img/edgar-privat.jpg",
+        "logo": "https://emilschmidt781-web.github.io/Claude-Code-/brandner-studios/img/logo.png",
         "description": "Webdesign, Entwicklung und Ausbesserungen für Unternehmen.",
         "email": "brandnerstudios@gmail.com",
         "telephone": "+4915757320820",
@@ -69,11 +80,12 @@
           <li><a href="#leistungen"><small>02</small>Leistungen</a></li>
           <li><a href="#konzepte"><small>03</small>Beispiele</a></li>
           <li><a href="#warum"><small>04</small>Warum ich</a></li>
-          <li><a href="#zahlen"><small>05</small>Zahlen</a></li>
-          <li><a href="#ablauf"><small>06</small>Ablauf</a></li>
-          <li><a href="#ueber-mich"><small>07</small>Über mich</a></li>
-          <li><a href="#faq"><small>08</small>FAQ</a></li>
-          <li><a href="#kontakt"><small>09</small>Kontakt</a></li>
+          <li><a href="#check"><small>05</small>Website-Check</a></li>
+          <li><a href="#zahlen"><small>06</small>Zahlen</a></li>
+          <li><a href="#ablauf"><small>07</small>Ablauf</a></li>
+          <li><a href="#ueber-mich"><small>08</small>Über mich</a></li>
+          <li><a href="#faq"><small>09</small>FAQ</a></li>
+          <li><a href="#kontakt"><small>10</small>Kontakt</a></li>
         </ol>
         <div class="menu-foot">
           <a href="tel:+4915757320820">+49 1575 7320820</a>
@@ -377,6 +389,40 @@
         </div>
       </section>
 
+      <!-- WEBSITE-CHECK -->
+      <section class="section" id="check">
+        <div class="container">
+          <div class="check reveal">
+            <div class="check-copy">
+              <p class="eyebrow">Kostenlos &amp; unverbindlich</p>
+              <h2 class="h2">Wie gut ist deine<br /><em>Website?</em></h2>
+              <p class="sub">Schick mir deine Adresse. Ich schaue sie mir an und sage dir die drei größten Baustellen – ohne Verkaufsgespräch.</p>
+              <ul class="check-list">
+                <li>Sieht sie auf dem Handy gut aus?</li>
+                <li>Wie schnell lädt sie?</li>
+                <li>Findet Google sie richtig?</li>
+                <li>Sind Impressum und Datenschutz in Ordnung?</li>
+              </ul>
+            </div>
+            <form class="term check-form" id="check-form" novalidate>
+              <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">website-check</span><span class="term-time">kostenlos</span></div>
+              <div class="check-body">
+                <label for="check-url">Deine Website</label>
+                <div class="check-input">
+                  <span aria-hidden="true">https://</span>
+                  <input id="check-url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="dein-betrieb.de" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  Check anfordern
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </button>
+                <pre class="check-log" aria-live="polite"><span class="tl cmd">$ brandner check</span><span class="tl out">▸ wartet auf deine Adresse …</span></pre>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <!-- ZAHLEN -->
       <section class="section" id="zahlen">
         <div class="container">
@@ -626,6 +672,7 @@
                   <option>Landingpage</option>
                   <option>Ausbesserung</option>
                   <option>SEO &amp; Betreuung</option>
+                  <option>Kostenloser Website-Check</option>
                   <option>Etwas anderes</option>
                 </select>
               </label>
@@ -661,6 +708,7 @@
             <a href="#leistungen">Leistungen</a>
             <a href="#konzepte">Beispiele</a>
             <a href="#ablauf">Ablauf</a>
+            <a href="#check">Website-Check</a>
             <a href="#faq">FAQ</a>
           </nav>
           <div>

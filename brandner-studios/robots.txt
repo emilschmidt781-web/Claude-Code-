@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://emilschmidt781-web.github.io/Claude-Code-/brandner-studios/sitemap.xml
