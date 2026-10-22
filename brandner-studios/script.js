@@ -591,3 +591,50 @@ document.querySelectorAll(".faq-item").forEach((item) => {
     }
   });
 });
+
+// Menü (auf dem Handy)
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.getElementById("menu");
+if (menuToggle && menu) {
+  let closeTimer;
+  const setMenu = (open) => {
+    clearTimeout(closeTimer);
+    if (open) menu.hidden = false;
+    requestAnimationFrame(() => {
+      document.documentElement.classList.toggle("menu-open", open);
+    });
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+    if (!open) closeTimer = setTimeout(() => (menu.hidden = true), 700);
+  };
+  menuToggle.addEventListener("click", () => setMenu(menuToggle.getAttribute("aria-expanded") !== "true"));
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+      setMenu(false);
+      menuToggle.focus();
+    }
+  });
+  window.addEventListener("resize", () => {
+    if (innerWidth >= 900 && menuToggle.getAttribute("aria-expanded") === "true") setMenu(false);
+  });
+}
+
+// Punkte unter den Wisch-Karussells
+document.querySelectorAll(".services, .examples").forEach((track) => {
+  const hint = document.createElement("div");
+  hint.className = "swipe-hint";
+  hint.setAttribute("aria-hidden", "true");
+  const cards = [...track.children];
+  cards.forEach(() => hint.appendChild(document.createElement("i")));
+  track.after(hint);
+  const dots = [...hint.children];
+  const mark = () => {
+    const step = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
+    const index = Math.min(cards.length - 1, Math.round(track.scrollLeft / step));
+    dots.forEach((d, i) => d.classList.toggle("on", i === index));
+  };
+  track.addEventListener("scroll", mark, { passive: true });
+  mark();
+});

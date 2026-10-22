@@ -55,9 +55,32 @@
           <a href="#ueber-mich">Über mich</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a href="#kontakt" class="btn btn-light btn-small">Anfragen</a>
+        <div class="nav-actions">
+          <a href="#kontakt" class="btn btn-light btn-small">Anfragen</a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
+            <span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
+
+    <div class="menu" id="menu" hidden>
+      <nav class="container menu-inner" aria-label="Menü">
+        <ol class="menu-links">
+          <li><a href="#leistungen"><small>01</small>Leistungen</a></li>
+          <li><a href="#referenzen"><small>02</small>Referenzen</a></li>
+          <li><a href="#ablauf"><small>03</small>Ablauf</a></li>
+          <li><a href="#ueber-mich"><small>04</small>Über mich</a></li>
+          <li><a href="#faq"><small>05</small>FAQ</a></li>
+          <li><a href="#kontakt"><small>06</small>Kontakt</a></li>
+        </ol>
+        <div class="menu-foot">
+          <a href="tel:+4915757320820">+49 1575 7320820</a>
+          <a href="mailto:edgarbrandner937@gmail.com">edgarbrandner937@gmail.com</a>
+          <span>Mainstockheim bei Würzburg &amp; remote</span>
+        </div>
+      </nav>
+    </div>
 
     <main>
       <!-- HERO -->
