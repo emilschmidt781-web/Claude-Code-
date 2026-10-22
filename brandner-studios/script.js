@@ -657,3 +657,49 @@ if (servicesTrack && carButtons.length) {
   window.addEventListener("resize", update);
   update();
 }
+
+// Hero-Karten: fahren beim Scrollen hoch, fächern weiter auf, kippen mit der Maus
+const stage = document.querySelector(".stage");
+if (stage && !reduceMotion) {
+  const cards = [...stage.querySelectorAll(".stage-card")];
+  const heroEl = document.querySelector(".hero");
+  let live = false;
+  const goLive = () => {
+    if (live) return;
+    live = true;
+    document.body.classList.add("stage-live");
+  };
+  // Erst nach dem Einfahren auf Scrollen und Maus reagieren
+  setTimeout(goLive, 2600);
+
+  const onScroll = () => {
+    const r = heroEl.getBoundingClientRect();
+    const p = Math.min(Math.max(-r.top / (r.height * 0.7), 0), 1);
+    if (p > 0) goLive();
+    cards.forEach((c) => {
+      c.style.setProperty("--l", `${p * 180}px`);
+      c.style.setProperty("--s", String(1 + p * 0.35));
+    });
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if (finePointer) {
+    heroEl.addEventListener("pointermove", (e) => {
+      const r = heroEl.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      cards.forEach((c, i) => {
+        const depth = c.classList.contains("sc2") ? 1 : 0.6;
+        c.style.setProperty("--px", String(x * 10 * depth));
+        c.style.setProperty("--py", `${y * -14 * depth}px`);
+      });
+    });
+    heroEl.addEventListener("pointerleave", () =>
+      cards.forEach((c) => {
+        c.style.setProperty("--px", "0");
+        c.style.setProperty("--py", "0px");
+      })
+    );
+  }
+}
