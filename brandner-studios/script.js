@@ -638,3 +638,24 @@ document.querySelectorAll(".services, .examples").forEach((track) => {
   track.addEventListener("scroll", mark, { passive: true });
   mark();
 });
+
+// Pfeile für das Leistungs-Karussell
+const servicesTrack = document.querySelector(".services");
+const carButtons = document.querySelectorAll(".car-btn");
+if (servicesTrack && carButtons.length) {
+  const update = () => {
+    const max = servicesTrack.scrollWidth - servicesTrack.clientWidth - 4;
+    carButtons[0].disabled = servicesTrack.scrollLeft <= 4;
+    carButtons[1].disabled = servicesTrack.scrollLeft >= max;
+  };
+  carButtons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const card = servicesTrack.querySelector(".service");
+      const step = card ? card.offsetWidth + 24 : servicesTrack.clientWidth;
+      servicesTrack.scrollBy({ left: step * Number(btn.dataset.dir), behavior: reduceMotion ? "auto" : "smooth" });
+    })
+  );
+  servicesTrack.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}

@@ -8,7 +8,7 @@
       name="description"
       content="Edgar Brandner – Webdesign, Entwicklung und Ausbesserungen für Unternehmen in Würzburg, Mainstockheim und Umgebung. Websites, die Vertrauen bringen. Alles aus einer Hand."
     />
-    <meta name="theme-color" content="#0a0e1a" />
+    <meta name="theme-color" content="#f7f3ea" />
     <meta property="og:title" content="Edgar Brandner – Websites, die Vertrauen bringen." />
     <meta property="og:description" content="Webdesign, Entwicklung und Ausbesserungen für Unternehmen. Würzburg & Umgebung." />
     <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -45,9 +45,7 @@
 
     <header class="site-header" id="top">
       <div class="container nav">
-        <a href="#top" class="logo" aria-label="Edgar Brandner – zum Seitenanfang">
-          &lt;edgar-brandner<span class="accent">/</span>&gt;
-        </a>
+        <a href="#top" class="logo" aria-label="Edgar Brandner – zum Seitenanfang">BRANDNER</a>
         <nav class="nav-links" aria-label="Hauptnavigation">
           <a href="#leistungen">Leistungen</a>
           <a href="#referenzen">Referenzen</a>
@@ -85,8 +83,6 @@
     <main>
       <!-- HERO -->
       <section class="hero">
-        <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-        <canvas class="constellation" aria-hidden="true"></canvas>
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="eyebrow-pill reveal">
@@ -115,44 +111,8 @@
               <li>Ein Ansprechpartner für alles</li>
               <li>Aus Mainstockheim bei Würzburg</li>
             </ul>
-            <button class="grid-toggle reveal" type="button" aria-pressed="false">Raster einblenden</button>
           </div>
 
-          <div class="hero-visual reveal" aria-hidden="true">
-            <div class="browser" data-tilt>
-              <div class="browser-bar">
-                <span class="dots"><i></i><i></i><i></i></span>
-                <span class="url"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>edgarbrandner.de</span>
-              </div>
-              <div class="browser-body">
-                <div class="mock-nav"><b></b><span></span><span></span><span></span><em></em></div>
-                <div class="mock-hero">
-                  <div class="mock-text">
-                    <i class="l1"></i><i class="l2"></i><i class="l3"></i>
-                    <u></u>
-                  </div>
-                  <svg class="mock-skyline" viewBox="0 0 200 90" preserveAspectRatio="xMidYMax slice">
-                    <defs>
-                      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="#9d7bff" /><stop offset="1" stop-color="#ff9a7a" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="200" height="90" fill="url(#sky)" />
-                    <path fill="#2a1b4d" d="M0 90V62h14v-8h6v8h10V50l4-8 4 8v12h12V58h18V40l3-10 3 10v4h4V34l3-12 3 12v10h6v-6h16v14h10V46l5-14 5 14v16h18v-8h10v8h12v-6h16v34z" />
-                    <path fill="#1a1230" d="M0 90V74h30v-6h40v6h30v-4h40v6h60v14z" />
-                  </svg>
-                </div>
-                <div class="mock-cards"><span></span><span></span><span></span></div>
-              </div>
-            </div>
-            <span class="badge b1">Mobil <i>✓</i></span>
-            <span class="badge b2">Schnell <i>✓</i></span>
-            <span class="badge b3">Google <i>✓</i></span>
-            <div class="lighthouse">
-              <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5" /><circle class="ring" cx="18" cy="18" r="15.5" /></svg>
-              <span><b data-count="100">0</b><small>Performance</small></span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -179,51 +139,30 @@
             <p class="eyebrow">Leistungen</p>
             <h2 class="display-md">Was ich mache.</h2>
           </div>
+          <div class="carousel-nav" aria-label="Leistungen blättern">
+            <button type="button" class="car-btn" data-dir="-1" aria-label="Zurück"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
+            <button type="button" class="car-btn" data-dir="1" aria-label="Weiter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></button>
+          </div>
           <div class="services">
             <article class="card service reveal">
-              <span class="file">design.fig</span>
-              <div class="service-art art-design" aria-hidden="true">
-                <div class="spec">
-                  <span class="aa">Aa</span>
-                  <ul>
-                    <li><b>Überschrift</b><small>Serif · 72</small></li>
-                    <li><b class="sans">Fließtext</b><small>Sans · 17</small></li>
-                    <li><b class="mono">code()</b><small>Mono · 14</small></li>
-                  </ul>
-                </div>
-                <div class="swatches">
-                  <span class="sw s1"></span><span class="sw s2"></span><span class="sw s3"></span><span class="sw s4"></span>
-                </div>
-              </div>
+              <span class="big-num">01</span>
               <h3>Webdesign</h3>
-              <p>Ein Auftritt, der zu deiner Marke passt.</p>
+              <p>Ein Auftritt, der zu deiner Marke passt – klar aufgebaut, damit Besucher sofort finden, was sie suchen.</p>
             </article>
             <article class="card service reveal">
-              <span class="file">index.html</span>
-              <pre class="service-art art-code" aria-hidden="true"><code><span class="t">&lt;section</span> <span class="a">class</span>=<span class="s">"hero"</span><span class="t">&gt;</span>
-  <span class="t">&lt;h1&gt;</span>Dein Betrieb<span class="t">&lt;/h1&gt;</span>
-<span class="t">&lt;/section&gt;</span><span class="caret"></span></code></pre>
+              <span class="big-num">02</span>
               <h3>Entwicklung</h3>
-              <p>Schnell, mobil und selbst pflegbar.</p>
+              <p>Schnell, mobil und selbst pflegbar – sauber umgesetzt mit der Technik, die zu deinem Projekt passt.</p>
             </article>
             <article class="card service reveal">
-              <span class="file">fix.css</span>
-              <pre class="service-art art-diff" aria-hidden="true"><code><span class="del">- .button { color: #999; }</span><span class="add">+ .button { color: #fff; }</span><span class="add">+ .button:hover { … }</span></code></pre>
+              <span class="big-num">03</span>
               <h3>Ausbesserungen</h3>
-              <p>Fehler beheben, Inhalte aktualisieren.</p>
+              <p>Fehler beheben, Inhalte aktualisieren und eine bestehende Seite wieder auf Stand bringen.</p>
             </article>
             <article class="card service reveal">
-              <span class="file">robots.txt</span>
-              <div class="service-art art-seo" aria-hidden="true">
-                <div class="serp">
-                  <small>edgarbrandner.de</small>
-                  <b>Dein Unternehmen – Würzburg</b>
-                  <i></i><i></i>
-                </div>
-                <span class="rank">#1</span>
-              </div>
+              <span class="big-num">04</span>
               <h3>SEO &amp; Betreuung</h3>
-              <p>Gefunden werden, sicher bleiben.</p>
+              <p>Gefunden werden, sicher bleiben – mit SEO-Grundlagen, Updates und einem festen Ansprechpartner.</p>
             </article>
           </div>
         </div>
@@ -367,13 +306,13 @@
         <svg class="skyline" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
           <defs>
             <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#08080d" />
-              <stop offset=".45" stop-color="#22143d" />
-              <stop offset=".72" stop-color="#6b2f63" />
-              <stop offset="1" stop-color="#ff8a5c" />
+              <stop offset="0" stop-color="#5f6fd0" />
+              <stop offset=".4" stop-color="#5fb0ec" />
+              <stop offset=".72" stop-color="#e5a3cf" />
+              <stop offset="1" stop-color="#e0337a" />
             </linearGradient>
             <linearGradient id="river" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#3a1f4f" /><stop offset="1" stop-color="#08080d" />
+              <stop offset="0" stop-color="#4a2a5c" /><stop offset="1" stop-color="#1f1f22" />
             </linearGradient>
             <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0" stop-color="#fff" stop-opacity="0" /><stop offset="1" stop-color="#fff" />
@@ -385,18 +324,18 @@
           <circle class="moon" cx="1180" cy="90" r="26" fill="#ffe9c7" />
           <!-- Hügel mit der Festung Marienberg -->
           <g class="layer" data-depth="0.18">
-            <path fill="#1a1230" d="M0 340V290C120 262 230 222 360 214C480 206 560 236 660 270C760 300 900 296 1440 300V340Z" />
-            <path fill="#20163a" d="M330 222V206h26v-12h16v-16l9-14 9 14v16h40v-8h22v-10l7-12 7 12v10h18v20h22v16Z" />
+            <path fill="#3b2a63" d="M0 340V290C120 262 230 222 360 214C480 206 560 236 660 270C760 300 900 296 1440 300V340Z" />
+            <path fill="#33245a" d="M330 222V206h26v-12h16v-16l9-14 9 14v16h40v-8h22v-10l7-12 7 12v10h18v20h22v16Z" />
             <circle cx="372" cy="200" r="1.6" fill="#ffd27a" class="blink" /><circle cx="440" cy="204" r="1.6" fill="#ffd27a" class="blink" />
           </g>
           <!-- Altstadt mit Dom-Türmen -->
           <g class="layer" data-depth="0.08">
-            <path fill="#2a1c4a" d="M560 322V288l10 -10l10 10H580V300H600V300H630V292H640V270h4l9-30l9 30h4V288H666V292l10 -10l10 10H686V292H700V230h4l9-30l9 30h4V288H726V282l15 -10l15 10H756V300l20 -10l20 10H796V292H816V292H836V292H860V262a16 16 0 0 1 32 0V288H892V282H912V300H952V292H980V245h4l9-30l9 30h4V288H1006V288l15 -10l15 10H1036V300l20 -10l20 10H1076V294H1096V292H1120V270h4l9-30l9 30h4V288H1146V294l15 -10l15 10H1176V300l20 -10l20 10H1216V294H1246V292H1260V282a16 16 0 0 1 32 0V288H1292V282l15 -10l15 10H1322V282l15 -10l15 10H1352V294H1392V300l20 -10l20 10H1432V282H1440V322Z" transform="translate(0 8)" />
+            <path fill="#2a1f4e" d="M560 322V288l10 -10l10 10H580V300H600V300H630V292H640V270h4l9-30l9 30h4V288H666V292l10 -10l10 10H686V292H700V230h4l9-30l9 30h4V288H726V282l15 -10l15 10H756V300l20 -10l20 10H796V292H816V292H836V292H860V262a16 16 0 0 1 32 0V288H892V282H912V300H952V292H980V245h4l9-30l9 30h4V288H1006V288l15 -10l15 10H1036V300l20 -10l20 10H1076V294H1096V292H1120V270h4l9-30l9 30h4V288H1146V294l15 -10l15 10H1176V300l20 -10l20 10H1216V294H1246V292H1260V282a16 16 0 0 1 32 0V288H1292V282l15 -10l15 10H1322V282l15 -10l15 10H1352V294H1392V300l20 -10l20 10H1432V282H1440V322Z" transform="translate(0 8)" />
             <g class="lights" fill="#ffd27a" transform="translate(0 8)"><circle cx="864" cy="304" r="1.6" /><circle cx="644" cy="288" r="1.6" /><circle cx="1094" cy="298" r="1.6" /><circle cx="738" cy="309" r="1.6" /><circle cx="920" cy="289" r="1.6" /><circle cx="1070" cy="298" r="1.6" /><circle cx="610" cy="306" r="1.6" /><circle cx="649" cy="309" r="1.6" /><circle cx="1141" cy="303" r="1.6" /><circle cx="1378" cy="311" r="1.6" /><circle cx="891" cy="295" r="1.6" /><circle cx="1281" cy="296" r="1.6" /><circle cx="1178" cy="300" r="1.6" /><circle cx="1163" cy="310" r="1.6" /></g>
           </g>
           <!-- Main mit Alter Mainbrücke -->
           <rect y="328" width="1440" height="72" fill="url(#river)" />
-          <path fill="#150f28" d="M480 322h620v8H480zM520 330h12v18h-12zM620 330h12v18h-12zM720 330h12v18h-12zM820 330h12v18h-12zM920 330h12v18h-12zM1020 330h12v18h-12z" />
+          <path fill="#1f1f22" d="M480 322h620v8H480zM520 330h12v18h-12zM620 330h12v18h-12zM720 330h12v18h-12zM820 330h12v18h-12zM920 330h12v18h-12zM1020 330h12v18h-12z" />
           <g class="ripples" fill="#ffd27a" opacity=".3"><rect x="600" y="356" width="60" height="1.5" /><rect x="760" y="366" width="90" height="1.5" /><rect x="980" y="360" width="50" height="1.5" /><rect x="360" y="352" width="70" height="1.5" /><rect x="1160" y="372" width="40" height="1.5" /></g>
         </svg>
         <div class="container statement-text reveal">
@@ -438,7 +377,12 @@
 
       <!-- ÜBER MICH -->
       <section class="section about" id="ueber-mich">
-        <div class="container about-grid">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Über mich</p>
+            <h2 class="display-md">Hi, ich bin Edgar.</h2>
+          </div>
+          <div class="about-grid">
           <div class="about-visual reveal" aria-hidden="true">
             <div class="desk">
               <div class="desk-laptop">
@@ -456,21 +400,35 @@
             </div>
           </div>
           <div class="about-copy">
-            <p class="eyebrow reveal">Über mich</p>
-            <h2 class="display-md reveal">Hi, ich bin Edgar.</h2>
             <p class="lead reveal">
               Ich baue Websites für Unternehmen, von der ersten Skizze bis zum Livegang. Und ich helfe gerne, wenn an
               deiner Seite <mark>nur etwas klemmt</mark>.
             </p>
-            <ul class="chips reveal" aria-label="Werkzeuge">
-              <li>HTML &amp; CSS</li>
-              <li>JavaScript</li>
-              <li>React</li>
-              <li>WordPress</li>
-              <li>Figma</li>
-              <li>Shopify</li>
-            </ul>
+            <p class="about-more reveal">
+              Du hast einen Ansprechpartner, der zuhört, mitdenkt und ehrlich sagt, was deine Seite wirklich braucht –
+              aus Mainstockheim bei Würzburg, persönlich oder remote.
+            </p>
+            <a href="#kontakt" class="btn btn-light reveal">Projekt besprechen</a>
           </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WERKZEUGE -->
+      <section class="section stack" aria-labelledby="stack-title">
+        <div class="container">
+          <div class="stack-head reveal">
+            <h2 class="stack-title" id="stack-title">Werkzeuge</h2>
+            <p>Damit baue ich deine Website.</p>
+          </div>
+          <ul class="chips reveal" aria-label="Werkzeuge">
+            <li><span class="chip-icon" aria-hidden="true">&lt;/&gt;</span>HTML &amp; CSS</li>
+            <li><span class="chip-icon" aria-hidden="true">JS</span>JavaScript</li>
+            <li><span class="chip-icon" aria-hidden="true">⚛</span>React</li>
+            <li><span class="chip-icon" aria-hidden="true">W</span>WordPress</li>
+            <li><span class="chip-icon" aria-hidden="true">✦</span>Figma</li>
+            <li><span class="chip-icon" aria-hidden="true">🛍</span>Shopify</li>
+          </ul>
         </div>
       </section>
 
@@ -596,7 +554,7 @@
         </div>
         <div class="footer-cols">
           <div>
-            <a href="#top" class="logo">&lt;edgar-brandner<span class="accent">/</span>&gt;</a>
+            <a href="#top" class="logo">BRANDNER</a>
             <p>Webdesign, Entwicklung und Ausbesserungen für Unternehmen in Würzburg, Mainstockheim und Umgebung.</p>
           </div>
           <nav aria-label="Seiten">

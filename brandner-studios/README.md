@@ -23,11 +23,14 @@ python3 -m http.server 8000   # http://localhost:8000
 9. **Footer** mit Abschluss-Aufruf, Seitenlinks und Kontakt
 10. **Handy**: feste Leiste unten mit Anrufen, WhatsApp und Anfragen
 
-## Farben
+## Stil
 
-Fast schwarz (`#08080d`) mit Neon-Limette (`#c8ff3d`) als Hauptfarbe, dazu Violett
-(`#9d7bff`) und Koralle (`#ff6b4a`). Der Kontaktbereich ist komplett limettengrün.
-Alle Farben stehen oben in `style.css` unter `:root`.
+Hell und fett: Weiß und Creme (`#f7f3ea`), dunkle Schrift (`#1f1f22`), Inter in Schwarz (900)
+mit Großbuchstaben für große Überschriften. Farbverläufe von Pink (`#e0337a`) über Lavendel nach
+Blau (`#5fb0ec`) für Abschnittsköpfe und Zahlen, Lime bis Türkis für Logo und Hero-Überschrift.
+Hero, Menü und Kontakt liegen auf einem großen, langsam fließenden Verlauf. Schwarze und weiße
+Pillen-Knöpfe, runder schwarzer Menü-Knopf. Alle Farben stehen oben in `style.css` unter `:root`,
+der Stil-Block am Ende der Datei überschreibt die ältere dunkle Gestaltung.
 
 ## Animationen
 
