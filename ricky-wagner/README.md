@@ -23,7 +23,6 @@ Bewerberprofile nur anonymisiert und mit Einverständnis veröffentlichen.
 
 ## Noch offen
 
-- **Impressum**: Straße/Hausnummer, ggf. weitere Inhaber und USt-ID ergänzen.
 - **Logo** liegt freigestellt in `img/` (`logo.png` farbig, `logo-white.png` und
   `mark-white.png` für dunklen Hintergrund, `favicon.png`).
 - **Rechtstexte** sind Vorlagen, bitte rechtlich prüfen lassen.
