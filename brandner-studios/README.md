@@ -10,6 +10,24 @@ cd brandner-studios
 python3 -m http.server 8000   # http://localhost:8000
 ```
 
+## Farben
+
+Fast schwarz (`#08080d`) mit Neon-Limette (`#c8ff3d`) als Hauptfarbe, dazu Violett
+(`#9d7bff`) und Koralle (`#ff6b4a`). Der Kontaktbereich ist komplett limettengrün.
+Alle Farben stehen oben in `style.css` unter `:root`.
+
+## Animationen
+
+- Intro beim ersten Besuch: Logo tippt sich, Vorhang fährt hoch (einmal pro Sitzung)
+- Hero: Wörter fahren einzeln hoch, „Vertrauen / Kunden / Anfragen“ wechselt, Aurora-Farbwolken
+- Eigener Mauszeiger mit Ring („Anfragen“ über den Beispielen), magnetische Knöpfe
+- Karten kippen in 3D mit Lichtreflex, Knöpfe mit einfahrender Füllung
+- Abschnitts-Labels „entschlüsseln“ sich, Überschriften erscheinen Wort für Wort
+- Laufband wird beim Scrollen schneller und neigt sich
+- Skyline mit Parallax, Sternen, Sternschnuppe, Mond und glitzerndem Main
+- Kontaktfläche wächst beim Scrollen auf volle Breite
+- Bei „Bewegung reduzieren“ und auf Touch-Geräten werden die aufwendigen Effekte abgeschaltet
+
 ## Was neu ist
 
 - Hero mit animiertem Sternbild-Hintergrund, Browserfenster, das sich „selbst baut“, und Performance-Ring
