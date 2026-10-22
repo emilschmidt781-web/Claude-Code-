@@ -2664,3 +2664,48 @@ mark {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Über mich: nur das persönliche Foto, groß als Polaroid */
+.about-visual .polaroid {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  padding: 14px 14px 0;
+  transform: rotate(-3deg);
+}
+
+.about-visual .polaroid figcaption {
+  padding: 12px 4px 16px;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+}
+
+.about-visual:hover .polaroid {
+  transform: rotate(0deg) translateY(-6px);
+}
+
+/* Leuchten hinter dem Foto */
+.about-visual::before {
+  content: "";
+  position: absolute;
+  inset: 10% -6%;
+  border-radius: 50%;
+  background: var(--grad);
+  filter: blur(70px);
+  opacity: 0.3;
+}
+
+.polaroid .portrait-tag {
+  left: 26px;
+  top: 26px;
+  color: var(--text);
+}
+
+@media (max-width: 959px) {
+  .about-visual {
+    max-width: 340px;
+  }
+  .about-visual .polaroid {
+    padding: 10px 10px 0;
+  }
+}
