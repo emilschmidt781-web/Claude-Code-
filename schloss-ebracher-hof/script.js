@@ -1,21 +1,19 @@
-// Mobiles Menü
-const toggle = document.querySelector(".nav-toggle");
-const menu = document.getElementById("nav-menu");
+document.documentElement.classList.add("js");
 
-if (toggle && menu) {
-  toggle.addEventListener("click", () => {
+// Menü auf Handy und Tablet
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.getElementById("menu");
+
+if (menuToggle && menu) {
+  const close = () => {
+    menu.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  };
+  menuToggle.addEventListener("click", () => {
     const open = menu.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+    menuToggle.setAttribute("aria-expanded", String(open));
   });
-
-  menu.querySelectorAll("a").forEach((link) =>
-    link.addEventListener("click", () => {
-      menu.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Menü öffnen");
-    })
-  );
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
 }
 
 // Schriftgröße umschalten und merken (Speicher kann im privaten Modus fehlen)
@@ -39,16 +37,58 @@ sizeButtons.forEach((button) =>
     try {
       localStorage.setItem("ebracher-schrift", button.dataset.size);
     } catch {
-      /* nicht speicherbar – Einstellung gilt nur für diesen Besuch */
+      /* nicht speicherbar – gilt nur für diesen Besuch */
     }
   })
 );
 
-// Jahreszahl im Footer
+// Rundgang: Station wählen, Zeichnung, Farbe und Text wechseln
+const stage = document.querySelector(".tour-stage");
+const stationButtons = document.querySelectorAll(".tour-list button");
+
+if (stage) {
+  const pic = stage.querySelector(".tour-pic");
+  const use = pic.querySelector("use");
+  const title = pic.querySelector("title");
+  const fact = stage.querySelector(".tour-fact");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  stationButtons.forEach((button) =>
+    button.addEventListener("click", () => {
+      if (button.getAttribute("aria-pressed") === "true") return;
+      stationButtons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
+      stage.dataset.field = button.dataset.field;
+      const swap = () => {
+        use.setAttribute("href", "#" + button.dataset.pic);
+        title.textContent = button.dataset.title;
+        fact.textContent = button.dataset.fact;
+        pic.classList.remove("is-swapping");
+      };
+      if (reduce) return swap();
+      pic.classList.add("is-swapping");
+      setTimeout(swap, 300);
+    })
+  );
+}
+
+// Aufnahme: ein Schritt ist offen
+const steps = document.querySelectorAll(".accordion li");
+
+steps.forEach((step) =>
+  step.querySelector("button").addEventListener("click", () => {
+    steps.forEach((s) => {
+      const open = s === step;
+      s.classList.toggle("is-open", open);
+      s.querySelector("button").setAttribute("aria-expanded", String(open));
+    });
+  })
+);
+
+// Jahreszahl in der Fußzeile
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
-// Rückruf-Formular: öffnet eine vorbereitete E-Mail, es wird nichts an einen Server gesendet
+// Rückruf-Formular: öffnet eine vorbereitete E-Mail, es geht nichts an einen Server
 const form = document.getElementById("contact-form");
 
 if (form) {
@@ -65,7 +105,7 @@ if (form) {
       return;
     }
     if (!data.get("einwilligung")) {
-      status.textContent = "Bitte bestätigen Sie die Einwilligung zur Datenverarbeitung.";
+      status.textContent = "Bitte bestätigen Sie, dass wir Ihre Angaben verwenden dürfen.";
       return;
     }
 
@@ -83,12 +123,16 @@ if (form) {
       `&body=${encodeURIComponent(body)}`;
 
     status.textContent =
-      "Ihr E-Mail-Programm öffnet sich mit der vorbereiteten Nachricht. Alternativ rufen Sie uns einfach an: 09321 7613.";
+      "Ihr E-Mail-Programm öffnet sich mit der fertigen Nachricht. Oder rufen Sie einfach an: 09321 7613.";
   });
 }
 
-// Inhalte beim Scrollen sanft einblenden
+// Abschnitte gestaffelt einblenden: Überschrift, dann Text, dann Bild
 const revealed = document.querySelectorAll(".reveal");
+
+document.querySelectorAll("section").forEach((section) =>
+  section.querySelectorAll(".reveal").forEach((el, i) => el.style.setProperty("--d", i))
+);
 
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
@@ -99,7 +143,7 @@ if ("IntersectionObserver" in window) {
           observer.unobserve(entry.target);
         }
       }),
-    { threshold: 0.12 }
+    { threshold: 0.15 }
   );
   revealed.forEach((el) => observer.observe(el));
 } else {

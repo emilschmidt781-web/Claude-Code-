@@ -2,7 +2,17 @@
 
 Statische One-Page-Website für das Seniorenheim Schloß Ebracher Hof GmbH in
 Mainstockheim. Reines HTML, CSS und JavaScript, ohne Build-Schritt, ohne Cookies
-und ohne externe Dienste (Systemschriften statt Google Fonts).
+und ohne externe Dienste. Schrift: Manrope, lokal in `fonts/` (SIL Open Font License).
+
+## Gestaltung
+
+Ein Motiv trägt die ganze Seite: der Rundbogen des Steinportals von 1624. Er ist
+die große Form im ersten Bildschirm, der Rahmen jeder Zeichnung, die Form der
+Schaltflächen und Aufzählungszeichen und die Bogenreihe im Fußbereich. Farben aus
+dem Haus: Kalkputz (Grund), Park-Grün (Aktion), Mainsandstein-Rosa und Park-Mint.
+
+Zum Mitmachen gibt es den **Rundgang**: Portal, Schlosshof, Park, Kapelle, Zimmer
+auswählen, Zeichnung und Text wechseln.
 
 ## Ansehen
 
@@ -27,14 +37,17 @@ Pflegeverzeichnisse) und sollten vom Haus bestätigt werden:
   Hauskapelle, Sommerfest, Zusammenarbeit mit Ärzten/Therapeuten
 - **Impressum**: Geschäftsführung, USt-ID, Anschrift der FQA, Verantwortlicher
 - **Datenschutz**: Hosting-Anbieter und ggf. Datenschutzbeauftragte(r)
-- **Fotos**: Die Startseite nutzt eine gezeichnete Illustration. Echte Fotos von
-  Haus, Park und Zimmern würden die Seite deutlich aufwerten.
+- **Fotos**: Alle Bilder sind Zeichnungen (SVG-Symbole oben in `index.html`:
+  `d-portal`, `d-hof`, `d-park`, `d-kapelle`, `d-zimmer`, `d-giebel`). Echte Fotos
+  von Portal, Hof, Park, Kapelle und Zimmern sollten sie ersetzen; sie passen
+  in dieselben Bogen-Rahmen (Hochformat 4:5).
 
 ## Dateien
 
 | Datei | Inhalt |
 | --- | --- |
-| `index.html` | Startseite: Haus, Pflege, Alltag, Geschichte, Aufnahme, FAQ, Karriere, Kontakt |
+| `index.html` | Startseite: Rundgang, Pflege, Familie & Geschichte, Aufnahme, Fragen, Kontakt |
 | `style.css` | Gestaltung, responsiv vom Handy bis zum Desktop |
-| `script.js` | Mobiles Menü, Schriftgröße, Rückruf-Formular (per E-Mail), Einblendungen |
+| `script.js` | Menü, Schriftgröße, Rundgang, Aufnahme-Schritte, Rückruf-Formular (per E-Mail), Einblendungen |
+| `fonts/` | Manrope (lokal) |
 | `impressum.html`, `datenschutz.html` | Rechtstexte (Vorlagen) |
