@@ -10,6 +10,19 @@ cd brandner-studios
 python3 -m http.server 8000   # http://localhost:8000
 ```
 
+## Aufbau (auf Anfragen ausgelegt)
+
+1. **Hero** mit klarer Botschaft, zwei Knöpfen und Vertrauenszeile (kostenloses Kennenlernen, ein Ansprechpartner, regional)
+2. **Leistungen**
+3. **Referenzen**: Schneiderei Yasin und W&S Karrierepartner mit echten Screenshots (Desktop + Handy), verlinkt auf die Live-Seiten
+4. **Angebot**: Firmenwebsite, Landingpage, Ausbesserung (Klick wählt die Anfrage im Formular vor)
+5. **Was du bekommst**: sechs Vorteile
+6. Würzburg-Skyline, **Ablauf**, **Über mich**
+7. **FAQ** mit sieben Fragen (auch als FAQ-Daten für Google eingebunden)
+8. **Kontakt** mit Feld für die aktuelle Website, damit du vor dem Gespräch schon reinschauen kannst
+9. **Footer** mit Abschluss-Aufruf, Seitenlinks und Kontakt
+10. **Handy**: feste Leiste unten mit Anrufen, WhatsApp und Anfragen
+
 ## Farben
 
 Fast schwarz (`#08080d`) mit Neon-Limette (`#c8ff3d`) als Hauptfarbe, dazu Violett
@@ -39,6 +52,11 @@ Alle Farben stehen oben in `style.css` unter `:root`.
 - Scroll-Fortschritt, aktiver Menüpunkt, „Nach oben“-Knopf, Rücksicht auf „Bewegung reduzieren“
 
 ## Noch offen
+
+- **Referenzen**: Bitte kurz bei Schneiderei Yasin und Ricky Wagner nachfragen, ob sie als Referenz
+  gezeigt werden dürfen. Die Screenshots liegen in `img/` und lassen sich jederzeit austauschen.
+- **FAQ**: Die Antworten (z. B. „Angebot vor dem Start“, Betreuung nach dem Livegang) bitte prüfen,
+  ob sie so zu deinem Angebot passen.
 
 - **Impressum/Datenschutz**: Straße und Hausnummer, USt-Angabe und Hoster ergänzen.
   Beide Seiten sind Vorlagen, bitte rechtlich prüfen lassen.

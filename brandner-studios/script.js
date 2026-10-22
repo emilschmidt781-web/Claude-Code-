@@ -287,7 +287,7 @@ document.querySelectorAll(".example[data-need]").forEach((card) => {
 if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const { name, email, need, message } = form.elements;
+    const { name, email, need, website, message } = form.elements;
     let ok = true;
     [name, email].forEach((field) => {
       const valid = field.value.trim() !== "" && field.checkValidity();
@@ -304,6 +304,7 @@ if (form) {
       `Name: ${name.value.trim()}`,
       `E-Mail: ${email.value.trim()}`,
       `Anliegen: ${need.value}`,
+      `Aktuelle Website: ${website.value.trim() || "–"}`,
       "",
       message.value.trim() || "(keine Nachricht)",
     ].join("\n");
@@ -342,13 +343,13 @@ if (!reduceMotion && !seenIntro) {
   const type = setInterval(() => {
     logo.textContent = text.slice(0, ++n);
     if (n >= text.length) clearInterval(type);
-  }, 45);
+  }, 28);
   setTimeout(() => {
     intro.classList.add("out");
     document.documentElement.style.overflow = "";
     setTimeout(startPage, 250);
     setTimeout(() => intro.remove(), 1000);
-  }, 1400);
+  }, 850);
 } else {
   startPage();
 }
@@ -433,9 +434,11 @@ if (finePointer && !reduceMotion) {
 
   document.addEventListener("pointerover", (e) => {
     const example = e.target.closest(".example");
-    const interactive = e.target.closest("a, button, .card, .chips li");
-    ring.classList.toggle("label", !!example);
-    ring.classList.toggle("hover", !!interactive && !example);
+    const ref = e.target.closest(".ref-media");
+    const interactive = e.target.closest("a, button, summary, .card, .chips li");
+    ring.querySelector("span").textContent = ref ? "Ansehen" : "Anfragen";
+    ring.classList.toggle("label", !!(example || ref));
+    ring.classList.toggle("hover", !!interactive && !example && !ref);
     ring.classList.toggle("on-light", !!e.target.closest(".contact"));
   });
   document.addEventListener("pointerleave", () => {
@@ -551,3 +554,40 @@ if (!reduceMotion) {
   );
   update();
 }
+
+// Feste Kontaktleiste auf dem Handy: erscheint nach dem Hero, verschwindet beim Kontakt
+const mobileCta = document.querySelector(".mobile-cta");
+const heroSection = document.querySelector(".hero");
+if (mobileCta && heroSection && contact) {
+  const toggleCta = () => {
+    const pastHero = heroSection.getBoundingClientRect().bottom < 80;
+    const contactRect = contact.getBoundingClientRect();
+    const atContact = contactRect.top < innerHeight * 0.85 && contactRect.bottom > 0;
+    mobileCta.classList.toggle("show", pastHero && !atContact);
+  };
+  window.addEventListener("scroll", toggleCta, { passive: true });
+  toggleCta();
+}
+
+// FAQ: Antworten klappen weich auf und zu
+document.querySelectorAll(".faq-item").forEach((item) => {
+  const summary = item.querySelector("summary");
+  const answer = item.querySelector(".faq-a");
+  summary.addEventListener("click", (e) => {
+    if (reduceMotion || !answer.animate) return;
+    e.preventDefault();
+    if (item.open) {
+      const anim = answer.animate([{ height: `${answer.offsetHeight}px`, opacity: 1 }, { height: "0px", opacity: 0 }], {
+        duration: 350,
+        easing: "cubic-bezier(.22,1,.36,1)",
+      });
+      anim.onfinish = () => (item.open = false);
+    } else {
+      item.open = true;
+      answer.animate([{ height: "0px", opacity: 0 }, { height: `${answer.offsetHeight}px`, opacity: 1 }], {
+        duration: 450,
+        easing: "cubic-bezier(.22,1,.36,1)",
+      });
+    }
+  });
+});
