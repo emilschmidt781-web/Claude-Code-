@@ -35,7 +35,7 @@ body{background:#111;font-family:'Space Mono'}
 .nav{grid-column:3/5;background:#fff;display:flex;align-items:center;justify-content:space-around;font-weight:700;text-transform:uppercase;font-size:15px}
 .nav span:last-child{background:#ff3d00;color:#fff;padding:10px 18px;border:3px solid #111;box-shadow:4px 4px 0 #111}
 .vert{grid-row:2/4;background:#ff3d00;display:flex;align-items:center;justify-content:center}
-.vert span{writing-mode:vertical-rl;transform:rotate(180deg);font-family:Anton;font-size:96px;color:#ffe600;letter-spacing:.02em;white-space:nowrap}
+.vert span{writing-mode:vertical-rl;transform:rotate(180deg);font-family:Anton;font-size:78px;color:#ffe600;letter-spacing:.02em;white-space:nowrap}
 .big{grid-column:2/4;grid-row:2/4;background:#ffe600;padding:30px 34px}
 .big h1{font-family:Anton;font-size:150px;line-height:1.02;text-transform:uppercase}
 .big h1 em{font-style:normal;display:inline-block;background:#111;color:#ffe600;padding:6px 16px 0;line-height:.95}
@@ -51,20 +51,52 @@ body{background:#111;font-family:'Space Mono'}
 .strip{grid-column:1/5;background:#ffe600;display:flex;align-items:center;gap:36px;white-space:nowrap;font-family:Anton;font-size:56px;text-transform:uppercase;padding-left:24px}
 .strip b{color:#ff3d00}
 .sticker{position:absolute;left:705px;top:520px;width:150px;height:150px;border-radius:50%;background:#7fd1ff;border:4px solid #111;display:grid;place-items:center;text-align:center;font-family:Anton;font-size:24px;line-height:1.05;transform:rotate(-14deg);text-transform:uppercase;z-index:3}
-</style></head><body><div class="page">
+</style><style id="motion">
+/* Animationen */
+@keyframes slam{0%{opacity:0;transform:scale(.7) rotate(-2deg)}70%{opacity:1;transform:scale(1.03)}100%{opacity:1;transform:none}}
+@keyframes drop{0%{transform:translateY(-120%)}70%{transform:translateY(6%)}100%{transform:none}}
+@keyframes jitter{0%,86%,100%{transform:none}88%{transform:translate(-3px,1px) rotate(-1deg)}90%{transform:translate(3px,-1px) rotate(1deg)}92%{transform:translate(-2px,0)}94%{transform:none}}
+@keyframes spinIn{from{opacity:0;transform:scale(0) rotate(-200deg)}to{opacity:1;transform:rotate(-14deg)}}
+@keyframes bob{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(-8deg) scale(1.06)}}
+@keyframes roll{0%,100%{transform:rotate(28deg)}50%{transform:rotate(16deg) translateY(-8px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes rise{from{transform:rotate(180deg) translateY(-100%)}to{transform:rotate(180deg)}}
+.c{animation:slam .7s cubic-bezier(.22,1,.36,1) backwards;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s cubic-bezier(.22,1,.36,1)}
+.logo{animation-delay:.05s}.nav{animation-delay:.12s}.vert{animation-delay:.2s}.big{animation-delay:.28s}.week{animation-delay:.38s}.pie{animation-delay:.46s}.strip{animation-delay:.54s}
+.c:hover{transform:translate(-5px,-5px);box-shadow:5px 5px 0 #ffe600,9px 9px 0 #ff3d00;z-index:2}
+.big h1 span.l{display:block;overflow:hidden}
+.big h1 span.l > span{display:inline-block;animation:drop .9s cubic-bezier(.22,1,.36,1) both}
+.big h1 span.l:nth-child(2) > span{animation-delay:.12s}
+.big h1 em{animation:jitter 4s steps(1) 2s infinite}
+.vert > span{animation:rise 1s cubic-bezier(.22,1,.36,1) .5s both}
+.vert{display:flex}
+.sticker{animation:spinIn 1s cubic-bezier(.34,1.56,.64,1) 1s both,bob 3s ease-in-out 2s infinite}
+.bean{animation:roll 4s ease-in-out infinite}
+@keyframes wedge{0%,100%{transform:none}50%{transform:scale(1.07)}}
+.pie svg path{transform-origin:50px 50px;animation:wedge 3s ease-in-out infinite}
+.pie svg path:nth-of-type(2){animation-delay:1.5s}
+.strip{justify-content:flex-start;padding-left:0}
+.track{display:flex;align-items:center;gap:36px;padding-left:24px;flex-shrink:0;animation:marquee 18s linear infinite}
+.strip:hover .track{animation-play-state:paused}
+.nav span{transition:transform .2s}
+.nav span:hover{transform:translateY(-3px)}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head><body><div class="page">
 <div class="c logo">BOHNENWERK</div>
 <div class="c nav"><span>Kaffee</span><span>Abo</span><span>Kurse</span><span>Korb (2)</span></div>
-<div class="c vert"><span>Röstung №42</span></div>
-<div class="c big"><h1>Kaffee<br>mit <em>Krach.</em></h1><p>Wir rösten klein, laut und jeden Dienstag frisch. Bohnen direkt aus der Trommel an deine Tür.</p><div class="bean"></div></div>
+<div class="c vert"><span>Röstung Nr. 42</span></div>
+<div class="c big"><h1><span class="l"><span>Kaffee</span></span><span class="l"><span>mit <em>Krach.</em></span></span></h1><p>Wir rösten klein, laut und jeden Dienstag frisch. Bohnen direkt aus der Trommel an deine Tür.</p><div class="bean"></div></div>
 <div class="c week"><small>Röstung der Woche</small><h3>Äthiopien Guji</h3>Pfirsich · Jasmin · Bergamotte<br><br><span class="p">12,90 €</span></div>
 <div class="c pie"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#111" stroke-width="4"/><path d="M50 50V4a46 46 0 0 1 40 69z" fill="#ff3d00" stroke="#111" stroke-width="4"/><path d="M50 50l40 23A46 46 0 0 1 20 85z" fill="#ffe600" stroke="#111" stroke-width="4"/><text x="50" y="57" text-anchor="middle" font-family="Anton" font-size="14">MISCHUNG</text></svg></div>
-<div class="c strip">Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo <b>✱</b> Röstkurse <b>✱</b> Espresso <b>✱</b> Filter</div>
+<div class="c strip"><div class="track">Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo <b>✱</b> Röstkurse <b>✱</b> Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo <b>✱</b> Röstkurse <b>✱</b> Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo <b>✱</b> Röstkurse <b>✱</b> Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo <b>✱</b> Röstkurse <b>✱</b> </div></div>
 <div class="sticker">Frisch<br>aus der<br>Trommel</div>
 </div>
 <!-- Demo-Rahmen: skaliert die 1280×800-Startseite auf jedes Fenster und kennzeichnet sie als Konzept -->
 <style>
-.demo-frame{position:absolute;left:50%;top:50%;width:1280px;height:800px;transform-origin:50% 50%}
-.demo-badge{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:99;display:flex;align-items:center;gap:12px;padding:10px 12px 10px 18px;border-radius:999px;background:#1f1f22;color:#fff;font:600 13px/1.2 Inter,system-ui,sans-serif;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);white-space:nowrap}
+.demo-frame{position:absolute;left:50%;top:calc(50% - 30px);width:1280px;height:800px;transform-origin:50% 50%;box-shadow:0 30px 80px -30px rgba(0,0,0,.5)}
+.demo-badge{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:99;display:flex;align-items:center;gap:12px;padding:10px 12px 10px 18px;border-radius:999px;background:#1f1f22;color:#fff;font:600 13px/1.2 Inter,system-ui,sans-serif;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);white-space:nowrap}
 .demo-badge a{color:#1f1f22;background:#fff;padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:800}.demo-badge small{display:flex;gap:4px;align-items:center;font-weight:500;opacity:.8}.demo-badge small a{background:none;color:#fff;padding:0;font-weight:500;text-decoration:underline}
 </style>
 <script>
@@ -80,7 +112,7 @@ body{background:#111;font-family:'Space Mono'}
   badge.innerHTML = 'Design-Konzept von Brandner Studios <a href="../index.html#konzepte">Zurück</a><small><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></small>';
   document.body.appendChild(badge);
   function fit() {
-    var s = Math.min(innerWidth / 1280, innerHeight / 800);
+    var s = Math.min(innerWidth / 1280, (innerHeight - 60) / 800);
     frame.style.transform = "translate(-50%, -50%) scale(" + s + ")";
   }
   addEventListener("resize", fit);
