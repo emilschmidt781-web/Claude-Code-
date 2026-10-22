@@ -3090,8 +3090,9 @@ body::after {
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
-  padding-bottom: 0.08em;
-  margin-bottom: -0.08em;
+  /* Platz oben für Umlaut-Punkte (Ü, Ä, Ö) bei enger Zeilenhöhe */
+  padding: 0.22em 0 0.08em;
+  margin: -0.22em 0 -0.08em;
 }
 
 .w > span {
@@ -4544,4 +4545,8 @@ body.show-grid h3 {
   font-weight: 900;
   letter-spacing: -0.045em;
   text-transform: uppercase;
+}
+
+.statement-text .display-md {
+  text-shadow: 0 4px 30px rgba(31, 31, 34, 0.25);
 }
