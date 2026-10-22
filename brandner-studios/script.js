@@ -432,7 +432,7 @@ if (finePointer && !reduceMotion) {
 
   document.addEventListener("pointerover", (e) => {
     const example = e.target.closest(".example");
-    const ref = e.target.closest(".ref-media");
+    const ref = e.target.closest(".ref-media, .concept");
     const interactive = e.target.closest("a, button, summary, .card, .chips li");
     ring.querySelector("span").textContent = ref ? "Ansehen" : "Anfragen";
     ring.classList.toggle("label", !!(example || ref));
@@ -620,7 +620,7 @@ if (menuToggle && menu) {
 }
 
 // Punkte unter den Wisch-Karussells
-document.querySelectorAll(".services, .examples").forEach((track) => {
+document.querySelectorAll(".services, .examples, .concepts").forEach((track) => {
   const hint = document.createElement("div");
   hint.className = "swipe-hint";
   hint.setAttribute("aria-hidden", "true");

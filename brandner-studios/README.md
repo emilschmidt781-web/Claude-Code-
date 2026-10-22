@@ -44,6 +44,9 @@ Die fünf Karten im Hero zeigen erfundene Startseiten in sehr unterschiedlichen 
 markiert. Echte Kundenprojekte stehen nur im Abschnitt „Referenzen“.
 
 - Bilder: `img/konzept-*.jpg` (1280 × 800)
+- Demos: `konzepte/*.html` sind online anklickbar (Abschnitt „Design-Konzepte“ unter den
+  Referenzen). Sie skalieren sich auf jedes Fenster und tragen unten das Schild
+  „Design-Konzept von Brandner Studios“. Bitte nicht als echte Kundenprojekte ausgeben.
 - Quellen: `konzepte/*.html`, jeweils eine eigenständige Seite. Nach einer Änderung neu
   abfotografieren, zum Beispiel mit Playwright bei 1280 × 800.
 

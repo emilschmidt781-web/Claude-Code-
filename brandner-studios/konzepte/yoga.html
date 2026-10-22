@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Atem Yogastudio – Design-Konzept</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0}
@@ -28,4 +28,31 @@ p.sub{position:absolute;left:0;right:0;top:560px;text-align:center;font-size:19p
 <p class="sub">Yoga, Atemarbeit und Stille — mitten in der Stadt.</p>
 <div class="card" style="left:70px"><b>Morgenflow</b><span class="dot"></span>Heute · 07:30 · noch 4 Plätze</div>
 <div class="card" style="right:70px"><b>Yin am Abend</b><span class="dot" style="background:#c99bd6"></span>Heute · 19:00 · Kerzenlicht</div>
+
+<!-- Demo-Rahmen: skaliert die 1280×800-Startseite auf jedes Fenster und kennzeichnet sie als Konzept -->
+<style>
+.demo-frame{position:absolute;left:50%;top:50%;width:1280px;height:800px;transform-origin:50% 50%}
+.demo-badge{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:99;display:flex;align-items:center;gap:12px;padding:10px 12px 10px 18px;border-radius:999px;background:#1f1f22;color:#fff;font:600 13px/1.2 Inter,system-ui,sans-serif;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);white-space:nowrap}
+.demo-badge a{color:#1f1f22;background:#fff;padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:800}
+</style>
+<script>
+(function () {
+  var frame = document.createElement("div");
+  frame.className = "demo-frame";
+  while (document.body.firstChild) frame.appendChild(document.body.firstChild);
+  document.body.appendChild(frame);
+  document.body.style.width = "100vw";
+  document.body.style.height = "100vh";
+  var badge = document.createElement("div");
+  badge.className = "demo-badge";
+  badge.innerHTML = 'Design-Konzept von Brandner Studios <a href="../index.html#konzepte">Zurück</a>';
+  document.body.appendChild(badge);
+  function fit() {
+    var s = Math.min(innerWidth / 1280, innerHeight / 800);
+    frame.style.transform = "translate(-50%, -50%) scale(" + s + ")";
+  }
+  addEventListener("resize", fit);
+  fit();
+})();
+</script>
 </body></html>
