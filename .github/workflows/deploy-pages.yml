@@ -55,6 +55,14 @@ jobs:
             cp -r ricky-wagner/fonts dist-pages/ricky-wagner/
           fi
 
+      # Website des Seniorenheims Schloss Ebracher Hof unter /schloss-ebracher-hof/ mitveröffentlichen
+      - name: Schloss-Ebracher-Hof-Website hinzufügen
+        run: |
+          if [ -d schloss-ebracher-hof ]; then
+            mkdir -p dist-pages/schloss-ebracher-hof
+            cp schloss-ebracher-hof/*.html schloss-ebracher-hof/*.css schloss-ebracher-hof/*.js dist-pages/schloss-ebracher-hof/
+          fi
+
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)
         uses: actions/configure-pages@v5
         with:
