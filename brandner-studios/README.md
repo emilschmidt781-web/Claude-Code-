@@ -41,7 +41,8 @@ Lime-Punkt. Schriftzug BRANDNER (Inter Display Black, als Vektorpfade) mit STUDI
 
 Die fünf Karten im Hero zeigen erfundene Startseiten in sehr unterschiedlichen Stilen
 (Weingut, Yogastudio, Architekturbüro, Rösterei, Tattoo-Studio). Sie sind als „Konzept“
-markiert. Echte Kundenprojekte sind derzeit nicht auf der Seite.
+markiert. Ein ausdrücklicher Satz „erfunden“ ist nicht nötig, das Etikett „Konzept“ aber
+bitte stehen lassen, damit kein Eindruck echter Kundenprojekte entsteht (UWG §§ 5, 5a).
 
 - Bilder: `img/konzept-*.jpg` (1280 × 800)
 - Demos: `konzepte/*.html` sind online anklickbar (Abschnitt „Beispiele“). Sie skalieren sich auf jedes Fenster und tragen unten das Schild
