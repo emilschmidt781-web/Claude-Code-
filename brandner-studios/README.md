@@ -61,8 +61,9 @@ anpassen (`style="--v: …"` und `data-count="…"` je Kreis, dazu der Satz daru
 echte Kundenstimme gibt, Zahlen und Zitat eintragen und `hidden` entfernen. Nur wahre Angaben
 verwenden – erfundene Zahlen sind irreführende Werbung (§ 5 UWG).
 
-**Schriften** liegen lokal in `fonts/` (SIL Open Font License). Nur die Schriften für die Namen der
-Beispiele kommen noch von Google Fonts und werden erst nach der Seite geladen.
+**Schriften** liegen alle lokal in `fonts/` (SIL Open Font License), auch auf den Demo-Seiten.
+Die Seite stellt keine Verbindung zu Google oder anderen Drittanbietern her, setzt keine Cookies
+und speichert nichts im Browser. Bitte so lassen – sonst Datenschutzerklärung anpassen.
 
 ## Stil
 
