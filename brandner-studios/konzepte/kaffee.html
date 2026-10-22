@@ -2,31 +2,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0}
-body{width:1280px;height:800px;overflow:hidden;background:#ffe600;color:#111;font-family:'Space Mono';position:relative}
-nav{display:grid;grid-template-columns:260px 1fr 1fr 1fr 200px;border-bottom:4px solid #111;height:74px}
-nav>*{display:flex;align-items:center;padding:0 22px;border-right:4px solid #111;font-weight:700;text-transform:uppercase;font-size:15px}
-nav .logo{font-family:Anton;font-size:30px;letter-spacing:.02em}
-nav .cart{background:#111;color:#ffe600;justify-content:center;border:0}
-h1{position:absolute;left:30px;top:100px;font-family:Anton;font-size:205px;line-height:1.04;text-transform:uppercase;letter-spacing:-.01em}
-h1 .o{color:#ffe600;-webkit-text-stroke:5px #111}
-.box{position:absolute;right:40px;top:120px;width:350px;background:#fff;border:4px solid #111;box-shadow:12px 12px 0 #111;padding:26px}
-.box h3{font-family:Anton;font-size:40px;text-transform:uppercase;line-height:1}
-.box p{margin:12px 0 18px;font-size:14px;line-height:1.5}
-.tags{display:flex;gap:8px;flex-wrap:wrap}.tags span{border:3px solid #111;padding:4px 10px;font-weight:700;font-size:12px;text-transform:uppercase}
-.buy{display:block;margin-top:18px;background:#ff3d00;border:4px solid #111;padding:14px;text-align:center;font-weight:700;text-transform:uppercase;box-shadow:6px 6px 0 #111}
-.sticker{position:absolute;left:820px;top:430px;width:170px;height:170px;border-radius:50%;background:#ff3d00;border:4px solid #111;display:grid;place-items:center;text-align:center;font-family:Anton;font-size:30px;line-height:1;transform:rotate(-14deg);text-transform:uppercase;color:#fff}
-.bean{position:absolute;right:70px;bottom:120px;width:150px;height:200px;background:#5a3418;border:4px solid #111;border-radius:50%;transform:rotate(28deg)}
-.bean:after{content:"";position:absolute;left:50%;top:10%;bottom:10%;width:0;border-left:5px solid #111;border-radius:50%;transform:translateX(-50%) skewY(-8deg)}
-.strip{position:absolute;left:0;right:0;bottom:0;height:70px;background:#111;color:#ffe600;display:flex;align-items:center;gap:40px;font-family:Anton;font-size:34px;text-transform:uppercase;white-space:nowrap;padding-left:20px}
+body{background:#111;font-family:'Space Mono'}
+.page{width:1280px;height:800px;overflow:hidden;position:relative;display:grid;gap:10px;padding:10px;
+ grid-template-columns:150px 1fr 1fr 300px;grid-template-rows:90px 1fr 1fr 110px}
+.c{border:4px solid #111;position:relative;overflow:hidden}
+.logo{grid-column:1/3;background:#ffe600;display:flex;align-items:center;padding:0 24px;font-family:Anton;font-size:52px;letter-spacing:.01em}
+.nav{grid-column:3/5;background:#fff;display:flex;align-items:center;justify-content:space-around;font-weight:700;text-transform:uppercase;font-size:15px}
+.nav span:last-child{background:#ff3d00;color:#fff;padding:10px 18px;border:3px solid #111;box-shadow:4px 4px 0 #111}
+.vert{grid-row:2/4;background:#ff3d00;display:flex;align-items:center;justify-content:center}
+.vert span{writing-mode:vertical-rl;transform:rotate(180deg);font-family:Anton;font-size:96px;color:#ffe600;letter-spacing:.02em;white-space:nowrap}
+.big{grid-column:2/4;grid-row:2/4;background:#ffe600;padding:30px 34px}
+.big h1{font-family:Anton;font-size:150px;line-height:1.02;text-transform:uppercase}
+.big h1 em{font-style:normal;display:inline-block;background:#111;color:#ffe600;padding:6px 16px 0;line-height:.95}
+.big p{position:absolute;left:34px;bottom:28px;width:420px;font-size:15px;line-height:1.5}
+.bean{position:absolute;right:40px;bottom:36px;width:130px;height:175px;background:#5a3418;border:4px solid #111;border-radius:50%;transform:rotate(28deg)}
+.bean:after{content:"";position:absolute;left:50%;top:10%;bottom:10%;border-left:5px solid #111;border-radius:50%;transform:translateX(-50%) skewY(-8deg)}
+.week{background:#fff;padding:22px}
+.week small{font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.1em}
+.week h3{font-family:Anton;font-size:44px;line-height:1;text-transform:uppercase;margin:6px 0 10px}
+.week .p{font-size:30px;font-weight:700}
+.pie{background:#7fd1ff;display:grid;place-items:center}
+.pie svg{width:180px;height:180px}
+.strip{grid-column:1/5;background:#ffe600;display:flex;align-items:center;gap:36px;white-space:nowrap;font-family:Anton;font-size:56px;text-transform:uppercase;padding-left:24px}
 .strip b{color:#ff3d00}
-</style></head><body>
-<nav><span class="logo">Bohnenwerk</span><span>Kaffee</span><span>Rösterei</span><span>Kurse</span><span class="cart">Korb (2)</span></nav>
-<h1>Frisch<br><span class="o">ge</span>röstet.</h1>
-<div class="box"><h3>Röstung der Woche</h3><p>Äthiopien Guji — Pfirsich, Jasmin und ein Hauch Bergamotte. Jeden Dienstag frisch aus der Trommel.</p><div class="tags"><span>Filter</span><span>Hell</span><span>250 g</span></div><span class="buy">In den Korb →</span></div>
-<div class="sticker">Direkt<br>vom<br>Röster</div>
-<div class="bean"></div>
-<div class="strip">Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo <b>✱</b> Röstkurse <b>✱</b> Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo</div>
-
+.sticker{position:absolute;left:705px;top:520px;width:150px;height:150px;border-radius:50%;background:#7fd1ff;border:4px solid #111;display:grid;place-items:center;text-align:center;font-family:Anton;font-size:24px;line-height:1.05;transform:rotate(-14deg);text-transform:uppercase;z-index:3}
+</style></head><body><div class="page">
+<div class="c logo">BOHNENWERK</div>
+<div class="c nav"><span>Kaffee</span><span>Abo</span><span>Kurse</span><span>Korb (2)</span></div>
+<div class="c vert"><span>Röstung №42</span></div>
+<div class="c big"><h1>Kaffee<br>mit <em>Krach.</em></h1><p>Wir rösten klein, laut und jeden Dienstag frisch. Bohnen direkt aus der Trommel an deine Tür.</p><div class="bean"></div></div>
+<div class="c week"><small>Röstung der Woche</small><h3>Äthiopien Guji</h3>Pfirsich · Jasmin · Bergamotte<br><br><span class="p">12,90 €</span></div>
+<div class="c pie"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fff" stroke="#111" stroke-width="4"/><path d="M50 50V4a46 46 0 0 1 40 69z" fill="#ff3d00" stroke="#111" stroke-width="4"/><path d="M50 50l40 23A46 46 0 0 1 20 85z" fill="#ffe600" stroke="#111" stroke-width="4"/><text x="50" y="57" text-anchor="middle" font-family="Anton" font-size="14">MISCHUNG</text></svg></div>
+<div class="c strip">Espresso <b>✱</b> Filter <b>✱</b> Bohnen-Abo <b>✱</b> Röstkurse <b>✱</b> Espresso <b>✱</b> Filter</div>
+<div class="sticker">Frisch<br>aus der<br>Trommel</div>
+</div>
 <!-- Demo-Rahmen: skaliert die 1280×800-Startseite auf jedes Fenster und kennzeichnet sie als Konzept -->
 <style>
 .demo-frame{position:absolute;left:50%;top:50%;width:1280px;height:800px;transform-origin:50% 50%}

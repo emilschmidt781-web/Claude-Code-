@@ -2,33 +2,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0}
-body{width:1280px;height:800px;overflow:hidden;background:#f6f1ec;color:#3e3a4a;font-family:'DM Sans';position:relative}
-.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.85}
-nav{position:absolute;top:30px;left:50%;transform:translateX(-50%);display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(255,255,255,.55);backdrop-filter:blur(10px);font-size:14px;box-shadow:0 10px 30px -20px rgba(62,58,74,.5)}
-nav span{padding:10px 20px;border-radius:999px}nav .on{background:#3e3a4a;color:#fff}
-.logo{position:absolute;top:40px;left:56px;font-family:Fraunces;font-size:28px;font-style:italic}
-.book{position:absolute;top:36px;right:56px;padding:12px 22px;border-radius:999px;border:1px solid #3e3a4a;font-size:14px}
-h1{position:absolute;left:0;right:0;top:230px;text-align:center;font-family:Fraunces;font-weight:300;font-size:150px;line-height:.95;letter-spacing:-.04em}
-h1 i{font-style:italic;color:#8c6fb8}
-p.sub{position:absolute;left:0;right:0;top:560px;text-align:center;font-size:19px;color:#6b6578}
-.circle{position:absolute;left:50%;top:400px;width:520px;height:520px;margin-left:-260px;border:1px solid rgba(62,58,74,.18);border-radius:50%}
-.card{position:absolute;bottom:50px;padding:18px 22px;border-radius:24px;background:rgba(255,255,255,.6);backdrop-filter:blur(12px);font-size:14px;box-shadow:0 20px 40px -24px rgba(62,58,74,.45)}
-.card b{display:block;font-family:Fraunces;font-size:22px;font-weight:300;margin-bottom:4px}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7bc4a0;margin-right:8px}
+body{width:1280px;height:800px;overflow:hidden;background:#2f2a3a;color:#f6f1ec;font-family:'DM Sans';position:relative}
+.orb{position:absolute;left:50%;top:50%;width:620px;height:620px;margin:-330px 0 0 -310px;border-radius:50%;
+ background:radial-gradient(circle at 35% 30%,#ffd9e6 0%,#f4b6cf 25%,#b9a3f0 55%,#7d8de0 80%,#4b4a8a 100%);
+ box-shadow:0 0 120px 40px rgba(185,163,240,.35), inset -30px -40px 80px rgba(47,42,58,.35)}
+.ring{position:absolute;left:50%;top:50%;border:1px solid rgba(246,241,236,.18);border-radius:50%}
+.inner{position:absolute;left:50%;top:50%;transform:translate(-50%,-56%);text-align:center;color:#2f2a3a}
+.inner small{display:block;font-size:13px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:16px}
+.inner h1{font-family:Fraunces;font-weight:300;font-size:110px;line-height:.9;letter-spacing:-.04em}
+.inner h1 i{display:block;font-size:64px;margin-top:10px}
+.inner p{margin-top:22px;font-size:16px}
+.logo{position:absolute;top:44px;left:56px;font-family:Fraunces;font-style:italic;font-size:34px}
+.time{position:absolute;top:50px;right:56px;font-size:14px;text-align:right;line-height:1.6;color:#cfc6dc}
+.vert{position:absolute;left:56px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg);font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:#a99fbd}
+.dock{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);display:flex;gap:6px;padding:7px;border-radius:999px;background:rgba(246,241,236,.1);backdrop-filter:blur(10px);border:1px solid rgba(246,241,236,.15);font-size:14px}
+.dock span{padding:11px 22px;border-radius:999px}.dock .on{background:#f6f1ec;color:#2f2a3a}
+.steps{position:absolute;right:56px;bottom:46px;font-family:Fraunces;font-style:italic;font-size:20px;color:#cfc6dc}
 </style></head><body>
-<div class="blob" style="width:520px;height:520px;left:-120px;top:-120px;background:#f7c6d9"></div>
-<div class="blob" style="width:600px;height:600px;right:-160px;top:120px;background:#c9d7ff"></div>
-<div class="blob" style="width:460px;height:460px;left:360px;bottom:-260px;background:#d6f0c9"></div>
-<div class="blob" style="width:300px;height:300px;left:560px;top:-80px;background:#ffe2b8"></div>
+<div class="ring" style="width:780px;height:780px;margin:-410px 0 0 -390px"></div>
+<div class="ring" style="width:960px;height:960px;margin:-500px 0 0 -480px"></div>
+<div class="orb"></div>
+<div class="inner"><small>Atme mit uns</small><h1>Ein<br>Atemzug<i>und du bist da.</i></h1><p>Yoga · Atemarbeit · Stille</p></div>
 <span class="logo">atem.</span>
-<nav><span class="on">Kurse</span><span>Studio</span><span>Retreats</span><span>Team</span></nav>
-<span class="book">Probestunde buchen</span>
-<div class="circle"></div>
-<h1>Einatmen.<br><i>Ankommen.</i></h1>
-<p class="sub">Yoga, Atemarbeit und Stille — mitten in der Stadt.</p>
-<div class="card" style="left:70px"><b>Morgenflow</b><span class="dot"></span>Heute · 07:30 · noch 4 Plätze</div>
-<div class="card" style="right:70px"><b>Yin am Abend</b><span class="dot" style="background:#c99bd6"></span>Heute · 19:00 · Kerzenlicht</div>
-
+<div class="time">Heute frei<br>07:30 Morgenflow · 19:00 Yin</div>
+<div class="vert">Yogastudio in der Stadt</div>
+<div class="dock"><span class="on">Probestunde</span><span>Kurse</span><span>Retreats</span><span>Team</span></div>
+<div class="steps">ein · halten · aus</div>
 <!-- Demo-Rahmen: skaliert die 1280×800-Startseite auf jedes Fenster und kennzeichnet sie als Konzept -->
 <style>
 .demo-frame{position:absolute;left:50%;top:50%;width:1280px;height:800px;transform-origin:50% 50%}
