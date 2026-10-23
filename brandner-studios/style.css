@@ -4341,3 +4341,254 @@ mark {
     margin-top: 0;
   }
 }
+
+/* ===== Mini-Website: Szenen für Kennenlernen (Handschlag) und Planen (Skizzenbuch) ===== */
+.ms-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  background: var(--card);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+.builder[data-scene="1"] .ms-scene-1,
+.builder[data-scene="2"] .ms-scene-2 {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Handschlag: Arme kommen von links und rechts, dann wird geschüttelt */
+.hs {
+  width: min(94%, 380px);
+  overflow: visible;
+}
+
+.hs-arm {
+  transition: none;
+}
+
+.builder[data-scene="1"] .hs-l {
+  animation: hsLeft 0.7s var(--ease) both;
+}
+
+.builder[data-scene="1"] .hs-r {
+  animation: hsRight 0.7s var(--ease) both;
+}
+
+.builder[data-scene="1"] .hs-shake {
+  animation: hsShake 0.34s ease-in-out 0.75s 4;
+}
+
+@keyframes hsLeft {
+  from {
+    transform: translateX(-140px);
+  }
+}
+
+@keyframes hsRight {
+  from {
+    transform: translateX(140px);
+  }
+}
+
+@keyframes hsShake {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-9px) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(7px) rotate(2deg);
+  }
+}
+
+.hs-bubble {
+  position: absolute;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  font-family: Caveat, var(--sans);
+  font-size: 1.15rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.hs-b1 {
+  left: 12%;
+  top: 14%;
+  border-bottom-left-radius: 3px;
+}
+
+.hs-b2 {
+  right: 10%;
+  top: 22%;
+  border-bottom-right-radius: 3px;
+  background: var(--violet);
+}
+
+.builder[data-scene="1"] .hs-b1 {
+  animation: bubbleIn 0.5s var(--ease) 0.9s both;
+}
+
+.builder[data-scene="1"] .hs-b2 {
+  animation: bubbleIn 0.5s var(--ease) 1.4s both;
+}
+
+@keyframes bubbleIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Skizzenbuch: Stift zeichnet den Aufbau der Seite */
+.sketchbook {
+  position: relative;
+  width: 82%;
+  max-width: 320px;
+  padding: 22px 16px 12px;
+  border-radius: 6px;
+  background: #fbf6ea;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  transform: rotate(-3deg);
+}
+
+/* Spiralbindung oben */
+.sketchbook::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: -6px;
+  height: 14px;
+  background: radial-gradient(circle at 7px 7px, #fbf6ea 3px, #9b99aa 3.5px, #9b99aa 5px, transparent 5.5px) 0 0 / 18px 14px repeat-x;
+}
+
+.sketchbook svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.sketchbook .draw {
+  fill: none;
+  stroke: #2a2833;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.sketchbook .draw-hl {
+  stroke: #ff5fa8;
+  stroke-width: 7;
+  opacity: 0.45;
+}
+
+.builder[data-scene="2"] .sketchbook .draw {
+  animation: drawLine 0.45s ease-out var(--dl) forwards;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.pencil {
+  position: absolute;
+  left: 8%;
+  top: 14%;
+  width: 70px;
+  height: 11px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ff5fa8 0 14%, #c9c7d6 14% 22%, #ffd166 22% 84%, #f3c6a3 84%);
+  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+  transform-origin: 100% 50%;
+  transform: translate(-100%, -50%) rotate(-35deg);
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.builder[data-scene="2"] .pencil {
+  animation: pencilMove 2.1s ease-in-out both;
+}
+
+@keyframes pencilMove {
+  0% {
+    left: 8%;
+    top: 16%;
+  }
+  12% {
+    left: 92%;
+    top: 16%;
+  }
+  22% {
+    left: 14%;
+    top: 22%;
+  }
+  32% {
+    left: 60%;
+    top: 46%;
+  }
+  42% {
+    left: 46%;
+    top: 55%;
+  }
+  52% {
+    left: 30%;
+    top: 66%;
+  }
+  66% {
+    left: 32%;
+    top: 88%;
+  }
+  80% {
+    left: 62%;
+    top: 88%;
+  }
+  100% {
+    left: 92%;
+    top: 92%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sketchbook .draw {
+    stroke-dashoffset: 0;
+  }
+  .hs-bubble {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Mini-Website füllt die Höhe neben der Checkliste, Szenen stehen mittig */
+.mini-site {
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-body {
+  flex: 1;
+  min-height: 236px;
+  height: auto;
+}
+
+@media (max-width: 759px) {
+  .ms-body {
+    min-height: 210px;
+  }
+  .sketchbook {
+    width: 68%;
+    padding: 18px 12px 10px;
+  }
+}

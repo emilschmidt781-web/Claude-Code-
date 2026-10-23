@@ -333,8 +333,11 @@ if (builder) {
     ripple(card.querySelector(".step-btn"), e);
     card.classList.add("working");
     busy = true;
+    // Kennenlernen: Handschlag, Planen: Skizzenbuch – im Fenster der Mini-Website
+    builder.dataset.scene = n;
     render();
     later(() => {
+      builder.dataset.scene = "";
       card.classList.remove("working");
       stage = n;
       busy = stage < steps.length;
@@ -346,7 +349,7 @@ if (builder) {
           builder.classList.add("finished");
           burst();
         }, 250);
-    }, 1700);
+    }, [2800, 3000, 1700, 1700][n - 1]);
   };
 
   const start = () => {
@@ -360,6 +363,7 @@ if (builder) {
     stage = 0;
     busy = false;
     current = 0;
+    builder.dataset.scene = "";
     steps.forEach((st) => st.classList.remove("working"));
     builder.classList.remove("finished");
     confetti.innerHTML = "";
