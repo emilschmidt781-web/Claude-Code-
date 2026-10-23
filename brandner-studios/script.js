@@ -265,7 +265,67 @@ function typeTerminal(term) {
   };
   next();
 }
-onVisible([...document.querySelectorAll(".term-body")], typeTerminal, { threshold: 0.6 });
+onVisible([...document.querySelectorAll(".term-body:not(.build-body)")], typeTerminal, { threshold: 0.6 });
+
+// ===== Ablauf: ein Terminal tippt alle vier Schritte bis „Fertig!“ =====
+const buildTerm = document.querySelector(".build-term");
+if (buildTerm) {
+  const lines = [...buildTerm.querySelectorAll(".tl")];
+  const steps = [...document.querySelectorAll(".steps .step")];
+  const bar = buildTerm.querySelector(".build-bar i");
+  const replay = buildTerm.querySelector(".build-replay");
+  let timers = [];
+  const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+  const markStep = (n) =>
+    steps.forEach((st) => {
+      const k = Number(st.dataset.step);
+      st.classList.toggle("active", k === n);
+      st.classList.toggle("done", k < n || n > steps.length);
+    });
+  const finish = () => {
+    markStep(steps.length + 1);
+    bar.style.width = "100%";
+    buildTerm.classList.add("finished");
+  };
+  const run = () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+    buildTerm.classList.remove("finished");
+    bar.style.width = "0%";
+    lines.forEach((l) => {
+      l.textContent = "";
+      l.classList.remove("typing");
+    });
+    markStep(0);
+    if (reduceMotion) {
+      lines.forEach((l) => (l.textContent = l.dataset.type));
+      return finish();
+    }
+    let li = 0;
+    const next = () => {
+      if (li >= lines.length) return later(finish, 400);
+      const line = lines[li++];
+      const text = line.dataset.type;
+      const isCmd = line.classList.contains("cmd");
+      if (line.dataset.step) markStep(Number(line.dataset.step));
+      bar.style.width = `${(li / lines.length) * 92}%`;
+      let ci = 0;
+      line.classList.add("typing");
+      const step = () => {
+        line.textContent = text.slice(0, ++ci);
+        if (ci < text.length) later(step, isCmd ? 50 : 16);
+        else {
+          line.classList.remove("typing");
+          later(next, isCmd ? 300 : 650);
+        }
+      };
+      step();
+    };
+    next();
+  };
+  onVisible([buildTerm], run, { threshold: 0.4 });
+  replay.addEventListener("click", run);
+}
 
 // ===== Kopieren =====
 document.querySelectorAll(".copy").forEach((btn) => {
