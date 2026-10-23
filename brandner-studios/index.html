@@ -34,7 +34,7 @@
     <link rel="preload" href="fonts/Inter-normal-400.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Schriften der Beispiel-Namen und der Bildunterschrift lädt script.js erst beim Hinscrollen -->
     <noscript><link rel="stylesheet" href="fonts/extra.css" /></noscript>
-    <link rel="stylesheet" href="style.css?v=24" />
+    <link rel="stylesheet" href="style.css?v=26" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -491,24 +491,9 @@
               </li>
             </ol>
             <div class="build-stage">
-              <div class="progress-card">
-                <div class="pc-head">
-                  <span class="pc-title">Deine Website</span>
-                  <span class="pc-pct"><b>0</b> %</span>
-                </div>
-                <div class="build-bar" aria-hidden="true"><i></i></div>
-                <p class="pc-status" aria-live="polite">Gleich geht’s los …</p>
-                <ul class="pc-list">
-                  <li data-step="1"><span class="pc-ic" aria-hidden="true"></span><span class="pc-txt"><b>Kennen&shy;lernen</b><small>30 Minuten, kostenlos</small></span></li>
-                  <li data-step="2"><span class="pc-ic" aria-hidden="true"></span><span class="pc-txt"><b>Planen &amp; Gestalten</b><small>Farben und Aufbau abgestimmt</small></span></li>
-                  <li data-step="3"><span class="pc-ic" aria-hidden="true"></span><span class="pc-txt"><b>Bauen</b><small>fürs Handy, schnell, bei Google</small></span></li>
-                  <li data-step="4"><span class="pc-ic" aria-hidden="true"></span><span class="pc-txt"><b>Online</b><small>deine Website ist da</small></span></li>
-                </ul>
-                <button type="button" class="pc-replay build-replay">Nochmal ansehen ↺</button>
-              </div>
-              <div class="mini-site" aria-hidden="true">
-                <div class="ms-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ms-url"><span class="ms-lock">🔒</span><span class="ms-url-text">entwurf</span></span><span class="ms-live">online</span></div>
-                <div class="ms-body">
+              <div class="mini-site">
+                <div class="ms-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="ms-url"><span class="ms-lock">🔒</span><span class="ms-url-text">entwurf</span></span><span class="ms-live">online</span></div>
+                <div class="ms-body" aria-hidden="true">
                   <span class="ms-empty">Hier entsteht deine Website</span>
                   <div class="ms-nav"><i class="ms-logo"></i><i></i><i></i><i></i></div>
                   <div class="ms-hero"><i class="ms-h1"></i><i class="ms-h2"></i><i class="ms-btn"></i></div>
@@ -583,6 +568,20 @@
                   </div>
                   <span class="ms-note ms-note-1">Ziele ✓</span>
                   <span class="ms-note ms-note-2">Budget ✓</span>
+                </div>
+                <div class="build-bar" aria-hidden="true"><i></i></div>
+                <div class="ms-foot">
+                  <ul class="pc-list">
+                  <li data-step="1"><span class="pc-ic" aria-hidden="true"></span><span class="pc-txt"><b>Kennen&shy;lernen</b><small>30 Minuten, kostenlos</small></span></li>
+                  <li data-step="2"><span class="pc-ic" aria-hidden="true"></span><span class="pc-txt"><b>Planen &amp; Gestalten</b><small>Farben und Aufbau abgestimmt</small></span></li>
+                  <li data-step="3"><span class="pc-ic" aria-hidden="true"></span><span class="pc-txt"><b>Bauen</b><small>fürs Handy, schnell, bei Google</small></span></li>
+                  <li data-step="4"><span class="pc-ic" aria-hidden="true"></span><span class="pc-txt"><b>Online</b><small>deine Website ist da</small></span></li>
+                  </ul>
+                  <div class="ms-status">
+                    <p class="pc-status" aria-live="polite">Gleich geht’s los …</p>
+                    <span class="pc-pct"><b>0</b> %</span>
+                    <button type="button" class="pc-replay build-replay" aria-label="Nochmal ansehen">↺</button>
+                  </div>
                 </div>
               </div>
             </div>
