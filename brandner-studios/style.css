@@ -3140,3 +3140,32 @@ mark {
     border-top: 1px solid var(--line-strong);
   }
 }
+
+/* „Projekt besprechen“: pulsierender Leuchtring und wiederkehrender Glanz */
+.btn-glow {
+  animation: glowPulse 2.6s ease-in-out infinite;
+}
+
+.btn-glow::after {
+  animation: sweep 3.4s ease-in-out 0.8s infinite;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 95, 168, 0.55), 0 10px 30px -12px rgba(255, 95, 168, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(255, 95, 168, 0), 0 14px 44px -10px rgba(255, 95, 168, 0.9);
+  }
+}
+
+@keyframes sweep {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
