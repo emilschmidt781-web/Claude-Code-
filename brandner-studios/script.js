@@ -241,47 +241,23 @@ document.querySelectorAll(".serp").forEach((list) => {
   }
 });
 
-// ===== Terminal: Zeilen tippen sich, sobald sie sichtbar sind =====
-function typeTerminal(term) {
-  const lines = [...term.querySelectorAll(".tl")];
-  if (reduceMotion) return lines.forEach((l) => (l.textContent = l.dataset.type));
-  let li = 0;
-  const next = () => {
-    if (li >= lines.length) return;
-    const line = lines[li++];
-    const text = line.dataset.type;
-    const isCmd = line.classList.contains("cmd");
-    let ci = 0;
-    line.classList.add("typing");
-    const step = () => {
-      line.textContent = text.slice(0, ++ci);
-      if (ci < text.length) setTimeout(step, isCmd ? 45 : 14);
-      else {
-        if (li < lines.length) line.classList.remove("typing");
-        setTimeout(next, isCmd ? 350 : 180);
-      }
-    };
-    step();
-  };
-  next();
-}
-onVisible([...document.querySelectorAll(".term-body:not(.build-body)")], typeTerminal, { threshold: 0.6 });
-
 // ===== Ablauf: läuft beim Hinscrollen von selbst, die Mini-Website entsteht mit =====
 const builder = document.querySelector(".builder");
 if (builder) {
   const steps = [...builder.querySelectorAll(".step")];
-  const body = builder.querySelector(".build-body");
+  const items = [...builder.querySelectorAll(".pc-list li")];
+  const pct = builder.querySelector(".pc-pct b");
+  const status = builder.querySelector(".pc-status");
   const bar = builder.querySelector(".build-bar i");
   const hint = builder.querySelector(".builder-hint-text");
   const urlText = builder.querySelector(".ms-url-text");
   const confetti = builder.querySelector(".confetti");
-  const script = {
-    1: ["$ brandner kennenlernen", "  ✓ 30 Min. · kostenlos", "  ✓ ziele und wünsche notiert"],
-    2: ["$ brandner gestalten", "  ✓ farben · schrift · aufbau", "  ✓ entwurf abgestimmt"],
-    3: ["$ brandner bauen", "  ✓ handy  ✓ schnell  ✓ google"],
-    4: ["$ brandner online", "  ✓ dein-betrieb.de ist online", "  ✓ betreuung läuft"],
-  };
+  const texts = [
+    "Wir lernen uns kennen …",
+    "Farben und Aufbau werden abgestimmt …",
+    "Deine Seite wird gebaut …",
+    "Deine Seite geht online …",
+  ];
   const titles = ["Kennenlernen", "Planen & Gestalten", "Bauen", "Online gehen"];
   let stage = 0;
   let busy = false;
@@ -294,6 +270,12 @@ if (builder) {
     [1, 2, 3, 4].forEach((k) => builder.classList.toggle(`s${k}`, stage >= k));
     const idle = stage === 0 && !busy;
     steps.forEach((st) => st.classList.toggle("done", Number(st.dataset.step) <= stage));
+    items.forEach((li) => {
+      const k = Number(li.dataset.step);
+      li.classList.toggle("done", k <= stage);
+      li.classList.toggle("working", busy && k === current && k > stage);
+    });
+    status.textContent = idle ? "Gleich geht’s los …" : stage >= steps.length ? "Fertig!" : texts[current - 1];
     hint.textContent = idle
       ? "So entsteht deine Website – Schritt für Schritt."
       : stage >= steps.length
@@ -303,31 +285,18 @@ if (builder) {
     urlText.textContent = stage >= 4 ? "dein-betrieb.de" : stage >= 3 ? "fast fertig" : "entwurf";
   };
 
-  const typeLines = (lines, done) => {
-    let li = 0;
-    const next = () => {
-      if (li >= lines.length) return done();
-      const text = lines[li++];
-      const span = document.createElement("span");
-      span.className = `tl ${text.startsWith("$") ? "cmd" : "out"} typing`;
-      body.appendChild(span);
-      if (reduceMotion) {
-        span.textContent = text;
-        span.classList.remove("typing");
-        return next();
-      }
-      let ci = 0;
-      const step = () => {
-        span.textContent = text.slice(0, ++ci);
-        if (ci < text.length) later(step, text.startsWith("$") ? 40 : 14);
-        else {
-          span.classList.remove("typing");
-          later(next, 220);
-        }
-      };
-      step();
+  // Prozentzahl zählt weich hoch
+  let shown = 0;
+  const countTo = (target) => {
+    const from = shown;
+    const t0 = performance.now();
+    const tick = (now) => {
+      const t = reduceMotion ? 1 : Math.min((now - t0) / 900, 1);
+      shown = Math.round(from + (target - from) * t);
+      pct.textContent = shown;
+      if (t < 1) requestAnimationFrame(tick);
     };
-    next();
+    requestAnimationFrame(tick);
   };
 
   const burst = () => {
@@ -365,23 +334,23 @@ if (builder) {
     card.classList.add("working");
     busy = true;
     render();
-    typeLines(script[n], () => {
+    later(() => {
       card.classList.remove("working");
       stage = n;
       busy = stage < steps.length;
       render();
+      countTo(stage * 25);
       if (stage < steps.length) later(() => runStep(), 450);
       else
         later(() => {
           builder.classList.add("finished");
           burst();
         }, 250);
-    });
+    }, 1700);
   };
 
   const start = () => {
     if (busy || stage !== 0) return;
-    body.innerHTML = "";
     runStep();
   };
 
@@ -394,7 +363,8 @@ if (builder) {
     steps.forEach((st) => st.classList.remove("working"));
     builder.classList.remove("finished");
     confetti.innerHTML = "";
-    body.innerHTML = "";
+    shown = 0;
+    pct.textContent = "0";
     render();
     later(start, 300);
   });

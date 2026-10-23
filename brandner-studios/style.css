@@ -4165,3 +4165,179 @@ mark {
 .theme-light .tools-mini .tool-ic {
   background: var(--card-2);
 }
+
+/* ===== Ablauf: Fortschritt als einfache Checkliste ===== */
+.progress-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--card);
+  transition: border-color 0.6s, box-shadow 0.6s;
+}
+
+.builder.finished .progress-card {
+  border-color: rgba(74, 222, 128, 0.5);
+}
+
+.pc-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pc-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.pc-pct {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.pc-pct b {
+  font-weight: 400;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.progress-card .build-bar {
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pc-status {
+  margin: 0;
+  min-height: 1.5em;
+  color: var(--muted);
+}
+
+.builder.finished .pc-status {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.pc-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.pc-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  opacity: 0.45;
+  transition: opacity 0.4s, border-color 0.4s, background 0.4s, transform 0.5s var(--ease);
+}
+
+.pc-list li.working {
+  opacity: 1;
+  border-color: var(--violet);
+  background: rgba(182, 156, 255, 0.07);
+  transform: translateX(6px);
+}
+
+.pc-list li.done {
+  opacity: 1;
+  border-color: rgba(74, 222, 128, 0.35);
+}
+
+.pc-txt {
+  display: grid;
+  gap: 2px;
+}
+
+.pc-txt small {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Kreis: leer, dreht sich beim Arbeiten, wird zum grünen Haken */
+.pc-ic {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.pc-list li.working .pc-ic {
+  border-color: var(--violet);
+  border-top-color: transparent;
+  animation: pcSpin 0.8s linear infinite;
+}
+
+.pc-list li.done .pc-ic {
+  border-color: #4ade80;
+  background: #4ade80;
+  animation: pcPop 0.5s var(--ease);
+}
+
+.pc-list li.done .pc-ic::after {
+  content: "✓";
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+@keyframes pcSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pcPop {
+  0% {
+    transform: scale(0.4);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+}
+
+.pc-replay {
+  align-self: flex-start;
+  padding: 8px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.pc-replay:hover {
+  border-color: var(--pink);
+}
+
+/* Am Handy zeigt die Checkliste die Schritte – die Karten darüber wären doppelt */
+@media (max-width: 759px) {
+  .builder .steps {
+    display: none;
+  }
+  .builder .build-stage {
+    margin-top: 0;
+  }
+}
