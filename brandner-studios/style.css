@@ -4589,3 +4589,68 @@ mark {
     opacity: 1;
   }
 }
+
+/* Handy und Tablet hochkant: Bild oben, darunter direkt die kompakte Checkliste –
+   so sieht man beides gleichzeitig */
+@media (max-width: 859px) {
+  .builder .steps {
+    display: none;
+  }
+  .builder .build-stage {
+    margin-top: 0;
+    gap: 10px;
+  }
+  .mini-site {
+    order: -1;
+  }
+  .progress-card {
+    gap: 10px;
+    padding: 14px;
+  }
+  .pc-title {
+    font-size: 1rem;
+  }
+  .pc-pct {
+    font-size: 1.6rem;
+  }
+  .pc-status {
+    font-size: 0.9rem;
+  }
+  .pc-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .pc-list li {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 4px;
+    text-align: center;
+  }
+  .pc-list li.working {
+    transform: translateY(-3px);
+  }
+  .pc-txt b {
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .pc-txt small {
+    display: none;
+  }
+  .pc-ic {
+    width: 26px;
+    height: 26px;
+  }
+  .pc-replay {
+    align-self: center;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pc-txt b {
+    font-size: 0.74rem;
+    hyphens: manual;
+  }
+}
