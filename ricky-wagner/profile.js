@@ -9,6 +9,10 @@
 //              oder die Zeile entfernen.
 //
 // Bewerberprofile bitte nur anonymisiert und mit Einverständnis der Person veröffentlichen.
+//
+// ZEIGE_BEISPIELE: false blendet alle Einträge mit beispiel: true auf der Website aus.
+// Sind keine echten Profile vorhanden, zeigen die Seiten einen Hinweis mit Kontaktmöglichkeit.
+window.ZEIGE_BEISPIELE = false;
 
 window.STELLEN = [
   {
@@ -136,3 +140,8 @@ window.KANDIDATEN = [
     beispiel: true,
   },
 ];
+
+if (!window.ZEIGE_BEISPIELE) {
+  window.STELLEN = window.STELLEN.filter((e) => !e.beispiel);
+  window.KANDIDATEN = window.KANDIDATEN.filter((e) => !e.beispiel);
+}

@@ -169,6 +169,32 @@ if (kandidatenRoot) renderKandidaten(window.KANDIDATEN || [], kandidatenRoot);
 const setupSearch = (form, items) => {
   const root = document.getElementById(form.dataset.target);
   if (!root) return;
+  // Noch keine Profile: Suche ausblenden und Hinweis mit Kontaktwegen zeigen
+  if (!items.length) {
+    form.hidden = true;
+    const isStellen = form.dataset.target === "stellen-liste";
+    const box = el("div", "profiles-soon");
+    box.append(
+      el("b", null, isStellen ? "Neue Stellen werden gerade eingepflegt." : "Bewerberprofile werden gerade eingepflegt."),
+      el("p", null, isStellen
+        ? "Viele Stellen vergebe ich direkt, ohne öffentliche Ausschreibung. Senden Sie mir Ihren Lebenslauf oder machen Sie den Berufs-Check – ich melde mich mit passenden Angeboten."
+        : "Ich stelle Ihnen passende, geprüfte Kandidaten gern persönlich vor. Beschreiben Sie einfach, wen Sie suchen.")
+    );
+    const actions = el("div", "soon-actions");
+    const primary = el("a", "btn", isStellen ? "Lebenslauf per WhatsApp" : "Personalbedarf melden");
+    primary.href = isStellen ? `https://wa.me/${PHONE_WA}?text=${encodeURIComponent("Hallo Herr Wagner, ich suche eine neue Stelle und möchte Ihnen meinen Lebenslauf schicken.")}` : "unternehmen.html";
+    if (isStellen) {
+      primary.target = "_blank";
+      primary.rel = "noopener";
+    }
+    const second = el("a", "btn btn-outline", isStellen ? "Berufs-Check starten" : "Anrufen: +49 177 6880175");
+    second.href = isStellen ? "#berufs-check" : "tel:+491776880175";
+    if (isStellen) second.setAttribute("data-open-bot", "");
+    actions.append(primary, second);
+    box.append(actions);
+    root.append(box);
+    return;
+  }
   const cards = [...root.querySelectorAll(".profile")];
   const input = form.querySelector('input[type="search"]');
   const select = form.querySelector("select");
@@ -276,7 +302,8 @@ document.querySelectorAll("form.search").forEach((form) => {
 document.querySelectorAll(".portal-count").forEach((n) => {
   const isStellen = n.dataset.countList === "stellen";
   const list = isStellen ? window.STELLEN || [] : window.KANDIDATEN || [];
-  n.textContent = isStellen ? `${list.length} offene Stellen` : `${list.length} verfügbare Profile`;
+  if (!list.length) n.textContent = isStellen ? "Neue Stellen in Kürze" : "Kandidaten auf Anfrage";
+  else n.textContent = isStellen ? `${list.length} offene Stellen` : `${list.length} verfügbare Profile`;
 });
 if (/^#stelle-/.test(location.hash) && !stellenRoot) location.replace(`stellen.html${location.hash}`);
 if (/^#kandidat-/.test(location.hash) && !kandidatenRoot) location.replace(`bewerberprofile.html${location.hash}`);

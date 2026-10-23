@@ -21,6 +21,16 @@ Direktlink (z. B. `stellen.html#stelle-S-101`). Die mitgelieferten Einträge sin
 (`beispiel: true` zeigt ein Label) und müssen vor dem Livegang ersetzt werden.
 Bewerberprofile nur anonymisiert und mit Einverständnis veröffentlichen.
 
+## Suchmaschinen & Teilen
+
+- Vorschau beim Teilen (WhatsApp, Facebook, LinkedIn): `og:`-Angaben in jeder Seite, Bild `img/og-image.jpg`
+  (Vorlage: `vorlagen/og-bild.html`).
+- Google-Firmenangaben (`EmploymentAgency`) als JSON-LD in `index.html`.
+- `sitemap.xml` in der Google Search Console einreichen. Bei eigener Domain alle
+  Adressen `https://emilschmidt781-web.github.io/Claude-Code-/ricky-wagner/` ersetzen
+  (Seiten, `sitemap.xml`, JSON-LD, QR-Codes) und `404.html` an die Domain-Wurzel legen.
+- Beispielprofile: `window.ZEIGE_BEISPIELE` in `profile.js` (aktuell `false` = ausgeblendet).
+
 ## Noch offen
 
 - **Logo** liegt freigestellt in `img/` (`logo.png` farbig, `logo-white.png` und

@@ -53,6 +53,7 @@ jobs:
             cp ricky-wagner/*.html ricky-wagner/*.css ricky-wagner/*.js dist-pages/ricky-wagner/
             cp -r ricky-wagner/img dist-pages/ricky-wagner/
             cp -r ricky-wagner/fonts dist-pages/ricky-wagner/
+            cp ricky-wagner/*.xml dist-pages/ricky-wagner/
           fi
 
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)
