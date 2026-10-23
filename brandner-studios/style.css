@@ -3226,3 +3226,56 @@ mark {
 .rot em {
   justify-self: center;
 }
+
+/* ===== Helle Abschnitte (Über mich, FAQ) =====
+   Cremefarbener Block mitten in der dunklen Seite – Texte lesen sich leichter,
+   Pink, Violett und Blau bleiben. */
+.theme-light {
+  --bg: #f6f1e8;
+  --card: #fffdf9;
+  --card-2: #f0eadf;
+  --line: rgba(22, 20, 28, 0.1);
+  --line-strong: rgba(22, 20, 28, 0.18);
+  --text: #16141c;
+  --muted: #55525f;
+  --dim: #85818f;
+  --pink: #e0307f;
+  background: var(--bg);
+  color: var(--text);
+  border-top: 0;
+}
+
+.theme-light + .theme-light {
+  border-top: 1px solid var(--line);
+}
+
+.theme-light .eyebrow {
+  color: #6a6676;
+}
+
+.theme-light mark {
+  background: linear-gradient(transparent 58%, rgba(255, 95, 168, 0.4) 58%);
+}
+
+.theme-light .tool-ic {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.theme-light .about-visual::before {
+  opacity: 0.35;
+  filter: blur(80px);
+}
+
+.theme-light .polaroid {
+  box-shadow: 0 30px 60px -24px rgba(22, 20, 28, 0.35), 0 0 0 1px rgba(22, 20, 28, 0.06);
+}
+
+.theme-light .polaroid .portrait-tag {
+  color: #f2f1f6;
+}
+
+.theme-light .faq-item[open] .faq-icon::before,
+.theme-light .faq-item[open] .faq-icon::after {
+  background: #fff;
+}

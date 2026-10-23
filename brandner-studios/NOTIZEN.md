@@ -46,6 +46,8 @@ Stand: 22. Oktober 2026
 - **Design-Konzepte** (Kubus, Bohnenwerk, Rebenhang, Atem, Nachtschicht) sind erfundene Firmen.
   Etikett „Konzept“ bleibt stehen, Hinweis steht im Impressum. Nicht als Kundenprojekte ausgeben.
 - **Schneiderei Yasin und Ricky Wagner** wurden auf Wunsch von der Seite entfernt.
+- **Helle Abschnitte**: „Über mich“ und FAQ haben Cremeweiß (Klasse `theme-light`), der Rest bleibt dunkel.
+  Zurück auf ganz dunkel: `theme-light` in `index.html` an beiden Stellen entfernen.
 - **Alle Schriften lokal** in `fonts/` – keine Verbindung zu Google, keine Cookies, kein Tracking.
   Wer später etwas einbaut (Statistik, Maps, YouTube), muss die Datenschutzerklärung anpassen.
 
