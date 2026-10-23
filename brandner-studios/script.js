@@ -121,6 +121,16 @@ function onScroll() {
 addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
+// ===== Nach oben (Pfeil und Logo) =====
+// Die Kopfleiste läuft immer mit, daher ausdrücklich an den Seitenanfang scrollen
+document.querySelectorAll('a[href="#top"]').forEach((a) =>
+  a.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  })
+);
+
 // ===== Menü =====
 const menuToggle = document.querySelector(".menu-toggle");
 const menu = document.getElementById("menu");
