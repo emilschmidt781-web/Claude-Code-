@@ -48,6 +48,8 @@ Stand: 22. Oktober 2026
 - **Schneiderei Yasin und Ricky Wagner** wurden auf Wunsch von der Seite entfernt.
 - **Helle Abschnitte**: „Über mich“ und FAQ haben Cremeweiß (Klasse `theme-light`), der Rest bleibt dunkel.
   Zurück auf ganz dunkel: `theme-light` in `index.html` an beiden Stellen entfernen.
+- **Versionsnummer**: Nach Änderungen an `style.css` oder `script.js` in `index.html` die Zahl bei `?v=` erhöhen,
+  sonst zeigen Browser die alte Version aus dem Zwischenspeicher.
 - **Alle Schriften lokal** in `fonts/` – keine Verbindung zu Google, keine Cookies, kein Tracking.
   Wer später etwas einbaut (Statistik, Maps, YouTube), muss die Datenschutzerklärung anpassen.
 
