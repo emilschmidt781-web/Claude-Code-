@@ -4356,7 +4356,9 @@ mark {
 }
 
 .builder[data-scene="1"] .ms-scene-1,
-.builder[data-scene="2"] .ms-scene-2 {
+.builder[data-scene="2"] .ms-scene-2,
+.builder[data-scene="3"] .ms-scene-3,
+.builder[data-scene="4"] .ms-scene-4 {
   opacity: 1;
   visibility: visible;
 }
@@ -4590,5 +4592,354 @@ mark {
   .sketchbook {
     width: 68%;
     padding: 18px 12px 10px;
+  }
+}
+
+/* ===== Szene 3 – Bauen: Teile fallen auf Laptop und Handy ===== */
+.ms-scene-3 {
+  grid-template-rows: 1fr auto;
+  padding: 14px 0 16px;
+}
+
+.devices {
+  position: relative;
+  display: flex;
+  transform-origin: 50% 100%;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.dev-laptop {
+  display: grid;
+  justify-items: center;
+}
+
+.dev-laptop .dev-screen {
+  width: 200px;
+  height: 122px;
+  border-radius: 8px 8px 0 0;
+}
+
+.dev-base {
+  width: 236px;
+  height: 9px;
+  border-radius: 0 0 10px 10px;
+  background: #c9c7d6;
+}
+
+.dev-phone {
+  margin-left: -26px;
+  margin-bottom: -6px;
+  z-index: 1;
+}
+
+.dev-phone .dev-screen {
+  width: 62px;
+  height: 116px;
+  border-radius: 12px;
+  grid-template-columns: 1fr;
+}
+
+.dev-screen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: start;
+  gap: 5px;
+  padding: 9px;
+  border: 4px solid #2a2833;
+  background: #f6f1e8;
+  overflow: hidden;
+}
+
+.dev-screen i {
+  display: block;
+  height: 8px;
+  border-radius: 3px;
+  background: #d8d3c8;
+  opacity: 0;
+}
+
+.dev-screen .b-head {
+  grid-column: 1 / -1;
+  height: 9px;
+  background: #2a2833;
+}
+
+.dev-screen .b-hero {
+  grid-column: 1 / -1;
+  height: 12px;
+  margin-top: 4px;
+  background: linear-gradient(90deg, #ff5fa8, #b69cff, #5fb0ec);
+}
+
+.dev-screen .b-sub {
+  grid-column: 1 / 3;
+}
+
+.dev-phone .b-sub {
+  grid-column: 1;
+}
+
+.dev-screen .b-btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  width: 38%;
+  height: 10px;
+  border-radius: 999px;
+  background: #ff5fa8;
+}
+
+.dev-screen .b-card {
+  height: 26px;
+  margin-top: 4px;
+}
+
+.dev-phone .b-card {
+  height: 30px;
+}
+
+.builder[data-scene="3"] .dev-screen i {
+  animation: blockDrop 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) calc(0.2s + var(--i) * 0.18s) forwards;
+}
+
+@keyframes blockDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.builder[data-scene="3"] .devices {
+  animation: devIn 0.5s var(--ease) both;
+}
+
+@keyframes devIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.94);
+  }
+}
+
+.build-badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.build-badges span {
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.14);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  color: #4ade80;
+  font-size: 0.82rem;
+  font-weight: 600;
+  opacity: 0;
+}
+
+.builder[data-scene="3"] .build-badges span {
+  animation: bubbleIn 0.45s var(--ease) calc(1.7s + var(--i) * 0.25s) both;
+  transform: scale(0.5);
+}
+
+/* ===== Szene 4 – Online: Rakete startet, dann ist die Seite online ===== */
+.launch {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.rocket {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 46px;
+  margin-left: -23px;
+  transform: translateY(110%);
+}
+
+.builder[data-scene="4"] .rocket {
+  animation: rocketUp 1.5s cubic-bezier(0.5, 0, 0.75, 0.2) 0.1s forwards;
+}
+
+@keyframes rocketUp {
+  0% {
+    transform: translateY(110%);
+  }
+  20% {
+    transform: translateY(-10%) rotate(-3deg);
+  }
+  30% {
+    transform: translateY(-14%) rotate(3deg);
+  }
+  100% {
+    transform: translateY(-560%);
+  }
+}
+
+.flame {
+  transform-origin: 20px 60px;
+  animation: flicker 0.12s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  to {
+    transform: scaleY(0.7) scaleX(0.9);
+  }
+}
+
+.smoke {
+  position: absolute;
+  left: calc(50% - 22px + var(--i) * 14px);
+  bottom: -10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(242, 241, 246, 0.25);
+  opacity: 0;
+}
+
+.builder[data-scene="4"] .smoke {
+  animation: smoke 1.1s ease-out calc(0.35s + var(--i) * 0.1s) both;
+}
+
+@keyframes smoke {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc((var(--i) - 1) * 26px), -20px) scale(2.4);
+  }
+}
+
+.online-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border: 1px solid rgba(74, 222, 128, 0.55);
+  border-radius: 14px;
+  background: var(--card-2);
+  box-shadow: 0 20px 50px -20px rgba(74, 222, 128, 0.6);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+.builder[data-scene="4"] .online-card {
+  animation: cardIn 0.6s cubic-bezier(0.3, 1.5, 0.5, 1) 1.45s forwards;
+}
+
+@keyframes cardIn {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.oc-pin {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+.oc-pin i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.oc-pin::before,
+.oc-pin::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #4ade80;
+  animation: ocPing 1.4s ease-out infinite;
+}
+
+.oc-pin::after {
+  animation-delay: 0.7s;
+}
+
+@keyframes ocPing {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.oc-txt {
+  display: grid;
+  gap: 2px;
+}
+
+.oc-txt b {
+  font-family: var(--mono);
+  font-size: 1rem;
+}
+
+.oc-txt small {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+@media (max-width: 759px) {
+  .dev-laptop .dev-screen {
+    width: 160px;
+    height: 98px;
+  }
+  .dev-base {
+    width: 190px;
+  }
+  .dev-phone .dev-screen {
+    width: 52px;
+    height: 96px;
+  }
+  .dev-screen .b-card {
+    height: 18px;
+  }
+  .dev-phone .b-card {
+    height: 22px;
+  }
+  .build-badges span {
+    font-size: 0.75rem;
+    padding: 4px 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dev-screen i,
+  .build-badges span {
+    opacity: 1;
+  }
+  .online-card {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 760px) {
+  .ms-scene-3 .devices {
+    zoom: 1.25;
   }
 }

@@ -333,7 +333,7 @@ if (builder) {
     ripple(card.querySelector(".step-btn"), e);
     card.classList.add("working");
     busy = true;
-    // Kennenlernen: Handschlag, Planen: Skizzenbuch – im Fenster der Mini-Website
+    // Jeder Schritt hat eine Szene im Fenster der Mini-Website: Handschlag, Skizzenbuch, Geräte, Rakete
     builder.dataset.scene = n;
     render();
     later(() => {
@@ -349,7 +349,7 @@ if (builder) {
           builder.classList.add("finished");
           burst();
         }, 250);
-    }, [2800, 3000, 1700, 1700][n - 1]);
+    }, [2800, 3000, 3000, 3000][n - 1]);
   };
 
   const start = () => {
