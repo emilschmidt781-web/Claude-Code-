@@ -279,11 +279,11 @@ if (builder) {
   const confetti = builder.querySelector(".confetti");
   const script = {
     1: ["$ brandner kennenlernen", "  ✓ 30 Min. · kostenlos", "  ✓ ziele und wünsche notiert"],
-    2: ["$ brandner design", "  ✓ farben · schrift · aufbau", "  ✓ entwurf abgestimmt"],
-    3: ["$ brandner build", "  ✓ mobil  ✓ schnell  ✓ seo"],
-    4: ["$ brandner launch", "  ✓ dein-betrieb.de ist online", "  ✓ betreuung läuft"],
+    2: ["$ brandner gestalten", "  ✓ farben · schrift · aufbau", "  ✓ entwurf abgestimmt"],
+    3: ["$ brandner bauen", "  ✓ handy  ✓ schnell  ✓ google"],
+    4: ["$ brandner online", "  ✓ dein-betrieb.de ist online", "  ✓ betreuung läuft"],
   };
-  const titles = ["Kennenlernen", "Konzept & Design", "Entwicklung", "Launch"];
+  const titles = ["Kennenlernen", "Planen & Gestalten", "Bauen", "Online gehen"];
   let stage = 0;
   let busy = false;
   let current = 0;
@@ -309,7 +309,7 @@ if (builder) {
         ? "Fertig! So einfach läuft es auch mit deiner Website."
         : `Schritt ${current} von 4: ${titles[current - 1]} …`;
     bar.style.width = `${(stage / steps.length) * 100}%`;
-    urlText.textContent = stage >= 4 ? "dein-betrieb.de" : stage >= 3 ? "localhost" : "entwurf";
+    urlText.textContent = stage >= 4 ? "dein-betrieb.de" : stage >= 3 ? "fast fertig" : "entwurf";
   };
 
   const typeLines = (lines, done) => {

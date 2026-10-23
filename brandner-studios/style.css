@@ -3756,8 +3756,11 @@ mark {
 .ms-empty {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   font-family: var(--mono);
   font-size: 0.8rem;
   color: var(--dim);
@@ -4153,4 +4156,29 @@ mark {
   .build-done {
     font-size: 1.25rem;
   }
+}
+
+/* Hand zeigt: hier tippen */
+.ms-tap {
+  font-size: 2rem;
+  animation: tapHint 1.4s ease-in-out infinite;
+}
+
+@keyframes tapHint {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px) scale(0.92);
+  }
+}
+
+.tools-mini .tool-ic {
+  font-family: var(--sans);
+  font-size: 1rem;
+}
+
+.theme-light .tools-mini .tool-ic {
+  background: var(--card-2);
 }
