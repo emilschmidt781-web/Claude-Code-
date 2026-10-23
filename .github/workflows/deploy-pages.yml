@@ -1,10 +1,11 @@
-name: Deploy Angel-App, Schneiderei Yasin & Ricky Wagner to GitHub Pages
+name: Deploy Angel-App, Schneiderei Yasin, Ricky Wagner & Schloss Ebracher Hof to GitHub Pages
 
 on:
   push:
     branches:
       - claude/angel-app-tqz8ao
       - claude/schneiderei-yasin-website-ow4ekq
+      - claude/sharp-clarke-r3b1y1
   workflow_dispatch:
 
 # Rechte, die der Deploy auf GitHub Pages benötigt.
@@ -54,6 +55,15 @@ jobs:
             cp -r ricky-wagner/img dist-pages/ricky-wagner/
             cp -r ricky-wagner/fonts dist-pages/ricky-wagner/
             cp ricky-wagner/*.xml dist-pages/ricky-wagner/
+          fi
+
+      # Website des Seniorenheims Schloss Ebracher Hof unter /schloss-ebracher-hof/ mitveröffentlichen
+      - name: Schloss-Ebracher-Hof-Website hinzufügen
+        run: |
+          if [ -d schloss-ebracher-hof ]; then
+            mkdir -p dist-pages/schloss-ebracher-hof
+            cp schloss-ebracher-hof/*.html schloss-ebracher-hof/*.css schloss-ebracher-hof/*.js dist-pages/schloss-ebracher-hof/
+            cp -r schloss-ebracher-hof/fonts dist-pages/schloss-ebracher-hof/
           fi
 
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)
