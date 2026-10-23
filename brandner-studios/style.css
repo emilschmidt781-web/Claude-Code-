@@ -3447,7 +3447,6 @@ mark {
   font: inherit;
   text-align: left;
   overflow: hidden;
-  cursor: pointer;
   transition: border-color 0.4s, box-shadow 0.4s, transform 0.5s var(--ease), opacity 0.4s;
 }
 
@@ -4155,22 +4154,6 @@ mark {
   }
   .build-done {
     font-size: 1.25rem;
-  }
-}
-
-/* Hand zeigt: hier tippen */
-.ms-tap {
-  font-size: 2rem;
-  animation: tapHint 1.4s ease-in-out infinite;
-}
-
-@keyframes tapHint {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(8px) scale(0.92);
   }
 }
 

@@ -267,13 +267,12 @@ function typeTerminal(term) {
 }
 onVisible([...document.querySelectorAll(".term-body:not(.build-body)")], typeTerminal, { threshold: 0.6 });
 
-// ===== Ablauf: interaktiv – jeder Tipp baut die Mini-Website weiter =====
+// ===== Ablauf: läuft beim Hinscrollen von selbst, die Mini-Website entsteht mit =====
 const builder = document.querySelector(".builder");
 if (builder) {
   const steps = [...builder.querySelectorAll(".step")];
   const body = builder.querySelector(".build-body");
   const bar = builder.querySelector(".build-bar i");
-  const nextBtn = builder.querySelector(".build-next");
   const hint = builder.querySelector(".builder-hint-text");
   const urlText = builder.querySelector(".ms-url-text");
   const confetti = builder.querySelector(".confetti");
@@ -294,17 +293,9 @@ if (builder) {
     builder.dataset.stage = stage;
     [1, 2, 3, 4].forEach((k) => builder.classList.toggle(`s${k}`, stage >= k));
     const idle = stage === 0 && !busy;
-    steps.forEach((st) => {
-      const k = Number(st.dataset.step);
-      st.classList.toggle("done", k <= stage);
-      st.classList.toggle("next", idle && k === 1);
-      st.querySelector(".step-btn").disabled = !idle;
-    });
-    nextBtn.hidden = stage >= steps.length;
-    nextBtn.disabled = !idle;
-    nextBtn.firstChild.textContent = idle ? "Website bauen " : "Wird gebaut … ";
+    steps.forEach((st) => st.classList.toggle("done", Number(st.dataset.step) <= stage));
     hint.textContent = idle
-      ? "Einmal tippen – und zusehen, wie deine Website entsteht."
+      ? "So entsteht deine Website – Schritt für Schritt."
       : stage >= steps.length
         ? "Fertig! So einfach läuft es auch mit deiner Website."
         : `Schritt ${current} von 4: ${titles[current - 1]} …`;
@@ -365,7 +356,7 @@ if (builder) {
     setTimeout(() => dot.remove(), 700);
   };
 
-  // Ein Tipp startet alles: die Schritte laufen nacheinander von selbst durch
+  // Die Schritte laufen nacheinander von selbst durch
   const runStep = (e) => {
     const n = stage + 1;
     const card = steps[n - 1];
@@ -388,16 +379,12 @@ if (builder) {
     });
   };
 
-  const advance = (e) => {
+  const start = () => {
     if (busy || stage !== 0) return;
     body.innerHTML = "";
-    runStep(e);
+    runStep();
   };
 
-  steps.forEach((st) => st.querySelector(".step-btn").addEventListener("click", advance));
-  nextBtn.addEventListener("click", (e) => {
-    advance(e);
-  });
   builder.querySelector(".build-replay").addEventListener("click", () => {
     timers.forEach(clearTimeout);
     timers = [];
@@ -407,10 +394,12 @@ if (builder) {
     steps.forEach((st) => st.classList.remove("working"));
     builder.classList.remove("finished");
     confetti.innerHTML = "";
-    body.innerHTML = '<span class="tl out build-idle">▸ bereit – tippe auf „Website bauen“</span>';
+    body.innerHTML = "";
     render();
+    later(start, 300);
   });
   render();
+  onVisible([builder], () => later(start, 400), { threshold: 0.35 });
 }
 
 // ===== Kopieren =====
