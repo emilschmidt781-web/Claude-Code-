@@ -69,6 +69,9 @@ Stand: 22. Oktober 2026
 
 - Desktop: Performance 100 · Barrierefreiheit 100 · Best Practices 100 · SEO 100
 - Handy: Performance 93–96 · Rest 100
+- Nachmessung 23. Oktober 2026 (nach Baukasten, Konfetti, neuer Schrift): Desktop 3× 100/100/100/100,
+  Handy 5 Läufe: Tempo 94–95 (ein Ausreißer mit 83 beim ersten, kalten Lauf) · Rest 100.
+  Die Angaben auf der Seite („100“, „am Handy über 90“) stimmen damit weiterhin.
 
 ## Nächste Ideen
 
