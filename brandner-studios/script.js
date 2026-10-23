@@ -408,48 +408,13 @@ if (form) {
   form.querySelectorAll("input").forEach((f) => f.addEventListener("input", () => f.classList.remove("invalid")));
 }
 
-// ===== Website-Check: Adresse ins Kontaktformular übernehmen =====
-const checkForm = document.getElementById("check-form");
-if (checkForm && form) {
-  const input = checkForm.elements.url;
-  const log = checkForm.querySelector(".check-log");
-  const box = checkForm.querySelector(".check-input");
-  input.addEventListener("input", () => {
-    box.classList.remove("invalid");
-    // „https://“ steht schon davor – mitkopiertes Präfix entfernen
-    if (/^https?:\/\//i.test(input.value)) input.value = input.value.replace(/^https?:\/\//i, "");
-  });
-  checkForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const url = input.value.trim().replace(/^https?:\/\//i, "").replace(/\/$/, "");
-    if (!/^[^\s/]+\.[a-z]{2,}(\/\S*)?$/i.test(url)) {
-      box.classList.add("invalid");
-      showToast("Bitte eine Adresse wie dein-betrieb.de eingeben.");
-      input.focus();
-      return;
-    }
-    const lines = [
-      ["cmd", `$ brandner check ${url}`],
-      ["out", "▸ adresse ......... ✓ übernommen"],
-      ["ok", "✓ noch Name und E-Mail eintragen"],
-    ];
-    log.innerHTML = "";
-    lines.forEach(([cls, text], i) => {
-      const span = document.createElement("span");
-      span.className = `tl ${cls === "ok" ? "out ok" : cls}`;
-      span.textContent = text;
-      span.style.opacity = "0";
-      log.appendChild(span);
-      setTimeout(() => (span.style.opacity = "1"), reduceMotion ? 0 : 250 * i);
-    });
-    form.elements.need.value = "Kostenloser Website-Check";
-    form.elements.website.value = url;
+// ===== Website-Check: Hinweis im Kontakt füllt das Formular vor =====
+const checkHint = document.querySelector(".check-hint");
+if (checkHint && form) {
+  checkHint.addEventListener("click", () => {
     if (!form.elements.message.value.trim()) {
       form.elements.message.value = "Hallo Edgar, ich hätte gerne den kostenlosen Website-Check für meine Seite.";
     }
-    setTimeout(() => {
-      document.getElementById("kontakt").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
-      setTimeout(() => form.elements.name.focus({ preventScroll: true }), reduceMotion ? 0 : 700);
-    }, reduceMotion ? 0 : 900);
+    form.elements.website.focus();
   });
 }

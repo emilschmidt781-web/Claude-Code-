@@ -58,7 +58,7 @@ Stand: 22. Oktober 2026
 | Texte, Abschnitte | `index.html` |
 | Farben (Pink, Violett, Blau) | `style.css`, ganz oben unter `:root` |
 | Animationen, Formular | `script.js` |
-| Lighthouse-Werte | `index.html`, Abschnitt `id="zahlen"` (`--v` und `data-count`) |
+| Lighthouse-Werte | `index.html`, Block `id="zahlen"` im Abschnitt „Warum“ (`--v` und `data-count`) |
 | Echte Erfolge freischalten | `index.html`, Abschnitt `id="erfolge"`: Werte eintragen, `hidden` entfernen |
 | Logos, Fotos, Vorschaubilder | `img/` |
 | Demo-Seiten | `konzepte/*.html` |
@@ -72,7 +72,7 @@ Stand: 22. Oktober 2026
 
 1. ~~Vorschaubild für WhatsApp, Instagram, LinkedIn~~ – erledigt (`img/og-bild.jpg`)
 2. ~~`sitemap.xml`, `robots.txt`, eigene 404-Seite~~ – erledigt (404 greift bei eigener Domain/Netlify)
-3. ~~Abschnitt „Kostenloser Website-Check“~~ – erledigt (übernimmt die Adresse ins Kontaktformular)
+3. ~~Kostenloser Website-Check~~ – erledigt (seit Oktober als Hinweis im Kontakt, kein eigener Abschnitt mehr)
 4. Visitenkarte und Flyer mit QR-Code als PDF
 5. Eigene Domain (z. B. brandnerstudios.de) und E-Mail kontakt@brandnerstudios.de
 6. Google-Unternehmensprofil anlegen (größter Hebel für „Webdesign Würzburg“)

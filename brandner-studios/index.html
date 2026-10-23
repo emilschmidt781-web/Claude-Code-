@@ -81,12 +81,11 @@
           <li><a href="#leistungen"><small>02</small>Leistungen</a></li>
           <li><a href="#konzepte"><small>03</small>Beispiele</a></li>
           <li><a href="#warum"><small>04</small>Warum ich</a></li>
-          <li><a href="#check"><small>05</small>Website-Check</a></li>
-          <li><a href="#zahlen"><small>06</small>Zahlen</a></li>
-          <li><a href="#ablauf"><small>07</small>Ablauf</a></li>
-          <li><a href="#ueber-mich"><small>08</small>Über mich</a></li>
-          <li><a href="#faq"><small>09</small>FAQ</a></li>
-          <li><a href="#kontakt"><small>10</small>Kontakt</a></li>
+          <li><a href="#zahlen"><small>05</small>Zahlen</a></li>
+          <li><a href="#ablauf"><small>06</small>Ablauf</a></li>
+          <li><a href="#ueber-mich"><small>07</small>Über mich</a></li>
+          <li><a href="#faq"><small>08</small>FAQ</a></li>
+          <li><a href="#kontakt"><small>09</small>Kontakt</a></li>
         </ol>
         <div class="menu-foot">
           <a href="tel:+4915757320820">+49 1575 7320820</a>
@@ -282,6 +281,7 @@
               </div>
             </article>
           </div>
+          <p class="swipe-hint" aria-hidden="true">Wischen für alle vier <span>→</span></p>
         </div>
       </section>
 
@@ -378,83 +378,45 @@
               <div class="cmp-r"><i class="cmp-check"></i>HTTPS, Rechtstexte, keine unnötigen Tracker</div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- WEBSITE-CHECK -->
-      <section class="section" id="check">
-        <div class="container">
-          <div class="check reveal">
-            <div class="check-copy">
-              <p class="eyebrow">Kostenlos &amp; unverbindlich</p>
-              <h2 class="h2">Wie gut ist deine<br /><em>Website?</em></h2>
-              <p class="sub">Schick mir deine Adresse. Ich schaue sie mir an und sage dir die drei größten Baustellen – ohne Verkaufsgespräch.</p>
-              <ul class="check-list">
-                <li>Sieht sie auf dem Handy gut aus?</li>
-                <li>Wie schnell lädt sie?</li>
-                <li>Findet Google sie richtig?</li>
-                <li>Sind Impressum und Datenschutz in Ordnung?</li>
-              </ul>
+          <div class="numbers" id="zahlen">
+            <div class="numbers-head reveal">
+              <h3>Messbar <em>schnell.</em></h3>
+              <p>So bewertet Googles Prüfwerkzeug Lighthouse diese Website. Genau so baue ich auch deine.</p>
             </div>
-            <form class="term check-form" id="check-form" novalidate>
-              <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">website-check</span><span class="term-time">kostenlos</span></div>
-              <div class="check-body">
-                <label for="check-url">Deine Website</label>
-                <div class="check-input">
-                  <span aria-hidden="true">https://</span>
-                  <input id="check-url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="dein-betrieb.de" required />
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">
-                  Check anfordern
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </button>
-                <pre class="check-log" aria-live="polite"><span class="tl cmd">$ brandner check</span><span class="tl out">▸ wartet auf deine Adresse …</span></pre>
+            <div class="rings reveal">
+              <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+                <defs>
+                  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fa8" /><stop offset=".5" stop-color="#b69cff" /><stop offset="1" stop-color="#5fb0ec" /></linearGradient>
+                </defs>
+              </svg>
+              <div class="ring">
+                <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
+                <b><span data-count="100">0</span></b>
+                <span class="ring-label">Performance</span>
               </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- ZAHLEN -->
-      <section class="section" id="zahlen">
-        <div class="container">
-          <div class="head reveal">
-            <p class="eyebrow">Zahlen, die stimmen</p>
-            <h2 class="h2">Messbar<br /><em>schnell.</em></h2>
-            <p class="sub">So bewertet Googles Prüfwerkzeug Lighthouse diese Website. Genau so baue ich auch deine.</p>
-          </div>
-          <div class="rings reveal">
-            <svg width="0" height="0" aria-hidden="true" style="position: absolute">
-              <defs>
-                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fa8" /><stop offset=".5" stop-color="#b69cff" /><stop offset="1" stop-color="#5fb0ec" /></linearGradient>
-              </defs>
-            </svg>
-            <div class="ring">
-              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
-              <b><span data-count="100">0</span></b>
-              <span class="ring-label">Performance</span>
+              <div class="ring">
+                <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
+                <b><span data-count="100">0</span></b>
+                <span class="ring-label">Barrierefreiheit</span>
+              </div>
+              <div class="ring">
+                <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
+                <b><span data-count="100">0</span></b>
+                <span class="ring-label">Best Practices</span>
+              </div>
+              <div class="ring">
+                <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
+                <b><span data-count="100">0</span></b>
+                <span class="ring-label">SEO</span>
+              </div>
             </div>
-            <div class="ring">
-              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
-              <b><span data-count="100">0</span></b>
-              <span class="ring-label">Barrierefreiheit</span>
+            <p class="rings-note reveal">Gemessen mit Google Lighthouse 12 (Desktop) vor dem Livegang, Oktober 2026. Auf dem Handy: Performance über 90, die anderen drei ebenfalls 100.</p>
+            <div class="facts facts-3 reveal">
+              <div><b><span data-count="4">0</span></b><span>Leistungen aus einer Hand</span></div>
+              <div><b><span data-count="5">0</span></b><span>Design-Stile als Demo</span></div>
+              <div><b><span data-count="0">0</span></b><span>Cookies und Tracker</span></div>
             </div>
-            <div class="ring">
-              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
-              <b><span data-count="100">0</span></b>
-              <span class="ring-label">Best Practices</span>
-            </div>
-            <div class="ring">
-              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle class="ring-val" cx="60" cy="60" r="52" style="--v: 100" /></svg>
-              <b><span data-count="100">0</span></b>
-              <span class="ring-label">SEO</span>
-            </div>
-          </div>
-          <p class="rings-note reveal">Gemessen mit Google Lighthouse 12 (Desktop) vor dem Livegang, Oktober 2026. Auf dem Handy: Performance über 90, die anderen drei ebenfalls 100.</p>
-          <div class="facts facts-3 reveal">
-            <div><b><span data-count="4">0</span></b><span>Leistungen aus einer Hand</span></div>
-            <div><b><span data-count="5">0</span></b><span>Design-Stile als Demo</span></div>
-            <div><b><span data-count="0">0</span></b><span>Cookies und Tracker</span></div>
           </div>
         </div>
       </section>
@@ -621,6 +583,10 @@
               <h2 class="h2">Lass uns<br /><em>reden.</em></h2>
               <p class="sub">Erzähl mir kurz, worum es geht. Das erste Kennenlernen dauert 30 Minuten und ist kostenlos und unverbindlich.</p>
             </div>
+            <button type="button" class="check-hint reveal" data-need="Kostenloser Website-Check">
+              <span class="check-hint-tag">Kostenlos</span>
+              <span><b>Website-Check:</b> Trag deine Adresse ins Formular ein – ich nenne dir die drei größten Baustellen, ohne Verkaufsgespräch.</span>
+            </button>
             <dl class="contact-list reveal">
               <div>
                 <dt>E-Mail</dt>
@@ -689,7 +655,7 @@
             <a href="#leistungen">Leistungen</a>
             <a href="#konzepte">Beispiele</a>
             <a href="#ablauf">Ablauf</a>
-            <a href="#check">Website-Check</a>
+            <a href="#kontakt" data-need="Kostenloser Website-Check">Website-Check</a>
             <a href="#faq">FAQ</a>
           </nav>
           <div>
