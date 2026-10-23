@@ -3252,15 +3252,6 @@ mark {
   .step-head {
     margin-bottom: 0;
   }
-  .build-term {
-    margin: 0 14px 14px;
-  }
-  .build-body {
-    font-size: 0.8rem;
-  }
-  .build-done {
-    font-size: 1.15rem;
-  }
   .stats > div {
     padding: 14px 18px;
   }
@@ -3381,56 +3372,268 @@ mark {
   }
 }
 
-/* ===== Ablauf: Terminal tippt alle Schritte bis „Fertig!“ ===== */
-@media (min-width: 960px) {
-  .steps {
-    grid-template-columns: repeat(4, 1fr);
+/* ===== Ablauf: interaktiver Website-Baukasten ===== */
+.builder {
+  position: relative;
+  padding: clamp(18px, 4vw, 44px);
+}
+
+.builder-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.hint-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 0 0 rgba(255, 95, 168, 0.6);
+  animation: hintPing 1.6s ease-out infinite;
+}
+
+.builder.finished .hint-dot {
+  background: #4ade80;
+  animation: none;
+}
+
+@keyframes hintPing {
+  to {
+    box-shadow: 0 0 0 10px rgba(255, 95, 168, 0);
   }
-  .step-head {
-    flex-direction: column;
-    gap: 14px;
+}
+
+.builder .steps {
+  padding: 0;
+  gap: 12px;
+}
+
+@media (min-width: 960px) {
+  .builder .steps {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (min-width: 600px) and (max-width: 959px) {
-  .steps {
+  .builder .steps {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-.step-head {
-  margin-bottom: 0;
+.builder .step {
+  padding: 0;
+  border: 0;
+  background: none;
 }
 
-.step {
-  transition: border-color 0.4s, background 0.4s, transform 0.5s var(--ease), box-shadow 0.4s;
+.step-btn {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  height: 100%;
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.4s, box-shadow 0.4s, transform 0.5s var(--ease), opacity 0.4s;
 }
 
-.step-num {
-  transition: background 0.4s, color 0.4s, border-color 0.4s;
+@media (min-width: 960px) {
+  .step-btn {
+    flex-direction: column;
+    padding: 22px 20px;
+  }
 }
 
-.step.active {
+.step-btn:disabled {
+  cursor: default;
+}
+
+.step:not(.done):not(.next) .step-btn {
+  opacity: 0.45;
+}
+
+.step.next .step-btn {
   border-color: var(--pink);
-  box-shadow: 0 0 0 1px var(--pink), 0 18px 40px -20px rgba(255, 95, 168, 0.6);
+  animation: stepGlow 1.8s ease-in-out infinite;
+}
+
+.step.next .step-btn:hover,
+.step.next .step-btn:focus-visible {
   transform: translateY(-4px);
 }
 
-.step.active .step-num {
+.step.next .step-btn:active {
+  transform: scale(0.97);
+}
+
+@keyframes stepGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(255, 95, 168, 0.4), 0 10px 30px -18px rgba(255, 95, 168, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(255, 95, 168, 0.18), 0 16px 40px -14px rgba(255, 95, 168, 0.8);
+  }
+}
+
+.step.working .step-btn {
+  animation: none;
+  border-color: var(--violet);
+}
+
+/* Lichtstreifen, solange der Schritt „arbeitet“ */
+.step.working .step-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(182, 156, 255, 0.22) 50%, transparent 70%);
+  animation: workSweep 0.9s linear infinite;
+}
+
+@keyframes workSweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.step.done .step-btn {
+  border-color: rgba(74, 222, 128, 0.4);
+}
+
+.builder .step-num {
+  position: relative;
+  overflow: hidden;
+}
+
+.step-num b,
+.step-num i {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  transition: transform 0.5s var(--ease), opacity 0.3s;
+}
+
+.step-num i {
+  color: var(--ink);
+  font-size: 1.2rem;
+  transform: scale(0) rotate(-90deg);
+  opacity: 0;
+}
+
+.step.next .step-num {
   background: var(--pink);
   border-color: var(--pink);
   color: var(--ink);
 }
 
 .step.done .step-num {
-  border-color: rgba(74, 222, 128, 0.5);
-  color: #4ade80;
+  background: #4ade80;
+  border-color: #4ade80;
+}
+
+.step.done .step-num b {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.step.done .step-num i {
+  transform: none;
+  opacity: 1;
+}
+
+.step-text {
+  display: grid;
+  gap: 4px;
+}
+
+.step-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.step-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.step-tap {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--pink);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.3s, transform 0.4s var(--ease);
+}
+
+.step.next .step-tap {
+  opacity: 1;
+  transform: none;
+}
+
+.ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: rgba(255, 95, 168, 0.45);
+  pointer-events: none;
+  animation: ripple 0.7s var(--ease) forwards;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(40);
+    opacity: 0;
+  }
+}
+
+/* Terminal und Mini-Website */
+.build-stage {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+@media (min-width: 860px) {
+  .build-stage {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
 }
 
 .build-term {
-  margin: 0 clamp(20px, 4vw, 48px) clamp(20px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
   border-color: var(--line-strong);
-  transition: border-color 0.5s, box-shadow 0.5s;
 }
 
 .build-replay {
@@ -3439,16 +3642,13 @@ mark {
 }
 
 .build-body {
-  min-height: 0;
-  font-size: 0.95rem;
+  flex: 1;
+  min-height: 178px;
+  font-size: 0.9rem;
 }
 
-.build-body .tl:empty {
-  display: none;
-}
-
-.build-body .tl.typing:empty {
-  display: block;
+.build-idle {
+  color: var(--dim);
 }
 
 .build-bar {
@@ -3461,26 +3661,378 @@ mark {
   width: 0;
   height: 100%;
   background: var(--grad);
-  transition: width 0.6s var(--ease);
+  transition: width 0.7s var(--ease);
 }
 
+.build-next {
+  margin: 14px;
+  justify-content: center;
+}
+
+.build-next:disabled {
+  opacity: 0.5;
+}
+
+.build-next[hidden] {
+  display: none;
+}
+
+.mini-site {
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--card);
+  overflow: hidden;
+  transition: box-shadow 0.6s, border-color 0.6s;
+}
+
+.ms-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--card-2);
+}
+
+.ms-url {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ms-lock {
+  display: none;
+  font-size: 0.7rem;
+}
+
+.ms-live {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #4ade80;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s, transform 0.5s var(--ease);
+}
+
+.ms-body {
+  position: relative;
+  height: 236px;
+  padding: 16px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.ms-body > * {
+  transition: opacity 0.5s var(--ease), transform 0.6s var(--ease), background 0.6s, border-color 0.6s;
+}
+
+.ms-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+
+.ms-nav,
+.ms-hero,
+.ms-cards {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.ms-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.ms-nav i {
+  width: 34px;
+  height: 7px;
+  border-radius: 4px;
+  border: 1px dashed var(--line-strong);
+}
+
+.ms-nav .ms-logo {
+  width: 22px;
+  height: 22px;
+  margin-right: auto;
+  border-radius: 6px;
+}
+
+.ms-hero {
+  display: grid;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.ms-hero i {
+  display: block;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px dashed var(--line-strong);
+  transition: background 0.6s, border-color 0.6s, width 0.7s var(--ease);
+}
+
+.ms-h1 {
+  width: 78%;
+  height: 22px !important;
+}
+
+.ms-h2 {
+  width: 54%;
+}
+
+.ms-btn {
+  width: 96px;
+  height: 26px !important;
+  border-radius: 999px !important;
+}
+
+.ms-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.ms-cards i {
+  height: 52px;
+  border-radius: 6px;
+  border: 1px dashed var(--line-strong);
+  transition: background 0.6s, border-color 0.6s, transform 0.5s var(--ease);
+}
+
+.ms-swatches {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  display: flex;
+  gap: 5px;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.ms-swatches i {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.ms-swatches i:nth-child(2) {
+  background: var(--violet);
+}
+
+.ms-swatches i:nth-child(3) {
+  background: var(--blue);
+}
+
+.ms-code {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--blue);
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.ms-note {
+  position: absolute;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #ffd166;
+  color: var(--ink);
+  font-family: Caveat, var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: scale(0.4) rotate(-12deg);
+}
+
+.ms-note-1 {
+  left: 18%;
+  top: 34%;
+}
+
+.ms-note-2 {
+  right: 16%;
+  top: 56%;
+  transition-delay: 0.15s;
+}
+
+/* Schritt 1: Skizze und Notizen */
+.builder.s1 .ms-empty {
+  opacity: 0;
+}
+
+.builder.s1 .ms-nav,
+.builder.s1 .ms-hero,
+.builder.s1 .ms-cards {
+  opacity: 1;
+  transform: none;
+}
+
+.builder.s1:not(.s2) .ms-note {
+  opacity: 1;
+  transform: rotate(-5deg);
+}
+
+.builder.s1:not(.s2) .ms-note-2 {
+  transform: rotate(4deg);
+}
+
+/* Schritt 2: Farben und Formen */
+.builder.s2 .ms-swatches {
+  opacity: 1;
+  transform: none;
+}
+
+.builder.s2 .ms-nav .ms-logo {
+  border: 0;
+  background: var(--grad);
+}
+
+.builder.s2 .ms-h1 {
+  border: 0;
+  background: var(--grad);
+}
+
+.builder.s2 .ms-btn {
+  border: 0;
+  background: var(--pink);
+}
+
+.builder.s2 .ms-cards i {
+  border-style: solid;
+  border-color: var(--line);
+  background: var(--card-2);
+}
+
+/* Schritt 3: Inhalte, Code, Handy-tauglich */
+.builder.s3 .ms-swatches {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.builder.s3 .ms-code {
+  opacity: 1;
+  transform: none;
+  animation: codeBlink 1.2s steps(2) 2;
+}
+
+.builder.s3 .ms-nav i:not(.ms-logo),
+.builder.s3 .ms-h2 {
+  border: 0;
+  background: var(--line-strong);
+}
+
+.builder.s3 .ms-cards i {
+  background: linear-gradient(180deg, rgba(255, 95, 168, 0.25), var(--card-2) 60%);
+}
+
+.builder.s3 .ms-cards i:nth-child(2) {
+  background: linear-gradient(180deg, rgba(182, 156, 255, 0.25), var(--card-2) 60%);
+}
+
+.builder.s3 .ms-cards i:nth-child(3) {
+  background: linear-gradient(180deg, rgba(95, 176, 236, 0.25), var(--card-2) 60%);
+}
+
+@keyframes codeBlink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Schritt 4: online */
+.builder.s4 .ms-code {
+  opacity: 0;
+}
+
+.builder.s4 .ms-live {
+  opacity: 1;
+  transform: none;
+}
+
+.builder.s4 .ms-lock {
+  display: inline;
+}
+
+.builder.s4 .ms-url {
+  color: var(--text);
+}
+
+.builder.s4 .mini-site {
+  border-color: rgba(74, 222, 128, 0.6);
+  box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.25), 0 24px 60px -30px rgba(74, 222, 128, 0.6);
+}
+
+.builder.s4 .ms-cards i {
+  animation: cardHop 0.6s var(--ease) both;
+}
+
+.builder.s4 .ms-cards i:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.builder.s4 .ms-cards i:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes cardHop {
+  40% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Fertig-Meldung und Konfetti */
 .build-done {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
-  margin: 0;
-  padding: 20px;
+  margin: 18px 0 0;
+  padding: 18px;
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  border-radius: var(--r);
+  background: rgba(74, 222, 128, 0.07);
   font-family: var(--serif);
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: clamp(1.4rem, 3.2vw, 2.2rem);
   line-height: 1.15;
+  text-align: left;
 }
 
 .build-check {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: #4ade80;
   color: var(--ink);
@@ -3489,39 +4041,103 @@ mark {
   font-weight: 700;
 }
 
-.js .build-term:not(.finished) .build-done {
+.js .builder:not(.finished) .build-done {
   display: none;
 }
 
-.build-term.finished {
-  border-color: rgba(74, 222, 128, 0.55);
-  box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.25), 0 24px 60px -30px rgba(74, 222, 128, 0.55);
-}
-
-.build-term.finished .build-done {
+.builder.finished .build-done {
   animation: doneIn 0.7s var(--ease) both;
 }
 
-.build-term.finished .build-check {
-  animation: checkPop 0.6s var(--ease) 0.15s both;
+.builder.finished .build-check {
+  animation: checkPop 0.7s var(--ease) 0.15s both;
 }
 
 @keyframes doneIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px) scale(0.96);
   }
 }
 
 @keyframes checkPop {
   0% {
-    transform: scale(0);
+    transform: scale(0) rotate(-120deg);
   }
   60% {
-    transform: scale(1.2);
+    transform: scale(1.25);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+  }
+}
+
+.confetti {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.confetti i {
+  position: absolute;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confetti 1.9s cubic-bezier(0.15, 0.6, 0.35, 1) var(--d) forwards;
+}
+
+@keyframes confetti {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), calc(var(--y) + 260px)) rotate(var(--r));
+  }
+}
+
+@media (max-width: 759px) {
+  .builder {
+    padding: 14px;
+  }
+  .step-btn {
+    padding: 14px;
+    gap: 12px;
+  }
+  .step-title {
+    font-size: 1.08rem;
+  }
+  .step-desc {
+    font-size: 0.88rem;
+  }
+  /* Am Handy nur beim nächsten Schritt die Beschreibung zeigen */
+  .step:not(.next) .step-desc {
+    display: none;
+  }
+  .build-body {
+    min-height: 150px;
+    font-size: 0.8rem;
+  }
+  .ms-body {
+    height: 196px;
+    padding: 14px;
+  }
+  .ms-cards i {
+    height: 40px;
+  }
+  /* Am Handy die Mini-Website direkt unter die Schritte, damit man sieht, was der Tipp bewirkt */
+  .mini-site {
+    order: -1;
+  }
+  .build-done {
+    font-size: 1.25rem;
   }
 }

@@ -29,7 +29,7 @@
     <link rel="preload" href="fonts/Inter-normal-400.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Schriften der Beispiel-Namen und der Bildunterschrift lädt script.js erst beim Hinscrollen -->
     <noscript><link rel="stylesheet" href="fonts/extra.css" /></noscript>
-    <link rel="stylesheet" href="style.css?v=8" />
+    <link rel="stylesheet" href="style.css?v=9" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -459,25 +459,61 @@
               <div><span>Bis zum Livegang</span><b>ca. 3–7 Wochen</b></div>
               <div><span>Danach</span><b>Betreuung</b></div>
             </div>
+            <div class="builder" data-stage="0">
+            <p class="builder-hint"><span class="hint-dot" aria-hidden="true"></span><span class="builder-hint-text">Tippe auf Schritt 1 und bau deine Website.</span></p>
             <ol class="steps">
               <li class="step" data-step="1">
-                <div class="step-head"><span class="step-num">01</span><div><h3>Kennenlernen</h3><p>Wir sprechen 30 Minuten über dein Projekt – kostenlos und unverbindlich.</p></div></div>
+                <button type="button" class="step-btn">
+                  <span class="step-num"><b>01</b><i aria-hidden="true">✓</i></span>
+                  <span class="step-text"><span class="step-title">Kennenlernen</span><span class="step-desc">Wir sprechen 30 Minuten über dein Projekt – kostenlos und unverbindlich.</span></span>
+                  <span class="step-tap" aria-hidden="true">Tippen</span>
+                </button>
               </li>
               <li class="step" data-step="2">
-                <div class="step-head"><span class="step-num">02</span><div><h3>Konzept &amp; Design</h3><p>Aufbau, Farben und Entwürfe – abgestimmt mit dir.</p></div></div>
+                <button type="button" class="step-btn" disabled>
+                  <span class="step-num"><b>02</b><i aria-hidden="true">✓</i></span>
+                  <span class="step-text"><span class="step-title">Konzept &amp; Design</span><span class="step-desc">Aufbau, Farben und Entwürfe – abgestimmt mit dir.</span></span>
+                  <span class="step-tap" aria-hidden="true">Tippen</span>
+                </button>
               </li>
               <li class="step" data-step="3">
-                <div class="step-head"><span class="step-num">03</span><div><h3>Entwicklung</h3><p>Die Seite wird gebaut – mobil, schnell und für Google vorbereitet.</p></div></div>
+                <button type="button" class="step-btn" disabled>
+                  <span class="step-num"><b>03</b><i aria-hidden="true">✓</i></span>
+                  <span class="step-text"><span class="step-title">Entwicklung</span><span class="step-desc">Die Seite wird gebaut – mobil, schnell und für Google vorbereitet.</span></span>
+                  <span class="step-tap" aria-hidden="true">Tippen</span>
+                </button>
               </li>
               <li class="step" data-step="4">
-                <div class="step-head"><span class="step-num">04</span><div><h3>Launch &amp; Betreuung</h3><p>Deine Seite geht online – und ich bleibe dein Ansprechpartner.</p></div></div>
+                <button type="button" class="step-btn" disabled>
+                  <span class="step-num"><b>04</b><i aria-hidden="true">✓</i></span>
+                  <span class="step-text"><span class="step-title">Launch &amp; Betreuung</span><span class="step-desc">Deine Seite geht online – und ich bleibe dein Ansprechpartner.</span></span>
+                  <span class="step-tap" aria-hidden="true">Tippen</span>
+                </button>
               </li>
             </ol>
-            <div class="term build-term">
-              <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">brandner: deine-website</span><button type="button" class="term-btn build-replay">Nochmal ▶</button></div>
-              <pre class="term-body build-body" aria-label="Ablauf in vier Schritten bis zur fertigen Website"><span class="tl cmd" data-step="1" data-type="$ brandner kennenlernen"></span><span class="tl out" data-type="  ✓ 30 Min. · kostenlos"></span><span class="tl cmd" data-step="2" data-type="$ brandner design"></span><span class="tl out" data-type="  ✓ konzept · entwurf"></span><span class="tl cmd" data-step="3" data-type="$ brandner build"></span><span class="tl out" data-type="  ✓ mobil  ✓ schnell  ✓ seo"></span><span class="tl cmd" data-step="4" data-type="$ brandner launch"></span><span class="tl out" data-type="  ✓ online · betreuung läuft"></span></pre>
-              <div class="build-bar" aria-hidden="true"><i></i></div>
-              <p class="build-done" role="status"><span class="build-check" aria-hidden="true">✓</span>Fertig! Deine Website ist erstellt.</p>
+            <div class="build-stage">
+              <div class="term build-term">
+                <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span class="term-title">brandner: deine-website</span><button type="button" class="term-btn build-replay">Neu starten ↺</button></div>
+                <pre class="term-body build-body" aria-live="polite"><span class="tl out build-idle">▸ wartet auf Schritt 1 …</span></pre>
+                <div class="build-bar" aria-hidden="true"><i></i></div>
+                <button type="button" class="btn btn-primary build-next">Schritt 1 starten <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></button>
+              </div>
+              <div class="mini-site" aria-hidden="true">
+                <div class="ms-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ms-url"><span class="ms-lock">🔒</span><span class="ms-url-text">entwurf</span></span><span class="ms-live">online</span></div>
+                <div class="ms-body">
+                  <span class="ms-empty">Hier entsteht deine Website</span>
+                  <div class="ms-nav"><i class="ms-logo"></i><i></i><i></i><i></i></div>
+                  <div class="ms-hero"><i class="ms-h1"></i><i class="ms-h2"></i><i class="ms-btn"></i></div>
+                  <div class="ms-cards"><i></i><i></i><i></i></div>
+                  <div class="ms-swatches"><i></i><i></i><i></i></div>
+                  <span class="ms-code">&lt;/&gt;</span>
+                  <span class="ms-note ms-note-1">Ziele ✓</span>
+                  <span class="ms-note ms-note-2">Budget ✓</span>
+                </div>
+              </div>
+            </div>
+            <p class="build-done" role="status"><span class="build-check" aria-hidden="true">✓</span><span>Fertig! Deine Website ist erstellt.</span></p>
+            <div class="confetti" aria-hidden="true"></div>
             </div>
           </div>
         </div>
@@ -671,6 +707,6 @@
     <a href="#top" class="to-top" aria-label="Nach oben"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg></a>
     <div class="toast" role="status" aria-live="polite"></div>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=9"></script>
   </body>
 </html>

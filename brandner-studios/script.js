@@ -267,64 +267,142 @@ function typeTerminal(term) {
 }
 onVisible([...document.querySelectorAll(".term-body:not(.build-body)")], typeTerminal, { threshold: 0.6 });
 
-// ===== Ablauf: ein Terminal tippt alle vier Schritte bis „Fertig!“ =====
-const buildTerm = document.querySelector(".build-term");
-if (buildTerm) {
-  const lines = [...buildTerm.querySelectorAll(".tl")];
-  const steps = [...document.querySelectorAll(".steps .step")];
-  const bar = buildTerm.querySelector(".build-bar i");
-  const replay = buildTerm.querySelector(".build-replay");
+// ===== Ablauf: interaktiv – jeder Tipp baut die Mini-Website weiter =====
+const builder = document.querySelector(".builder");
+if (builder) {
+  const steps = [...builder.querySelectorAll(".step")];
+  const body = builder.querySelector(".build-body");
+  const bar = builder.querySelector(".build-bar i");
+  const nextBtn = builder.querySelector(".build-next");
+  const hint = builder.querySelector(".builder-hint-text");
+  const urlText = builder.querySelector(".ms-url-text");
+  const confetti = builder.querySelector(".confetti");
+  const script = {
+    1: ["$ brandner kennenlernen", "  ✓ 30 Min. · kostenlos", "  ✓ ziele und wünsche notiert"],
+    2: ["$ brandner design", "  ✓ farben · schrift · aufbau", "  ✓ entwurf abgestimmt"],
+    3: ["$ brandner build", "  ✓ mobil  ✓ schnell  ✓ seo"],
+    4: ["$ brandner launch", "  ✓ dein-betrieb.de ist online", "  ✓ betreuung läuft"],
+  };
+  const labels = ["Schritt 1 starten", "Weiter: Design", "Weiter: Entwicklung", "Weiter: Launch"];
+  const hints = [
+    "Tippe auf Schritt 1 und bau deine Website.",
+    "Super! Jetzt Schritt 2 – Konzept & Design.",
+    "Sieht gut aus. Weiter mit Schritt 3 – Entwicklung.",
+    "Fast geschafft – Schritt 4 bringt sie online.",
+    "Fertig! So einfach läuft es auch mit deiner Website.",
+  ];
+  let stage = 0;
+  let busy = false;
   let timers = [];
-  const later = (fn, ms) => timers.push(setTimeout(fn, ms));
-  const markStep = (n) =>
+  const later = (fn, ms) => timers.push(setTimeout(fn, reduceMotion ? 0 : ms));
+
+  const render = () => {
+    builder.dataset.stage = stage;
+    [1, 2, 3, 4].forEach((k) => builder.classList.toggle(`s${k}`, stage >= k));
     steps.forEach((st) => {
       const k = Number(st.dataset.step);
-      st.classList.toggle("active", k === n);
-      st.classList.toggle("done", k < n || n > steps.length);
+      st.classList.toggle("done", k <= stage);
+      st.classList.toggle("next", k === stage + 1);
+      st.querySelector(".step-btn").disabled = k !== stage + 1 || busy;
     });
-  const finish = () => {
-    markStep(steps.length + 1);
-    bar.style.width = "100%";
-    buildTerm.classList.add("finished");
+    nextBtn.hidden = stage >= steps.length;
+    nextBtn.disabled = busy;
+    if (stage < steps.length) nextBtn.firstChild.textContent = `${labels[stage]} `;
+    hint.textContent = hints[stage];
+    bar.style.width = `${(stage / steps.length) * 100}%`;
+    urlText.textContent = stage >= 4 ? "dein-betrieb.de" : stage >= 3 ? "localhost" : "entwurf";
   };
-  const run = () => {
-    timers.forEach(clearTimeout);
-    timers = [];
-    buildTerm.classList.remove("finished");
-    bar.style.width = "0%";
-    lines.forEach((l) => {
-      l.textContent = "";
-      l.classList.remove("typing");
-    });
-    markStep(0);
-    if (reduceMotion) {
-      lines.forEach((l) => (l.textContent = l.dataset.type));
-      return finish();
-    }
+
+  const typeLines = (lines, done) => {
     let li = 0;
     const next = () => {
-      if (li >= lines.length) return later(finish, 400);
-      const line = lines[li++];
-      const text = line.dataset.type;
-      const isCmd = line.classList.contains("cmd");
-      if (line.dataset.step) markStep(Number(line.dataset.step));
-      bar.style.width = `${(li / lines.length) * 92}%`;
+      if (li >= lines.length) return done();
+      const text = lines[li++];
+      const span = document.createElement("span");
+      span.className = `tl ${text.startsWith("$") ? "cmd" : "out"} typing`;
+      body.appendChild(span);
+      if (reduceMotion) {
+        span.textContent = text;
+        span.classList.remove("typing");
+        return next();
+      }
       let ci = 0;
-      line.classList.add("typing");
       const step = () => {
-        line.textContent = text.slice(0, ++ci);
-        if (ci < text.length) later(step, isCmd ? 50 : 16);
+        span.textContent = text.slice(0, ++ci);
+        if (ci < text.length) later(step, text.startsWith("$") ? 40 : 14);
         else {
-          line.classList.remove("typing");
-          later(next, isCmd ? 300 : 650);
+          span.classList.remove("typing");
+          later(next, 220);
         }
       };
       step();
     };
     next();
   };
-  onVisible([buildTerm], run, { threshold: 0.4 });
-  replay.addEventListener("click", run);
+
+  const burst = () => {
+    if (reduceMotion) return;
+    const colors = ["#ff5fa8", "#b69cff", "#5fb0ec", "#4ade80", "#ffd166"];
+    for (let i = 0; i < 70; i++) {
+      const c = document.createElement("i");
+      c.style.setProperty("--x", `${(Math.random() - 0.5) * 900}px`);
+      c.style.setProperty("--y", `${-120 - Math.random() * 360}px`);
+      c.style.setProperty("--r", `${(Math.random() - 0.5) * 1080}deg`);
+      c.style.setProperty("--d", `${Math.random() * 0.25}s`);
+      c.style.background = colors[i % colors.length];
+      if (i % 3 === 0) c.style.borderRadius = "50%";
+      confetti.appendChild(c);
+    }
+    later(() => (confetti.innerHTML = ""), 2600);
+  };
+
+  const ripple = (btn, e) => {
+    const r = btn.getBoundingClientRect();
+    const dot = document.createElement("span");
+    dot.className = "ripple";
+    dot.style.left = `${(e && e.clientX ? e.clientX - r.left : r.width / 2)}px`;
+    dot.style.top = `${(e && e.clientY ? e.clientY - r.top : r.height / 2)}px`;
+    btn.appendChild(dot);
+    setTimeout(() => dot.remove(), 700);
+  };
+
+  const advance = (e) => {
+    if (busy || stage >= steps.length) return;
+    const n = stage + 1;
+    const card = steps[n - 1];
+    ripple(card.querySelector(".step-btn"), e);
+    card.classList.add("working");
+    busy = true;
+    if (stage === 0) body.innerHTML = "";
+    render();
+    typeLines(script[n], () => {
+      card.classList.remove("working");
+      stage = n;
+      busy = false;
+      render();
+      if (stage === steps.length) later(() => {
+        builder.classList.add("finished");
+        burst();
+      }, 250);
+    });
+  };
+
+  steps.forEach((st) => st.querySelector(".step-btn").addEventListener("click", advance));
+  nextBtn.addEventListener("click", (e) => {
+    advance(e);
+  });
+  builder.querySelector(".build-replay").addEventListener("click", () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+    stage = 0;
+    busy = false;
+    steps.forEach((st) => st.classList.remove("working"));
+    builder.classList.remove("finished");
+    confetti.innerHTML = "";
+    body.innerHTML = '<span class="tl out build-idle">▸ wartet auf Schritt 1 …</span>';
+    render();
+  });
+  render();
 }
 
 // ===== Kopieren =====
