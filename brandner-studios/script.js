@@ -491,15 +491,28 @@ if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const { name, email, need, website, message } = form.elements;
-    let ok = true;
-    [name, email].forEach((field) => {
-      const valid = field.value.trim() !== "" && field.checkValidity();
+    // Prüfung vor dem Absenden: Pflichtfelder, echte E-Mail-Adresse, Website-Adresse im richtigen Format
+    const checks = [
+      [name, name.value.trim().length >= 2, "Bitte gib deinen Namen an."],
+      [email, /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email.value.trim()), "Bitte gib eine gültige E-Mail-Adresse an."],
+      [
+        website,
+        website.value.trim() === ""
+          ? need.value !== "Kostenloser Website-Check"
+          : /^(https?:\/\/)?[^\s/]+\.[a-z]{2,}(\/\S*)?$/i.test(website.value.trim()),
+        need.value === "Kostenloser Website-Check" && website.value.trim() === ""
+          ? "Für den Website-Check brauche ich deine Website-Adresse."
+          : "Bitte eine Adresse wie meinbetrieb.de eingeben.",
+      ],
+    ];
+    const failed = checks.filter(([field, valid]) => {
       field.classList.toggle("invalid", !valid);
-      if (!valid) ok = false;
+      field.setAttribute("aria-invalid", String(!valid));
+      return !valid;
     });
-    if (!ok) {
-      showToast("Bitte Name und eine gültige E-Mail angeben.");
-      (name.classList.contains("invalid") ? name : email).focus();
+    if (failed.length) {
+      showToast(failed[0][2]);
+      failed[0][0].focus();
       return;
     }
     const subject = `Anfrage: ${need.value} – ${name.value.trim()}`;
@@ -514,7 +527,12 @@ if (form) {
     location.href = `mailto:brandnerstudios@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     showToast("Dein E-Mail-Programm öffnet sich …");
   });
-  form.querySelectorAll("input").forEach((f) => f.addEventListener("input", () => f.classList.remove("invalid")));
+  form.querySelectorAll("input").forEach((f) =>
+    f.addEventListener("input", () => {
+      f.classList.remove("invalid");
+      f.removeAttribute("aria-invalid");
+    })
+  );
 }
 
 // ===== Website-Check: Hinweis im Kontakt füllt das Formular vor =====

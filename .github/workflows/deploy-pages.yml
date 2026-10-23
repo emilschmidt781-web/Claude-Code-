@@ -64,7 +64,7 @@ jobs:
             cp -r brandner-studios/img dist-pages/brandner-studios/
             cp -r brandner-studios/konzepte dist-pages/brandner-studios/
             cp -r brandner-studios/fonts dist-pages/brandner-studios/
-            cp brandner-studios/robots.txt brandner-studios/sitemap.xml dist-pages/brandner-studios/
+            cp brandner-studios/robots.txt brandner-studios/sitemap.xml brandner-studios/favicon.ico brandner-studios/site.webmanifest dist-pages/brandner-studios/
           fi
 
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)

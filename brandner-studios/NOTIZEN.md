@@ -39,6 +39,31 @@ Stand: 22. Oktober 2026
 - Lösung B: GitHub → Settings → Environments → `github-pages` → Branch freigeben.
 - Lösung C (empfohlen mit eigener Domain): Ordner `brandner-studios` bei Netlify per Drag & Drop hochladen.
 
+## Checkliste vor dem Livegang (20 Punkte, Stand 23. Oktober 2026)
+
+| # | Punkt | Stand |
+| --- | --- | --- |
+| 1 | Datenschutzerklärung | ✓ `datenschutz.html` – Anschrift und Hoster noch eintragen |
+| 2 | AGB | bewusst keine – nicht Pflicht; Bedingungen stehen im jeweiligen Angebot |
+| 3 | Keine Geheimnisse im Code | ✓ geprüft – keine Schlüssel, Passwörter oder Zugangsdaten |
+| 4 | HTTPS erzwingen | ✓ `netlify.toml` (Netlify) bzw. `.htaccess` (Strato, IONOS …); bei GitHub Pages „Enforce HTTPS“ anhaken |
+| 5 | Cookie-Banner | nicht nötig – keine Cookies, kein Tracking (steht in der Datenschutzerklärung) |
+| 6 | Seitentitel und Beschreibungen | ✓ für alle Seiten; Konzepte, Impressum, Datenschutz, 404 auf `noindex` |
+| 7 | Vorschaubild zum Teilen | ✓ `img/og-bild.jpg` mit Open-Graph- und Twitter-Angaben |
+| 8 | Favicon | ✓ `favicon.ico`, SVG, Apple-Icon, App-Icons und `site.webmanifest` |
+| 9 | Sitemap und robots.txt | ✓ |
+| 10 | Alt-Texte | ✓ alle Bilder geprüft |
+| 11 | Bilder komprimiert | ✓ WebP statt JPG (ca. 55 % kleiner); JPG nur noch fürs Vorschaubild |
+| 12 | Ladezeit | ✓ Lighthouse: Desktop 100, Handy 92–95 |
+| 13 | Farbkontrast | ✓ Lighthouse-Barrierefreiheit 100 |
+| 14 | Handy-tauglich | ✓ |
+| 15 | Eigene 404-Seite | ✓ `404.html` (Netlify automatisch, Apache über `.htaccess`) |
+| 16 | Kaputte Links | ✓ alle internen Links, Sprungmarken und Dateien geprüft |
+| 17 | Formular-Prüfung | ✓ Name, echte E-Mail, Website-Format, Pflicht-Adresse beim Website-Check, Längenbegrenzung |
+| 18 | Spam-Schutz | nicht nötig – das Formular öffnet das E-Mail-Programm, es gibt keinen Server, der Spam empfangen kann |
+| 19 | Besucher-Statistik | offen – Empfehlung: cookiefrei (z. B. GoatCounter, kostenlos) und dann Datenschutzerklärung ergänzen |
+| 20 | Ein klarer Aufruf | ✓ überall „Projekt besprechen“ |
+
 ## Bewusste Entscheidungen
 
 - **Keine erfundenen Zahlen oder Kundenstimmen** – wäre irreführende Werbung (§ 5 UWG).
