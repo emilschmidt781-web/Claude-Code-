@@ -78,6 +78,16 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: 'Archivo Wide';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(fonts/ArchivoWide-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --bg: #0a0a0f;
   --bg-2: #0e0e15;
@@ -3168,4 +3178,54 @@ mark {
   100% {
     transform: translateX(120%);
   }
+}
+
+/* ===== Hero: breite, moderne Schrift (Archivo Expanded) ===== */
+.hero-title {
+  font-family: "Archivo Wide", var(--sans);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: clamp(2rem, 7.6vw, 6.6rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.hero-title .rot em {
+  font-style: normal;
+  padding: 0 0.04em;
+}
+
+.hero-title .w {
+  padding-top: 0.12em;
+  margin-top: -0.1em;
+}
+
+.hero-title .w:has(.rot) {
+  margin-right: 0.22em;
+}
+
+.swash {
+  bottom: 0.02em;
+  height: 0.34em;
+}
+
+@media (max-width: 759px) {
+  .hero-title {
+    font-size: clamp(2.1rem, 10.4vw, 3.4rem);
+    line-height: 1.06;
+  }
+  /* Wechselndes Wort in eigener Zeile, damit nichts aneinanderstößt */
+  .hero-title .w:has(.rot) {
+    display: table;
+    margin: 0 auto 0.06em;
+  }
+}
+
+/* Wechselndes Wort immer in der Mitte seiner aktuellen Breite */
+.rot {
+  grid-template-columns: 100%;
+}
+
+.rot em {
+  justify-self: center;
 }

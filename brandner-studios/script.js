@@ -162,7 +162,12 @@ if (rot) {
   const words = [...rot.querySelectorAll("em")];
   let current = 0;
   const fit = () => (rot.style.width = `${words[current].offsetWidth}px`);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  if (document.fonts) {
+    document.fonts.ready.then(fit);
+    // Breite neu messen, sobald die Hero-Schrift wirklich geladen ist
+    document.fonts.addEventListener("loadingdone", fit);
+    document.fonts.load('800 1em "Archivo Wide"').then(fit, fit);
+  }
   fit();
   addEventListener("resize", fit);
   if (!reduceMotion) {
