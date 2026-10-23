@@ -3462,8 +3462,19 @@ mark {
   cursor: default;
 }
 
-.step:not(.done):not(.next) .step-btn {
+.step:not(.done):not(.next):not(.working) .step-btn {
   opacity: 0.45;
+}
+
+.step.working .step-num {
+  background: var(--violet);
+  border-color: var(--violet);
+  color: var(--ink);
+}
+
+.step.working .step-btn {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px var(--violet), 0 16px 40px -16px rgba(182, 156, 255, 0.7);
 }
 
 .step.next .step-btn {
@@ -3636,7 +3647,9 @@ mark {
   border-color: var(--line-strong);
 }
 
-.build-replay {
+.build-replay,
+.build-term .build-replay {
+  display: inline-block;
   background: none;
   cursor: pointer;
 }
@@ -4119,7 +4132,7 @@ mark {
     font-size: 0.88rem;
   }
   /* Am Handy nur beim nächsten Schritt die Beschreibung zeigen */
-  .step:not(.next) .step-desc {
+  .step:not(.next):not(.working) .step-desc {
     display: none;
   }
   .build-body {

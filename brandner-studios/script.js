@@ -283,32 +283,31 @@ if (builder) {
     3: ["$ brandner build", "  ✓ mobil  ✓ schnell  ✓ seo"],
     4: ["$ brandner launch", "  ✓ dein-betrieb.de ist online", "  ✓ betreuung läuft"],
   };
-  const labels = ["Schritt 1 starten", "Weiter: Design", "Weiter: Entwicklung", "Weiter: Launch"];
-  const hints = [
-    "Tippe auf Schritt 1 und bau deine Website.",
-    "Super! Jetzt Schritt 2 – Konzept & Design.",
-    "Sieht gut aus. Weiter mit Schritt 3 – Entwicklung.",
-    "Fast geschafft – Schritt 4 bringt sie online.",
-    "Fertig! So einfach läuft es auch mit deiner Website.",
-  ];
+  const titles = ["Kennenlernen", "Konzept & Design", "Entwicklung", "Launch"];
   let stage = 0;
   let busy = false;
+  let current = 0;
   let timers = [];
   const later = (fn, ms) => timers.push(setTimeout(fn, reduceMotion ? 0 : ms));
 
   const render = () => {
     builder.dataset.stage = stage;
     [1, 2, 3, 4].forEach((k) => builder.classList.toggle(`s${k}`, stage >= k));
+    const idle = stage === 0 && !busy;
     steps.forEach((st) => {
       const k = Number(st.dataset.step);
       st.classList.toggle("done", k <= stage);
-      st.classList.toggle("next", k === stage + 1);
-      st.querySelector(".step-btn").disabled = k !== stage + 1 || busy;
+      st.classList.toggle("next", idle && k === 1);
+      st.querySelector(".step-btn").disabled = !idle;
     });
     nextBtn.hidden = stage >= steps.length;
-    nextBtn.disabled = busy;
-    if (stage < steps.length) nextBtn.firstChild.textContent = `${labels[stage]} `;
-    hint.textContent = hints[stage];
+    nextBtn.disabled = !idle;
+    nextBtn.firstChild.textContent = idle ? "Website bauen " : "Wird gebaut … ";
+    hint.textContent = idle
+      ? "Einmal tippen – und zusehen, wie deine Website entsteht."
+      : stage >= steps.length
+        ? "Fertig! So einfach läuft es auch mit deiner Website."
+        : `Schritt ${current} von 4: ${titles[current - 1]} …`;
     bar.style.width = `${(stage / steps.length) * 100}%`;
     urlText.textContent = stage >= 4 ? "dein-betrieb.de" : stage >= 3 ? "localhost" : "entwurf";
   };
@@ -366,25 +365,33 @@ if (builder) {
     setTimeout(() => dot.remove(), 700);
   };
 
-  const advance = (e) => {
-    if (busy || stage >= steps.length) return;
+  // Ein Tipp startet alles: die Schritte laufen nacheinander von selbst durch
+  const runStep = (e) => {
     const n = stage + 1;
     const card = steps[n - 1];
+    current = n;
     ripple(card.querySelector(".step-btn"), e);
     card.classList.add("working");
     busy = true;
-    if (stage === 0) body.innerHTML = "";
     render();
     typeLines(script[n], () => {
       card.classList.remove("working");
       stage = n;
-      busy = false;
+      busy = stage < steps.length;
       render();
-      if (stage === steps.length) later(() => {
-        builder.classList.add("finished");
-        burst();
-      }, 250);
+      if (stage < steps.length) later(() => runStep(), 450);
+      else
+        later(() => {
+          builder.classList.add("finished");
+          burst();
+        }, 250);
     });
+  };
+
+  const advance = (e) => {
+    if (busy || stage !== 0) return;
+    body.innerHTML = "";
+    runStep(e);
   };
 
   steps.forEach((st) => st.querySelector(".step-btn").addEventListener("click", advance));
@@ -396,10 +403,11 @@ if (builder) {
     timers = [];
     stage = 0;
     busy = false;
+    current = 0;
     steps.forEach((st) => st.classList.remove("working"));
     builder.classList.remove("finished");
     confetti.innerHTML = "";
-    body.innerHTML = '<span class="tl out build-idle">▸ wartet auf Schritt 1 …</span>';
+    body.innerHTML = '<span class="tl out build-idle">▸ bereit – tippe auf „Website bauen“</span>';
     render();
   });
   render();
