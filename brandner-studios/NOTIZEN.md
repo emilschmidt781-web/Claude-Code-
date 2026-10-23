@@ -30,6 +30,9 @@ Stand: 22. Oktober 2026
 
 ## Veröffentlichung – aktueller Stand
 
+- **Vorschau-Link (Claude-Artifact, privat):** https://claude.ai/artifact/KNXMvv5ewxKHXckwyTTNKZ
+  Nur mit deinem Claude-Konto sichtbar, Teilen über das Teilen-Menü auf der Seite. Keine echte Website-Adresse.
+
 - GitHub Pages veröffentlicht diesen Branch nicht: Der Schritt „deploy“ bricht ab, weil vermutlich nur
   `claude/angel-app-tqz8ao` freigegeben ist.
 - Lösung A: Inhalt auf `claude/angel-app-tqz8ao` übertragen (Claude Bescheid sagen).
