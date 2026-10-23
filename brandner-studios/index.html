@@ -34,7 +34,7 @@
     <link rel="preload" href="fonts/Inter-normal-400.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Schriften der Beispiel-Namen und der Bildunterschrift lädt script.js erst beim Hinscrollen -->
     <noscript><link rel="stylesheet" href="fonts/extra.css" /></noscript>
-    <link rel="stylesheet" href="style.css?v=19" />
+    <link rel="stylesheet" href="style.css?v=21" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -516,68 +516,70 @@
                   <div class="ms-swatches"><i></i><i></i><i></i></div>
                   <span class="ms-code">&lt;/&gt;</span>
                   <div class="ms-scene ms-scene-1">
-                    <svg class="hs" viewBox="0 0 240 120">
-                      <g class="hs-shake">
-                        <g class="hs-arm hs-l">
-                          <rect x="-40" y="52" width="114" height="30" rx="7" fill="#ff5fa8" />
-                          <rect x="66" y="49" width="14" height="36" rx="4" fill="#fff" />
-                          <rect x="76" y="50" width="56" height="34" rx="16" fill="#f3c6a3" />
-                          <rect x="100" y="40" width="34" height="13" rx="6.5" fill="#f3c6a3" transform="rotate(-8 117 46)" />
-                        </g>
-                        <g class="hs-arm hs-r">
-                          <rect x="166" y="52" width="114" height="30" rx="7" fill="#5fb0ec" />
-                          <rect x="160" y="49" width="14" height="36" rx="4" fill="#fff" />
-                          <rect x="126" y="50" width="42" height="34" rx="15" fill="#d99a72" />
-                          <g fill="#d99a72" stroke="#b97a55" stroke-width="1.6">
-                            <rect x="96" y="53" width="40" height="8" rx="4" />
-                            <rect x="94" y="61" width="42" height="8" rx="4" />
-                            <rect x="95" y="69" width="41" height="8" rx="4" />
-                            <rect x="98" y="77" width="38" height="7" rx="3.5" />
-                          </g>
-                        </g>
+                    <svg class="scene-svg" viewBox="0 0 240 140">
+                      <g class="talk-l">
+                        <circle class="ln" pathLength="1" style="--dl: 0s" cx="70" cy="74" r="12" />
+                        <path class="ln" pathLength="1" style="--dl: .15s" d="M48 126C48 96 92 96 92 126" />
                       </g>
+                      <g class="talk-r">
+                        <circle class="ln" pathLength="1" style="--dl: .1s" cx="170" cy="74" r="12" />
+                        <path class="ln" pathLength="1" style="--dl: .25s" d="M148 126C148 96 192 96 192 126" />
+                      </g>
+                      <path class="ln ln-soft" pathLength="1" style="--dl: .3s" d="M30 126H210" />
+                      <g class="pop bubble-l" style="--dl: .6s">
+                        <path class="bub" d="M58 14h24a12 12 0 0 1 0 24h-14l-8 8v-8h-2a12 12 0 0 1 0-24z" />
+                        <circle class="dot" cx="60" cy="26" r="2.6" /><circle class="dot" cx="70" cy="26" r="2.6" /><circle class="dot" cx="80" cy="26" r="2.6" />
+                      </g>
+                      <g class="pop bubble-r" style="--dl: 1.3s">
+                        <path class="bub bub-accent" d="M160 22h24a12 12 0 0 1 0 24h-2v8l-8-8h-14a12 12 0 0 1 0-24z" />
+                        <circle class="dot" cx="162" cy="34" r="2.6" /><circle class="dot" cx="172" cy="34" r="2.6" /><circle class="dot" cx="182" cy="34" r="2.6" />
+                      </g>
+                      <path class="ln ln-accent" pathLength="1" style="--dl: 2.05s" d="M110 100l7 7 13-15" />
                     </svg>
-                    <span class="hs-bubble hs-b1">Hallo!</span>
-                    <span class="hs-bubble hs-b2">Freut mich!</span>
                   </div>
                   <div class="ms-scene ms-scene-2">
-                    <div class="sketchbook">
-                      <svg viewBox="0 0 200 124">
-                        <path class="draw" pathLength="1" style="--dl: 0s" d="M12 10H188V30H12Z" />
-                        <circle class="draw" pathLength="1" style="--dl: .25s" cx="24" cy="20" r="5" />
-                        <path class="draw draw-hl" pathLength="1" style="--dl: .5s" d="M18 52C60 56 92 46 126 52" />
-                        <path class="draw" pathLength="1" style="--dl: .55s" d="M20 48H122" />
-                        <path class="draw" pathLength="1" style="--dl: .8s" d="M20 61H96" />
-                        <path class="draw" pathLength="1" style="--dl: 1s" d="M20 72H62V84H20Z" />
-                        <path class="draw" pathLength="1" style="--dl: 1.25s" d="M12 96H64V116H12Z" />
-                        <path class="draw" pathLength="1" style="--dl: 1.45s" d="M74 96H126V116H74Z" />
-                        <path class="draw" pathLength="1" style="--dl: 1.65s" d="M136 96H188V116H136Z" />
-                      </svg>
-                      <i class="pencil"></i>
-                    </div>
+                    <svg class="scene-svg" viewBox="0 0 240 140">
+                      <rect class="ln ln-soft" pathLength="1" style="--dl: 0s" x="50" y="12" width="140" height="116" rx="6" />
+                      <path class="ln" pathLength="1" style="--dl: .45s" d="M64 30H176" />
+                      <path class="ln ln-accent" pathLength="1" style="--dl: .8s" d="M64 52H142" />
+                      <path class="ln" pathLength="1" style="--dl: 1.05s" d="M64 64H120" />
+                      <path class="ln" pathLength="1" style="--dl: 1.3s" d="M64 76H96V88H64Z" />
+                      <path class="ln" pathLength="1" style="--dl: 1.6s" d="M64 100H98V116H64Z" />
+                      <path class="ln" pathLength="1" style="--dl: 1.8s" d="M103 100H137V116H103Z" />
+                      <path class="ln" pathLength="1" style="--dl: 2s" d="M142 100H176V116H142Z" />
+                    </svg>
                   </div>
                   <div class="ms-scene ms-scene-3">
-                    <div class="devices">
-                      <div class="dev-laptop"><div class="dev-screen"><i style="--i: 0" class="b-head"></i><i style="--i: 1" class="b-hero"></i><i style="--i: 2" class="b-sub"></i><i style="--i: 3" class="b-btn"></i><i style="--i: 4" class="b-card"></i><i style="--i: 5" class="b-card"></i><i style="--i: 6" class="b-card"></i></div><span class="dev-base"></span></div>
-                      <div class="dev-phone"><div class="dev-screen"><i style="--i: 0" class="b-head"></i><i style="--i: 1" class="b-hero"></i><i style="--i: 2" class="b-sub"></i><i style="--i: 3" class="b-btn"></i><i style="--i: 4" class="b-card"></i></div></div>
-                    </div>
-                    <div class="build-badges"><span style="--i: 0">Handy ✓</span><span style="--i: 1">Schnell ✓</span><span style="--i: 2">Google ✓</span></div>
+                    <svg class="scene-svg" viewBox="0 0 240 140">
+                      <rect class="ln" pathLength="1" style="--dl: 0s" x="34" y="18" width="128" height="82" rx="5" />
+                      <path class="ln" pathLength="1" style="--dl: .3s" d="M22 108H174" />
+                      <rect class="ln" pathLength="1" style="--dl: .2s" x="176" y="46" width="38" height="66" rx="7" />
+                      <g class="fill">
+                        <rect class="pop" style="--dl: .7s" x="44" y="28" width="108" height="7" rx="2" />
+                        <rect class="pop pop-accent" style="--dl: .9s" x="44" y="42" width="72" height="9" rx="2" />
+                        <rect class="pop" style="--dl: 1.1s" x="44" y="56" width="52" height="5" rx="2" />
+                        <rect class="pop" style="--dl: 1.3s" x="44" y="70" width="32" height="20" rx="2" />
+                        <rect class="pop" style="--dl: 1.4s" x="82" y="70" width="32" height="20" rx="2" />
+                        <rect class="pop" style="--dl: 1.5s" x="120" y="70" width="32" height="20" rx="2" />
+                        <rect class="pop" style="--dl: .8s" x="183" y="55" width="24" height="5" rx="2" />
+                        <rect class="pop pop-accent" style="--dl: 1s" x="183" y="66" width="24" height="7" rx="2" />
+                        <rect class="pop" style="--dl: 1.6s" x="183" y="80" width="24" height="22" rx="2" />
+                      </g>
+                    </svg>
+                    <p class="scene-caption"><span style="--dl: 1.9s">Handy ✓</span><span style="--dl: 2.1s">Schnell ✓</span><span style="--dl: 2.3s">Google ✓</span></p>
                   </div>
                   <div class="ms-scene ms-scene-4">
-                    <div class="launch">
-                      <svg class="rocket" viewBox="0 0 40 90">
-                        <path class="flame" d="M12 60Q20 88 28 60Z" fill="#ffd166" />
-                        <path class="flame flame-in" d="M15 60Q20 76 25 60Z" fill="#ff8a3d" />
-                        <path d="M10 44 0 64 11 59Z M30 44 40 64 29 59Z" fill="#ff5fa8" />
-                        <path d="M20 0C34 14 36 40 30 60H10C4 40 6 14 20 0Z" fill="#f2f1f6" />
-                        <circle cx="20" cy="27" r="6.5" fill="#5fb0ec" stroke="#0a0a0f" stroke-width="2.5" />
-                      </svg>
-                      <span class="smoke" style="--i: 0"></span><span class="smoke" style="--i: 1"></span><span class="smoke" style="--i: 2"></span>
-                      <div class="online-card">
-                        <span class="oc-pin"><i></i></span>
-                        <span class="oc-txt"><b>dein-betrieb.de</b><small>ist jetzt online</small></span>
-                      </div>
-                    </div>
+                    <svg class="scene-svg" viewBox="0 0 240 140">
+                      <circle class="ln" pathLength="1" style="--dl: 0s" cx="120" cy="62" r="40" />
+                      <ellipse class="ln ln-soft" pathLength="1" style="--dl: .45s" cx="120" cy="62" rx="16" ry="40" />
+                      <path class="ln ln-soft" pathLength="1" style="--dl: .7s" d="M80 62H160" />
+                      <path class="ln ln-soft" pathLength="1" style="--dl: .85s" d="M86 42H154M86 82H154" />
+                      <g class="pop online-dot" style="--dl: 1.3s">
+                        <circle class="ring" cx="152" cy="30" r="7" />
+                        <circle class="core" cx="152" cy="30" r="7" />
+                      </g>
+                    </svg>
+                    <p class="scene-caption scene-url"><span style="--dl: 1.5s"><b>dein-betrieb.de</b> ist online</span></p>
                   </div>
                   <span class="ms-note ms-note-1">Ziele ✓</span>
                   <span class="ms-note ms-note-2">Budget ✓</span>

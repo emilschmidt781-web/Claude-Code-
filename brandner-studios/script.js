@@ -333,7 +333,7 @@ if (builder) {
     ripple(card.querySelector(".step-btn"), e);
     card.classList.add("working");
     busy = true;
-    // Jeder Schritt hat eine Szene im Fenster der Mini-Website: Handschlag, Skizzenbuch, Geräte, Rakete
+    // Jeder Schritt hat eine schlichte Szene im Fenster der Mini-Website: Gespräch, Skizze, Bauen, Online
     builder.dataset.scene = n;
     render();
     later(() => {
