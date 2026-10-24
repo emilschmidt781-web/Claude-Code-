@@ -12,7 +12,7 @@ Stand: 22. Oktober 2026
 | Telefon / WhatsApp | +49 1575 7320820 |
 | Projektordner | `brandner-studios/` im Repo `emilschmidt781-web/Claude-Code-` |
 | Branch | `claude/dazzling-meitner-0o4pk6` |
-| Geplante Adresse | https://emilschmidt781-web.github.io/Claude-Code-/brandner-studios/ (oder eigene Domain) |
+| Adresse | https://brandnerstudios.de/ (online seit Oktober 2026) |
 
 ## Vor dem Livegang – Pflicht
 
@@ -23,8 +23,7 @@ Stand: 22. Oktober 2026
 - [ ] **Gewerbe anmelden** und Finanzamt informieren (falls noch nicht geschehen).
 - [ ] **Foto-Rechte**: kurze Bestätigung von der Person holen, die das Polaroid-Foto gemacht hat.
 - [ ] Nach dem Livegang auf https://pagespeed.web.dev neu messen und Werte im Abschnitt „Zahlen“ anpassen.
-- [ ] **Adresse anpassen**, falls eine eigene Domain kommt: in `index.html` (og:url, og:image, canonical,
-      Strukturdaten), `sitemap.xml` und `robots.txt` steht noch die GitHub-Pages-Adresse.
+- [x] **Adresse angepasst** auf https://brandnerstudios.de/ (index.html, sitemap.xml, robots.txt) – 24. Oktober 2026
 - [ ] Nach dem Livegang die Seite in der **Google Search Console** anmelden und `sitemap.xml` einreichen.
 - [ ] Vorschaubild testen: Link an dich selbst per WhatsApp schicken.
 

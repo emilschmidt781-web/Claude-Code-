@@ -8,10 +8,10 @@
 | `visitenkarte-vorne.png`, `visitenkarte-hinten.png` | Bilder im Endformat, z. B. für WhatsApp oder Instagram |
 | `visitenkarte-vorschau.png` | Ansicht beider Seiten |
 | `visitenkarte.html` | Quelle – Texte hier ändern, dann neu als PDF ausgeben |
-| `qr-kontakt.svg` | QR-Code: speichert beim Scannen Name, Firma, Telefon und E-Mail im Handy |
+| `qr-website.svg` | QR-Code zur Website https://brandnerstudios.de |
 
 Beim Bestellen (z. B. bei Onlineprinter, Flyeralarm, Vistaprint): Format 85 × 55 mm, beidseitig farbig,
 PDF mit 3 mm Beschnitt hochladen. Empfehlung: 350 g Papier, matt, gerne mit Soft-Touch-Folie.
 Kein Text liegt näher als 4 mm am Rand.
 
-Sobald die eigene Domain steht, kann die Website-Adresse auf die Rückseite.
+Website-Adresse und QR-Code führen zu https://brandnerstudios.de.
