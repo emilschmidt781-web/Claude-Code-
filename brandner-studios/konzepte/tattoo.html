@@ -1,124 +1,333 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Nachtschicht Tattoo – Design-Konzept</title>
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Nachtschicht Tattoo – Design-Konzept</title>
+<meta name="description" content="Design-Konzept von Brandner Studios für ein erfundenes Tattoostudio.">
+<link rel="stylesheet" href="demo.css">
 <style>
-@font-face {
-  font-family: 'Pirata One';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fonts/PirataOne-normal-400.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+@font-face{font-family:Pirata;font-display:swap;src:url(../fonts/PirataOne-normal-400.woff2) format("woff2")}
+@font-face{font-family:"Rubik Mono";font-display:swap;src:url(../fonts/RubikMonoOne-normal-400.woff2) format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:400;font-display:swap;src:url(../fonts/SpaceMono-normal-400.woff2) format("woff2")}
+@font-face{font-family:"Space Mono";font-weight:700;font-display:swap;src:url(../fonts/SpaceMono-normal-700.woff2) format("woff2")}
+:root{--bg:#0a0a0c;--panel:#141418;--line:#2a2a31;--txt:#ecebf0;--soft:#9b9aa6;--pink:#ff2d95;--cyan:#22e5ff;--lime:#c6ff3d;--pad:clamp(16px,3.5vw,48px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font:400 16px/1.6 "Space Mono",ui-monospace,monospace;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;background:repeating-linear-gradient(0deg,#ffffff05 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+a{color:inherit}
+svg{display:block;max-width:100%}
+.goth{font-family:Pirata,serif;font-weight:400;letter-spacing:.01em}
+.mono{font-family:"Rubik Mono",sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--pad)}
+.neon-p{color:#ffe1f0;text-shadow:0 0 4px #fff,0 0 12px var(--pink),0 0 28px var(--pink),0 0 60px var(--pink)}
+.neon-c{color:#e2fbff;text-shadow:0 0 4px #fff,0 0 12px var(--cyan),0 0 30px var(--cyan)}
+[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.16,1,.3,1)}
+[data-reveal].in{opacity:1;transform:none}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;font:700 14px "Space Mono",monospace;text-transform:uppercase;letter-spacing:.06em;background:var(--pink);color:#0a0a0c;border:0;cursor:pointer;text-decoration:none;box-shadow:0 0 24px -4px var(--pink);transition:box-shadow .3s,transform .2s}
+.btn:hover{box-shadow:0 0 40px 0 var(--pink);transform:translateY(-2px)}
+.btn.out{background:transparent;color:var(--cyan);box-shadow:inset 0 0 0 2px var(--cyan)}
+.btn.out:hover{box-shadow:inset 0 0 0 2px var(--cyan),0 0 30px -4px var(--cyan)}
+
+header{position:sticky;top:0;z-index:20;background:#0a0a0ccc;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+.logo{font-family:Pirata,serif;font-size:32px;text-decoration:none}
+.nav ul{display:flex;gap:26px;list-style:none;font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+.nav ul a{text-decoration:none;color:var(--soft)}
+.nav ul a:hover{color:var(--cyan)}
+.status{display:flex;align-items:center;gap:8px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--soft)}
+.status i{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pulse 1.6s infinite}
+.status.closed i{background:#555;box-shadow:none;animation:none}
+@keyframes pulse{50%{opacity:.3}}
+
+/* Start */
+.hero{position:relative;min-height:calc(100vh - 70px);min-height:calc(100svh - 70px);display:grid;align-items:center;overflow:hidden;padding:48px 0 64px}
+.hero::after{content:"";position:absolute;left:50%;top:50%;width:900px;height:900px;transform:translate(-50%,-50%);background:radial-gradient(circle,#ff2d9522,transparent 60%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;text-align:center}
+.hero .small{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--soft)}
+.hero h1{font-size:clamp(76px,16vw,250px);line-height:.85;margin:18px 0 6px;animation:flick 6s infinite}
+.hero h2{font-size:clamp(18px,3vw,40px);margin-bottom:28px}
+@keyframes flick{0%,18%,22%,25%,53%,57%,100%{opacity:1}20%,24%,55%{opacity:.35}}
+.hero p{max-width:520px;margin:0 auto 32px;color:var(--soft)}
+.hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .sign{position:absolute;opacity:.85}
+.hero .s1{left:4%;top:12%;width:120px;transform:rotate(-12deg)}
+.hero .s2{right:5%;bottom:14%;width:140px;transform:rotate(10deg)}
+.hero .s3{right:9%;top:16%;width:90px}
+.hero .s4{left:7%;bottom:12%;width:100px;transform:rotate(6deg)}
+.sign path,.sign circle{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+
+.tape-clip{overflow:hidden;padding:14px 0}
+.tape{background:var(--lime);color:#0a0a0c;overflow:hidden;transform:rotate(-1.5deg) scaleX(1.04);padding:12px 0;font-family:"Rubik Mono",sans-serif;font-size:18px;white-space:nowrap}
+.tape div{display:inline-block;animation:run 24s linear infinite}
+@keyframes run{to{transform:translateX(-50%)}}
+
+section{padding:clamp(72px,10vw,130px) 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.head h2{font-size:clamp(52px,8vw,120px);line-height:.9}
+.head p{color:var(--soft);max-width:420px}
+.kick{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:10px}
+
+/* Flash */
+.flash{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.motif{all:unset;box-sizing:border-box;background:var(--bg);padding:22px 18px 18px;display:flex;flex-direction:column;gap:10px;cursor:pointer;position:relative;transition:background .3s}
+.motif:hover,.motif:focus-visible{background:var(--panel)}
+.motif:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+.motif svg{width:100%;aspect-ratio:1;max-height:170px}
+.motif svg *{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transition:filter .3s}
+.motif:hover svg *{filter:drop-shadow(0 0 6px currentColor)}
+.motif .row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
+.motif b{font-family:"Rubik Mono",sans-serif;font-weight:400;font-size:14px;text-transform:uppercase}
+.motif .pr{color:var(--lime)}
+.motif .taken{position:absolute;top:14px;right:-6px;background:var(--pink);color:#0a0a0c;font-size:11px;font-weight:700;padding:3px 10px;transform:rotate(8deg);text-transform:uppercase}
+.motif.sel{background:#1b0f17;box-shadow:inset 0 0 0 2px var(--pink)}
+.motif.sel::after{content:"✓ Gewählt";position:absolute;left:18px;top:14px;font-size:11px;font-weight:700;color:var(--pink);text-transform:uppercase}
+
+/* Artists */
+.artists{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.artist{background:var(--panel);border:1px solid var(--line);padding:24px;position:relative;overflow:hidden}
+.artist .pic{aspect-ratio:1;background:#0f0f12;margin-bottom:20px;display:grid;place-items:center;border:1px solid var(--line)}
+.artist .pic svg{width:70%}
+.artist h3{font-size:44px;line-height:1}
+.artist .st{font-size:13px;color:var(--cyan);text-transform:uppercase;letter-spacing:.1em;margin:6px 0 12px}
+.artist p{color:var(--soft);font-size:14px}
+.artist .days{display:flex;gap:4px;margin-top:16px}
+.artist .days span{flex:1;text-align:center;font-size:11px;padding:6px 0;border:1px solid var(--line);color:#55545f}
+.artist .days span.on{border-color:var(--lime);color:var(--lime)}
+
+/* So läuft's */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.steps li{padding:28px 22px 0 0;border-right:1px solid var(--line);padding-left:22px}
+.steps li:first-child{padding-left:0}
+.steps li:last-child{border:0}
+.steps .n{font-family:"Rubik Mono",sans-serif;font-size:48px;line-height:1;-webkit-text-stroke:1.5px var(--pink);color:transparent}
+.steps h3{font-family:"Rubik Mono",sans-serif;font-weight:400;font-size:17px;text-transform:uppercase;margin:16px 0 8px}
+.steps p{color:var(--soft);font-size:14px}
+
+/* Walk-in + Pflege */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.box{background:var(--panel);border:1px solid var(--line);padding:clamp(24px,3vw,40px)}
+.box h3{font-size:56px;line-height:1;margin-bottom:18px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:11px 0;border-bottom:1px dashed var(--line)}
+td:last-child{text-align:right}
+tr.today td{color:var(--lime)}
+.care{list-style:none;counter-reset:c;display:grid;gap:14px}
+.care li{display:grid;grid-template-columns:44px 1fr;gap:12px;font-size:14px;color:var(--soft)}
+.care li::before{counter-increment:c;content:counter(c);display:grid;place-items:center;width:36px;height:36px;border:2px solid var(--cyan);border-radius:50%;color:var(--cyan);font-weight:700}
+.care b{color:var(--txt);display:block}
+
+/* Buchung */
+.book{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+.book form{background:var(--panel);border:1px solid var(--line);padding:clamp(20px,3vw,36px);display:grid;gap:16px}
+.book label{display:grid;gap:6px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--soft)}
+.book input,.book select,.book textarea{font:400 16px "Space Mono",monospace;padding:13px 14px;background:var(--bg);border:1px solid var(--line);color:var(--txt);border-radius:0;text-transform:none;letter-spacing:0}
+.book input:focus,.book select:focus,.book textarea:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px #ff2d9533}
+.book input[type=range]{padding:0;accent-color:var(--pink);border:0;background:none}
+.size{display:flex;justify-content:space-between;align-items:baseline;color:var(--txt)}
+.size b{font-family:"Rubik Mono",sans-serif;font-weight:400;font-size:26px;color:var(--lime)}
+.estimate{border:1px dashed var(--lime);padding:14px;display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:14px}
+.estimate b{font-family:"Rubik Mono",sans-serif;font-weight:400;font-size:24px;color:var(--lime);white-space:nowrap}
+.form-note{font-size:14px;color:var(--pink);min-height:1.4em}
+.info{display:grid;gap:18px;color:var(--soft)}
+.info b{color:var(--txt)}
+
+footer.foot{border-top:1px solid var(--line);padding:56px 0 36px;text-align:center}
+.foot .goth{font-size:clamp(64px,14vw,200px);line-height:.9}
+.foot p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-top:20px}
+
+@media (max-width:980px){
+  .nav ul{display:none}
+  .flash{grid-template-columns:repeat(3,1fr)}
+  .artists{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:24px 0}
+  .steps li:nth-child(2){border-right:0}
+  .steps li:nth-child(3){padding-left:0}
+  .duo,.book{grid-template-columns:1fr}
+  .hero .s1,.hero .s4{width:80px}
+  .hero .s2,.hero .s3{width:80px}
 }
-@font-face {
-  font-family: 'Rubik Mono One';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fonts/RubikMonoOne-normal-400.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+@media (max-width:600px){
+  .flash{grid-template-columns:1fr 1fr}
+  .artists{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .steps li{border-right:0!important;padding-left:0!important}
+  .status span{display:none}
+  .motif{padding:16px 12px 14px}
+  .motif .row{flex-direction:column;gap:2px}
+  .hero .sign{opacity:.45}
+  .box h3{font-size:44px}
+  .tape{font-size:14px}
 }
-@font-face {
-  font-family: 'Unbounded';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url(../fonts/Unbounded-normal-300.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Unbounded';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(../fonts/Unbounded-normal-300.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
 </style>
-<style>
-*{box-sizing:border-box;margin:0}
-body{width:1280px;height:800px;overflow:hidden;background:#0b0b0d;color:#f1f1f1;font-family:Unbounded;position:relative}
-.left{position:absolute;left:0;top:0;bottom:0;width:560px;background:#0b0b0d;overflow:hidden}
-.left .dots{position:absolute;inset:0;background:radial-gradient(circle,#ff2e88 1.5px,transparent 2.1px) 0 0/11px 11px;-webkit-mask:linear-gradient(180deg,transparent 30%,#000);mask:linear-gradient(180deg,transparent 30%,#000);opacity:.8}
-.logo{position:absolute;left:40px;top:34px;font-family:'Pirata One';font-size:40px}
-.stack{position:absolute;left:34px;top:120px;font-family:'Rubik Mono One';font-size:84px;line-height:.95;text-transform:uppercase}
-.stack span{display:block}.stack .p{color:#ff2e88}.stack .o{color:transparent;-webkit-text-stroke:2px #39ff88}
-.lp{position:absolute;left:40px;bottom:120px;width:420px;font-size:13px;font-weight:300;line-height:1.7}
-.cta{position:absolute;left:40px;bottom:40px;padding:18px 28px;background:#39ff88;color:#0b0b0d;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em}
-.right{position:absolute;left:560px;right:0;top:0;bottom:0;background:#f1ece2;color:#0b0b0d;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:60px repeat(2,1fr)}
-.rnav{grid-column:1/4;display:flex;justify-content:space-between;align-items:center;padding:0 30px;border-bottom:2px solid #0b0b0d;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
-.flash{border-right:2px solid #0b0b0d;border-bottom:2px solid #0b0b0d;position:relative;display:grid;place-items:center}
-.flash:nth-child(3n+1){border-right:0}
-.flash small{position:absolute;left:12px;bottom:10px;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
-.flash i{position:absolute;right:12px;top:10px;font-style:normal;font-size:10px;font-weight:700;color:#ff2e88}
-.flash svg{width:120px;height:120px;fill:none;stroke:#0b0b0d;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-</style><style id="motion">
-/* Animationen */
-@keyframes flicker{0%{opacity:0}8%{opacity:1}10%{opacity:.2}14%{opacity:1}18%{opacity:.4}22%,100%{opacity:1}}
-@keyframes glow{0%,100%{text-shadow:0 0 8px rgba(255,46,136,.5),0 0 24px rgba(255,46,136,.3)}50%{text-shadow:0 0 14px rgba(255,46,136,.9),0 0 44px rgba(255,46,136,.6)}}
-@keyframes glowG{0%,100%{filter:drop-shadow(0 0 4px rgba(57,255,136,.4))}50%{filter:drop-shadow(0 0 12px rgba(57,255,136,.9))}}
-@keyframes ink{to{stroke-dashoffset:0}}
-@keyframes cell{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
-@keyframes dots{to{background-position:11px 11px}}
-@keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(900px)}}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(57,255,136,.6)}70%{box-shadow:0 0 0 18px rgba(57,255,136,0)}}
-@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.stack span{animation:flicker 1.2s steps(1) both}
-.stack span:nth-child(1){animation-delay:.3s}
-.stack .p{animation:flicker 1.2s steps(1) .7s both,glow 3s ease-in-out 2s infinite}
-.stack .o{animation:flicker 1.2s steps(1) 1.1s both,glowG 3s ease-in-out 2.5s infinite}
-.logo{animation:up .8s cubic-bezier(.22,1,.36,1) .1s both}
-.lp{animation:up 1s cubic-bezier(.22,1,.36,1) 1.6s both}
-.cta{animation:up 1s cubic-bezier(.22,1,.36,1) 1.8s both,pulse 2.4s ease-out 3s infinite}
-.left .dots{animation:dots 6s linear infinite}
-.left::after{content:"";position:absolute;left:0;right:0;top:0;height:120px;background:linear-gradient(180deg,transparent,rgba(255,46,136,.08),transparent);animation:scan 6s linear 2s infinite;pointer-events:none}
-.flash{animation:cell .6s cubic-bezier(.22,1,.36,1) both;transition:background .3s}
-.flash:nth-of-type(2){animation-delay:.5s}.flash:nth-of-type(3){animation-delay:.65s}.flash:nth-of-type(4){animation-delay:.8s}
-.flash:nth-of-type(5){animation-delay:.95s}.flash:nth-of-type(6){animation-delay:1.1s}.flash:nth-of-type(7){animation-delay:1.25s}
-.flash svg *{stroke-dasharray:420;stroke-dashoffset:420;animation:ink 2.2s ease-out forwards}
-.flash:nth-of-type(2) svg *{animation-delay:.6s}.flash:nth-of-type(3) svg *{animation-delay:.8s}.flash:nth-of-type(4) svg *{animation-delay:1s}
-.flash:nth-of-type(5) svg *{animation-delay:1.2s}.flash:nth-of-type(6) svg *{animation-delay:1.4s}.flash:nth-of-type(7) svg *{animation-delay:1.6s}
-.flash svg{transition:transform .5s cubic-bezier(.22,1,.36,1)}
-.flash:hover{background:#fff}
-.flash:hover svg{transform:scale(1.15) rotate(-6deg)}
-@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-</style>
-</head><body>
-<div class="left"><div class="dots"></div><span class="logo">Nachtschicht</span>
-<div class="stack"><span>Nacht</span><span class="p">schicht</span><span class="o">Tattoo</span></div>
-<p class="lp">Fineline, Blackwork und Flash-Motive. Jeden Freitag Walk-in ab 14 Uhr — rechts das aktuelle Flash-Sheet.</p>
-<span class="cta">Termin anfragen →</span></div>
-<div class="right">
-<div class="rnav"><span>Flash-Sheet № 12</span><span>Artists</span><span>Termine</span><span>Pflege</span></div>
-<div class="flash"><i>01</i><svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="16"/><path d="M50 24c-6 6-6 10 0 16 6-6 6-10 0-16M34 40c6 6 10 6 16 0M66 40c-6 6-10 6-16 0"/><path d="M50 56v36M50 70c-12-2-18 4-20 10 10 2 16-2 20-10M50 78c10-4 16 0 18 6-8 2-14 0-18-6" stroke="#ff2e88"/></svg><small>Rose</small></div>
-<div class="flash"><i>02</i><svg viewBox="0 0 100 100"><path d="M50 8l7 52H43z"/><path d="M30 60h40M44 60v10h12V60M47 70v20h6V70"/><circle cx="50" cy="95" r="3" fill="#0b0b0d"/><path d="M50 14v40" stroke="#39ff88"/></svg><small>Dolch</small></div>
-<div class="flash"><i>03</i><svg viewBox="0 0 100 100"><path d="M10 40c20-6 30 2 40 14 10-14 24-22 40-20-10 6-18 14-22 24 10 2 18 8 22 16-14-2-26-4-34-12-6 8-18 14-34 14 8-6 14-14 16-22-10-2-20-8-28-14z"/><circle cx="64" cy="44" r="2" fill="#0b0b0d"/><path d="M40 62l-8 18M48 64l-2 20" stroke="#ff2e88"/></svg><small>Schwalbe</small></div>
-<div class="flash"><i>04</i><svg viewBox="0 0 100 100"><path d="M10 50Q50 10 90 50Q50 90 10 50Z"/><circle cx="50" cy="50" r="14" stroke="#ff2e88"/><circle cx="50" cy="50" r="5" fill="#0b0b0d"/><path d="M50 8v10M50 82v10M18 22l7 7M82 22l-7 7"/></svg><small>Auge</small></div>
-<div class="flash"><i>05</i><svg viewBox="0 0 100 100"><path d="M50 12l10 26 28 2-22 18 8 28-24-16-24 16 8-28-22-18 28-2z"/><circle cx="50" cy="50" r="6" stroke="#39ff88"/></svg><small>Stern</small></div>
-<div class="flash"><i>06</i><svg viewBox="0 0 100 100"><path d="M50 88C20 66 10 46 22 30c10-12 24-8 28 6 4-14 18-18 28-6 12 16 2 36-28 58z"/><path d="M16 62h68" stroke="#ff2e88"/><path d="M30 56h40v12H30z" fill="#f1ece2"/></svg><small>Herz</small></div>
-</div>
-<!-- Demo-Rahmen: skaliert die 1280×800-Startseite auf jedes Fenster und kennzeichnet sie als Konzept -->
-<style>
-.demo-frame{position:absolute;left:50%;top:calc(50% - 30px);width:1280px;height:800px;transform-origin:50% 50%;box-shadow:0 30px 80px -30px rgba(0,0,0,.5)}
-.demo-badge{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:99;display:flex;align-items:center;gap:12px;padding:10px 12px 10px 18px;border-radius:999px;background:#1f1f22;color:#fff;font:600 13px/1.2 Inter,system-ui,sans-serif;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);white-space:nowrap}
-.demo-badge a{color:#1f1f22;background:#fff;padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:800}.demo-badge small{display:flex;gap:4px;align-items:center;font-weight:500;opacity:.8}.demo-badge small a{background:none;color:#fff;padding:0;font-weight:500;text-decoration:underline}
-</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo neon-p" href="#top">Nachtschicht</a>
+    <nav aria-label="Hauptmenü"><ul><li><a href="#flash">Flash</a></li><li><a href="#artists">Artists</a></li><li><a href="#walkin">Walk-in</a></li><li><a href="#termin">Termin</a></li></ul></nav>
+    <span class="status" id="status"><i></i><span>Heute offen</span></span>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-top:48px">
+    <svg class="sign s1" viewBox="0 0 100 100" aria-hidden="true" style="color:var(--cyan)"><path d="M50 88C20 64 10 46 10 32 10 18 22 10 32 10c8 0 14 4 18 12 4-8 10-12 18-12 10 0 22 8 22 22 0 14-10 32-40 56z" stroke="currentColor" style="filter:drop-shadow(0 0 6px var(--cyan))"/></svg>
+    <svg class="sign s2" viewBox="0 0 100 100" aria-hidden="true" style="color:var(--pink)"><path d="M50 8v70M38 20h24M44 78l6 14 6-14M42 30h16l-8 44z" stroke="currentColor" style="filter:drop-shadow(0 0 6px var(--pink))"/></svg>
+    <svg class="sign s3" viewBox="0 0 100 100" aria-hidden="true" style="color:var(--lime)"><path d="M58 6L22 56h26l-8 38 40-54H52z" stroke="currentColor" style="filter:drop-shadow(0 0 6px var(--lime))"/></svg>
+    <svg class="sign s4" viewBox="0 0 100 100" aria-hidden="true" style="color:var(--cyan)"><path d="M70 14a38 38 0 1 0 10 64 30 30 0 1 1-10-64z" stroke="currentColor" style="filter:drop-shadow(0 0 6px var(--cyan))"/></svg>
+    <div class="wrap">
+      <span class="small">Tattoo &amp; Piercing · seit Mitternacht wach</span>
+      <h1 class="goth neon-p">Nachtschicht</h1>
+      <h2 class="mono neon-c">Tattoo Studio</h2>
+      <p>Feine Linien, fette Farben, ehrliche Beratung. Wir stechen, was zu dir passt – und sagen dir auch, wenn etwas keine gute Idee ist.</p>
+      <div class="cta"><a class="btn" href="#termin">Termin anfragen</a><a class="btn out" href="#flash">Flash ansehen</a></div>
+    </div>
+  </section>
+
+  <div class="tape-clip" aria-hidden="true"><div class="tape"><div>★ WALK-IN FREITAGS AB 14 UHR ★ NEUE FLASH-MOTIVE JEDEN MONAT ★ BERATUNG IMMER KOSTENLOS ★ AB 18 JAHREN ★ WALK-IN FREITAGS AB 14 UHR ★ NEUE FLASH-MOTIVE JEDEN MONAT ★ BERATUNG IMMER KOSTENLOS ★ AB 18 JAHREN&nbsp;</div></div></div>
+
+  <section id="flash">
+    <div class="wrap">
+      <div class="head" data-reveal><div><span class="kick">Flash-Sheet · diesen Monat</span><h2 class="goth">Fertig zum Stechen</h2></div><p>Zwölf Motive, jedes nur einmal. Tippe auf dein Lieblingsmotiv – es landet direkt in deiner Anfrage.</p></div>
+      <div class="flash" id="sheet"></div>
+    </div>
+  </section>
+
+  <section id="artists" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-reveal><div><span class="kick">Das Team</span><h2 class="goth">Die Artists</h2></div><p>Drei Hände, drei Stile. Grün markiert: an diesen Tagen sticht die Person.</p></div>
+      <div class="artists">
+        <article class="artist" data-reveal><div class="pic"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#ff2d95" stroke-width="2.5" stroke-linecap="round"><path d="M50 20c-10 0-16 8-16 18 0 8 6 12 6 18h20c0-6 6-10 6-18 0-10-6-18-16-18z"/><path d="M40 62h20M42 68h16M46 74h8"/><path d="M50 10v4M30 18l3 3M70 18l-3 3"/></g></svg></div><h3 class="goth">Raven</h3><div class="st">Fineline · Blackwork</div><p>Feine Linien, Pflanzen und kleine Symbole. Ruhige Hand, noch ruhigere Musik.</p><div class="days"><span>Mo</span><span class="on">Di</span><span class="on">Mi</span><span>Do</span><span class="on">Fr</span><span class="on">Sa</span></div></article>
+        <article class="artist" data-reveal><div class="pic"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#22e5ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 82C24 62 16 46 16 34c0-12 10-18 18-18 7 0 12 4 16 10 4-6 9-10 16-10 8 0 18 6 18 18 0 12-8 28-34 48z"/><path d="M20 50h60" /><path d="M36 62l14-12 14 12"/></g></svg></div><h3 class="goth">Mo</h3><div class="st">Old School · Farbe</div><p>Klassische Motive mit dicken Linien und kräftigen Farben, die auch in zwanzig Jahren noch knallen.</p><div class="days"><span class="on">Mo</span><span class="on">Di</span><span>Mi</span><span class="on">Do</span><span class="on">Fr</span><span>Sa</span></div></article>
+        <article class="artist" data-reveal><div class="pic"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#c6ff3d" stroke-width="2.5" stroke-linecap="round"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="18"/><circle cx="50" cy="50" r="6"/><path d="M50 10v80M10 50h80M22 22l56 56M78 22L22 78"/></g></svg></div><h3 class="goth">Juno</h3><div class="st">Ornamental · Dotwork</div><p>Mandalas, Muster und Punkte – große Flächen mit viel Geduld und Zirkel.</p><div class="days"><span>Mo</span><span>Di</span><span class="on">Mi</span><span class="on">Do</span><span>Fr</span><span class="on">Sa</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-reveal><div><span class="kick">So läuft's</span><h2 class="goth">Vom Plan zur Haut</h2></div></div>
+      <ol class="steps">
+        <li data-reveal><span class="n">01</span><h3>Anfrage</h3><p>Schick uns deine Idee, Größe und Körperstelle – gern mit Fotos.</p></li>
+        <li data-reveal><span class="n">02</span><h3>Beratung</h3><p>Wir besprechen alles persönlich oder per Video. Kostenlos.</p></li>
+        <li data-reveal><span class="n">03</span><h3>Entwurf</h3><p>Dein Artist zeichnet. Du darfst so lange ändern, bis es passt.</p></li>
+        <li data-reveal><span class="n">04</span><h3>Termin</h3><p>Wir stechen. Danach bekommst du alles für die Pflege mit.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="walkin" style="padding-top:0">
+    <div class="wrap duo">
+      <div class="box" data-reveal><span class="kick">Öffnungszeiten</span><h3 class="goth neon-c">Walk-in &amp; Termine</h3>
+        <table><tbody id="hours">
+          <tr data-d="1"><td>Montag</td><td>12–20 Uhr · Termine</td></tr>
+          <tr data-d="2"><td>Dienstag</td><td>12–20 Uhr · Termine</td></tr>
+          <tr data-d="3"><td>Mittwoch</td><td>12–20 Uhr · Termine</td></tr>
+          <tr data-d="4"><td>Donnerstag</td><td>12–22 Uhr · Termine</td></tr>
+          <tr data-d="5"><td>Freitag</td><td>14–23 Uhr · Walk-in</td></tr>
+          <tr data-d="6"><td>Samstag</td><td>12–23 Uhr · Walk-in</td></tr>
+          <tr data-d="0"><td>Sonntag</td><td>geschlossen</td></tr>
+        </tbody></table>
+      </div>
+      <div class="box" data-reveal><span class="kick">Nach dem Stechen</span><h3 class="goth neon-p">Pflege</h3>
+        <ol class="care">
+          <li><span><b>Folie drauf lassen</b>Je nach Folie bis zu drei Tage – wir sagen dir genau, wie lange.</span></li>
+          <li><span><b>Sanft waschen</b>Lauwarmes Wasser, milde Seife, mit Küchenpapier abtupfen.</span></li>
+          <li><span><b>Dünn eincremen</b>Zwei- bis dreimal am Tag mit der Creme, die du von uns bekommst.</span></li>
+          <li><span><b>Sonne &amp; Wasser meiden</b>Kein Schwimmbad, keine Sauna, kein Solarium für vier Wochen.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="termin" style="padding-top:0">
+    <div class="wrap book">
+      <div data-reveal>
+        <span class="kick">Termin anfragen</span>
+        <h2 class="goth" style="font-size:clamp(52px,7vw,104px);line-height:.9;margin-bottom:24px">Erzähl uns <span class="neon-p">deine Idee.</span></h2>
+        <div class="info">
+          <p><b>Nachtschicht Tattoo</b><br>Neonstraße 13 · 00000 Musterstadt</p>
+          <p><b>Anzahlung:</b> Für Termine nehmen wir eine Anzahlung, die mit dem Preis verrechnet wird.</p>
+          <p><b>Wichtig:</b> Wir tätowieren erst ab 18 Jahren. Bitte bring deinen Ausweis mit.</p>
+        </div>
+      </div>
+      <form id="book" novalidate data-reveal>
+        <label>Motiv<select name="motiv" id="motiv"><option value="Eigene Idee">Eigene Idee</option></select></label>
+        <label>Artist<select name="artist"><option>Egal – wer passt am besten?</option><option>Raven · Fineline</option><option>Mo · Old School</option><option>Juno · Ornamental</option></select></label>
+        <label>Körperstelle<select name="stelle"><option>Unterarm</option><option>Oberarm</option><option>Wade</option><option>Schulter</option><option>Rücken</option><option>Rippen</option><option>Andere</option></select></label>
+        <label><span class="size">Größe <b id="sz">8 cm</b></span><input type="range" name="groesse" id="groesse" min="3" max="30" value="8" aria-describedby="est"></label>
+        <div class="estimate" id="est"><span>Grobe Schätzung<br><small style="color:var(--soft)">Genauer Preis nach der Beratung</small></span><b id="price"></b></div>
+        <label>Name<input name="name" autocomplete="name"></label>
+        <label>E-Mail<input name="mail" type="email" autocomplete="email"></label>
+        <label>Deine Idee<textarea name="idee" rows="3" placeholder="Was soll es werden?"></textarea></label>
+        <button class="btn" type="submit" style="justify-content:center">Anfrage senden</button>
+        <p class="form-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="goth neon-p">Nachtschicht</div>
+    <p>Ein erfundenes Studio – Design-Konzept von Brandner Studios</p>
+  </div>
+</footer>
+
 <script>
-(function () {
-  var frame = document.createElement("div");
-  frame.className = "demo-frame";
-  while (document.body.firstChild) frame.appendChild(document.body.firstChild);
-  document.body.appendChild(frame);
-  document.body.style.width = "100vw";
-  document.body.style.height = "100vh";
-  var badge = document.createElement("div");
-  badge.className = "demo-badge";
-  badge.innerHTML = 'Design-Konzept von Brandner Studios <a href="../index.html#konzepte">Zurück</a><small><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></small>';
-  document.body.appendChild(badge);
-  function fit() {
-    var s = Math.min(innerWidth / 1280, (innerHeight - 60) / 800);
-    frame.style.transform = "translate(-50%, -50%) scale(" + s + ")";
-  }
-  addEventListener("resize", fit);
-  fit();
-})();
+// Flash-Sheet: 12 gezeichnete Motive
+var motifs = [
+  ["Rose", 120, "#ff2d95", '<path d="M50 30c-10 0-18 8-18 18s8 18 18 18 18-8 18-18-8-18-18-18zM50 38c-6 0-10 4-10 10s4 10 10 10M50 66v26M50 78c-8-6-16-4-20 2 8 2 14 2 20-2zM50 72c8-6 16-4 20 2-8 2-14 2-20-2z"/>'],
+  ["Dolch", 140, "#22e5ff", '<path d="M50 8l7 52H43zM34 60h32M50 60v12M44 72h12l-2 18h-8zM50 90v4"/>'],
+  ["Schlange", 180, "#c6ff3d", '<path d="M30 90c30 0 40-12 30-24s-30-12-30-26 18-24 36-18c10 4 10 14 2 16-6 2-10-2-8-6"/><path d="M68 24l8-4M68 24l6 6"/>', 1],
+  ["Totenkopf", 150, "#ecebf0", '<path d="M50 14c-18 0-28 12-28 28 0 10 6 16 10 18v12h36V60c4-2 10-8 10-18 0-16-10-28-28-28z"/><circle cx="40" cy="44" r="7"/><circle cx="60" cy="44" r="7"/><path d="M50 52l-4 8h8zM42 72v8M50 72v8M58 72v8"/>'],
+  ["Schwalbe", 110, "#22e5ff", '<path d="M12 40c16-4 26 0 34 10 6-14 18-22 34-22-8 6-12 12-12 18 8 2 14 6 16 12-14-4-24-2-30 6-6 10-18 16-34 16 10-6 16-14 16-22-8-6-16-12-24-18z"/>'],
+  ["Herz", 90, "#ff2d95", '<path d="M50 84C24 64 14 48 14 34c0-12 10-20 20-20 8 0 13 5 16 11 3-6 8-11 16-11 10 0 20 8 20 20 0 14-10 30-36 50z"/><path d="M14 46h72"/><path d="M30 46v-6M70 46v-6"/>', 1],
+  ["Anker", 130, "#c6ff3d", '<circle cx="50" cy="18" r="7"/><path d="M50 25v64M36 38h28M18 62c4 18 18 28 32 28s28-10 32-28M18 62l-6 6M18 62l8 4M82 62l6 6M82 62l-8 4"/>'],
+  ["Mond", 80, "#ecebf0", '<path d="M62 12a38 38 0 1 0 22 60 30 30 0 1 1-22-60z"/><path d="M76 24l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/>'],
+  ["Auge", 120, "#22e5ff", '<path d="M8 50c14-20 28-28 42-28s28 8 42 28c-14 20-28 28-42 28S22 70 8 50z"/><circle cx="50" cy="50" r="13"/><circle cx="50" cy="50" r="4"/><path d="M50 10v8M28 16l4 7M72 16l-4 7"/>'],
+  ["Blitz", 70, "#c6ff3d", '<path d="M58 6L24 56h24l-8 38 36-52H52z"/>'],
+  ["Spinnennetz", 160, "#ecebf0", '<path d="M10 10l80 80M10 10l40 80M10 10l80 40M10 10v80M10 10h80"/><path d="M10 34q14-2 22-4 4 10 10 18M10 58q24-4 38-10 6 18 14 30M34 10q2 10 4 18 10-4 18-10M58 10q6 22 18 34"/>'],
+  ["Flamme", 100, "#ff2d95", '<path d="M50 92c-18 0-28-12-28-28 0-20 18-26 16-48 12 8 18 18 18 28 4-6 6-10 6-16 10 10 16 22 16 36 0 16-10 28-28 28z"/><path d="M50 92c-8 0-12-6-12-14 0-10 8-14 10-22 6 6 14 12 14 22 0 8-4 14-12 14z"/>']
+];
+var sheet = document.getElementById("sheet"), sel = document.getElementById("motiv");
+sheet.innerHTML = motifs.map(function (m, i) {
+  return '<button type="button" class="motif" data-i="' + i + '"' + (m[4] ? ' disabled aria-disabled="true"' : "") + ' aria-label="' + m[0] + ', ' + m[1] + ' Euro' + (m[4] ? ", schon vergeben" : "") + '"><svg viewBox="0 0 100 100" aria-hidden="true" style="color:' + m[2] + '"><g stroke="currentColor">' + m[3] + '</g></svg><span class="row"><b>' + m[0] + '</b><span class="pr">' + m[1] + ' €</span></span>' + (m[4] ? '<span class="taken">Vergeben</span>' : "") + '</button>';
+}).join("");
+motifs.forEach(function (m) { if (!m[4]) sel.insertAdjacentHTML("beforeend", "<option>" + m[0] + " (Flash, " + m[1] + " €)</option>"); });
+sheet.querySelectorAll(".motif").forEach(function (b) {
+  if (b.disabled) { b.style.opacity = ".45"; b.style.cursor = "not-allowed"; return; }
+  b.addEventListener("click", function () {
+    sheet.querySelectorAll(".motif").forEach(function (o) { o.classList.toggle("sel", o === b); });
+    var m = motifs[b.dataset.i]; sel.value = m[0] + " (Flash, " + m[1] + " €)"; update();
+  });
+});
+// Preisschätzung
+var range = document.getElementById("groesse");
+function update() {
+  var cm = +range.value, flash = sel.value.match(/(\d+) €\)$/);
+  document.getElementById("sz").textContent = cm + " cm";
+  var low = flash ? +flash[1] : Math.max(80, Math.round(cm * cm * 1.6 / 10) * 10 + 60);
+  var high = flash ? +flash[1] + 40 : Math.round(low * 1.4 / 10) * 10;
+  document.getElementById("price").textContent = low + "–" + high + " €";
+}
+range.addEventListener("input", update); sel.addEventListener("change", update); update();
+// Heute offen?
+var d = new Date(), today = document.querySelector('#hours tr[data-d="' + d.getDay() + '"]'), st = document.getElementById("status");
+if (today) today.classList.add("today");
+if (d.getDay() === 0) { st.classList.add("closed"); st.querySelector("span").textContent = "Heute zu"; }
+// Anfrage
+document.getElementById("book").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var f = e.target, n = f.querySelector(".form-note");
+  if (f.elements.name.value.trim().length < 2 || !/\S+@\S+\.\S+/.test(f.elements.mail.value)) { n.textContent = "Bitte Name und E-Mail ausfüllen."; return; }
+  n.textContent = "Danke, " + f.elements.name.value.trim() + "! Das ist ein Konzept – hier würde die Anfrage verschickt.";
+});
 </script>
-</body></html>
+<script src="demo.js"></script>
+</body>
+</html>
