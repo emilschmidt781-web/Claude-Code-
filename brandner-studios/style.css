@@ -384,7 +384,7 @@ section {
 }
 
 .phone-screen img {
-  object-position: 8% top;
+  object-position: center top;
 }
 
 .laptop-screen img.on,
@@ -1444,12 +1444,19 @@ section {
     gap: 28px;
     padding: var(--s-6) var(--s-4) var(--s-5);
   }
+  .bar .btn-small {
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
   .giant {
     position: relative;
     top: auto;
     left: auto;
     right: auto;
-    font-size: 12.4vw;
+    /* füllt genau die Kartenbreite: Bildschirm minus Rand und Innenabstand */
+    font-size: calc((100vw - 60px) / 7.2);
     justify-content: flex-start;
   }
   .giant {
@@ -1460,8 +1467,8 @@ section {
     position: relative;
     right: auto;
     bottom: auto;
-    width: 86%;
-    margin: -6px 0 6px;
+    width: 84%;
+    margin: 0 0 8px;
   }
   .js.ready .devices {
     transform: none;
@@ -1481,11 +1488,28 @@ section {
     position: relative;
     top: auto;
     right: auto;
-    justify-self: end;
-    margin-top: -64px;
+    justify-self: start;
+    margin-top: -58px;
+    margin-left: -4px;
   }
   .hero-copy {
     order: 4;
+    gap: 14px;
+  }
+  .hero-copy h1 {
+    font-size: clamp(2.3rem, 10.5vw, 3rem);
+  }
+  .hero-copy p {
+    font-size: 1rem;
+  }
+  .hero-actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
   .float-card {
     padding: 8px 12px 8px 8px;
