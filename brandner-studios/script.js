@@ -1,7 +1,6 @@
 document.documentElement.classList.add("js");
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 const io = "IntersectionObserver" in window;
 
 // Beobachtet Elemente und ruft fn einmal auf, sobald sie sichtbar werden
@@ -17,31 +16,7 @@ function onVisible(els, fn, options = { threshold: 0.15, rootMargin: "0px 0px -4
   els.forEach((el) => obs.observe(el));
 }
 
-// Zusatzschriften (Beispiel-Namen, Bildunterschrift) erst laden, wenn man in die Nähe scrollt
-(() => {
-  const load = () => {
-    if (document.getElementById("extra-fonts")) return;
-    const link = document.createElement("link");
-    link.id = "extra-fonts";
-    link.rel = "stylesheet";
-    link.href = "fonts/extra.css";
-    document.head.appendChild(link);
-  };
-  const targets = [document.getElementById("konzepte"), document.getElementById("ueber-mich")].filter(Boolean);
-  if (!io || !targets.length) return load();
-  const obs = new IntersectionObserver(
-    (entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
-        load();
-        obs.disconnect();
-      }
-    },
-    { rootMargin: "800px 0px" }
-  );
-  targets.forEach((t) => obs.observe(t));
-})();
-
-// Jahreszahl im Footer
+// Jahreszahl in der Fußzeile
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
@@ -53,76 +28,38 @@ function showToast(text) {
   toast.textContent = text;
   toast.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
 }
 
-// ===== Überschriften in Wörter zerlegen (fahren einzeln hoch) =====
-function splitWords(el) {
-  let i = 0;
-  const walk = (node) => {
-    [...node.childNodes].forEach((child) => {
-      if (child.nodeType === Node.TEXT_NODE) {
-        const frag = document.createDocumentFragment();
-        child.textContent.split(/(\s+)/).forEach((part) => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) return frag.appendChild(document.createTextNode(" "));
-          const w = document.createElement("span");
-          w.className = "w";
-          const inner = document.createElement("span");
-          inner.textContent = part;
-          inner.style.setProperty("--i", i++);
-          w.appendChild(inner);
-          frag.appendChild(w);
-        });
-        child.replaceWith(frag);
-      } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== "BR") {
-        walk(child);
-      }
-    });
-  };
-  walk(el);
+// ===== Erster Bildschirm: der Name steigt hervor, sobald die Schrift da ist =====
+const start = () => requestAnimationFrame(() => document.documentElement.classList.add("ready"));
+if (document.fonts && document.fonts.ready) {
+  Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]).then(start);
+} else {
+  start();
 }
-document.querySelectorAll(".head .h2, .footer-cta .h2").forEach(splitWords);
-document.querySelectorAll(".hero-title .w > span").forEach((el, i) => el.style.setProperty("--i", i));
 
-// Hero startet nach dem Laden
-requestAnimationFrame(() => document.body.classList.add("ready"));
-
-// ===== Einblenden beim Scrollen (mit Staffelung) =====
-const reveals = [...document.querySelectorAll(".reveal")];
-reveals.forEach((el) => {
-  const siblings = [...el.parentElement.children].filter((c) => c.classList.contains("reveal"));
-  const index = siblings.indexOf(el);
-  if (index > 0) el.style.setProperty("--d", `${Math.min(index, 5) * 0.08}s`);
+// ===== Abschnitte: Überschrift, dann Text, dann Bild – jeweils leicht versetzt =====
+const groups = [
+  ".work h2, .piece, .remark",
+  ".services h2, .group, .desc",
+  ".numbers h2, .figures dl > div, .phone-shot",
+  ".about-grid .portrait, .about-text > *",
+  ".faq h2, .q",
+  ".contact-top > *, .composer, .mail, .contact-foot",
+];
+groups.forEach((sel) => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.classList.add("rise");
+    el.style.setProperty("--d", `${Math.min(i, 6) * 0.075}s`);
+  });
 });
-onVisible(reveals, (el) => el.classList.add("in"));
-document.querySelectorAll(".chips li").forEach((li, i) => li.style.setProperty("--i", i));
-document.querySelectorAll(".compare .cmp-row").forEach((row, i) => row.style.setProperty("--row", i));
-document.querySelectorAll(".menu-links a").forEach((a, i) => a.style.setProperty("--i", i));
+onVisible([...document.querySelectorAll(".rise")], (el) => el.classList.add("in"));
 
-// ===== Header: Fortschrittsbalken, Nach-oben-Knopf, Handy-Leiste =====
-const progress = document.querySelector(".progress");
-const toTop = document.querySelector(".to-top");
-const mobileCta = document.querySelector(".mobile-cta");
-const hero = document.querySelector(".hero");
-const contact = document.getElementById("kontakt");
+// Ablauf: jede Stufe zeichnet ihre Linien, sobald sie im Bild ist
+onVisible([...document.querySelectorAll(".stage")], (el) => el.classList.add("in"), { threshold: 0.4 });
 
-function onScroll() {
-  const y = scrollY;
-  const max = document.documentElement.scrollHeight - innerHeight;
-  if (progress) progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-  if (toTop) toTop.classList.toggle("show", y > 700);
-  if (mobileCta && hero && contact) {
-    const pastHero = hero.getBoundingClientRect().bottom < 80;
-    const c = contact.getBoundingClientRect();
-    mobileCta.classList.toggle("show", pastHero && !(c.top < innerHeight * 0.85 && c.bottom > 0));
-  }
-}
-addEventListener("scroll", onScroll, { passive: true });
-onScroll();
-
-// ===== Nach oben (Pfeil und Logo) =====
-// Die Kopfleiste läuft immer mit, daher ausdrücklich an den Seitenanfang scrollen
+// ===== Nach oben =====
 document.querySelectorAll('a[href="#top"]').forEach((a) =>
   a.addEventListener("click", (e) => {
     e.preventDefault();
@@ -131,417 +68,123 @@ document.querySelectorAll('a[href="#top"]').forEach((a) =>
   })
 );
 
-// ===== Menü =====
-const menuToggle = document.querySelector(".menu-toggle");
-const menu = document.getElementById("menu");
-if (menuToggle && menu) {
-  let closeTimer;
-  const isOpen = () => menuToggle.getAttribute("aria-expanded") === "true";
-  const setMenu = (open) => {
-    clearTimeout(closeTimer);
-    if (open) menu.hidden = false;
-    requestAnimationFrame(() => document.documentElement.classList.toggle("menu-open", open));
-    document.documentElement.style.overflow = open ? "hidden" : "";
-    menuToggle.setAttribute("aria-expanded", String(open));
-    menuToggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
-    if (!open) closeTimer = setTimeout(() => (menu.hidden = true), 450);
+// ===== Leistungen: ein Punkt zeigt seine Beschreibung =====
+const desc = document.querySelector(".services .desc");
+const serviceButtons = [...document.querySelectorAll(".group button")];
+if (desc) {
+  const fallback = desc.textContent;
+  const show = (btn) => {
+    serviceButtons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    desc.textContent = btn ? `${btn.textContent}: ${btn.dataset.desc}` : fallback;
   };
-  menuToggle.addEventListener("click", () => setMenu(!isOpen()));
-  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && isOpen()) {
-      setMenu(false);
-      menuToggle.focus();
+  serviceButtons.forEach((btn) => {
+    btn.setAttribute("aria-pressed", "false");
+    btn.addEventListener("mouseenter", () => show(btn));
+    btn.addEventListener("focus", () => show(btn));
+    btn.addEventListener("click", () => show(btn));
+  });
+  document.querySelector(".index")?.addEventListener("mouseleave", () => show(null));
+}
+
+// ===== Kontakt: Auswahl und Website landen fertig in der E-Mail =====
+const composer = document.getElementById("composer");
+const mailLink = document.getElementById("mail-link");
+if (composer && mailLink) {
+  const site = composer.elements.site;
+  const msg = composer.elements.msg;
+  const note = composer.querySelector(".form-note");
+  const need = () => composer.querySelector('input[name="need"]:checked').value;
+  const isCheck = () => need() === "Kostenloser Website-Check";
+  const cleanUrl = (v) => v.trim().replace(/\/$/, "");
+
+  const buildMail = () => {
+    const lines = ["Hallo Edgar,", ""];
+    if (isCheck()) lines.push("ich hätte gerne den kostenlosen Website-Check für meine Seite.");
+    else lines.push(`es geht um: ${need()}.`);
+    if (site.value.trim()) lines.push(`Meine Website: ${cleanUrl(site.value)}`);
+    if (msg.value.trim()) lines.push("", msg.value.trim());
+    lines.push("", "Viele Grüße");
+    return `mailto:brandnerstudios@gmail.com?subject=${encodeURIComponent(`Anfrage: ${need()}`)}&body=${encodeURIComponent(lines.join("\n"))}`;
+  };
+
+  const update = () => {
+    mailLink.href = buildMail();
+    site.placeholder = isCheck() ? "Deine Website-Adresse, z. B. meinbetrieb.de" : "z. B. meinbetrieb.de";
+  };
+  composer.addEventListener("input", update);
+  composer.addEventListener("change", update);
+  update();
+
+  // Prüfung: Beim Website-Check braucht es eine Adresse, sonst nur ein gültiges Format
+  const valid = () => {
+    const v = site.value.trim();
+    if (!v) return isCheck() ? "Für den Website-Check brauche ich deine Website-Adresse." : "";
+    return /^(https?:\/\/)?[^\s/]+\.[a-z]{2,}(\/\S*)?$/i.test(v) ? "" : "Bitte eine Adresse wie meinbetrieb.de eingeben.";
+  };
+  const send = (e) => {
+    const problem = valid();
+    site.classList.toggle("invalid", !!problem);
+    site.setAttribute("aria-invalid", String(!!problem));
+    if (problem) {
+      e.preventDefault();
+      showToast(problem);
+      site.focus();
+      return;
     }
-  });
-}
-
-// ===== Hero: wechselndes Wort =====
-const rot = document.querySelector(".rot");
-if (rot) {
-  const words = [...rot.querySelectorAll("em")];
-  let current = 0;
-  const fit = () => (rot.style.width = `${words[current].offsetWidth}px`);
-  if (document.fonts) {
-    document.fonts.ready.then(fit);
-    // Breite neu messen, sobald die Hero-Schrift wirklich geladen ist
-    document.fonts.addEventListener("loadingdone", fit);
-    document.fonts.load('800 1em "Archivo Wide"').then(fit, fit);
-  }
-  fit();
-  addEventListener("resize", fit);
-  if (!reduceMotion) {
-    setInterval(() => {
-      const leaving = words[current];
-      leaving.classList.remove("on");
-      leaving.classList.add("out");
-      setTimeout(() => leaving.classList.remove("out"), 800);
-      current = (current + 1) % words.length;
-      words[current].classList.add("on");
-      fit();
-    }, 2800);
-  }
-}
-
-// Hero: Lichtkegel folgt der Maus
-if (hero && finePointer && !reduceMotion) {
-  hero.addEventListener("pointermove", (e) => {
-    const r = hero.getBoundingClientRect();
-    hero.style.setProperty("--hx", `${e.clientX - r.left}px`);
-    hero.style.setProperty("--hy", `${e.clientY - r.top}px`);
-  });
-}
-
-// ===== Lichtkegel auf Karten =====
-if (finePointer) {
-  document.querySelectorAll(".feature, .tools li").forEach((card) => {
-    card.addEventListener("pointermove", (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      card.style.setProperty("--my", `${e.clientY - r.top}px`);
-    });
-  });
-}
-
-// ===== Zahlen zählen hoch =====
-onVisible([...document.querySelectorAll("[data-count]")], (el) => {
-  const target = Number(el.dataset.count);
-  if (reduceMotion || target === 0) return (el.textContent = target);
-  const start = performance.now();
-  const tick = (now) => {
-    const t = Math.min((now - start) / 1400, 1);
-    el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
-    if (t < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-});
-
-// ===== SEO-Karte: dein Betrieb klettert nach oben =====
-document.querySelectorAll(".serp").forEach((list) => {
-  const items = [...list.children];
-  const me = list.querySelector(".me");
-  // Rang von [dein Betrieb, A, B] – von Platz 3 bis Platz 1, dann kurz halten
-  const order = [
-    [2, 0, 1],
-    [1, 0, 2],
-    [0, 1, 2],
-    [0, 1, 2],
-  ];
-  let step = 0;
-  const place = () => {
-    const ranks = order[step];
-    [me, ...items.filter((li) => li !== me)].forEach((li, k) => (li.style.top = `${ranks[k] * 58}px`));
-  };
-  place();
-  if (!reduceMotion) {
-    setInterval(() => {
-      step = (step + 1) % order.length;
-      place();
-    }, 1800);
-  }
-});
-
-// ===== Ablauf: läuft beim Hinscrollen von selbst, die Mini-Website entsteht mit =====
-const builder = document.querySelector(".builder");
-if (builder) {
-  const steps = [...builder.querySelectorAll(".step")];
-  const items = [...builder.querySelectorAll(".pc-list li")];
-  const pct = builder.querySelector(".pc-pct b");
-  const status = builder.querySelector(".pc-status");
-  const bar = builder.querySelector(".build-bar i");
-  const hint = builder.querySelector(".builder-hint-text");
-  const urlText = builder.querySelector(".ms-url-text");
-  const confetti = builder.querySelector(".confetti");
-  const texts = [
-    "Wir lernen uns kennen …",
-    "Farben und Aufbau werden abgestimmt …",
-    "Deine Seite wird gebaut …",
-    "Deine Seite geht online …",
-  ];
-  const titles = ["Kennenlernen", "Planen & Gestalten", "Bauen", "Online gehen"];
-  let stage = 0;
-  let busy = false;
-  let current = 0;
-  let timers = [];
-  const later = (fn, ms) => timers.push(setTimeout(fn, reduceMotion ? 0 : ms));
-
-  const render = () => {
-    builder.dataset.stage = stage;
-    [1, 2, 3, 4].forEach((k) => builder.classList.toggle(`s${k}`, stage >= k));
-    const idle = stage === 0 && !busy;
-    steps.forEach((st) => st.classList.toggle("done", Number(st.dataset.step) <= stage));
-    items.forEach((li) => {
-      const k = Number(li.dataset.step);
-      li.classList.toggle("done", k <= stage);
-      li.classList.toggle("working", busy && k === current && k > stage);
-    });
-    status.textContent = idle ? "Gleich geht’s los …" : stage >= steps.length ? "Fertig!" : texts[current - 1];
-    hint.textContent = idle
-      ? "So entsteht deine Website – Schritt für Schritt."
-      : stage >= steps.length
-        ? "Fertig! So einfach läuft es auch mit deiner Website."
-        : `Schritt ${current} von 4: ${titles[current - 1]} …`;
-    bar.style.width = `${(stage / steps.length) * 100}%`;
-    urlText.textContent = stage >= 4 ? "dein-betrieb.de" : stage >= 3 ? "fast fertig" : "entwurf";
-  };
-
-  // Prozentzahl zählt weich hoch
-  let shown = 0;
-  const countTo = (target) => {
-    const from = shown;
-    const t0 = performance.now();
-    const tick = (now) => {
-      const t = reduceMotion ? 1 : Math.min((now - t0) / 900, 1);
-      shown = Math.round(from + (target - from) * t);
-      pct.textContent = shown;
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-
-  const burst = () => {
-    if (reduceMotion) return;
-    const colors = ["#ff5fa8", "#b69cff", "#5fb0ec", "#4ade80", "#ffd166"];
-    for (let i = 0; i < 70; i++) {
-      const c = document.createElement("i");
-      c.style.setProperty("--x", `${(Math.random() - 0.5) * 900}px`);
-      c.style.setProperty("--y", `${-120 - Math.random() * 360}px`);
-      c.style.setProperty("--r", `${(Math.random() - 0.5) * 1080}deg`);
-      c.style.setProperty("--d", `${Math.random() * 0.25}s`);
-      c.style.background = colors[i % colors.length];
-      if (i % 3 === 0) c.style.borderRadius = "50%";
-      confetti.appendChild(c);
+    if (e.type === "submit") {
+      e.preventDefault();
+      location.href = buildMail();
     }
-    later(() => (confetti.innerHTML = ""), 2600);
+    note.textContent = "Dein E-Mail-Programm öffnet sich …";
   };
-
-  const ripple = (btn, e) => {
-    const r = btn.getBoundingClientRect();
-    const dot = document.createElement("span");
-    dot.className = "ripple";
-    dot.style.left = `${(e && e.clientX ? e.clientX - r.left : r.width / 2)}px`;
-    dot.style.top = `${(e && e.clientY ? e.clientY - r.top : r.height / 2)}px`;
-    btn.appendChild(dot);
-    setTimeout(() => dot.remove(), 700);
-  };
-
-  // Die Schritte laufen nacheinander von selbst durch
-  const runStep = (e) => {
-    const n = stage + 1;
-    const card = steps[n - 1];
-    current = n;
-    ripple(card.querySelector(".step-btn"), e);
-    card.classList.add("working");
-    busy = true;
-    // Jeder Schritt hat eine schlichte Szene im Fenster der Mini-Website: Gespräch, Skizze, Bauen, Online
-    builder.dataset.scene = n;
-    render();
-    later(() => {
-      builder.dataset.scene = "";
-      card.classList.remove("working");
-      stage = n;
-      busy = stage < steps.length;
-      render();
-      countTo(stage * 25);
-      if (stage < steps.length) later(() => runStep(), 450);
-      else
-        later(() => {
-          builder.classList.add("finished");
-          burst();
-        }, 250);
-    }, [2800, 3000, 3000, 3000][n - 1]);
-  };
-
-  const start = () => {
-    if (busy || stage !== 0) return;
-    runStep();
-  };
-
-  builder.querySelector(".build-replay").addEventListener("click", () => {
-    timers.forEach(clearTimeout);
-    timers = [];
-    stage = 0;
-    busy = false;
-    current = 0;
-    builder.dataset.scene = "";
-    steps.forEach((st) => st.classList.remove("working"));
-    builder.classList.remove("finished");
-    confetti.innerHTML = "";
-    shown = 0;
-    pct.textContent = "0";
-    render();
-    later(start, 300);
+  composer.addEventListener("submit", send);
+  mailLink.addEventListener("click", send);
+  site.addEventListener("input", () => {
+    site.classList.remove("invalid");
+    site.removeAttribute("aria-invalid");
   });
-  render();
-  onVisible([builder], () => later(start, 400), { threshold: 0.35 });
 }
 
-// ===== Kopieren =====
-document.querySelectorAll(".copy").forEach((btn) => {
-  btn.addEventListener("click", async () => {
-    const text = btn.dataset.copy;
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      const tmp = document.createElement("textarea");
-      tmp.value = text;
-      tmp.style.position = "absolute";
-      tmp.style.left = "-9999px";
-      document.body.appendChild(tmp);
-      tmp.select();
-      document.execCommand("copy");
-      tmp.remove();
-    }
-    showToast(`${text} kopiert`);
-    if (btn.classList.contains("mini")) {
-      btn.classList.add("done");
-      btn.textContent = "Kopiert ✓";
-      setTimeout(() => {
-        btn.classList.remove("done");
-        btn.textContent = "Kopieren";
-      }, 2000);
-    }
-  });
-});
-
-// ===== Beispiele: Liste steuert die große Vorschau =====
-const showcase = document.querySelector(".showcase");
-if (showcase) {
-  const items = [...showcase.querySelectorAll(".sc-item")];
-  const imgs = [...showcase.querySelectorAll(".sc-imgs img")];
-  const preview = showcase.querySelector(".sc-preview");
-  const url = showcase.querySelector(".sc-url");
-  let active = 0;
-  let timer;
-  let touched = false;
-  const show = (i) => {
-    active = i;
-    items.forEach((b, k) => {
-      b.classList.toggle("on", k === i);
-      b.setAttribute("aria-pressed", String(k === i));
-    });
-    imgs.forEach((img, k) => img.classList.toggle("on", k === i));
-    preview.href = items[i].dataset.href;
-    url.textContent = items[i].dataset.href.split("/").pop();
-    preview.setAttribute("aria-label", `Demo ansehen: ${items[i].querySelector(".sc-name").textContent}`);
-  };
-  const stopAuto = () => {
-    touched = true;
-    clearInterval(timer);
-  };
-  items.forEach((b, i) => {
-    b.addEventListener("click", () => {
-      stopAuto();
-      show(i);
-      if (preview.getBoundingClientRect().top < 80) preview.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
-    });
-    if (finePointer)
-      b.addEventListener("pointerenter", () => {
-        stopAuto();
-        show(i);
-      });
-  });
-  if (!reduceMotion && io) {
-    new IntersectionObserver(([entry]) => {
-      clearInterval(timer);
-      if (entry.isIntersecting && !touched) timer = setInterval(() => show((active + 1) % items.length), 3800);
-    }).observe(showcase);
-  }
-  show(0);
-}
-
-// ===== FAQ: weich auf- und zuklappen =====
-document.querySelectorAll(".faq-item").forEach((item) => {
+// ===== Fragen: weich auf- und zuklappen =====
+document.querySelectorAll(".q").forEach((item) => {
   const summary = item.querySelector("summary");
-  const answer = item.querySelector(".faq-a");
+  const answer = item.querySelector("p");
   summary.addEventListener("click", (e) => {
     if (reduceMotion || !answer.animate) return;
     e.preventDefault();
-    const opts = { duration: 400, easing: "cubic-bezier(.22,1,.36,1)" };
+    const opts = { duration: 380, easing: "cubic-bezier(.16,1,.3,1)" };
     if (item.open) {
-      answer.animate([{ height: `${answer.offsetHeight}px`, opacity: 1 }, { height: "0px", opacity: 0 }], opts).onfinish = () => (item.open = false);
+      answer.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-8px)" }], opts).onfinish = () => (item.open = false);
     } else {
       item.open = true;
-      answer.animate([{ height: "0px", opacity: 0 }, { height: `${answer.offsetHeight}px`, opacity: 1 }], opts);
+      answer.animate([{ opacity: 0, transform: "translateY(-8px)" }, { opacity: 1, transform: "none" }], opts);
     }
   });
 });
 
-// ===== Magnetische Knöpfe =====
-if (finePointer && !reduceMotion) {
-  document.querySelectorAll(".btn-primary, .btn-white, .to-top").forEach((el) => {
-    el.addEventListener("pointermove", (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.2}px, ${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
+// ===== Arbeiten: Bilder bewegen sich beim Scrollen ganz leicht =====
+const pieces = [...document.querySelectorAll(".piece-img img")];
+if (pieces.length && !reduceMotion) {
+  let ticking = false;
+  const drift = () => {
+    ticking = false;
+    const vh = innerHeight;
+    pieces.forEach((img) => {
+      const r = img.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const p = (r.top + r.height / 2 - vh / 2) / vh; // -1 … 1
+      img.style.transform = `scale(1.06) translateY(${(p * -2.5).toFixed(2)}%)`;
     });
-    el.addEventListener("pointerleave", () => (el.style.transform = ""));
-  });
-}
-
-// ===== Angebot anklicken wählt die passende Anfrage vor =====
-const form = document.getElementById("contact-form");
-document.querySelectorAll("[data-need]").forEach((el) => {
-  el.addEventListener("click", () => {
-    if (form) form.elements.need.value = el.dataset.need;
-  });
-});
-
-// ===== Kontaktformular: öffnet das E-Mail-Programm =====
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const { name, email, need, website, message } = form.elements;
-    // Prüfung vor dem Absenden: Pflichtfelder, echte E-Mail-Adresse, Website-Adresse im richtigen Format
-    const checks = [
-      [name, name.value.trim().length >= 2, "Bitte gib deinen Namen an."],
-      [email, /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email.value.trim()), "Bitte gib eine gültige E-Mail-Adresse an."],
-      [
-        website,
-        website.value.trim() === ""
-          ? need.value !== "Kostenloser Website-Check"
-          : /^(https?:\/\/)?[^\s/]+\.[a-z]{2,}(\/\S*)?$/i.test(website.value.trim()),
-        need.value === "Kostenloser Website-Check" && website.value.trim() === ""
-          ? "Für den Website-Check brauche ich deine Website-Adresse."
-          : "Bitte eine Adresse wie meinbetrieb.de eingeben.",
-      ],
-    ];
-    const failed = checks.filter(([field, valid]) => {
-      field.classList.toggle("invalid", !valid);
-      field.setAttribute("aria-invalid", String(!valid));
-      return !valid;
-    });
-    if (failed.length) {
-      showToast(failed[0][2]);
-      failed[0][0].focus();
-      return;
-    }
-    const subject = `Anfrage: ${need.value} – ${name.value.trim()}`;
-    const body = [
-      `Name: ${name.value.trim()}`,
-      `E-Mail: ${email.value.trim()}`,
-      `Anliegen: ${need.value}`,
-      `Aktuelle Website: ${website.value.trim() || "–"}`,
-      "",
-      message.value.trim() || "(keine Nachricht)",
-    ].join("\n");
-    location.href = `mailto:brandnerstudios@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    showToast("Dein E-Mail-Programm öffnet sich …");
-  });
-  form.querySelectorAll("input").forEach((f) =>
-    f.addEventListener("input", () => {
-      f.classList.remove("invalid");
-      f.removeAttribute("aria-invalid");
-    })
+  };
+  addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(drift);
+      }
+    },
+    { passive: true }
   );
-}
-
-// ===== Website-Check: Hinweis im Kontakt füllt das Formular vor =====
-const checkHint = document.querySelector(".check-hint");
-if (checkHint && form) {
-  checkHint.addEventListener("click", () => {
-    if (!form.elements.message.value.trim()) {
-      form.elements.message.value = "Hallo Edgar, ich hätte gerne den kostenlosen Website-Check für meine Seite.";
-    }
-    form.elements.website.focus();
-  });
+  drift();
 }

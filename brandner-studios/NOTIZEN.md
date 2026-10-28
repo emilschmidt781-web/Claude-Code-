@@ -63,10 +63,21 @@ Stand: 22. Oktober 2026
 | 19 | Besucher-Statistik | offen – Empfehlung: cookiefrei (z. B. GoatCounter, kostenlos) und dann Datenschutzerklärung ergänzen |
 | 20 | Ein klarer Aufruf | ✓ überall „Projekt besprechen“ |
 
+## Neugestaltung 28. Oktober 2026 – „nicht nach KI aussehen“
+
+- Richtung: **Der Name als Monument** – „Brandner Studios“ riesig auf Markenpink, danach Graphit und helles Grau.
+- Eine Schriftfamilie (Archivo / Archivo Wide), drei Farben (Graphit, Hellgrau, Pink aus dem Logo).
+- Entfernt: Farbverläufe, Glas-Effekte, Leuchten, kleine Großbuchstaben-Labels über Überschriften,
+  Nummerierungen (01/02/03), Programmierer-Schrift, Kartenreihen, Lauftext, wechselndes Wort.
+- Neu: Arbeiten als große, versetzte Bilder · Leistungen als Namenslisten · Ablauf als Treppe mit Linien-Zeichnungen ·
+  Kontakt mit Auswahl, die die E-Mail fertig vorbereitet · Name kommt in der Fußzeile zurück.
+- `img/handy-ansicht.webp` ist ein Screenshot dieser Seite am Handy – nach größeren Änderungen neu erstellen.
+- Lighthouse (lokal, 28. Oktober 2026): Computer und Handy je 100 / 100 / 100 / 100.
+
 ## Bewusste Entscheidungen
 
 - **Keine erfundenen Zahlen oder Kundenstimmen** – wäre irreführende Werbung (§ 5 UWG).
-  Nur echte Werte (Lighthouse, 30 Min., 1 Ansprechpartner, 5 Stile, 0 Cookies).
+  Nur echte Werte (Lighthouse, 30 Min., 1 Ansprechpartner, 0 Cookies).
 - **Design-Konzepte** (Kubus, Bohnenwerk, Rebenhang, Atem, Nachtschicht) sind erfundene Firmen.
   Etikett „Konzept“ bleibt stehen, Hinweis steht im Impressum. Nicht als Kundenprojekte ausgeben.
 - **Schneiderei Yasin und Ricky Wagner** wurden auf Wunsch von der Seite entfernt.
