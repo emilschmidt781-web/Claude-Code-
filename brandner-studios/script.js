@@ -31,7 +31,7 @@ function showToast(text) {
   toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
 }
 
-// ===== Erster Bildschirm: der Name steigt hervor, sobald die Schrift da ist =====
+// ===== Erster Bildschirm: alles fährt herein, sobald die Schrift geladen ist =====
 const start = () => requestAnimationFrame(() => document.documentElement.classList.add("ready"));
 if (document.fonts && document.fonts.ready) {
   Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]).then(start);
@@ -39,25 +39,117 @@ if (document.fonts && document.fonts.ready) {
   start();
 }
 
-// ===== Abschnitte: Überschrift, dann Text, dann Bild – jeweils leicht versetzt =====
+// Laptop und Handy zeigen nacheinander die fünf Beispiele
+const laptop = document.querySelector(".laptop-screen");
+if (laptop) {
+  const laptopImgs = [...laptop.querySelectorAll("img")];
+  const phoneImgs = [...document.querySelectorAll(".phone-screen img")];
+  const names = (laptop.dataset.names || "").split("|");
+  const nowName = document.querySelector(".now-name");
+  const nowThumb = document.querySelector(".fc-thumb img");
+  let i = 0;
+  const show = (n) => {
+    laptopImgs.forEach((img, k) => img.classList.toggle("on", k === n));
+    phoneImgs.forEach((img, k) => img.classList.toggle("on", k === n));
+    if (nowName && names[n]) nowName.textContent = names[n];
+    if (nowThumb) nowThumb.src = laptopImgs[n].src;
+  };
+  show(0);
+  // Der Wechsel startet erst nach dem Laden, damit das erste Bild ruhig steht
+  if (!reduceMotion) {
+    const run = () =>
+      setInterval(() => {
+        if (document.hidden) return;
+        i = (i + 1) % laptopImgs.length;
+        show(i);
+      }, 3200);
+    addEventListener("load", () => setTimeout(run, 2500), { once: true });
+  }
+}
+
+// Ring „100 Punkte“ füllt sich
+const ring = document.querySelector(".ring");
+if (ring) {
+  const target = Number(getComputedStyle(ring).getPropertyValue("--v")) || 100;
+  if (reduceMotion) ring.style.setProperty("--p", target);
+  else {
+    const t0 = performance.now() + 900;
+    const tick = (now) => {
+      const t = Math.max(0, Math.min((now - t0) / 1400, 1));
+      ring.style.setProperty("--p", (target * (1 - Math.pow(1 - t, 3))).toFixed(1));
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+}
+
+// Geräte bewegen sich beim Scrollen leicht nach oben
+const devices = document.querySelector(".devices");
+if (devices && !reduceMotion) {
+  let ticking = false;
+  addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const y = Math.min(scrollY, innerHeight);
+        devices.style.setProperty("--par", `${(-y * 0.12).toFixed(1)}px`);
+      });
+    },
+    { passive: true }
+  );
+}
+
+// ===== Abschnitte fahren gestaffelt herein =====
 const groups = [
-  ".work h2, .piece, .remark",
-  ".services h2, .group, .desc",
-  ".numbers h2, .figures dl > div, .phone-shot",
-  ".about-grid .portrait, .about-text > *",
-  ".faq h2, .q",
-  ".contact-top > *, .composer, .mail, .contact-foot",
+  ".perks li",
+  ".split, .about-photo, .badge-round, .note-card",
+  ".work-head > *, .slide",
+  ".services .h2, .service",
+  ".how-head > *, .step",
+  ".numbers .h2, .num",
+  ".faq-head > *, .q",
+  ".contact-copy > *, .form-card, .checks",
 ];
 groups.forEach((sel) => {
   document.querySelectorAll(sel).forEach((el, i) => {
     el.classList.add("rise");
-    el.style.setProperty("--d", `${Math.min(i, 6) * 0.075}s`);
+    el.style.setProperty("--d", `${Math.min(i, 6) * 0.08}s`);
   });
 });
 onVisible([...document.querySelectorAll(".rise")], (el) => el.classList.add("in"));
 
-// Ablauf: jede Stufe zeichnet ihre Linien, sobald sie im Bild ist
-onVisible([...document.querySelectorAll(".stage")], (el) => el.classList.add("in"), { threshold: 0.4 });
+// Ablauf: die Zeichnungen zeichnen sich nacheinander
+document.querySelectorAll(".step").forEach((el, i) => el.style.setProperty("--sd", `${i * 0.35}s`));
+onVisible([...document.querySelectorAll(".step")], (el) => el.classList.add("in"), { threshold: 0.35 });
+
+// Zahlen zählen hoch
+onVisible([...document.querySelectorAll("[data-count]")], (el) => {
+  const target = Number(el.dataset.count);
+  if (reduceMotion || target === 0) return (el.textContent = target);
+  const t0 = performance.now();
+  const tick = (now) => {
+    const t = Math.min((now - t0) / 1300, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+    if (t < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+});
+
+// ===== Arbeiten: Pfeile blättern durch die Bildkarten =====
+const slider = document.querySelector(".slider");
+if (slider) {
+  const step = () => (slider.querySelector(".slide:nth-child(2)")?.offsetWidth || 400) + 16;
+  document.querySelector(".arrow.next")?.addEventListener("click", () => {
+    const end = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 8;
+    slider.scrollTo({ left: end ? 0 : slider.scrollLeft + step(), behavior: reduceMotion ? "auto" : "smooth" });
+  });
+  document.querySelector(".arrow.prev")?.addEventListener("click", () => {
+    slider.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" });
+  });
+}
 
 // ===== Nach oben =====
 document.querySelectorAll('a[href="#top"]').forEach((a) =>
@@ -68,81 +160,70 @@ document.querySelectorAll('a[href="#top"]').forEach((a) =>
   })
 );
 
-// ===== Leistungen: ein Punkt zeigt seine Beschreibung =====
-const desc = document.querySelector(".services .desc");
-const serviceButtons = [...document.querySelectorAll(".group button")];
-if (desc) {
-  const fallback = desc.textContent;
-  const show = (btn) => {
-    serviceButtons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-    desc.textContent = btn ? `${btn.textContent}: ${btn.dataset.desc}` : fallback;
-  };
-  serviceButtons.forEach((btn) => {
-    btn.setAttribute("aria-pressed", "false");
-    btn.addEventListener("mouseenter", () => show(btn));
-    btn.addEventListener("focus", () => show(btn));
-    btn.addEventListener("click", () => show(btn));
-  });
-  document.querySelector(".index")?.addEventListener("mouseleave", () => show(null));
-}
-
-// ===== Kontakt: Auswahl und Website landen fertig in der E-Mail =====
+// ===== Kontakt: das Formular bereitet die E-Mail fertig vor =====
 const composer = document.getElementById("composer");
-const mailLink = document.getElementById("mail-link");
-if (composer && mailLink) {
-  const site = composer.elements.site;
-  const msg = composer.elements.msg;
+if (composer) {
+  const { name, tel, site, msg } = composer.elements;
   const note = composer.querySelector(".form-note");
   const need = () => composer.querySelector('input[name="need"]:checked').value;
   const isCheck = () => need() === "Kostenloser Website-Check";
-  const cleanUrl = (v) => v.trim().replace(/\/$/, "");
+
+  // „Anfragen“ bei den Leistungen wählt das passende Thema vor
+  document.querySelectorAll("[data-need]").forEach((link) =>
+    link.addEventListener("click", () => {
+      const radio = composer.querySelector(`input[name="need"][value="${link.dataset.need}"]`);
+      if (radio) radio.checked = true;
+    })
+  );
 
   const buildMail = () => {
     const lines = ["Hallo Edgar,", ""];
     if (isCheck()) lines.push("ich hätte gerne den kostenlosen Website-Check für meine Seite.");
-    else lines.push(`es geht um: ${need()}.`);
-    if (site.value.trim()) lines.push(`Meine Website: ${cleanUrl(site.value)}`);
+    else lines.push(`ich interessiere mich für: ${need()}.`);
+    if (site.value.trim()) lines.push(`Meine Website: ${site.value.trim().replace(/\/$/, "")}`);
     if (msg.value.trim()) lines.push("", msg.value.trim());
-    lines.push("", "Viele Grüße");
-    return `mailto:brandnerstudios@gmail.com?subject=${encodeURIComponent(`Anfrage: ${need()}`)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    lines.push("");
+    if (tel.value.trim()) lines.push(`Du erreichst mich unter: ${tel.value.trim()}`);
+    lines.push("Viele Grüße", name.value.trim());
+    const subject = `Anfrage: ${need()}${name.value.trim() ? ` – ${name.value.trim()}` : ""}`;
+    return `mailto:brandnerstudios@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
   };
 
-  const update = () => {
-    mailLink.href = buildMail();
-    site.placeholder = isCheck() ? "Deine Website-Adresse, z. B. meinbetrieb.de" : "z. B. meinbetrieb.de";
-  };
-  composer.addEventListener("input", update);
-  composer.addEventListener("change", update);
-  update();
-
-  // Prüfung: Beim Website-Check braucht es eine Adresse, sonst nur ein gültiges Format
-  const valid = () => {
+  const problems = () => {
+    const out = [];
+    if (name.value.trim().length < 2) out.push([name, "Bitte gib deinen Vornamen an."]);
     const v = site.value.trim();
-    if (!v) return isCheck() ? "Für den Website-Check brauche ich deine Website-Adresse." : "";
-    return /^(https?:\/\/)?[^\s/]+\.[a-z]{2,}(\/\S*)?$/i.test(v) ? "" : "Bitte eine Adresse wie meinbetrieb.de eingeben.";
+    if (!v && isCheck()) out.push([site, "Für den Website-Check brauche ich deine Website-Adresse."]);
+    else if (v && !/^(https?:\/\/)?[^\s/]+\.[a-z]{2,}(\/\S*)?$/i.test(v)) out.push([site, "Bitte eine Adresse wie meinbetrieb.de eingeben."]);
+    if (tel.value.trim() && !/^[+()\d\s/-]{6,}$/.test(tel.value.trim())) out.push([tel, "Bitte eine gültige Telefonnummer eingeben."]);
+    return out;
   };
-  const send = (e) => {
-    const problem = valid();
-    site.classList.toggle("invalid", !!problem);
-    site.setAttribute("aria-invalid", String(!!problem));
-    if (problem) {
-      e.preventDefault();
-      showToast(problem);
-      site.focus();
+
+  composer.addEventListener("submit", (e) => {
+    e.preventDefault();
+    [name, site, tel].forEach((f) => {
+      f.classList.remove("invalid");
+      f.removeAttribute("aria-invalid");
+    });
+    const found = problems();
+    if (found.length) {
+      found.forEach(([f]) => {
+        f.classList.add("invalid");
+        f.setAttribute("aria-invalid", "true");
+      });
+      showToast(found[0][1]);
+      found[0][0].focus();
       return;
     }
-    if (e.type === "submit") {
-      e.preventDefault();
-      location.href = buildMail();
-    }
+    location.href = buildMail();
     note.textContent = "Dein E-Mail-Programm öffnet sich …";
-  };
-  composer.addEventListener("submit", send);
-  mailLink.addEventListener("click", send);
-  site.addEventListener("input", () => {
-    site.classList.remove("invalid");
-    site.removeAttribute("aria-invalid");
   });
+  [name, site, tel].forEach((f) =>
+    f.addEventListener("input", () => {
+      f.classList.remove("invalid");
+      f.removeAttribute("aria-invalid");
+    })
+  );
 }
 
 // ===== Fragen: weich auf- und zuklappen =====
@@ -161,30 +242,3 @@ document.querySelectorAll(".q").forEach((item) => {
     }
   });
 });
-
-// ===== Arbeiten: Bilder bewegen sich beim Scrollen ganz leicht =====
-const pieces = [...document.querySelectorAll(".piece-img img")];
-if (pieces.length && !reduceMotion) {
-  let ticking = false;
-  const drift = () => {
-    ticking = false;
-    const vh = innerHeight;
-    pieces.forEach((img) => {
-      const r = img.parentElement.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > vh) return;
-      const p = (r.top + r.height / 2 - vh / 2) / vh; // -1 … 1
-      img.style.transform = `scale(1.06) translateY(${(p * -2.5).toFixed(2)}%)`;
-    });
-  };
-  addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(drift);
-      }
-    },
-    { passive: true }
-  );
-  drift();
-}

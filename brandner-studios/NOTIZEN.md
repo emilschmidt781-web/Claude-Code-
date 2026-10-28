@@ -74,6 +74,15 @@ Stand: 22. Oktober 2026
 - `img/handy-ansicht.webp` ist ein Screenshot dieser Seite am Handy – nach größeren Änderungen neu erstellen.
 - Lighthouse (lokal, 28. Oktober 2026): Computer und Handy je 100 / 100 / 100 / 100.
 
+## Neugestaltung 28. Oktober 2026 (zweite Runde) – „coole Sachen“ wie in den Beispielen
+
+- Hell mit pinker Bühne: riesiges „BRANDNER“, davor Laptop und Handy, in denen die fünf Beispiele wechseln.
+- Schwebende Info-Karten, Vorteile-Reihe, große graue/schwarze Schrift mit schrägem Foto darüber,
+  Bildkarten zum Wischen, Leistungs-Karten, vier Schritte mit Zeichnungen, Zahlen-Karten, Formular-Karte.
+- Kleine Bildversionen `img/konzept-*-800.webp` für Laptop und Handy (schneller am Handy).
+- Lighthouse (lokal, 28. Oktober 2026): Computer 100 / 100 / 100 / 100, Handy 98–99 / 100 / 100 / 100.
+  Auf der Seite steht deshalb „100 am Computer, 98 am Handy“.
+
 ## Bewusste Entscheidungen
 
 - **Keine erfundenen Zahlen oder Kundenstimmen** – wäre irreführende Werbung (§ 5 UWG).
