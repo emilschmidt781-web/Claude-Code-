@@ -83,6 +83,19 @@ Stand: 22. Oktober 2026
 - Lighthouse (lokal, 28. Oktober 2026): Computer 100 / 100 / 100 / 100, Handy 98–99 / 100 / 100 / 100.
   Auf der Seite steht deshalb „100 am Computer, 98 am Handy“.
 
+## Feinschliff nach Design-Regeln (Video), 28. Oktober 2026
+
+- Weniger: Ecken-Texte, zweite schwebende Karte, runder Aufkleber, Zahlen-Abschnitt, zwei doppelte Fragen entfernt;
+  Leistungen auf je drei Punkte gekürzt.
+- Festes System in `style.css` (ganz oben): Abstände `--s-1` bis `--s-10` in 4-Pixel-Schritten (rem),
+  Schriftgrößen `--fs-sm` bis `--fs-2xl`, Schatten `--shadow-sm`. Neue Werte immer daraus nehmen.
+- Mehr Abstand zwischen den Abschnitten (`--section`).
+- Tiefe: Karten heben sich mit weichem Schatten ab statt mit Linien.
+- Akzent: „Projekt besprechen“ oben und der Formular-Knopf in Pink mit feinem Verlauf (`.btn-accent`).
+- Gesicht und einfache Sprache: persönliches Zitat von Edgar mit Foto.
+- **Kundenstimmen** (`id="stimmen"`) sind vorbereitet, aber ausgeblendet. Sobald 2–3 echte Stimmen mit Foto
+  und Erlaubnis da sind: in `index.html` eintragen und `hidden` entfernen. Niemals erfundene Stimmen.
+
 ## Bewusste Entscheidungen
 
 - **Keine erfundenen Zahlen oder Kundenstimmen** – wäre irreführende Werbung (§ 5 UWG).

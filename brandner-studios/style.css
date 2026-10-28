@@ -22,10 +22,33 @@
 }
 
 :root {
+  /* Abstände: alles in 4-Pixel-Schritten, angegeben in rem */
+  --s-1: 0.25rem;  /* 4 */
+  --s-2: 0.5rem;   /* 8 */
+  --s-3: 0.75rem;  /* 12 */
+  --s-4: 1rem;     /* 16 */
+  --s-5: 1.5rem;   /* 24 */
+  --s-6: 2rem;     /* 32 */
+  --s-7: 3rem;     /* 48 */
+  --s-8: 4rem;     /* 64 */
+  --s-9: 6rem;     /* 96 */
+  --s-10: 10rem;   /* 160 */
+  --section: clamp(var(--s-9), 12vw, var(--s-10));
+
+  /* Schriftgrößen: eine feste Leiter */
+  --fs-sm: 0.875rem;
+  --fs-base: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: clamp(2.25rem, 1.4rem + 3.4vw, 4.5rem);
+
+  /* Tiefe statt Linien: weiche Schatten heben wichtige Flächen an */
+  --shadow-sm: 0 1px 2px rgba(17, 18, 22, 0.04), 0 8px 24px -12px rgba(17, 18, 22, 0.14);
+
   --bg: #f3f3f5;
   --card: #ffffff;
   --ink: #111216;
-  --muted: #565862;
+  --muted: #62646e;
   --ghost: #8b8d97;
   --line: #e4e5ea;
   --accent: #ff4f8b;
@@ -127,7 +150,7 @@ section {
 .h2 {
   font-family: var(--text);
   font-weight: 800;
-  font-size: clamp(2.1rem, 1.3rem + 3.4vw, 4.4rem);
+  font-size: var(--fs-2xl);
   line-height: 0.98;
   letter-spacing: -0.045em;
 }
@@ -160,6 +183,16 @@ section {
 
 .btn:active {
   transform: scale(0.97);
+}
+
+/* Haupt-Aufruf: Akzentfarbe mit feinem Verlauf, hebt sich ab */
+.btn-accent {
+  background: linear-gradient(135deg, #ff6aa0, #ff3d7f);
+  box-shadow: 0 10px 24px -12px rgba(255, 61, 127, 0.8);
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, #ff3d7f, #e8266a);
 }
 
 .btn-small {
@@ -264,28 +297,11 @@ section {
     radial-gradient(50% 60% at 0% 0%, rgba(255, 255, 255, 0.28), transparent 70%);
 }
 
-.corner {
-  position: absolute;
-  top: 26px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.corner-l {
-  left: 32px;
-}
-
-.corner-r {
-  right: 32px;
-  text-align: right;
-}
-
 .giant {
   position: absolute;
   left: 0;
   right: 0;
-  top: clamp(64px, 9vh, 96px);
+  top: clamp(var(--s-6), 6vh, var(--s-8));
   display: flex;
   justify-content: center;
   font-family: var(--wide);
@@ -444,27 +460,6 @@ section {
   top: 34%;
 }
 
-.fc-now {
-  left: 38%;
-  top: 40%;
-  animation-delay: -3s;
-}
-
-.fc-thumb {
-  width: 64px;
-  height: 44px;
-  border-radius: 10px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.fc-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top left;
-}
-
 .ring {
   --v: 0;
   position: relative;
@@ -499,22 +494,23 @@ section {
 
 /* ===== Vorteile ===== */
 .perks {
-  padding-top: 18px;
+  padding-top: var(--s-5);
 }
 
 .perks ul {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: var(--s-4);
 }
 
 .perks li {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 18px;
+  padding: var(--s-5);
   border-radius: var(--radius-sm);
   background: var(--card);
+  box-shadow: var(--shadow-sm);
   line-height: 1.25;
 }
 
@@ -547,7 +543,7 @@ section {
 
 /* ===== Über mich: Schrift in Grau und Schwarz, Foto darüber ===== */
 .about {
-  padding-block: clamp(96px, 12vw, 180px);
+  padding-block: var(--section);
 }
 
 .about-stage {
@@ -614,59 +610,96 @@ section {
   text-align: center;
 }
 
-.badge-round {
-  position: absolute;
-  z-index: 3;
-  left: 2%;
-  top: -16%;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  width: clamp(120px, 11vw, 160px);
-  aspect-ratio: 1;
-  padding: 16px;
-  border-radius: 50%;
-  background: var(--card);
-  box-shadow: var(--shadow);
-  text-align: center;
-  line-height: 1.15;
-}
-
-.badge-round b {
-  font-family: var(--wide);
-  font-size: 2rem;
-}
-
-.badge-round small {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
+/* Persönliches Wort von Edgar: großes Zitat, kleines Gesicht */
 .note-card {
   position: absolute;
   z-index: 3;
   right: 0;
   top: -22%;
-  width: min(380px, 34%);
-  padding: 22px 24px;
+  width: min(400px, 34%);
+  margin: 0;
+  padding: var(--s-5) var(--s-6);
   border-radius: 22px;
   background: var(--card);
   box-shadow: var(--shadow);
 }
 
-.note-card b {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 1.1rem;
+.note-card p {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-.note-card p {
+.note-card footer {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-top: var(--s-4);
+  line-height: 1.2;
+}
+
+.note-card footer img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.note-card footer small {
+  display: block;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+/* Kundenstimmen (ausgeblendet, bis es echte gibt) */
+.voices {
+  padding-bottom: var(--section);
+}
+
+.voices .h2 {
+  margin-bottom: var(--s-7);
+}
+
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s-5);
+}
+
+.voice {
+  display: grid;
+  gap: var(--s-4);
+  margin: 0;
+  padding: var(--s-6);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+}
+
+.voice img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.voice blockquote {
+  margin: 0;
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.voice figcaption small {
+  display: block;
   color: var(--muted);
 }
 
 /* ===== Arbeiten: Bildkarten zum Wischen ===== */
 .work {
-  padding-bottom: clamp(80px, 10vw, 150px);
+  padding-bottom: var(--section);
 }
 
 .work-head {
@@ -674,7 +707,7 @@ section {
   justify-content: space-between;
   align-items: end;
   gap: 24px;
-  margin-bottom: 32px;
+  margin-bottom: var(--s-7);
 }
 
 .work-head p {
@@ -803,26 +836,27 @@ section {
 
 /* ===== Leistungen ===== */
 .services {
-  padding-bottom: clamp(80px, 10vw, 150px);
+  padding-bottom: var(--section);
 }
 
 .services .h2 {
-  margin-bottom: 36px;
+  margin-bottom: var(--s-7);
 }
 
 .service-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: var(--s-5);
 }
 
 .service {
   display: grid;
   align-content: start;
   gap: 14px;
-  padding: clamp(24px, 2.4vw, 34px);
+  padding: var(--s-6);
   border-radius: var(--radius);
   background: var(--card);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.4s var(--ease), box-shadow 0.4s;
 }
 
@@ -832,8 +866,8 @@ section {
 }
 
 .service h3 {
-  margin-top: 8px;
-  font-size: 1.6rem;
+  margin-top: var(--s-2);
+  font-size: var(--fs-xl);
   letter-spacing: -0.03em;
 }
 
@@ -883,15 +917,15 @@ section {
 
 /* ===== Ablauf ===== */
 .how {
-  padding-bottom: clamp(80px, 10vw, 150px);
+  padding-bottom: var(--section);
 }
 
 .how-head {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: 24px;
-  margin-bottom: 36px;
+  gap: var(--s-5);
+  margin-bottom: var(--s-7);
 }
 
 .how-head p {
@@ -901,17 +935,17 @@ section {
 .steps {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  counter-reset: none;
+  gap: var(--s-5);
 }
 
 .step {
   display: grid;
   align-content: start;
-  gap: 8px;
-  padding: 22px;
+  gap: var(--s-2);
+  padding: var(--s-5);
   border-radius: var(--radius);
   background: var(--card);
+  box-shadow: var(--shadow-sm);
 }
 
 .step:last-child {
@@ -931,7 +965,7 @@ section {
 }
 
 .step h3 {
-  font-size: 1.4rem;
+  font-size: var(--fs-lg);
   letter-spacing: -0.03em;
 }
 
@@ -979,57 +1013,12 @@ section {
   }
 }
 
-/* ===== Zahlen ===== */
-.numbers {
-  padding-bottom: clamp(80px, 10vw, 150px);
-}
-
-.numbers .h2 {
-  margin-bottom: 36px;
-}
-
-.number-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 14px;
-}
-
-.num {
-  display: grid;
-  align-content: space-between;
-  gap: 40px;
-  min-height: 240px;
-  padding: 26px;
-  border-radius: var(--radius);
-  background: var(--card);
-}
-
-.num b {
-  font-family: var(--wide);
-  font-size: clamp(3rem, 2rem + 3vw, 5.4rem);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-}
-
-.num span {
-  color: var(--muted);
-}
-
-.num-big {
-  background: var(--accent);
-}
-
-.num-big span {
-  color: var(--ink);
-  font-weight: 500;
-}
-
 /* ===== Fragen ===== */
 .faq {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
-  gap: clamp(32px, 5vw, 80px);
-  padding-bottom: clamp(80px, 10vw, 150px);
+  gap: clamp(var(--s-6), 5vw, var(--s-8));
+  padding-bottom: var(--section);
 }
 
 .faq-head p {
@@ -1044,12 +1033,13 @@ section {
 
 .questions {
   display: grid;
-  gap: 10px;
+  gap: var(--s-3);
 }
 
 .q {
   border-radius: var(--radius-sm);
   background: var(--card);
+  box-shadow: var(--shadow-sm);
   transition: box-shadow 0.3s;
 }
 
@@ -1391,7 +1381,6 @@ section {
 .js .hero-copy > :nth-child(2) { transition-delay: 0.55s; }
 .js .hero-copy > :nth-child(3) { transition-delay: 0.65s; }
 .js .fc-score { transition-delay: 0.9s; }
-.js .fc-now { transition-delay: 1.05s; }
 
 .js.ready .giant span,
 .js.ready .hero-copy > *,
@@ -1429,17 +1418,11 @@ section {
   .hero-copy {
     width: 40%;
   }
-  .fc-now {
-    display: none;
-  }
   .perks ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .number-grid {
-    grid-template-columns: 1fr 1fr;
   }
   .note-card {
     top: -30%;
@@ -1459,17 +1442,7 @@ section {
     max-height: none;
     display: grid;
     gap: 28px;
-    padding: 80px 18px 22px;
-  }
-  .corner {
-    top: 18px;
-    font-size: 0.78rem;
-  }
-  .corner-l {
-    left: 18px;
-  }
-  .corner-r {
-    right: 18px;
+    padding: var(--s-6) var(--s-4) var(--s-5);
   }
   .giant {
     position: relative;
@@ -1544,14 +1517,6 @@ section {
     width: 64%;
     margin-top: -2vw;
   }
-  .badge-round {
-    position: absolute;
-    left: auto;
-    right: 0;
-    top: auto;
-    bottom: 230px;
-    width: 116px;
-  }
   .note-card {
     position: relative;
     top: auto;
@@ -1573,12 +1538,8 @@ section {
     height: 300px;
   }
   .service-grid,
-  .steps,
-  .number-grid {
+  .steps {
     grid-template-columns: 1fr;
-  }
-  .num {
-    min-height: 0;
   }
   .how-head {
     flex-direction: column;

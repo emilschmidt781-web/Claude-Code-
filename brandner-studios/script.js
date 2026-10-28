@@ -44,15 +44,10 @@ const laptop = document.querySelector(".laptop-screen");
 if (laptop) {
   const laptopImgs = [...laptop.querySelectorAll("img")];
   const phoneImgs = [...document.querySelectorAll(".phone-screen img")];
-  const names = (laptop.dataset.names || "").split("|");
-  const nowName = document.querySelector(".now-name");
-  const nowThumb = document.querySelector(".fc-thumb img");
   let i = 0;
   const show = (n) => {
     laptopImgs.forEach((img, k) => img.classList.toggle("on", k === n));
     phoneImgs.forEach((img, k) => img.classList.toggle("on", k === n));
-    if (nowName && names[n]) nowName.textContent = names[n];
-    if (nowThumb) nowThumb.src = laptopImgs[n].src;
   };
   show(0);
   // Der Wechsel startet erst nach dem Laden, damit das erste Bild ruhig steht
@@ -105,11 +100,10 @@ if (devices && !reduceMotion) {
 // ===== Abschnitte fahren gestaffelt herein =====
 const groups = [
   ".perks li",
-  ".split, .about-photo, .badge-round, .note-card",
+  ".split, .about-photo, .note-card",
   ".work-head > *, .slide",
   ".services .h2, .service",
   ".how-head > *, .step",
-  ".numbers .h2, .num",
   ".faq-head > *, .q",
   ".contact-copy > *, .form-card, .checks",
 ];
@@ -124,19 +118,6 @@ onVisible([...document.querySelectorAll(".rise")], (el) => el.classList.add("in"
 // Ablauf: die Zeichnungen zeichnen sich nacheinander
 document.querySelectorAll(".step").forEach((el, i) => el.style.setProperty("--sd", `${i * 0.35}s`));
 onVisible([...document.querySelectorAll(".step")], (el) => el.classList.add("in"), { threshold: 0.35 });
-
-// Zahlen zählen hoch
-onVisible([...document.querySelectorAll("[data-count]")], (el) => {
-  const target = Number(el.dataset.count);
-  if (reduceMotion || target === 0) return (el.textContent = target);
-  const t0 = performance.now();
-  const tick = (now) => {
-    const t = Math.min((now - t0) / 1300, 1);
-    el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
-    if (t < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-});
 
 // ===== Arbeiten: Pfeile blättern durch die Bildkarten =====
 const slider = document.querySelector(".slider");
