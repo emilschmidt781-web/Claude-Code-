@@ -6,7 +6,7 @@
   bar.innerHTML =
     '<span><i>Design-</i>Konzept von <b>Brandner Studios</b><i> – erfundener Betrieb</i></span>' +
     '<small><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></small>' +
-    '<a class="demo-back" href="../index.html#arbeiten">Zurück</a>';
+    '<a class="demo-back" href="../konzepte.html">Alle Konzepte</a>';
   document.body.appendChild(bar);
   document.body.style.paddingBottom = "72px";
   // Elemente mit data-reveal fahren beim Scrollen herein

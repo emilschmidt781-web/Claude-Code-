@@ -101,7 +101,9 @@ if (devices && !reduceMotion) {
 const groups = [
   ".perks li",
   ".split, .about-photo, .note-card",
-  ".work-head > *, .slide",
+  ".page-head > *",
+  ".concept-pic, .concept-text",
+  ".concepts-cta",
   ".services .h2, .service",
   ".how-head > *, .step",
   ".faq-head > *, .q",
@@ -119,17 +121,19 @@ onVisible([...document.querySelectorAll(".rise")], (el) => el.classList.add("in"
 document.querySelectorAll(".step").forEach((el, i) => el.style.setProperty("--sd", `${i * 0.35}s`));
 onVisible([...document.querySelectorAll(".step")], (el) => el.classList.add("in"), { threshold: 0.35 });
 
-// ===== Arbeiten: Pfeile blättern durch die Bildkarten =====
-const slider = document.querySelector(".slider");
-if (slider) {
-  const step = () => (slider.querySelector(".slide:nth-child(2)")?.offsetWidth || 400) + 16;
-  document.querySelector(".arrow.next")?.addEventListener("click", () => {
-    const end = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 8;
-    slider.scrollTo({ left: end ? 0 : slider.scrollLeft + step(), behavior: reduceMotion ? "auto" : "smooth" });
-  });
-  document.querySelector(".arrow.prev")?.addEventListener("click", () => {
-    slider.scrollBy({ left: -step(), behavior: reduceMotion ? "auto" : "smooth" });
-  });
+// ===== Menü auf Handy und Tablet =====
+const bar = document.querySelector(".bar");
+const menuBtn = document.querySelector(".menu-toggle");
+if (bar && menuBtn) {
+  const setMenu = (open) => {
+    bar.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", open);
+    menuBtn.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+  };
+  menuBtn.addEventListener("click", () => setMenu(!bar.classList.contains("open")));
+  bar.querySelectorAll(".nav a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
+  document.addEventListener("click", (e) => !bar.contains(e.target) && setMenu(false));
 }
 
 // ===== Nach oben =====

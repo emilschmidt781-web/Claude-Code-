@@ -31,7 +31,7 @@
     <link rel="manifest" href="site.webmanifest" />
     <link rel="preload" href="fonts/Archivo-normal-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/ArchivoWide-800.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="style.css?v=53" />
+    <link rel="stylesheet" href="style.css?v=54" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -57,14 +57,17 @@
     <header class="bar">
       <a class="brand" href="#top" aria-label="Brandner Studios – zum Seitenanfang"><img src="img/logo.svg" alt="Brandner Studios" width="550" height="100" /></a>
       <nav aria-label="Hauptmenü">
-        <ul class="nav">
-          <li><a href="#arbeiten">Arbeiten</a></li>
+        <ul class="nav" id="hauptmenu">
+          <li><a href="konzepte.html">Konzepte</a></li>
           <li><a href="#leistungen">Leistungen</a></li>
           <li><a href="#ablauf">Ablauf</a></li>
           <li><a href="#fragen">Fragen</a></li>
         </ul>
       </nav>
-      <a class="btn btn-accent btn-small" href="#kontakt">Projekt besprechen</a>
+      <div class="bar-actions">
+        <a class="btn btn-accent btn-small" href="#kontakt"><span class="long">Projekt besprechen</span><span class="short">Anfragen</span></a>
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="hauptmenu" aria-label="Menü öffnen"><span></span><span></span></button>
+      </div>
     </header>
 
     <main id="inhalt">
@@ -98,7 +101,7 @@
             <p>Für Handwerk, Gastro und Weingüter in Mainfranken. Gebaut von Edgar Brandner in Mainstockheim.</p>
             <div class="hero-actions">
               <a class="btn" href="#kontakt">Projekt besprechen</a>
-              <a class="btn btn-ghost" href="#arbeiten">Arbeiten ansehen</a>
+              <a class="btn btn-ghost" href="konzepte.html">Konzepte ansehen</a>
             </div>
           </div>
           <a class="float-card fc-score" href="#zahlen">
@@ -134,57 +137,6 @@
             <footer><img src="img/edgar-privat.webp" alt="" width="800" height="800" loading="lazy" /><span><b>Edgar Brandner</b><small>Mainstockheim bei Würzburg</small></span></footer>
           </blockquote>
         </div>
-      </section>
-
-      <!-- ARBEITEN: runde Bildkarten zum Wischen -->
-      <section class="work" id="arbeiten" aria-labelledby="arbeiten-titel">
-        <div class="work-head">
-          <div>
-            <h2 id="arbeiten-titel" class="h2">Schau dir meine Arbeiten an.</h2>
-            <p>Fünf Betriebe, fünf ganz eigene Handschriften – keine Vorlage, kein Baukasten. Tippe auf ein Bild, um die Seite zu öffnen.</p>
-          </div>
-          <div class="arrows">
-            <button type="button" class="arrow prev" aria-label="Vorheriges Beispiel"><span aria-hidden="true">←</span></button>
-            <button type="button" class="arrow next" aria-label="Nächstes Beispiel"><span aria-hidden="true">→</span></button>
-          </div>
-        </div>
-        <ul class="slider" tabindex="0" aria-label="Beispiele zum Wischen">
-              <li class="slide">
-                <a href="konzepte/kubus.html" aria-label="Beispiel ansehen: Kubus Architektur">
-                  <img src="img/konzept-kubus.webp?v=2" alt="Startseite des Konzepts Kubus Architektur" width="1280" height="800" loading="lazy" decoding="async" />
-                  <span class="slide-cap"><b>Kubus Architektur</b><small>Klar · mit Formen</small></span>
-                  <span class="slide-tag">Konzept</span>
-                </a>
-              </li>
-              <li class="slide">
-                <a href="konzepte/kaffee.html" aria-label="Beispiel ansehen: Bohnenwerk Rösterei">
-                  <img src="img/konzept-kaffee.webp?v=2" alt="Startseite des Konzepts Bohnenwerk Rösterei" width="1280" height="800" loading="lazy" decoding="async" />
-                  <span class="slide-cap"><b>Bohnenwerk Rösterei</b><small>Laut · auffällig</small></span>
-                  <span class="slide-tag">Konzept</span>
-                </a>
-              </li>
-              <li class="slide">
-                <a href="konzepte/wein.html" aria-label="Beispiel ansehen: Weingut Rebenhang">
-                  <img src="img/konzept-wein.webp?v=2" alt="Startseite des Konzepts Weingut Rebenhang" width="1280" height="800" loading="lazy" decoding="async" />
-                  <span class="slide-cap"><b>Weingut Rebenhang</b><small>Edel · wie ein Magazin</small></span>
-                  <span class="slide-tag">Konzept</span>
-                </a>
-              </li>
-              <li class="slide">
-                <a href="konzepte/yoga.html" aria-label="Beispiel ansehen: Atem Yogastudio">
-                  <img src="img/konzept-yoga.webp?v=2" alt="Startseite des Konzepts Atem Yogastudio" width="1280" height="800" loading="lazy" decoding="async" />
-                  <span class="slide-cap"><b>Atem Yogastudio</b><small>Sanft · luftig</small></span>
-                  <span class="slide-tag">Konzept</span>
-                </a>
-              </li>
-              <li class="slide">
-                <a href="konzepte/tattoo.html" aria-label="Beispiel ansehen: Nachtschicht Tattoo">
-                  <img src="img/konzept-tattoo.webp?v=2" alt="Startseite des Konzepts Nachtschicht Tattoo" width="1280" height="800" loading="lazy" decoding="async" />
-                  <span class="slide-cap"><b>Nachtschicht Tattoo</b><small>Neon · wild</small></span>
-                  <span class="slide-tag">Konzept</span>
-                </a>
-              </li>
-        </ul>
       </section>
 
       <!-- LEISTUNGEN -->
@@ -343,7 +295,7 @@
         <img class="footer-logo" src="img/logo.svg" alt="Brandner Studios" width="550" height="100" loading="lazy" />
         <nav aria-label="Fußzeile">
           <ul>
-            <li><a href="#arbeiten">Arbeiten</a></li>
+            <li><a href="konzepte.html">Konzepte</a></li>
             <li><a href="#leistungen">Leistungen</a></li>
             <li><a href="#ablauf">Ablauf</a></li>
             <li><a href="#fragen">Fragen</a></li>
@@ -365,6 +317,6 @@
     </footer>
 
     <div class="toast" role="status" aria-live="polite"></div>
-    <script src="script.js?v=50" defer></script>
+    <script src="script.js?v=51" defer></script>
   </body>
 </html>

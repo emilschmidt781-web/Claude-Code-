@@ -141,3 +141,8 @@ Stand: 22. Oktober 2026
 7. 1–2 echte Referenzprojekte gegen Bewertung → Abschnitt „Erfolge“ füllen
 8. Pakete mit „ab“-Preisen (für Privatkunden Endpreise inkl. USt)
 9. Unterseiten „Webdesign Würzburg“, „Webdesign Kitzingen“
+
+## Konzepte als eigene Seite (29.10.)
+- Der Bereich „Arbeiten“ ist von der Startseite entfernt. Die Konzepte liegen jetzt auf `konzepte.html` und sind im Menü als „Konzepte“ verlinkt.
+- Auf Handy und Tablet gibt es ein Menü zum Aufklappen (Knopf rechts oben).
+- Der Knopf in der Leiste der Konzept-Seiten führt zurück zu `konzepte.html`.
