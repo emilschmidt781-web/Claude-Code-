@@ -64,6 +64,7 @@ jobs:
             mkdir -p dist-pages/schloss-ebracher-hof
             cp schloss-ebracher-hof/*.html schloss-ebracher-hof/*.css schloss-ebracher-hof/*.js dist-pages/schloss-ebracher-hof/
             cp -r schloss-ebracher-hof/fonts dist-pages/schloss-ebracher-hof/
+            cp -r schloss-ebracher-hof/img dist-pages/schloss-ebracher-hof/
           fi
 
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)

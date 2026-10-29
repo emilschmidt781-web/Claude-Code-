@@ -42,45 +42,12 @@ sizeButtons.forEach((button) =>
   })
 );
 
-// Rundgang: Station wählen, Zeichnung, Farbe und Text wechseln
-const stage = document.querySelector(".tour-stage");
-const stationButtons = document.querySelectorAll(".tour-list button");
+// „Bewerben“ bei einer Stelle wählt diese Stelle im Formular vor
+const jobSelect = document.getElementById("f-stelle");
 
-if (stage) {
-  const pic = stage.querySelector(".tour-pic");
-  const use = pic.querySelector("use");
-  const title = pic.querySelector("title");
-  const fact = stage.querySelector(".tour-fact");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  stationButtons.forEach((button) =>
-    button.addEventListener("click", () => {
-      if (button.getAttribute("aria-pressed") === "true") return;
-      stationButtons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
-      stage.dataset.field = button.dataset.field;
-      const swap = () => {
-        use.setAttribute("href", "#" + button.dataset.pic);
-        title.textContent = button.dataset.title;
-        fact.textContent = button.dataset.fact;
-        pic.classList.remove("is-swapping");
-      };
-      if (reduce) return swap();
-      pic.classList.add("is-swapping");
-      setTimeout(swap, 300);
-    })
-  );
-}
-
-// Aufnahme: ein Schritt ist offen
-const steps = document.querySelectorAll(".accordion li");
-
-steps.forEach((step) =>
-  step.querySelector("button").addEventListener("click", () => {
-    steps.forEach((s) => {
-      const open = s === step;
-      s.classList.toggle("is-open", open);
-      s.querySelector("button").setAttribute("aria-expanded", String(open));
-    });
+document.querySelectorAll("[data-job]").forEach((link) =>
+  link.addEventListener("click", () => {
+    if (jobSelect) jobSelect.value = link.dataset.job;
   })
 );
 
@@ -88,7 +55,7 @@ steps.forEach((step) =>
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
-// Rückruf-Formular: öffnet eine vorbereitete E-Mail, es geht nichts an einen Server
+// Kurzbewerbung: öffnet eine vorbereitete E-Mail, es geht nichts an einen Server
 const form = document.getElementById("contact-form");
 
 if (form) {
@@ -112,18 +79,17 @@ if (form) {
     const body = [
       `Name: ${name}`,
       `Telefon: ${telefon}`,
-      `Anliegen: ${data.get("anliegen")}`,
-      "",
-      String(data.get("nachricht") || "").trim(),
+      `Stelle: ${data.get("anliegen")}`,
+      `Gut erreichbar: ${String(data.get("nachricht") || "").trim() || "-"}`,
     ].join("\n");
 
     window.location.href =
       "mailto:info@seniorenheim-ebracher-hof.de" +
-      `?subject=${encodeURIComponent(`Rückrufbitte: ${data.get("anliegen")}`)}` +
+      `?subject=${encodeURIComponent(`Kurzbewerbung: ${data.get("anliegen")}`)}` +
       `&body=${encodeURIComponent(body)}`;
 
     status.textContent =
-      "Ihr E-Mail-Programm öffnet sich mit der fertigen Nachricht. Oder rufen Sie einfach an: 09321 7613.";
+      "Ihr E-Mail-Programm öffnet sich mit der fertigen Bewerbung. Bitte noch auf Senden tippen. Oder rufen Sie einfach an: 09321 7613.";
   });
 }
 
