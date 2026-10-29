@@ -17,49 +17,17 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Zeichnungen des Hauses (Platzhalter für echte Fotos, Hochformat 4:5) -->
+    <!--
+      BILDER EINFÜGEN
+      Jedes Foto hat einen festen Platz und Dateinamen (Liste: img/README.md).
+      Foto mit genau diesem Namen in den Ordner img/ legen – es erscheint automatisch
+      und ersetzt den Platzhalter. Danach den alt-Text am <img> prüfen.
+    -->
     <svg width="0" height="0" class="sr-only" aria-hidden="true">
-      <defs>
-        <symbol id="d-portal" viewBox="0 0 400 500">
-          <rect width="400" height="500" fill="#efcfc4" />
-          <g fill="#e4b9aa">
-            <rect x="0" y="40" width="120" height="44" /><rect x="128" y="40" width="144" height="44" /><rect x="280" y="40" width="120" height="44" />
-            <rect x="0" y="92" width="64" height="44" /><rect x="336" y="92" width="64" height="44" />
-            <rect x="0" y="144" width="64" height="44" /><rect x="336" y="144" width="64" height="44" />
-            <rect x="0" y="196" width="64" height="44" /><rect x="336" y="196" width="64" height="44" />
-            <rect x="0" y="248" width="64" height="44" /><rect x="336" y="248" width="64" height="44" />
-            <rect x="0" y="300" width="64" height="44" /><rect x="336" y="300" width="64" height="44" />
-            <rect x="0" y="352" width="64" height="44" /><rect x="336" y="352" width="64" height="44" />
-            <rect x="0" y="404" width="64" height="44" /><rect x="336" y="404" width="64" height="44" />
-          </g>
-          <rect x="72" y="104" width="256" height="20" fill="#d39d8b" />
-          <rect x="80" y="124" width="36" height="376" fill="#e4b9aa" />
-          <rect x="284" y="124" width="36" height="376" fill="#e4b9aa" />
-          <path d="M116 500V260a84 84 0 0 1 168 0v240z" fill="#d39d8b" />
-          <path d="M132 500V266a68 68 0 0 1 136 0v234z" fill="#2b2622" />
-          <g fill="#3d352f"><rect x="140" y="300" width="56" height="190" /><rect x="204" y="300" width="56" height="190" /></g>
-          <circle cx="190" cy="400" r="5" fill="#c79a4b" /><circle cx="210" cy="400" r="5" fill="#c79a4b" />
-          <path d="M184 178h32l-6 30h-20z" fill="#efcfc4" />
-          <text x="200" y="198" text-anchor="middle" font-size="11" font-weight="700" fill="#8b4f40" font-family="Manrope, sans-serif">1624</text>
-          <circle cx="200" cy="72" r="20" fill="#d39d8b" />
-          <path d="M200 58l10 14-10 14-10-14z" fill="#efcfc4" />
-        </symbol>
-        <symbol id="d-park" viewBox="0 0 400 500">
-          <rect width="400" height="500" fill="#dfe9e0" />
-          <rect x="0" y="360" width="400" height="140" fill="#9fbf9f" />
-          <g class="sway">
-            <circle cx="200" cy="190" r="120" fill="#2f6b4c" />
-            <circle cx="120" cy="230" r="80" fill="#3f7d5a" />
-            <circle cx="285" cy="225" r="78" fill="#1d4d35" />
-            <circle cx="210" cy="110" r="70" fill="#3f7d5a" />
-          </g>
-          <path d="M188 300h24l8 80h-40z" fill="#5a4334" />
-          <rect x="60" y="410" width="120" height="12" fill="#7a5a43" />
-          <rect x="66" y="380" width="108" height="10" fill="#7a5a43" />
-          <rect x="70" y="422" width="9" height="34" fill="#7a5a43" /><rect x="160" y="422" width="9" height="34" fill="#7a5a43" />
-          <g fill="#efcfc4"><circle cx="300" cy="440" r="7" /><circle cx="320" cy="452" r="6" /><circle cx="286" cy="458" r="5" /><circle cx="340" cy="436" r="5" /></g>
-        </symbol>
-      </defs>
+      <symbol id="i-camera" viewBox="0 0 24 24">
+        <path d="M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+        <circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="1.6" />
+      </symbol>
     </svg>
 
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
@@ -68,9 +36,9 @@
       <a href="#top" class="wordmark">Schloss Ebracher Hof</a>
       <nav class="bar-links" id="menu" aria-label="Hauptmenü">
         <a href="#angebot">Angebot</a>
-        <a href="#haus">Das Haus</a>
+        <a href="#einblicke">Einblicke</a>
+        <a href="#team">Team</a>
         <a href="#aufnahme">Aufnahme</a>
-        <a href="#fragen">Fragen</a>
         <a href="#kontakt" class="btn btn-primary btn-small">Kontakt</a>
       </nav>
       <div class="bar-tools">
@@ -83,7 +51,7 @@
     </header>
 
     <main id="inhalt">
-      <!-- 1. Das Wichtigste: Wer wir sind und wie man uns erreicht -->
+      <!-- Hero: großes Hausfoto, Titel, die zwei wichtigsten Aktionen -->
       <section class="hero" id="top">
         <div class="container hero-grid">
           <div class="hero-text">
@@ -96,102 +64,176 @@
               <a class="btn btn-primary" href="tel:+4993217613">09321 7613 anrufen</a>
               <a class="btn btn-secondary" href="#kontakt">Rückruf erbitten</a>
             </div>
-            <p class="hint">Persönlich erreichbar, auch für Fragen zu freien Plätzen.</p>
+            <ul class="facts" role="list">
+              <li><strong>1624</strong><span>erbaut als Hof des Klosters Ebrach</span></li>
+              <li><strong>1961</strong><span>Seniorenheim der Familie Brandner</span></li>
+              <li><strong>Park</strong><span>mit altem Baumbestand</span></li>
+            </ul>
           </div>
-          <figure class="hero-pic reveal">
-            <svg viewBox="0 0 400 500" role="img" aria-label="Zeichnung: das Steinportal des Ebracher Hofs von 1624"><use href="#d-portal" /></svg>
-          </figure>
+          <div class="hero-media">
+            <figure class="photo r-4x5 hero-main">
+              <img src="img/hero.jpg" alt="Der Ebracher Hof mit Renaissance-Giebel und Steinportal" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Außenansicht des Schlosses</strong><span>Giebel und Steinportal, bei Sonne · img/hero.jpg · Hochformat 4:5</span></figcaption>
+            </figure>
+            <figure class="photo r-1x1 hero-inset">
+              <img src="img/hero-park.jpg" alt="Bewohnerin und Pflegekraft auf einer Bank im Schlosspark" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Menschen im Park</strong><span>img/hero-park.jpg · 1:1</span></figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
-      <!-- 2. Angebot: gleiche Karten für gleichrangige Leistungen -->
+      <!-- Angebot: drei Kernpunkte im Wechsel Bild / Text -->
       <section class="section" id="angebot" aria-labelledby="angebot-h">
         <div class="container">
           <header class="section-head">
             <h2 id="angebot-h">Was wir bieten</h2>
-            <p>Alles unter einem Dach, rund um die Uhr.</p>
+            <p>Pflege, ein eigenes Zuhause und ein Alltag mit Leben, unter einem Dach.</p>
           </header>
-          <ul class="cards" role="list">
-            <li class="card reveal">
-              <h3>Vollstationäre Pflege</h3>
-              <p>Pflege in allen Pflegegraden, individuell geplant und dokumentiert.</p>
-            </li>
-            <li class="card reveal">
-              <h3>Kurzzeitpflege</h3>
-              <p>Nach dem Krankenhaus oder zur Entlastung von Angehörigen. Freie Plätze bitte erfragen.</p>
-            </li>
-            <li class="card reveal">
-              <h3>Begleitung bei Demenz</h3>
-              <p>Feste Abläufe, Geduld und vertraute Gesichter geben Sicherheit.</p>
-            </li>
-            <li class="card reveal">
-              <h3>Ärzte und Therapie</h3>
-              <p>Zusammenarbeit mit Haus- und Fachärzten, Apotheke und Therapeuten aus der Region.</p>
-            </li>
-            <li class="card reveal">
-              <h3>Küche und Wäsche</h3>
-              <p>Abwechslungsreiche Mahlzeiten, auf Wunsch Schonkost. Wäsche und Reinigung inklusive.</p>
-            </li>
-            <li class="card reveal">
+
+          <article class="feature reveal">
+            <figure class="photo r-3x2">
+              <img src="img/pflege.jpg" alt="Pflegekraft im Gespräch mit einem Bewohner" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Pflege im Alltag</strong><span>Pflegekraft im Gespräch mit Bewohner · img/pflege.jpg · Querformat 3:2</span></figcaption>
+            </figure>
+            <div class="feature-text">
+              <h3>Pflege, Tag und Nacht</h3>
+              <p>Unser Pflegeteam ist rund um die Uhr im Haus und richtet sich nach den Gewohnheiten jedes Einzelnen.</p>
+              <ul class="ticks" role="list">
+                <li>Vollstationäre Pflege in allen Pflegegraden</li>
+                <li>Kurzzeitpflege, freie Plätze bitte erfragen</li>
+                <li>Begleitung bei Demenz</li>
+                <li>Zusammenarbeit mit Ärzten, Apotheke und Therapeuten</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="feature feature-flip reveal">
+            <figure class="photo r-3x2">
+              <img src="img/zimmer.jpg" alt="Ein Einzelzimmer mit eigenen Möbeln und Blick in den Park" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Ein Zimmer</strong><span>Einzelzimmer, hell, mit eigenen Möbeln · img/zimmer.jpg · Querformat 3:2</span></figcaption>
+            </figure>
+            <div class="feature-text">
+              <h3>Wohnen wie zu Hause</h3>
+              <p>Einzel- und Doppelzimmer in einem historischen Haus. Der eigene Sessel, Bilder und eine Kommode dürfen gerne mit einziehen.</p>
+              <ul class="ticks" role="list">
+                <li>Einzel- und Doppelzimmer</li>
+                <li>Eigene Möbel willkommen</li>
+                <li>Wäscheservice und Reinigung</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="feature reveal">
+            <figure class="photo r-3x2">
+              <img src="img/alltag.jpg" alt="Bewohnerinnen und Bewohner bei einer gemeinsamen Kaffeerunde" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Gemeinsamer Alltag</strong><span>Kaffeerunde, Singen oder Vorlesen · img/alltag.jpg · Querformat 3:2</span></figcaption>
+            </figure>
+            <div class="feature-text">
               <h3>Ein Alltag mit Leben</h3>
-              <p>Singen, Vorlesen, Gedächtnistraining und Spaziergänge im Park. Wer mag, macht mit.</p>
-            </li>
-          </ul>
+              <p>Wer mag, macht mit. Wer seine Ruhe möchte, bekommt sie.</p>
+              <ul class="ticks" role="list">
+                <li>Singen, Vorlesen, Gedächtnistraining</li>
+                <li>Spaziergänge im Schlosspark</li>
+                <li>Abwechslungsreiche Küche, auf Wunsch Schonkost</li>
+                <li>Feste im Jahreslauf, Adventsmarkt im Schlosshof</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
 
-      <!-- 3. Das Haus -->
-      <section class="section section-tinted" id="haus" aria-labelledby="haus-h">
-        <div class="container split">
-          <figure class="haus-pic reveal">
-            <svg viewBox="0 0 400 500" role="img" aria-label="Zeichnung: der Schlosspark mit alter Linde und Bank"><use href="#d-park" /></svg>
-          </figure>
-          <div class="haus-text">
-            <h2 id="haus-h">Ein Haus mit Geschichte</h2>
-            <p>
-              Abt Johannes Dressel vom Kloster Ebrach ließ den Hof 1624 für den Weinbau errichten.
-              Renaissance-Giebel und Steinportal geben ihm bis heute das Aussehen eines Schlosses.
-            </p>
-            <p>
-              1961 erwarb die Familie Brandner den Ebracher Hof und eröffnete das Seniorenheim.
-              Die Leitung ist bis heute im Haus präsent.
-            </p>
-            <ul class="facts" role="list">
-              <li><strong>1624</strong><span>erbaut als Hof des Klosters Ebrach</span></li>
-              <li><strong>1961</strong><span>Seniorenheim der Familie Brandner</span></li>
-              <li><strong>Park</strong><span>mit altem Baumbestand und Hauskapelle</span></li>
-            </ul>
+      <!-- Einblicke: Bildergalerie -->
+      <section class="section section-tinted" id="einblicke" aria-labelledby="einblicke-h">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="einblicke-h">Einblicke ins Haus</h2>
+            <p>Ein Klosterhof von 1624, mit Rokoko-Stuck, Hauskapelle und Park.</p>
+          </header>
+          <div class="gallery">
+            <figure class="photo g-big reveal">
+              <img src="img/galerie-hof.jpg" alt="Der Schlosshof" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Schlosshof</strong><span>img/galerie-hof.jpg · 1:1</span></figcaption>
+            </figure>
+            <figure class="photo reveal">
+              <img src="img/galerie-park.jpg" alt="Der Schlosspark mit alten Bäumen" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Schlosspark</strong><span>img/galerie-park.jpg · 1:1</span></figcaption>
+            </figure>
+            <figure class="photo reveal">
+              <img src="img/galerie-kapelle.jpg" alt="Die Hauskapelle mit Rokoko-Stuck" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Hauskapelle</strong><span>img/galerie-kapelle.jpg · 1:1</span></figcaption>
+            </figure>
+            <figure class="photo reveal">
+              <img src="img/galerie-speisesaal.jpg" alt="Der Speisesaal" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Speisesaal</strong><span>img/galerie-speisesaal.jpg · 1:1</span></figcaption>
+            </figure>
+            <figure class="photo reveal">
+              <img src="img/galerie-portal.jpg" alt="Das Steinportal von 1624 im Detail" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Portal von 1624</strong><span>Detailaufnahme · img/galerie-portal.jpg · 1:1</span></figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
-      <!-- 4. Stimmen: erst sichtbar schalten, wenn echte Zitate mit Foto und Einverständnis vorliegen -->
-      <section class="section" id="stimmen" aria-labelledby="stimmen-h" hidden>
+      <!-- Team: Menschen statt Gebäude -->
+      <section class="section" id="team" aria-labelledby="team-h">
+        <div class="container team">
+          <figure class="photo r-4x5 team-lead reveal">
+            <img src="img/team-leitung.jpg" alt="Die Heimleitung der Familie Brandner" loading="lazy" onerror="this.remove()" />
+            <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Heimleitung</strong><span>Porträt der Leitung / Familie Brandner · img/team-leitung.jpg · Hochformat 4:5</span></figcaption>
+          </figure>
+          <div class="team-text">
+            <h2 id="team-h">Die Menschen hinter dem Haus</h2>
+            <p class="lead">Seit 1961 führt die Familie Brandner den Ebracher Hof. Die Leitung ist im Haus präsent, die Wege sind kurz.</p>
+            <p>
+              Pflegefachkräfte, Betreuungskräfte, Küche und Hauswirtschaft arbeiten Hand in Hand.
+              Viele von ihnen sind seit Jahren dabei und kennen jede Bewohnerin und jeden Bewohner beim Namen.
+            </p>
+            <figure class="photo r-3x2 reveal">
+              <img src="img/team-gruppe.jpg" alt="Das Team des Seniorenheims vor dem Schloss" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>Das ganze Team</strong><span>Gruppenfoto vor dem Schloss · img/team-gruppe.jpg · Querformat 3:2</span></figcaption>
+            </figure>
+            <a class="btn btn-secondary" href="mailto:info@seniorenheim-ebracher-hof.de?subject=Bewerbung">Bei uns arbeiten</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stimmen: echte Zitate mit Gesicht -->
+      <section class="section section-tinted" id="stimmen" aria-labelledby="stimmen-h">
         <div class="container">
           <header class="section-head">
             <h2 id="stimmen-h">Was Angehörige sagen</h2>
           </header>
           <div class="quotes">
-            <figure class="quote">
-              <img src="img/stimme-1.jpg" alt="" width="96" height="96" loading="lazy" />
-              <blockquote>[Echtes Zitat, ein bis zwei Sätze]</blockquote>
-              <figcaption><strong>[Vorname N.]</strong> [Beziehung, z. B. Tochter einer Bewohnerin]</figcaption>
+            <figure class="quote reveal">
+              <div class="photo r-1x1 avatar">
+                <img src="img/stimme-1.jpg" alt="" loading="lazy" onerror="this.remove()" />
+                <span class="ph"><svg><use href="#i-camera" /></svg><span>stimme-1.jpg</span></span>
+              </div>
+              <blockquote>[Echtes Zitat einfügen – ein bis zwei Sätze]</blockquote>
+              <figcaption><strong>[Vorname N.]</strong>[z. B. Tochter einer Bewohnerin]</figcaption>
             </figure>
-            <figure class="quote">
-              <img src="img/stimme-2.jpg" alt="" width="96" height="96" loading="lazy" />
-              <blockquote>[Echtes Zitat]</blockquote>
-              <figcaption><strong>[Vorname N.]</strong> [Beziehung]</figcaption>
+            <figure class="quote reveal">
+              <div class="photo r-1x1 avatar">
+                <img src="img/stimme-2.jpg" alt="" loading="lazy" onerror="this.remove()" />
+                <span class="ph"><svg><use href="#i-camera" /></svg><span>stimme-2.jpg</span></span>
+              </div>
+              <blockquote>[Echtes Zitat einfügen]</blockquote>
+              <figcaption><strong>[Vorname N.]</strong>[Beziehung zum Haus]</figcaption>
             </figure>
-            <figure class="quote">
-              <img src="img/stimme-3.jpg" alt="" width="96" height="96" loading="lazy" />
-              <blockquote>[Echtes Zitat]</blockquote>
-              <figcaption><strong>[Vorname N.]</strong> [Beziehung]</figcaption>
+            <figure class="quote reveal">
+              <div class="photo r-1x1 avatar">
+                <img src="img/stimme-3.jpg" alt="" loading="lazy" onerror="this.remove()" />
+                <span class="ph"><svg><use href="#i-camera" /></svg><span>stimme-3.jpg</span></span>
+              </div>
+              <blockquote>[Echtes Zitat einfügen]</blockquote>
+              <figcaption><strong>[Vorname N.]</strong>[Beziehung zum Haus]</figcaption>
             </figure>
           </div>
         </div>
       </section>
 
-      <!-- 5. Aufnahme -->
+      <!-- Aufnahme -->
       <section class="section" id="aufnahme" aria-labelledby="aufnahme-h">
         <div class="container">
           <header class="section-head">
@@ -199,31 +241,15 @@
             <p>Vier Schritte. Wir begleiten Sie bei jedem davon.</p>
           </header>
           <ol class="steps" role="list">
-            <li class="step reveal">
-              <span class="step-num" aria-hidden="true">1</span>
-              <h3>Anrufen</h3>
-              <p>Wir klären erste Fragen und ob gerade ein Platz frei ist.</p>
-            </li>
-            <li class="step reveal">
-              <span class="step-num" aria-hidden="true">2</span>
-              <h3>Kennenlernen</h3>
-              <p>Sie sehen Haus, Zimmer und Park und lernen das Team kennen.</p>
-            </li>
-            <li class="step reveal">
-              <span class="step-num" aria-hidden="true">3</span>
-              <h3>Unterlagen</h3>
-              <p>Wir helfen beim Heimvertrag und beim Antrag an die Pflegekasse.</p>
-            </li>
-            <li class="step reveal">
-              <span class="step-num" aria-hidden="true">4</span>
-              <h3>Einziehen</h3>
-              <p>Eigene Möbel dürfen mit. Am ersten Tag ist Ihre Bezugspflegekraft da.</p>
-            </li>
+            <li class="step reveal"><span class="step-num" aria-hidden="true">1</span><h3>Anrufen</h3><p>Wir klären erste Fragen und ob gerade ein Platz frei ist.</p></li>
+            <li class="step reveal"><span class="step-num" aria-hidden="true">2</span><h3>Kennenlernen</h3><p>Sie sehen Haus, Zimmer und Park und lernen das Team kennen.</p></li>
+            <li class="step reveal"><span class="step-num" aria-hidden="true">3</span><h3>Unterlagen</h3><p>Wir helfen beim Heimvertrag und beim Antrag an die Pflegekasse.</p></li>
+            <li class="step reveal"><span class="step-num" aria-hidden="true">4</span><h3>Einziehen</h3><p>Eigene Möbel dürfen mit. Am ersten Tag ist Ihre Bezugspflegekraft da.</p></li>
           </ol>
         </div>
       </section>
 
-      <!-- 6. Fragen -->
+      <!-- Fragen -->
       <section class="section section-tinted" id="fragen" aria-labelledby="fragen-h">
         <div class="container narrow">
           <header class="section-head">
@@ -247,17 +273,17 @@
               <p>Gerne: Sessel, Bilder oder eine Kommode. Sprechen Sie uns vorher wegen der Maße an.</p>
             </details>
             <details name="faq">
-              <summary>Suchen Sie Mitarbeitende?</summary>
-              <p>Ja, Pflegefachkräfte, Pflegehilfskräfte, Betreuungskräfte und Auszubildende. Schreiben Sie an <a href="mailto:info@seniorenheim-ebracher-hof.de?subject=Bewerbung">info@seniorenheim-ebracher-hof.de</a>.</p>
+              <summary>Kann ich das Haus vorher ansehen?</summary>
+              <p>Unbedingt. Vereinbaren Sie telefonisch einen Termin, dann führen wir Sie durch Haus und Park.</p>
             </details>
           </div>
         </div>
       </section>
 
-      <!-- 7. Kontakt: Überschrift, Eingabe, Knopf -->
+      <!-- Kontakt -->
       <section class="section" id="kontakt" aria-labelledby="kontakt-h">
-        <div class="container split split-contact">
-          <div>
+        <div class="container split-contact">
+          <div class="contact-info">
             <h2 id="kontakt-h">Wir rufen Sie zurück</h2>
             <p class="lead">Name und Telefonnummer genügen.</p>
             <dl class="contact-list">
@@ -265,9 +291,13 @@
               <div><dt>E-Mail</dt><dd><a href="mailto:info@seniorenheim-ebracher-hof.de">info@seniorenheim-ebracher-hof.de</a></dd></div>
               <div><dt>Adresse</dt><dd>Schloßstraße 32–38, 97320 Mainstockheim</dd></div>
             </dl>
+            <figure class="photo r-3x2">
+              <img src="img/anfahrt.jpg" alt="Der Eingang zum Ebracher Hof von der Schloßstraße aus" loading="lazy" onerror="this.remove()" />
+              <figcaption class="ph"><svg><use href="#i-camera" /></svg><strong>So finden Sie uns</strong><span>Eingang von der Schloßstraße · img/anfahrt.jpg · Querformat 3:2</span></figcaption>
+            </figure>
             <a class="btn btn-secondary" href="https://www.openstreetmap.org/search?query=Schlo%C3%9Fstra%C3%9Fe%2032%2C%2097320%20Mainstockheim" target="_blank" rel="noopener">Route planen</a>
           </div>
-          <form class="form card" id="contact-form" novalidate>
+          <form class="form" id="contact-form" novalidate>
             <label>
               Ihr Name
               <input type="text" name="name" autocomplete="name" required />

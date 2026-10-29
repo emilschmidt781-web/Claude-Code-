@@ -289,14 +289,67 @@ a {
   padding: 0 var(--space-4);
 }
 
+/* Foto-Plätze: Platzhalter liegt unter dem Bild und ist sichtbar, solange das Foto fehlt */
+.photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--accent-2);
+}
+
+.r-4x5 { aspect-ratio: 4 / 5; }
+.r-3x2 { aspect-ratio: 3 / 2; }
+.r-1x1 { aspect-ratio: 1 / 1; }
+
+.photo img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ph {
+  position: absolute;
+  inset: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 2px dashed rgba(29, 77, 53, 0.35);
+  border-radius: calc(var(--radius) - var(--space-1));
+  color: var(--accent);
+  text-align: center;
+  line-height: var(--leading-snug);
+}
+
+.ph svg {
+  width: var(--space-12);
+  height: var(--space-12);
+}
+
+.ph strong {
+  font-size: var(--text-lg);
+}
+
+.ph span {
+  max-width: 22rem;
+  font-size: var(--text-sm);
+  color: var(--dark);
+}
+
 /* 1. Hero */
 .hero {
-  padding: var(--space-24) 0 var(--space-32);
+  padding: var(--space-16) 0 var(--space-32);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 7fr 5fr;
+  grid-template-columns: 6fr 6fr;
   gap: var(--space-16);
   align-items: center;
 }
@@ -313,24 +366,57 @@ a {
   margin-top: var(--space-12);
 }
 
-.hint {
-  margin-top: var(--space-4);
+.facts {
+  list-style: none;
+  margin: var(--space-16) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.facts strong {
+  display: block;
+  font-size: var(--text-xl);
+  font-weight: 800;
+  line-height: var(--leading-tight);
+  color: var(--accent);
+}
+
+.facts span {
+  display: block;
+  margin-top: var(--space-1);
   font-size: var(--text-sm);
+  line-height: var(--leading-snug);
   color: var(--muted);
 }
 
-.hero-pic,
-.haus-pic {
-  border-radius: 50% 50% var(--radius) var(--radius) / 40% 40% var(--radius) var(--radius);
-  overflow: hidden;
+.hero-media {
+  position: relative;
+  padding: 0 0 var(--space-12) var(--space-12);
+}
+
+.hero-main {
   box-shadow: var(--shadow-md);
 }
 
-.hero-pic svg,
-.haus-pic svg {
-  display: block;
-  width: 100%;
-  height: auto;
+.hero-inset {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 42%;
+  border: var(--space-2) solid var(--light);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-inset .ph strong {
+  font-size: var(--text-base);
+}
+
+.hero-inset .ph svg {
+  width: var(--space-8);
+  height: var(--space-8);
 }
 
 /* Abschnitte */
@@ -348,97 +434,114 @@ a {
 
 .section-head p {
   margin-top: var(--space-3);
+  max-width: 40rem;
   color: var(--muted);
   font-size: var(--text-lg);
 }
 
-/* 2. Karten: gleiche Form = gleiche Bedeutung */
-.cards {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* 2. Angebot: Bild und Text im Wechsel */
+.feature {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-}
-
-.card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-}
-
-.cards .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.card h3 {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.card h3::before {
-  content: "";
-  flex: none;
-  width: var(--space-3);
-  height: var(--space-3);
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.card p {
-  margin-top: var(--space-2);
-  color: var(--muted);
-}
-
-/* 3. Das Haus */
-.split {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: 7fr 5fr;
   gap: var(--space-16);
   align-items: center;
 }
 
-.haus-text p {
-  margin-top: var(--space-4);
-  max-width: 36rem;
+.feature + .feature {
+  margin-top: var(--space-24);
 }
 
-.haus-text h2 + p {
-  margin-top: var(--space-6);
+.feature-flip .photo {
+  order: 2;
 }
 
-.facts {
-  list-style: none;
-  margin: var(--space-12) 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-}
-
-.facts li {
-  background: var(--accent-2);
-  border-radius: var(--radius);
-  padding: var(--space-4);
-}
-
-.facts strong {
-  display: block;
+.feature-text h3 {
   font-size: var(--text-xl);
   font-weight: 800;
   line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
 }
 
-.facts span {
-  display: block;
-  margin-top: var(--space-1);
-  font-size: var(--text-sm);
-  line-height: var(--leading-snug);
+.feature-text p {
+  margin-top: var(--space-4);
+  color: var(--muted);
+}
+
+.ticks {
+  list-style: none;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.ticks li {
+  position: relative;
+  padding-left: var(--space-8);
+  font-weight: 600;
+}
+
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: var(--space-6);
+  height: var(--space-6);
+  border-radius: 50%;
+  background: var(--accent-2)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3 3 7-7' fill='none' stroke='%231d4d35' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 70% no-repeat;
+}
+
+/* 3. Galerie */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.gallery .photo {
+  aspect-ratio: 1 / 1;
+}
+
+.gallery .g-big {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery .photo:not(.g-big) .ph strong {
+  font-size: var(--text-base);
+}
+
+.gallery .photo:not(.g-big) .ph svg {
+  width: var(--space-8);
+  height: var(--space-8);
+}
+
+/* 4. Team */
+.team {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.team-lead {
+  box-shadow: var(--shadow-md);
+}
+
+.team-text .lead {
+  margin-top: var(--space-6);
+}
+
+.team-text > p:not(.lead) {
+  margin-top: var(--space-4);
+  color: var(--muted);
+}
+
+.team-text .photo {
+  margin: var(--space-8) 0;
 }
 
 /* 4. Stimmen */
@@ -455,11 +558,25 @@ a {
   box-shadow: var(--shadow-sm);
 }
 
-.quote img {
+.avatar {
   width: 6rem;
-  height: 6rem;
   border-radius: 50%;
-  object-fit: cover;
+}
+
+.avatar .ph {
+  inset: var(--space-1);
+  padding: var(--space-1);
+  border-radius: 50%;
+  gap: 0;
+}
+
+.avatar .ph svg {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+
+.avatar .ph span {
+  font-size: 0.6875rem;
 }
 
 .quote blockquote {
@@ -569,8 +686,14 @@ a {
 
 /* 7. Kontakt */
 .split-contact {
+  display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
   align-items: start;
+}
+
+.contact-info .photo {
+  margin-bottom: var(--space-6);
 }
 
 .split-contact .lead {
@@ -597,6 +720,8 @@ a {
   display: grid;
   gap: var(--space-4);
   padding: var(--space-8);
+  border-radius: var(--radius);
+  background: var(--white);
   box-shadow: var(--shadow-md);
 }
 
@@ -812,9 +937,31 @@ a {
     margin-top: var(--space-4);
   }
 
-  .cards,
   .quotes {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-grid,
+  .feature,
+  .team {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .feature-flip .photo {
+    order: 0;
+  }
+
+  .hero-media {
+    max-width: 36rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .team-lead {
+    max-width: 24rem;
   }
 
   .steps {
@@ -842,15 +989,25 @@ a {
     padding: var(--space-12) 0 var(--space-24);
   }
 
-  .hero-grid,
-  .split,
   .split-contact {
     grid-template-columns: 1fr;
     gap: var(--space-12);
   }
 
-  .hero-pic {
-    max-width: 20rem;
+  .hero-media {
+    padding: 0 0 var(--space-8) var(--space-8);
+  }
+
+  .feature + .feature {
+    margin-top: var(--space-16);
+  }
+
+  .hero-inset .ph span {
+    display: none;
+  }
+
+  .hero-inset .ph strong {
+    font-size: var(--text-sm);
   }
 
   .actions .btn {
@@ -861,14 +1018,20 @@ a {
     padding: var(--space-24) 0;
   }
 
-  .cards,
   .quotes,
-  .steps,
-  .facts {
+  .steps {
     grid-template-columns: 1fr;
   }
 
-  .card,
+  .facts {
+    gap: var(--space-3);
+  }
+
+  .facts strong {
+    font-size: var(--text-lg);
+  }
+
+  .quote,
   .form {
     padding: var(--space-6);
   }

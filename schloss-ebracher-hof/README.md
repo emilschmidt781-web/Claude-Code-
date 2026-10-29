@@ -19,12 +19,17 @@ Nach einfachen Regeln aufgebaut:
 - **Hierarchie:** Titel groß und kräftig, Nebeninformation in gedämpfter Farbe.
 - **Tiefe:** dezente Schatten auf Karten und Formular, leichter Verlauf auf dem Hauptknopf.
 
+### Fotos einfügen
+
+Jeder Bildplatz zeigt einen gestrichelten Platzhalter mit Motiv, Dateiname und
+Format. Foto mit diesem Namen nach `img/` legen, fertig. Die vollständige Liste
+steht in `img/README.md`.
+
 ### Stimmen von Angehörigen
 
-Der Abschnitt `#stimmen` ist vorbereitet, aber mit `hidden` ausgeblendet. Er wird
-erst eingeschaltet, wenn zwei bis drei echte Zitate mit Foto und schriftlichem
-Einverständnis vorliegen: Fotos als `img/stimme-1.jpg` bis `img/stimme-3.jpg`
-ablegen, Platzhalter in [eckigen Klammern] ersetzen, `hidden` entfernen.
+Der Abschnitt `#stimmen` enthält Platzhalter in [eckigen Klammern]. Nur echte
+Zitate mit Foto und schriftlichem Einverständnis eintragen; bis dahin den
+Abschnitt vor dem Livegang mit `hidden` ausblenden.
 
 ## Ansehen
 
@@ -49,8 +54,7 @@ Pflegeverzeichnisse) und sollten vom Haus bestätigt werden:
   Hauskapelle, Sommerfest, Zusammenarbeit mit Ärzten/Therapeuten
 - **Impressum**: Geschäftsführung, USt-ID, Anschrift der FQA, Verantwortlicher
 - **Datenschutz**: Hosting-Anbieter und ggf. Datenschutzbeauftragte(r)
-- **Fotos**: Die zwei Bilder sind Zeichnungen (SVG-Symbole `d-portal` und `d-park`
-  oben in `index.html`). Echte Fotos (Hochformat 4:5) sollten sie ersetzen.
+- **Fotos**: 16 Bildplätze warten auf echte Fotos (siehe `img/README.md`).
 - **Nutzertest**: Seite vor dem Livegang Bewohnern, Angehörigen und Mitarbeitenden
   zeigen und nach ihren Rückmeldungen anpassen.
 
@@ -58,7 +62,8 @@ Pflegeverzeichnisse) und sollten vom Haus bestätigt werden:
 
 | Datei | Inhalt |
 | --- | --- |
-| `index.html` | Startseite: Angebot, Das Haus, Stimmen (ausgeblendet), Aufnahme, Fragen, Kontakt |
+| `index.html` | Startseite: Angebot, Einblicke, Team, Stimmen, Aufnahme, Fragen, Kontakt |
+| `img/` | Fotos (Liste und Dateinamen in `img/README.md`) |
 | `style.css` | Gestaltung, responsiv vom Handy bis zum Desktop |
 | `script.js` | Menü, Schriftgröße, Rückruf-Formular (per E-Mail), Einblendungen |
 | `fonts/` | Manrope (lokal) |
