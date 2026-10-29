@@ -42,48 +42,6 @@ sizeButtons.forEach((button) =>
   })
 );
 
-// Rundgang: Station wählen, Zeichnung, Farbe und Text wechseln
-const stage = document.querySelector(".tour-stage");
-const stationButtons = document.querySelectorAll(".tour-list button");
-
-if (stage) {
-  const pic = stage.querySelector(".tour-pic");
-  const use = pic.querySelector("use");
-  const title = pic.querySelector("title");
-  const fact = stage.querySelector(".tour-fact");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  stationButtons.forEach((button) =>
-    button.addEventListener("click", () => {
-      if (button.getAttribute("aria-pressed") === "true") return;
-      stationButtons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
-      stage.dataset.field = button.dataset.field;
-      const swap = () => {
-        use.setAttribute("href", "#" + button.dataset.pic);
-        title.textContent = button.dataset.title;
-        fact.textContent = button.dataset.fact;
-        pic.classList.remove("is-swapping");
-      };
-      if (reduce) return swap();
-      pic.classList.add("is-swapping");
-      setTimeout(swap, 300);
-    })
-  );
-}
-
-// Aufnahme: ein Schritt ist offen
-const steps = document.querySelectorAll(".accordion li");
-
-steps.forEach((step) =>
-  step.querySelector("button").addEventListener("click", () => {
-    steps.forEach((s) => {
-      const open = s === step;
-      s.classList.toggle("is-open", open);
-      s.querySelector("button").setAttribute("aria-expanded", String(open));
-    });
-  })
-);
-
 // Jahreszahl in der Fußzeile
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
