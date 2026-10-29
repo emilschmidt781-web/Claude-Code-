@@ -100,7 +100,7 @@ Stand: 22. Oktober 2026
 
 - **Keine erfundenen Zahlen oder Kundenstimmen** – wäre irreführende Werbung (§ 5 UWG).
   Nur echte Werte (Lighthouse, 30 Min., 1 Ansprechpartner, 0 Cookies).
-- **Design-Konzepte** (Kubus, Bohnenwerk, Rebenhang, Atem, Nachtschicht) sind erfundene Firmen.
+- **Design-Konzepte** (Quader, Bohnenwerk, Rebenhang, Atem, Nachtschicht) sind erfundene Firmen.
   Etikett „Konzept“ bleibt stehen, Hinweis steht im Impressum. Nicht als Kundenprojekte ausgeben.
 - **Schneiderei Yasin und Ricky Wagner** wurden auf Wunsch von der Seite entfernt.
 - **Helle Abschnitte**: „Über mich“ und FAQ haben Cremeweiß (Klasse `theme-light`), der Rest bleibt dunkel.

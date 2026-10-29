@@ -17,7 +17,7 @@ Steht in `beschreibung.txt` (682 von 750 Zeichen).
 ## Leistungen
 | Leistung | Beschreibung | Preis |
 |---|---|---|
-| Neue Website | Firmenwebsite oder Angebotsseite, individuell gestaltet, fürs Handy gemacht | ab 599 € |
+| Neue Website | Firmenwebsite oder Angebotsseite, individuell gestaltet, fürs Handy gemacht | ab 599 € (keine MwSt., Kleinunternehmer) |
 | Online-Shop | Shop mit Shopify oder WordPress | auf Anfrage |
 | Website ausbessern | Fehler beheben, Inhalte aktualisieren, Aussehen oder Technik auffrischen | auf Anfrage |
 | Website-Betreuung | Laufende Pflege, Änderungen und Updates | auf Anfrage |
@@ -29,7 +29,7 @@ Steht in `beschreibung.txt` (682 von 750 Zeichen).
 | `logo-quadrat.png` | Logo (720 × 720) |
 | `titelbild.jpg` | Titelbild (1600 × 900) |
 | `foto-edgar.jpg` | Foto von dir (800 × 800) |
-| `konzept-1-kubus.jpg` … `konzept-5-tattoo.jpg` | Weitere Fotos. Jedes trägt den Hinweis „Design-Konzept · erfundener Betrieb“. |
+| `konzept-1-quader.jpg` … `konzept-5-tattoo.jpg` | Weitere Fotos. Jedes trägt den Hinweis „Design-Konzept · erfundener Betrieb“. |
 
 ## Öffnungszeiten (Vorschlag)
 Mo–Fr 9–18 Uhr. Trag ein, wann du wirklich ans Telefon gehst.
