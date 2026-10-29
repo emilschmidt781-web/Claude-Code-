@@ -1087,6 +1087,84 @@ section {
   }
 }
 
+/* Schritt 4: „Yayy!!“ mit Konfetti, sobald die Seite online ist */
+.step:last-child {
+  position: relative;
+  cursor: pointer;
+}
+
+.yay {
+  position: absolute;
+  top: var(--s-4);
+  right: var(--s-4);
+  z-index: 2;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--wide);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  box-shadow: 0 10px 24px -10px rgba(255, 79, 139, 0.9);
+  transform: scale(0) rotate(-14deg);
+  pointer-events: none;
+}
+
+.step.party .yay {
+  animation: yayPop 0.8s cubic-bezier(0.2, 1.6, 0.4, 1) forwards;
+}
+
+@keyframes yayPop {
+  60% {
+    transform: scale(1.25) rotate(6deg);
+  }
+  to {
+    transform: scale(1) rotate(-6deg);
+  }
+}
+
+.confetti {
+  position: absolute;
+  left: var(--cx, 70%);
+  top: var(--cy, 30%);
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.confetti i {
+  position: absolute;
+  left: -4px;
+  top: -6px;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--c);
+  opacity: 0;
+  animation: boom 1.5s cubic-bezier(0.15, 0.7, 0.3, 1) var(--w, 0s) forwards;
+}
+
+.confetti i:nth-child(3n) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+@keyframes boom {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(var(--r));
+  }
+}
+
 /* ===== Fragen ===== */
 .faq {
   display: grid;

@@ -121,6 +121,39 @@ onVisible([...document.querySelectorAll(".rise")], (el) => el.classList.add("in"
 document.querySelectorAll(".step").forEach((el, i) => el.style.setProperty("--sd", `${i * 0.35}s`));
 onVisible([...document.querySelectorAll(".step")], (el) => el.classList.add("in"), { threshold: 0.35 });
 
+// Schritt 4: wenn die Weltkugel fertig gezeichnet ist, gibt es „Yayy!!“ und Konfetti
+const lastStep = document.querySelector(".step:last-child");
+if (lastStep) {
+  const confetti = lastStep.querySelector(".confetti");
+  const colors = ["#ff4f8b", "#ffd400", "#22c55e", "#3b82f6", "#ffffff", "#ff9f1c"];
+  const party = () => {
+    // Konfetti startet am Häkchen der Zeichnung
+    const svg = lastStep.querySelector(".draw").getBoundingClientRect();
+    const box = lastStep.getBoundingClientRect();
+    confetti.style.setProperty("--cx", `${svg.left - box.left + (158 / 240) * svg.width}px`);
+    confetti.style.setProperty("--cy", `${svg.top - box.top + (34 / 140) * svg.height}px`);
+    lastStep.classList.remove("party");
+    void lastStep.offsetWidth;
+    lastStep.classList.add("party");
+    if (reduceMotion) return;
+    confetti.innerHTML = "";
+    for (let k = 0; k < 36; k++) {
+      const piece = document.createElement("i");
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 60 + Math.random() * 110;
+      piece.style.setProperty("--c", colors[k % colors.length]);
+      piece.style.setProperty("--x", `${Math.cos(angle) * dist}px`);
+      piece.style.setProperty("--y", `${Math.sin(angle) * dist * 0.8 + 70}px`);
+      piece.style.setProperty("--r", `${Math.random() * 720 - 360}deg`);
+      piece.style.setProperty("--w", `${Math.random() * 0.15}s`);
+      confetti.appendChild(piece);
+    }
+  };
+  // Zeitpunkt: Verzögerung von Schritt 4 plus Dauer der Zeichnung
+  onVisible([lastStep], () => setTimeout(party, reduceMotion ? 0 : 2900), { threshold: 0.35 });
+  lastStep.addEventListener("click", party);
+}
+
 // ===== Menü auf Handy und Tablet =====
 const bar = document.querySelector(".bar");
 const menuBtn = document.querySelector(".menu-toggle");
