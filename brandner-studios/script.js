@@ -58,7 +58,18 @@ if (laptop) {
         i = (i + 1) % laptopImgs.length;
         show(i);
       }, 3200);
-    addEventListener("load", () => setTimeout(run, 2500), { once: true });
+    // Die übrigen Bilder erst nach dem Laden holen, damit der erste Bildschirm schneller steht
+    addEventListener(
+      "load",
+      () => {
+        document.querySelectorAll(".devices img[data-src]").forEach((img) => {
+          if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+          img.src = img.dataset.src;
+        });
+        setTimeout(run, 2500);
+      },
+      { once: true }
+    );
   }
 }
 

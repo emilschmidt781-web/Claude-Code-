@@ -314,6 +314,16 @@ section {
   transform: translateY(-4px) rotate(-45deg);
 }
 
+/* Abschnitte weiter unten erst berechnen, wenn sie in die Nähe kommen */
+.services,
+.how,
+.faq,
+.contact,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 /* ===== Erster Bildschirm ===== */
 .hero {
   padding-top: 4px;

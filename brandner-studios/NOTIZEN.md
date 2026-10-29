@@ -146,3 +146,11 @@ Stand: 22. Oktober 2026
 - Der Bereich „Arbeiten“ ist von der Startseite entfernt. Die Konzepte liegen jetzt auf `konzepte.html` und sind im Menü als „Konzepte“ verlinkt.
 - Auf Handy und Tablet gibt es ein Menü zum Aufklappen (Knopf rechts oben).
 - Der Knopf in der Leiste der Konzept-Seiten führt zurück zu `konzepte.html`.
+
+## Handy-Tempo 100 (29.10.)
+- Kleinere Bilder: `konzept-*-560.webp` für den Laptop am Handy, `konzept-*-handy-200.webp` fürs kleine Handy, `edgar-privat-600.webp` und `edgar-avatar.webp` (96 px).
+- Im Startbild lädt nur das erste Bild sofort, die anderen vier erst nach dem Laden der Seite.
+- Das erste Laptop-Bild wird im Kopf vorgeladen.
+- Abschnitte weiter unten werden erst berechnet, wenn sie in die Nähe kommen (`content-visibility`).
+- Lighthouse (lokal mit Komprimierung wie bei Netlify, 29.10.2026): Handy 100 (3 Läufe), Computer 100, Konzepte-Seite Handy 100.
+  Auf der Seite steht deshalb „100 – am Computer und am Handy“. Nach dem Livegang mit pagespeed.web.dev gegenprüfen.
