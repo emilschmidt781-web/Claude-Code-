@@ -180,6 +180,16 @@ if (bar && menuBtn) {
   document.addEventListener("click", (e) => !bar.contains(e.target) && setMenu(false));
 }
 
+// ===== Porträt: auf dem Handy (ohne Maus) per Antippen, einmal auch von selbst =====
+const portrait = document.querySelector(".about-photo");
+if (portrait && matchMedia("(hover: none)").matches) {
+  portrait.addEventListener("click", () => portrait.classList.toggle("hi"));
+  onVisible([portrait], (el) => {
+    setTimeout(() => el.classList.add("hi"), 600);
+    setTimeout(() => el.classList.remove("hi"), 3200);
+  }, { threshold: 0.6 });
+}
+
 // ===== Nach oben =====
 document.querySelectorAll('a[href="#top"]').forEach((a) =>
   a.addEventListener("click", (e) => {

@@ -629,39 +629,120 @@ section {
   z-index: 2;
   left: 50%;
   top: 50%;
-  width: clamp(200px, 22vw, 320px);
+  width: clamp(150px, 15vw, 220px);
   margin: 0;
   translate: -50% -50%;
   rotate: -8deg;
-  border-radius: 28px;
-  overflow: hidden;
-  background: var(--accent);
-  box-shadow: var(--shadow);
-  transition: rotate 0.6s var(--ease), scale 0.6s var(--ease);
+  cursor: pointer;
+  outline: none;
+  transition: rotate 0.7s cubic-bezier(0.2, 1.5, 0.4, 1), scale 0.7s cubic-bezier(0.2, 1.5, 0.4, 1);
 }
 
-.about-photo:hover {
-  rotate: -3deg;
-  scale: 1.03;
+/* Rahmen: weiß wie ein Sofortbild, beim Drüberfahren dreht sich ein bunter Ring in den Logo-Farben */
+.about-photo .frame {
+  position: relative;
+  display: block;
+  padding: 8px;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow);
+  isolation: isolate;
+}
+
+.about-photo .frame::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  background: conic-gradient(#e0337a, #e5a3cf, #5fb0ec, #7d8de0, #d8ff3e, #e0337a);
+  opacity: 0;
+  transition: opacity 0.4s;
+  animation: spin 2.4s linear infinite paused;
 }
 
 .about-photo img {
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  border-radius: 20px;
+  transition: filter 0.7s;
 }
 
 .about-photo figcaption {
   position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  padding: 8px 12px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  padding: 6px 10px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 0.78rem;
   font-weight: 600;
   text-align: center;
+  white-space: nowrap;
+  transition: translate 0.5s var(--ease);
+}
+
+/* Sprechblase springt oben heraus */
+.about-photo .hello {
+  position: absolute;
+  top: -14px;
+  right: -42px;
+  padding: 9px 14px;
+  border-radius: 18px 18px 18px 4px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 12px 24px -12px rgba(17, 18, 22, 0.6);
+  opacity: 0;
+  transform: translateY(12px) scale(0.6) rotate(-8deg);
+  transform-origin: left bottom;
+  transition: opacity 0.3s, transform 0.5s cubic-bezier(0.2, 1.6, 0.4, 1);
+  pointer-events: none;
+}
+
+.about-photo:hover,
+.about-photo:focus-visible,
+.about-photo.hi {
+  rotate: 2deg;
+  scale: 1.08;
+}
+
+.about-photo:hover .frame::before,
+.about-photo:focus-visible .frame::before,
+.about-photo.hi .frame::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.about-photo:hover img,
+.about-photo:focus-visible img,
+.about-photo.hi img {
+  filter: saturate(1.15) brightness(1.04);
+}
+
+.about-photo:hover figcaption,
+.about-photo:focus-visible figcaption,
+.about-photo.hi figcaption {
+  translate: 0 4px;
+}
+
+.about-photo:hover .hello,
+.about-photo:focus-visible .hello,
+.about-photo.hi .hello {
+  opacity: 1;
+  transform: translateY(-100%) scale(1) rotate(4deg);
+  transition-delay: 0.1s;
+}
+
+@keyframes spin {
+  to {
+    rotate: 1turn;
+  }
 }
 
 /* Persönliches Wort von Edgar: großes Zitat, kleines Gesicht */
@@ -1568,6 +1649,15 @@ section {
   transform: none;
 }
 
+/* Porträt: Einblenden und Drüberfahren-Animation vertragen sich */
+.js .about-photo.rise {
+  transition:
+    opacity 0.7s ease var(--d, 0s),
+    transform 0.9s var(--ease) var(--d, 0s),
+    rotate 0.7s cubic-bezier(0.2, 1.5, 0.4, 1),
+    scale 0.7s cubic-bezier(0.2, 1.5, 0.4, 1);
+}
+
 /* ===== Tablet ===== */
 @media (max-width: 1080px) {
   .nav {
@@ -1729,8 +1819,16 @@ section {
     top: auto;
     translate: none;
     justify-self: center;
-    width: 64%;
-    margin-top: -2vw;
+    width: 52%;
+    margin-top: 10px;
+  }
+  .about-photo figcaption {
+    left: 14px;
+    right: 14px;
+    font-size: 0.72rem;
+  }
+  .about-photo .hello {
+    right: -24px;
   }
   .note-card {
     position: relative;
