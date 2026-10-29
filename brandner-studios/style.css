@@ -664,6 +664,23 @@ section {
   text-align: center;
 }
 
+/* Am Computer liegt das Foto frei am Rand, der Vorstellungstext steht unter der Überschrift */
+.about-me {
+  display: contents;
+}
+
+.about-intro {
+  max-width: 46ch;
+  margin: var(--s-7) 0 0 18%;
+  font-size: var(--fs-lg);
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.about-intro b {
+  color: var(--ink);
+}
+
 /* Sprechblase springt beim Drüberfahren links neben dem Foto heraus */
 .about-photo .hello {
   position: absolute;
@@ -1672,11 +1689,31 @@ section {
   .note-card {
     top: -30%;
   }
+  .about-me {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-6);
+    margin-top: var(--s-7);
+  }
+  .about-intro {
+    margin: 0;
+  }
   .about-photo {
     position: relative;
     right: auto;
     bottom: auto;
-    margin: var(--s-6) 0 0 auto;
+    flex: none;
+  }
+  .about-photo .hello {
+    top: -10px;
+    right: 0;
+    transform: translateY(-80%) scale(0.7);
+  }
+  .about-photo:hover .hello,
+  .about-photo:focus-visible .hello,
+  .about-photo.hi .hello {
+    transform: translateY(-100%);
   }
 }
 
@@ -1783,11 +1820,14 @@ section {
     gap: 22px;
     padding-top: 0;
   }
+  .about-me {
+    gap: var(--s-4);
+    margin-top: var(--s-2);
+  }
+  .about-intro {
+    font-size: 1rem;
+  }
   .about-photo {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    justify-self: end;
     width: 34%;
   }
   .note-card {
