@@ -42,11 +42,20 @@ sizeButtons.forEach((button) =>
   })
 );
 
+// „Bewerben“ bei einer Stelle wählt diese Stelle im Formular vor
+const jobSelect = document.getElementById("f-stelle");
+
+document.querySelectorAll("[data-job]").forEach((link) =>
+  link.addEventListener("click", () => {
+    if (jobSelect) jobSelect.value = link.dataset.job;
+  })
+);
+
 // Jahreszahl in der Fußzeile
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
-// Rückruf-Formular: öffnet eine vorbereitete E-Mail, es geht nichts an einen Server
+// Kurzbewerbung: öffnet eine vorbereitete E-Mail, es geht nichts an einen Server
 const form = document.getElementById("contact-form");
 
 if (form) {
@@ -70,18 +79,17 @@ if (form) {
     const body = [
       `Name: ${name}`,
       `Telefon: ${telefon}`,
-      `Anliegen: ${data.get("anliegen")}`,
-      "",
-      String(data.get("nachricht") || "").trim(),
+      `Stelle: ${data.get("anliegen")}`,
+      `Gut erreichbar: ${String(data.get("nachricht") || "").trim() || "-"}`,
     ].join("\n");
 
     window.location.href =
       "mailto:info@seniorenheim-ebracher-hof.de" +
-      `?subject=${encodeURIComponent(`Rückrufbitte: ${data.get("anliegen")}`)}` +
+      `?subject=${encodeURIComponent(`Kurzbewerbung: ${data.get("anliegen")}`)}` +
       `&body=${encodeURIComponent(body)}`;
 
     status.textContent =
-      "Ihr E-Mail-Programm öffnet sich mit der fertigen Nachricht. Oder rufen Sie einfach an: 09321 7613.";
+      "Ihr E-Mail-Programm öffnet sich mit der fertigen Bewerbung. Bitte noch auf Senden tippen. Oder rufen Sie einfach an: 09321 7613.";
   });
 }
 

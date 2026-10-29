@@ -1,17 +1,18 @@
 # Seniorenheim Schloss Ebracher Hof – Website
 
 Statische One-Page-Website für das Seniorenheim Schloß Ebracher Hof GmbH in
-Mainstockheim. Reines HTML, CSS und JavaScript, ohne Build-Schritt, ohne Cookies
+Mainstockheim, ausgerichtet auf die Suche nach neuen Mitarbeitenden. Reines HTML, CSS und JavaScript, ohne Build-Schritt, ohne Cookies
 und ohne externe Dienste. Schrift: Manrope, lokal in `fonts/` (SIL Open Font License).
 
 ## Gestaltung
 
 Nach einfachen Regeln aufgebaut:
 
-- **So wenig wie möglich:** Im Mittelpunkt steht, was Besucher tun sollen: anrufen
-  oder einen Rückruf anfordern (Überschrift, zwei Eingaben, ein Knopf).
-- **Ähnlichkeit und Nähe:** Gleichrangiges sieht gleich aus (Leistungen als
-  gleiche Karten, Schritte als gleiche Flächen), Zusammengehöriges steht nah beieinander.
+- **So wenig wie möglich:** Im Mittelpunkt steht, was Besucher tun sollen: sich in
+  einer Minute bewerben (Name, Telefon, Wunschstelle, ein Knopf). „Bewerben“ bei
+  einer Stelle wählt diese im Formular vor. Familien finden unten einen kurzen Hinweis.
+- **Ähnlichkeit und Nähe:** Gleichrangiges sieht gleich aus (Stellen als
+  gleiche Zeilen, Schritte als gleiche Flächen), Zusammengehöriges steht nah beieinander.
 - **Viel Weißraum** zwischen den Abschnitten.
 - **Designsystem** in `style.css` unter `:root`: Abstände in 4er-Schritten (rem),
   eine Schrift mit fünf Größen, vier Farben (dunkel, hell, Park-Grün, Mainsandstein),
@@ -25,11 +26,11 @@ Jeder Bildplatz zeigt einen gestrichelten Platzhalter mit Motiv, Dateiname und
 Format. Foto mit diesem Namen nach `img/` legen, fertig. Die vollständige Liste
 steht in `img/README.md`.
 
-### Stimmen von Angehörigen
+### Stimmen aus dem Team
 
-Der Abschnitt `#stimmen` enthält Platzhalter in [eckigen Klammern]. Nur echte
-Zitate mit Foto und schriftlichem Einverständnis eintragen; bis dahin den
-Abschnitt vor dem Livegang mit `hidden` ausblenden.
+Der Abschnitt `#team` enthält Platzhalter in [eckigen Klammern]. Nur echte Zitate
+von Mitarbeitenden mit Foto und schriftlichem Einverständnis eintragen; bis dahin
+den Abschnitt vor dem Livegang mit `hidden` ausblenden.
 
 ## Ansehen
 
@@ -50,21 +51,21 @@ Die Inhalte stammen aus öffentlichen Quellen (Gemeinde, Denkmalschutz,
 Pflegeverzeichnisse) und sollten vom Haus bestätigt werden:
 
 - **Kontakt**: Telefon 09321 7613, Fax 09321 23913, info@seniorenheim-ebracher-hof.de
-- **Leistungen** (`#pflege`, `#alltag`): v. a. Kurzzeitpflege, Gottesdienste in der
-  Hauskapelle, Sommerfest, Zusammenarbeit mit Ärzten/Therapeuten
 - **Impressum**: Geschäftsführung, USt-ID, Anschrift der FQA, Verantwortlicher
 - **Datenschutz**: Hosting-Anbieter und ggf. Datenschutzbeauftragte(r)
-- **Fotos**: 16 Bildplätze warten auf echte Fotos (siehe `img/README.md`).
-- **Nutzertest**: Seite vor dem Livegang Bewohnern, Angehörigen und Mitarbeitenden
+- **Stellen und Vorteile**: offene Stellen, Umfang und Vorteile (Vergütung, Urlaub,
+  Dienstplan) mit der Heimleitung abstimmen; Platzhalter in [Klammern] ersetzen.
+- **Fotos**: 10 Bildplätze warten auf echte Fotos (siehe `img/README.md`).
+- **Nutzertest**: Seite vor dem Livegang Mitarbeitenden und möglichen Bewerbern
   zeigen und nach ihren Rückmeldungen anpassen.
 
 ## Dateien
 
 | Datei | Inhalt |
 | --- | --- |
-| `index.html` | Startseite: Angebot, Einblicke, Team, Stimmen, Aufnahme, Fragen, Kontakt |
+| `index.html` | Startseite: Offene Stellen, Warum wir, Team, Ablauf, Fragen, Kurzbewerbung, Hinweis für Familien |
 | `img/` | Fotos (Liste und Dateinamen in `img/README.md`) |
 | `style.css` | Gestaltung, responsiv vom Handy bis zum Desktop |
-| `script.js` | Menü, Schriftgröße, Rückruf-Formular (per E-Mail), Einblendungen |
+| `script.js` | Menü, Schriftgröße, Kurzbewerbung (per E-Mail), Stellen-Vorauswahl, Einblendungen |
 | `fonts/` | Manrope (lokal) |
 | `impressum.html`, `datenschutz.html` | Rechtstexte (Vorlagen) |

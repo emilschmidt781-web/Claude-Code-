@@ -366,6 +366,12 @@ a {
   margin-top: var(--space-12);
 }
 
+.hint {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
 .facts {
   list-style: none;
   margin: var(--space-16) 0 0;
@@ -494,54 +500,44 @@ a {
     center / 70% no-repeat;
 }
 
-/* 3. Galerie */
-.gallery {
+/* Offene Stellen */
+.jobs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
-.gallery .photo {
-  aspect-ratio: 1 / 1;
+.job {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-8);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
-.gallery .g-big {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.gallery .photo:not(.g-big) .ph strong {
-  font-size: var(--text-base);
-}
-
-.gallery .photo:not(.g-big) .ph svg {
-  width: var(--space-8);
-  height: var(--space-8);
-}
-
-/* 4. Team */
-.team {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: var(--space-16);
-  align-items: start;
-}
-
-.team-lead {
+.job:hover {
+  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
-.team-text .lead {
-  margin-top: var(--space-6);
-}
-
-.team-text > p:not(.lead) {
-  margin-top: var(--space-4);
+.job p {
+  margin-top: var(--space-1);
   color: var(--muted);
 }
 
-.team-text .photo {
-  margin: var(--space-8) 0;
+.job .btn {
+  flex: none;
+}
+
+/* Team */
+.team-wide {
+  margin-top: var(--space-6);
 }
 
 /* 4. Stimmen */
@@ -605,6 +601,10 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-6);
+}
+
+.steps-3 {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .step {
@@ -783,6 +783,24 @@ a {
   display: none;
 }
 
+/* Hinweis für Familien */
+.family-note {
+  padding: var(--space-16) 0;
+  background: var(--accent-2);
+}
+
+.family-note-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.family-note p {
+  margin-top: var(--space-2);
+  max-width: 40rem;
+}
+
 /* Fußzeile */
 .footer {
   padding: var(--space-16) 0 var(--space-8);
@@ -942,8 +960,7 @@ a {
   }
 
   .hero-grid,
-  .feature,
-  .team {
+  .feature {
     grid-template-columns: 1fr;
     gap: var(--space-12);
   }
@@ -956,12 +973,8 @@ a {
     max-width: 36rem;
   }
 
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .team-lead {
-    max-width: 24rem;
+  .steps-3 {
+    grid-template-columns: 1fr;
   }
 
   .steps {
@@ -1021,6 +1034,16 @@ a {
   .quotes,
   .steps {
     grid-template-columns: 1fr;
+  }
+
+  .job,
+  .family-note-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job {
+    padding: var(--space-6);
   }
 
   .facts {
