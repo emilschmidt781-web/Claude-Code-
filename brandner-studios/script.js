@@ -132,7 +132,7 @@ onVisible([...document.querySelectorAll(".rise")], (el) => el.classList.add("in"
 document.querySelectorAll(".step").forEach((el, i) => el.style.setProperty("--sd", `${i * 0.35}s`));
 onVisible([...document.querySelectorAll(".step")], (el) => el.classList.add("in"), { threshold: 0.35 });
 
-// Schritt 4: wenn die Weltkugel fertig gezeichnet ist, gibt es „Yayy!!“ und Konfetti
+// Schritt 4: wenn die Weltkugel fertig gezeichnet ist, gibt es Konfetti
 const lastStep = document.querySelector(".step:last-child");
 if (lastStep) {
   const confetti = lastStep.querySelector(".confetti");
@@ -143,9 +143,6 @@ if (lastStep) {
     const box = lastStep.getBoundingClientRect();
     confetti.style.setProperty("--cx", `${svg.left - box.left + (158 / 240) * svg.width}px`);
     confetti.style.setProperty("--cy", `${svg.top - box.top + (34 / 140) * svg.height}px`);
-    lastStep.classList.remove("party");
-    void lastStep.offsetWidth;
-    lastStep.classList.add("party");
     if (reduceMotion) return;
     confetti.innerHTML = "";
     for (let k = 0; k < 36; k++) {
