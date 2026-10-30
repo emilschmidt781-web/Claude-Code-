@@ -40,7 +40,7 @@ if (document.fonts && document.fonts.ready) {
 }
 
 // Laptop und Handy zeigen nacheinander die fünf Beispiele – live, mit ihren eigenen Animationen
-// (zuerst steht das schnelle Bild, die lebendige Seite legt sich nach dem Laden darüber)
+// (zuerst steht das schnelle Bild, die lebendige Seite legt sich darüber, sobald sie geladen ist)
 const laptop = document.querySelector(".laptop-screen");
 const phoneScreen = document.querySelector(".phone-screen");
 if (laptop && phoneScreen && !reduceMotion) {
@@ -84,18 +84,22 @@ if (laptop && phoneScreen && !reduceMotion) {
         if (img.dataset.srcset) img.srcset = img.dataset.srcset;
         img.src = img.dataset.src;
       });
-      // Erst wenn die Seite in Ruhe steht, die Live-Vorschau starten
-      setTimeout(() => {
-        show(0);
-        setInterval(() => {
-          if (document.hidden) return;
-          i = (i + 1) % pages.length;
-          show(i);
-        }, 7000);
-      }, 2500);
     },
     { once: true }
   );
+  // Die Live-Vorschau startet sofort: das Startbild zeigt die Seite noch ohne Haus,
+  // dann baut es sich in der Live-Seite Würfel für Würfel auf
+  // (sobald die Seite selbst geladen ist – das dauert meist weniger als eine Sekunde)
+  const start = () => {
+    show(0);
+    setInterval(() => {
+      if (document.hidden) return;
+      i = (i + 1) % pages.length;
+      show(i);
+    }, 7000);
+  };
+  if (document.readyState === "complete") start();
+  else addEventListener("load", start, { once: true });
 }
 
 // Ring „100 Punkte“ füllt sich

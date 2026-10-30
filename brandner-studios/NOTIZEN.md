@@ -158,6 +158,6 @@ Stand: 22. Oktober 2026
 ## Startbild: Live-Vorschau (30.10.)
 - Laptop und Handy zeigen die Konzepte live (als eingebettete Seite mit `?embed`), mit ihren eigenen Animationen –
   z. B. baut sich beim Quader-Konzept das Haus Würfel für Würfel auf. Wechsel alle 7 Sekunden mit sanftem Überblenden (kein Wisch-Effekt).
-- Zuerst steht das schnelle Bild (gut fürs Tempo), die Live-Seite startet 2,5 Sekunden nach dem Laden.
+- Startbild `img/start-kubus-*.webp` zeigt die Quader-Seite noch ohne Haus. Die Live-Seite startet direkt nach dem Laden (meist unter einer Sekunde) und baut das Haus auf.
 - `konzepte/demo.js` blendet mit `?embed` die Konzept-Leiste und die Scrollbalken aus.
 - Bei „Bewegung reduzieren“ bleibt das erste Bild stehen. Tempotest danach: Handy 100 (3 Läufe), Computer 100.
