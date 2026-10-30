@@ -1,4 +1,10 @@
 # Einstellungen für Netlify (Ordner brandner-studios als Website hochladen).
+# Bei Verbindung mit GitHub: Base directory = brandner-studios, dann gilt der Abschnitt [build] unten.
+
+[build]
+  publish = "."
+  command = ""
+
 # Netlify leitet http:// automatisch auf https:// um. Die Kopfzeilen unten machen die Seite zusätzlich sicherer.
 
 [[headers]]
