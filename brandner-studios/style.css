@@ -472,6 +472,26 @@ section {
   animation-delay: 0.15s;
 }
 
+/* Live-Seite im Laptop und Handy: in echter Größe geladen und passend verkleinert */
+.laptop-screen iframe.live,
+.phone-screen iframe.live {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  border: 0;
+  transform: scale(var(--s, 0.5));
+  transform-origin: 0 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.laptop-screen iframe.live.ready,
+.phone-screen iframe.live.ready {
+  opacity: 1;
+}
+
 @keyframes wipe {
   from {
     clip-path: inset(0 0 0 100%);

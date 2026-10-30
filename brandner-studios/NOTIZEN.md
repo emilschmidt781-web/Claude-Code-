@@ -155,7 +155,9 @@ Stand: 22. Oktober 2026
 - Lighthouse (lokal mit Komprimierung wie bei Netlify, 29.10.2026): Handy 100 (3 Läufe), Computer 100, Konzepte-Seite Handy 100.
   Auf der Seite steht deshalb „100 – am Computer und am Handy“. Nach dem Livegang mit pagespeed.web.dev gegenprüfen.
 
-## Startbild: Wechsel-Animation (30.10.)
-- Laptop und Handy wechseln alle 3,6 Sekunden das Konzept. Das neue Bild wischt von rechts über das alte, das Handy folgt einen Tick später.
-- Die Scroll-Tour durch die ganzen Seiten wurde wieder entfernt (Wunsch: nicht nach unten scrollen).
-- Bei „Bewegung reduzieren“ bleibt das erste Bild stehen.
+## Startbild: Live-Vorschau (30.10.)
+- Laptop und Handy zeigen die Konzepte live (als eingebettete Seite mit `?embed`), mit ihren eigenen Animationen –
+  z. B. baut sich beim Quader-Konzept das Haus Würfel für Würfel auf. Wechsel alle 7 Sekunden mit Wisch-Effekt.
+- Zuerst steht das schnelle Bild (gut fürs Tempo), die Live-Seite startet 2,5 Sekunden nach dem Laden.
+- `konzepte/demo.js` blendet mit `?embed` die Konzept-Leiste und die Scrollbalken aus.
+- Bei „Bewegung reduzieren“ bleibt das erste Bild stehen. Tempotest danach: Handy 100 (3 Läufe), Computer 100.

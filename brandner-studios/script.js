@@ -39,19 +39,48 @@ if (document.fonts && document.fonts.ready) {
   start();
 }
 
-// Laptop und Handy wechseln nacheinander die fünf Beispiele – das neue Bild wischt über das alte
+// Laptop und Handy zeigen nacheinander die fünf Beispiele – live, mit ihren eigenen Animationen
+// (zuerst steht das schnelle Bild, die lebendige Seite legt sich nach dem Laden darüber)
 const laptop = document.querySelector(".laptop-screen");
-if (laptop && !reduceMotion) {
+const phoneScreen = document.querySelector(".phone-screen");
+if (laptop && phoneScreen && !reduceMotion) {
+  const pages = ["kubus", "kaffee", "wein", "yoga", "tattoo"];
   const laptopImgs = [...laptop.querySelectorAll("img")];
-  const phoneImgs = [...document.querySelectorAll(".phone-screen img")];
+  const phoneImgs = [...phoneScreen.querySelectorAll("img")];
+  const screens = [
+    { box: laptop, imgs: laptopImgs, w: 1280, h: 800 },
+    { box: phoneScreen, imgs: phoneImgs, w: 390, h: 822 },
+  ];
   let i = 0;
-  const swap = (imgs, n) =>
-    imgs.forEach((img, k) => {
-      img.classList.toggle("prev", img.classList.contains("on") && k !== n);
-      img.classList.toggle("on", k === n);
-      img.classList.toggle("wipe", k === n);
+
+  const fit = () => screens.forEach((s) => s.frame && s.frame.style.setProperty("--s", s.box.clientWidth / s.w));
+  addEventListener("resize", fit, { passive: true });
+
+  // Das Bild des nächsten Beispiels wischt herein, dann startet darüber die Live-Seite
+  const show = (n, first) =>
+    screens.forEach((s) => {
+      s.imgs.forEach((img, k) => {
+        img.classList.toggle("prev", img.classList.contains("on") && k !== n);
+        img.classList.toggle("on", k === n);
+        img.classList.toggle("wipe", k === n && !first);
+      });
+      if (!s.frame) {
+        s.frame = document.createElement("iframe");
+        s.frame.className = "live";
+        s.frame.width = s.w;
+        s.frame.height = s.h;
+        s.frame.tabIndex = -1;
+        s.frame.title = "Vorschau";
+        s.frame.setAttribute("aria-hidden", "true");
+        s.box.appendChild(s.frame);
+        fit();
+      }
+      const frame = s.frame;
+      frame.classList.remove("ready");
+      frame.onload = () => setTimeout(() => frame.classList.add("ready"), first ? 0 : 900);
+      frame.src = `konzepte/${pages[n]}.html?embed`;
     });
-  // Die übrigen Bilder erst nach dem Laden holen, damit der erste Bildschirm schneller steht
+
   addEventListener(
     "load",
     () => {
@@ -59,14 +88,15 @@ if (laptop && !reduceMotion) {
         if (img.dataset.srcset) img.srcset = img.dataset.srcset;
         img.src = img.dataset.src;
       });
+      // Erst wenn die Seite in Ruhe steht, die Live-Vorschau starten
       setTimeout(() => {
+        show(0, true);
         setInterval(() => {
           if (document.hidden) return;
-          i = (i + 1) % laptopImgs.length;
-          swap(laptopImgs, i);
-          swap(phoneImgs, i);
-        }, 3600);
-      }, 1500);
+          i = (i + 1) % pages.length;
+          show(i);
+        }, 7000);
+      }, 2500);
     },
     { once: true }
   );

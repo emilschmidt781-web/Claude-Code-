@@ -359,7 +359,7 @@ textarea{min-height:120px;resize:vertical}
   var out = "";
   cubes.forEach(function (k, i) {
     var x = k[0] - 2, y = k[1] - 1.5, z = k[2], col = cols[k[3]];
-    out += '<g class="c" style="animation-delay:' + (0.15 + i * 0.05) + 's">' +
+    out += '<g class="c" style="animation-delay:' + (0.3 + i * 0.09) + 's">' +
       '<polygon fill="' + col[0] + '" points="' + [p(x,y,z+1),p(x+1,y,z+1),p(x+1,y+1,z+1),p(x,y+1,z+1)].join(" ") + '"/>' +
       '<polygon fill="' + col[1] + '" points="' + [p(x+1,y,z),p(x+1,y+1,z),p(x+1,y+1,z+1),p(x+1,y,z+1)].join(" ") + '"/>' +
       '<polygon fill="' + col[2] + '" points="' + [p(x,y+1,z),p(x+1,y+1,z),p(x+1,y+1,z+1),p(x,y+1,z+1)].join(" ") + '"/>' +
