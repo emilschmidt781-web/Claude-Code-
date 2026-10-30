@@ -1,0 +1,54 @@
+/* Hinweisleiste auf allen Beispielseiten: zeigt, dass es ein Konzept ist */
+.demo-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: calc(100% - 24px);
+  padding: 8px 8px 8px 16px;
+  border-radius: 999px;
+  background: rgba(17, 18, 22, 0.92);
+  color: #fff;
+  font: 600 13px/1.2 system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.demo-bar i {
+  font-style: normal;
+}
+.demo-bar span b {
+  color: #ff6aa0;
+}
+.demo-bar a {
+  color: #fff;
+  text-decoration: none;
+}
+.demo-bar .demo-back {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #ff4f8b;
+}
+.demo-bar small {
+  font-weight: 400;
+  opacity: 0.75;
+}
+.demo-bar small a {
+  text-decoration: underline;
+}
+@media (max-width: 560px) {
+  .demo-bar small {
+    display: none;
+  }
+  .demo-bar i {
+    display: none;
+  }
+  .demo-bar span::first-letter {
+    text-transform: uppercase;
+  }
+}

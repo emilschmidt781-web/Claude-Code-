@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Atem Yogastudio – Design-Konzept</title>
+<meta name="description" content="Design-Konzept von Brandner Studios für ein erfundenes Yogastudio.">
+<link rel="stylesheet" href="demo.css">
+<style>
+@font-face{font-family:Fraunces;font-weight:300;font-display:swap;src:url(../fonts/Fraunces-normal-300.woff2) format("woff2")}
+@font-face{font-family:Fraunces;font-style:italic;font-weight:300;font-display:swap;src:url(../fonts/Fraunces-italic-300.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:100 1000;font-display:swap;src:url(../fonts/DMSans-normal-400.woff2) format("woff2")}
+:root{--bg:#f6f1f8;--lilac:#d9c9ef;--lilac2:#b9a2e0;--deep:#3d2c5c;--ink:#2b2236;--soft:#6c6378;--peach:#f6d2c1;--sage:#cfe0cf;--white:#fffdfb;--pad:clamp(20px,4vw,56px);--r:28px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}
+svg{display:block;max-width:100%}
+.serif{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.025em}
+.serif em{font-style:italic}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:500;color:var(--deep)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--lilac2)}
+[data-reveal]{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.16,1,.3,1),filter 1.2s}
+[data-reveal].in{opacity:1;transform:none;filter:none}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;background:var(--deep);color:var(--white);text-decoration:none;font:500 15px "DM Sans",sans-serif;border:0;cursor:pointer;transition:transform .3s,background .3s}
+.btn:hover{transform:translateY(-2px);background:var(--ink)}
+.btn.soft{background:var(--white);color:var(--deep)}
+
+header{position:sticky;top:12px;z-index:20;margin-top:12px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fffdfbcc;backdrop-filter:blur(14px);border-radius:999px;padding:10px 10px 10px 24px;box-shadow:0 10px 30px -18px #3d2c5c55}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Fraunces,serif;font-size:24px}
+.logo svg{width:30px;height:30px}
+.nav ul{display:flex;gap:26px;list-style:none;font-size:15px}
+.nav ul a{text-decoration:none;color:var(--soft)}
+.nav ul a:hover{color:var(--deep)}
+
+/* Start */
+.hero{padding:clamp(48px,7vw,96px) 0 clamp(64px,8vw,110px)}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(54px,8.4vw,128px);line-height:.95;margin:22px 0 24px;color:var(--deep)}
+.hero p{font-size:19px;color:var(--soft);max-width:460px}
+.breath{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.breath .ring{position:absolute;border-radius:50%;inset:0;background:radial-gradient(circle at 35% 30%,var(--peach),var(--lilac) 55%,var(--lilac2));animation:breathe 10s ease-in-out infinite}
+.breath .ring.r2{inset:12%;background:radial-gradient(circle at 60% 70%,var(--white),var(--lilac) 70%);opacity:.8;animation-delay:-.4s}
+.breath .ring.r3{inset:-6%;background:none;border:1px solid var(--lilac2);opacity:.6;animation-delay:-.8s}
+@keyframes breathe{0%,100%{transform:scale(.78)}45%,55%{transform:scale(1)}}
+.breath .word{position:relative;font-family:Fraunces,serif;font-style:italic;font-size:clamp(30px,3.6vw,46px);color:var(--deep);transition:opacity .6s}
+.breath .count{position:absolute;bottom:18%;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);opacity:.7}
+.breath-btn{position:absolute;bottom:2%;left:50%;transform:translateX(-50%)}
+.breath.paused .ring{animation-play-state:paused}
+
+/* Kurse */
+section{padding:clamp(72px,10vw,130px) 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.head h2{font-size:clamp(40px,5.6vw,80px);line-height:1;color:var(--deep);margin-top:14px;max-width:720px}
+.head p{color:var(--soft);max-width:380px}
+.styles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.style{border-radius:var(--r);padding:30px 28px 28px;background:var(--white);display:flex;flex-direction:column;gap:12px;min-height:300px;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.style:hover{transform:translateY(-6px) rotate(-.5deg)}
+.style:nth-child(2){background:var(--lilac)}
+.style:nth-child(3){background:var(--peach)}
+.style:nth-child(4){background:var(--sage)}
+.style:nth-child(5){background:var(--deep);color:var(--white)}
+.style:nth-child(5) p,.style:nth-child(5) .lvl{color:#ddd3ee}
+.style svg{width:64px;height:64px}
+.style h3{font-family:Fraunces,serif;font-weight:300;font-size:34px;line-height:1}
+.style p{color:var(--soft);font-size:15px}
+.lvl{margin-top:auto;font-size:13px;color:var(--soft);display:flex;gap:6px;align-items:center}
+.lvl b{display:inline-flex;gap:3px}
+.lvl b i{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.25}
+.lvl b i.on{opacity:1}
+.style.cta{background:transparent;border:1.5px dashed var(--lilac2);justify-content:center;align-items:flex-start}
+
+/* Stundenplan */
+.plan{background:var(--white);border-radius:calc(var(--r) + 8px);padding:clamp(20px,3vw,36px)}
+.days{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:18px;scrollbar-width:none}
+.days button{flex:1 0 auto;font:500 15px "DM Sans",sans-serif;padding:12px 18px;border-radius:999px;border:0;background:var(--bg);color:var(--soft);cursor:pointer}
+.days button[aria-selected=true]{background:var(--deep);color:var(--white)}
+.slots{list-style:none;display:grid;gap:10px;min-height:300px}
+.slot{display:grid;grid-template-columns:120px 1fr auto auto;gap:20px;align-items:center;padding:18px 22px;border-radius:20px;background:var(--bg);animation:in .5s cubic-bezier(.16,1,.3,1) both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.slot time{font-family:Fraunces,serif;font-size:26px;color:var(--deep)}
+.slot h3{font-size:18px;font-weight:600}
+.slot span{font-size:14px;color:var(--soft)}
+.slot .free{font-size:13px;padding:6px 12px;border-radius:999px;background:var(--sage);color:#2d4a2d;white-space:nowrap}
+.slot .free.low{background:var(--peach);color:#7a3a1d}
+.slot .btn{padding:10px 18px;font-size:14px}
+
+/* Team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.teacher .pic{aspect-ratio:4/5;border-radius:999px 999px var(--r) var(--r);overflow:hidden;margin-bottom:18px}
+.teacher .pic svg{width:100%;height:100%}
+.teacher h3{font-family:Fraunces,serif;font-weight:300;font-size:30px;color:var(--deep)}
+.teacher p{color:var(--soft);font-size:15px}
+.teacher .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.teacher .tags span{font-size:12px;padding:5px 10px;border-radius:999px;background:var(--white)}
+
+/* Preise */
+.prices-bg{background:var(--deep);color:var(--white);border-radius:48px;margin:0 clamp(8px,1.5vw,20px)}
+.prices-bg .head h2{color:var(--white)}
+.prices-bg .head p{color:#cfc3e3}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.price{background:#ffffff10;border:1px solid #ffffff22;border-radius:var(--r);padding:32px 28px;display:flex;flex-direction:column;gap:12px}
+.price.top{background:var(--lilac);color:var(--ink);border:0;transform:translateY(-14px)}
+.price .k{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.price .v{font-family:Fraunces,serif;font-size:64px;line-height:1}
+.price .v small{font:400 15px "DM Sans",sans-serif;opacity:.75}
+.price ul{list-style:none;display:grid;gap:8px;font-size:15px;margin:8px 0 18px}
+.price li::before{content:"○ ";color:var(--lilac2)}
+.price.top li::before{color:var(--deep)}
+.price .btn{margin-top:auto;justify-content:center}
+.price:not(.top) .btn{background:var(--white);color:var(--deep)}
+
+/* Fragen */
+.faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
+.faq details{background:var(--white);border-radius:22px;margin-bottom:10px;padding:0 24px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-weight:600;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:Fraunces,serif;font-size:26px;line-height:.8;color:var(--lilac2);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--soft)}
+
+/* Probestunde */
+.trial{background:linear-gradient(135deg,var(--lilac),var(--peach));border-radius:48px;padding:clamp(32px,6vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.trial h2{font-size:clamp(40px,5vw,72px);line-height:1;color:var(--deep)}
+.trial form{background:var(--white);border-radius:var(--r);padding:28px;display:grid;gap:12px}
+.trial label{display:grid;gap:6px;font-size:14px;font-weight:500}
+.trial input,.trial select{font:400 16px "DM Sans",sans-serif;padding:14px 16px;border-radius:14px;border:1px solid #d6cce4;background:var(--bg);color:var(--ink)}
+.form-note{font-size:14px;color:var(--deep);min-height:1.4em}
+
+footer.foot{padding:72px 0 40px;text-align:center}
+.foot .serif{font-size:clamp(60px,12vw,170px);line-height:1;color:var(--deep)}
+.foot p{color:var(--soft);font-size:14px;margin-top:18px}
+
+@media (max-width:980px){
+  .nav ul{display:none}
+  .hero-grid,.faq-grid,.trial{grid-template-columns:1fr}
+  .breath{max-width:420px;margin:0 auto;width:100%}
+  .styles,.team{grid-template-columns:1fr 1fr}
+  .prices{grid-template-columns:1fr}
+  .price.top{transform:none}
+  .slot{grid-template-columns:90px 1fr;gap:6px 16px}
+  .slot .free,.slot .btn{grid-column:2;justify-self:start}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .styles,.team{grid-template-columns:1fr}
+  .style{min-height:0}
+  .nav{padding-left:18px}
+  .nav .btn{padding:11px 16px;font-size:14px}
+  .slot{padding:16px}
+  .slot time{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="nav">
+    <a class="logo" href="#top"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="#d9c9ef"/><circle cx="15" cy="15" r="8" fill="#b9a2e0"/><circle cx="15" cy="15" r="3" fill="#3d2c5c"/></svg>atem</a>
+    <nav aria-label="Hauptmenü"><ul><li><a href="#kurse">Kurse</a></li><li><a href="#plan">Stundenplan</a></li><li><a href="#team">Lehrerinnen</a></li><li><a href="#preise">Preise</a></li></ul></nav>
+    <a class="btn" href="#probe">Probestunde</a>
+  </div>
+</header>
+</div>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><i></i>Yoga für jeden Körper</span>
+        <h1 class="serif">Erst <em>atmen.</em><br>Dann alles andere.</h1>
+        <p>Kleine Gruppen, warme Räume und Lehrerinnen, die dich sehen. Ob du zum ersten Mal kommst oder schon lange übst – bei uns findest du deinen Platz.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px"><a class="btn" href="#probe">Kostenlos ausprobieren</a><a class="btn soft" href="#plan">Stundenplan</a></div>
+      </div>
+      <div class="breath" id="breath">
+        <div class="ring r3"></div><div class="ring"></div><div class="ring r2"></div>
+        <span class="word" id="word" aria-live="polite">einatmen</span>
+        <span class="count" aria-hidden="true">Atme mit</span>
+        <button class="btn soft breath-btn" type="button" id="breath-btn" aria-pressed="false">Pause</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="kurse" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-reveal><div><span class="pill"><i></i>Unsere Kurse</span><h2 class="serif">Fünf Wege auf <em>die Matte.</em></h2></div><p>Von ganz ruhig bis richtig schwitzen. Die Punkte zeigen dir, wie anstrengend eine Stunde ist.</p></div>
+      <div class="styles">
+        <article class="style" data-reveal><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#d9c9ef"/><path d="M16 40c8-12 24-12 32 0" stroke="#3d2c5c" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>Hatha</h3><p>Ruhige Haltungen, lange gehalten. Ideal zum Einsteigen und Ankommen.</p><span class="lvl">Tempo <b><i class="on"></i><i class="on"></i><i></i><i></i></b></span></article>
+        <article class="style" data-reveal><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#fffdfb"/><path d="M10 36c6-10 12-10 18 0s12 10 18 0 8-6 10-4" stroke="#3d2c5c" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>Vinyasa Flow</h3><p>Bewegung im Rhythmus des Atems. Fließend, kräftigend, schweißtreibend.</p><span class="lvl">Tempo <b><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></b></span></article>
+        <article class="style" data-reveal><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#fffdfb"/><path d="M42 18a16 16 0 1 0 4 26 13 13 0 1 1-4-26z" fill="#3d2c5c"/></svg><h3>Yin &amp; Ruhe</h3><p>Lange, sanfte Dehnungen am Abend. Perfekt nach einem vollen Tag.</p><span class="lvl">Tempo <b><i class="on"></i><i></i><i></i><i></i></b></span></article>
+        <article class="style" data-reveal><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#fffdfb"/><path d="M32 12v40M24 20h16M22 30h20M24 40h16" stroke="#3d2c5c" stroke-width="3" stroke-linecap="round"/></svg><h3>Gesunder Rücken</h3><p>Kräftigen und lockern – speziell für alle, die viel sitzen.</p><span class="lvl">Tempo <b><i class="on"></i><i class="on"></i><i></i><i></i></b></span></article>
+        <article class="style" data-reveal><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#b9a2e0"/><circle cx="32" cy="36" r="12" fill="#fffdfb"/><circle cx="32" cy="18" r="5" fill="#fffdfb"/></svg><h3>Schwanger&shy;schaft</h3><p>Sanfte Übungen und Atemtechniken für die Zeit vor und nach der Geburt.</p><span class="lvl">Tempo <b><i class="on"></i><i></i><i></i><i></i></b></span></article>
+        <article class="style cta" data-reveal><h3 class="serif" style="color:var(--deep)">Nicht sicher, <em>was passt?</em></h3><p>Schreib uns kurz – wir empfehlen dir die richtige Stunde.</p><a class="btn" href="#probe">Beratung anfragen</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="plan" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-reveal><div><span class="pill"><i></i>Stundenplan</span><h2 class="serif">Finde <em>deine Stunde.</em></h2></div><p>Wähle einen Tag und sichere dir deinen Platz. Maximal zwölf Matten pro Kurs.</p></div>
+      <div class="plan" data-reveal>
+        <div class="days" role="tablist" aria-label="Wochentag wählen" id="days"></div>
+        <ul class="slots" id="slots" aria-live="polite"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-reveal><div><span class="pill"><i></i>Lehrerinnen</span><h2 class="serif">Menschen, <em>keine Trainer.</em></h2></div><p>Drei Lehrerinnen mit ganz eigenen Stilen – aber derselben Ruhe.</p></div>
+      <div class="team">
+        <div class="teacher" data-reveal><div class="pic"><svg viewBox="0 0 300 375" aria-hidden="true"><rect width="300" height="375" fill="#d9c9ef"/><circle cx="150" cy="150" r="56" fill="#f6d2c1"/><path d="M60 375c0-80 40-130 90-130s90 50 90 130z" fill="#3d2c5c"/><path d="M94 150c0-50 30-76 56-76s56 26 56 76c-10-30-30-40-56-40s-46 10-56 40z" fill="#2b2236"/></svg></div><h3>Mara</h3><p>Leitet das Studio. Liebt ruhige Hatha-Stunden und Tee danach.</p><div class="tags"><span>Hatha</span><span>Yin</span></div></div>
+        <div class="teacher" data-reveal><div class="pic"><svg viewBox="0 0 300 375" aria-hidden="true"><rect width="300" height="375" fill="#f6d2c1"/><circle cx="150" cy="150" r="56" fill="#e9b89c"/><path d="M60 375c0-80 40-130 90-130s90 50 90 130z" fill="#b9a2e0"/><circle cx="150" cy="88" r="28" fill="#6b4a3a"/><path d="M96 140c4-40 26-58 54-58s50 18 54 58c-14-22-34-30-54-30s-40 8-54 30z" fill="#6b4a3a"/></svg></div><h3>Sophie</h3><p>Bringt Schwung in den Flow. Ihre Playlists sind legendär.</p><div class="tags"><span>Vinyasa</span><span>Rücken</span></div></div>
+        <div class="teacher" data-reveal><div class="pic"><svg viewBox="0 0 300 375" aria-hidden="true"><rect width="300" height="375" fill="#cfe0cf"/><circle cx="150" cy="150" r="56" fill="#c58e6d"/><path d="M60 375c0-80 40-130 90-130s90 50 90 130z" fill="#fffdfb"/><path d="M90 170c-6-70 24-100 60-100s66 30 60 100c-6-40-26-60-60-60s-54 20-60 60z" fill="#2b2236"/></svg></div><h3>Lena</h3><p>Hebamme und Yogalehrerin. Begleitet Schwangere mit viel Wärme.</p><div class="tags"><span>Schwangerschaft</span><span>Yin</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prices-bg" id="preise">
+    <div class="wrap">
+      <div class="head" data-reveal><div><span class="pill"><i></i>Preise</span><h2 class="serif">Einfach <em>und fair.</em></h2></div><p>Keine Anmeldegebühr, keine lange Bindung. Die erste Stunde ist immer kostenlos.</p></div>
+      <div class="prices">
+        <div class="price" data-reveal><span class="k">Einzelstunde</span><span class="v">16 € <small>/ Stunde</small></span><ul><li>Für alle Kurse</li><li>Ohne Anmeldung</li><li>Matte leihen inklusive</li></ul><a class="btn" href="#probe">Platz buchen</a></div>
+        <div class="price top" data-reveal><span class="k">Beliebt · 10er-Karte</span><span class="v">135 € <small>/ 10 Stunden</small></span><ul><li>Ein halbes Jahr gültig</li><li>Teilbar mit einer Freundin</li><li>Spart 25 €</li></ul><a class="btn" href="#probe">Karte holen</a></div>
+        <div class="price" data-reveal><span class="k">Monat unbegrenzt</span><span class="v">79 € <small>/ Monat</small></span><ul><li>So oft du willst</li><li>Monatlich kündbar</li><li>Ein Workshop im Quartal gratis</li></ul><a class="btn" href="#probe">Mitglied werden</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="fragen">
+    <div class="wrap faq-grid">
+      <div data-reveal><span class="pill"><i></i>Fragen</span><h2 class="serif" style="font-size:clamp(40px,5vw,72px);line-height:1;color:var(--deep);margin-top:14px">Gut zu <em>wissen.</em></h2></div>
+      <div data-reveal>
+        <details open><summary>Ich bin gar nicht beweglich. Geht das trotzdem?</summary><p>Genau dafür ist Yoga da. Wir zeigen dir in jeder Stunde einfachere Varianten – niemand muss die Zehen berühren können.</p></details>
+        <details><summary>Was muss ich mitbringen?</summary><p>Bequeme Kleidung und etwas zu trinken. Matten, Decken und Kissen haben wir im Studio.</p></details>
+        <details><summary>Wie früh sollte ich da sein?</summary><p>Komm gern zehn Minuten vorher, dann kannst du dich in Ruhe umziehen und ankommen.</p></details>
+        <details><summary>Kann ich eine Stunde absagen?</summary><p>Ja, bis drei Stunden vorher kostenlos – einfach per Nachricht oder online.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="probe" style="padding-top:0">
+    <div class="wrap">
+      <div class="trial" data-reveal>
+        <div><h2 class="serif">Deine erste Stunde <em>ist geschenkt.</em></h2><p style="margin-top:18px;color:var(--ink);max-width:420px">Such dir einen Kurs aus, wir halten dir eine Matte frei. Atem Yogastudio · Lindenweg 5 · 00000 Musterstadt</p></div>
+        <form id="trial" novalidate>
+          <label>Vorname<input name="vorname" autocomplete="given-name"></label>
+          <label>E-Mail<input name="mail" type="email" autocomplete="email"></label>
+          <label>Welcher Kurs?<select name="kurs"><option>Hatha</option><option>Vinyasa Flow</option><option>Yin &amp; Ruhe</option><option>Gesunder Rücken</option><option>Schwangerschaft</option></select></label>
+          <button class="btn" type="submit" style="justify-content:center">Probestunde sichern</button>
+          <p class="form-note" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="serif">atem<em>.</em></div>
+    <p>Ein erfundenes Studio – Design-Konzept von Brandner Studios</p>
+  </div>
+</footer>
+
+<script>
+// Atemkreis
+(function () {
+  var word = document.getElementById("word"), box = document.getElementById("breath"), btn = document.getElementById("breath-btn");
+  var phases = ["einatmen", "halten", "ausatmen", "halten"], dur = [4500, 500, 4500, 500], i = 0, t;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { word.textContent = "durchatmen"; btn.hidden = true; return; }
+  function next() { word.textContent = phases[i]; t = setTimeout(function () { i = (i + 1) % 4; next(); }, dur[i]); }
+  next();
+  btn.addEventListener("click", function () {
+    var paused = box.classList.toggle("paused");
+    btn.textContent = paused ? "Weiter atmen" : "Pause";
+    btn.setAttribute("aria-pressed", paused);
+    if (paused) clearTimeout(t); else next();
+  });
+})();
+// Stundenplan
+var plan = {
+  Mo: [["07:00", "Hatha am Morgen", "Mara · 60 Min", 5], ["18:00", "Gesunder Rücken", "Sophie · 60 Min", 2], ["19:30", "Yin & Ruhe", "Mara · 75 Min", 7]],
+  Di: [["09:30", "Schwangerschaft", "Lena · 75 Min", 4], ["18:30", "Vinyasa Flow", "Sophie · 75 Min", 1]],
+  Mi: [["07:00", "Vinyasa Flow", "Sophie · 60 Min", 6], ["12:15", "Yoga in der Mittagspause", "Mara · 45 Min", 8], ["19:00", "Hatha", "Mara · 75 Min", 3]],
+  Do: [["10:00", "Gesunder Rücken", "Lena · 60 Min", 9], ["18:00", "Vinyasa Flow", "Sophie · 75 Min", 2], ["19:45", "Yin & Ruhe", "Lena · 75 Min", 5]],
+  Fr: [["07:00", "Hatha am Morgen", "Mara · 60 Min", 6], ["17:30", "Feierabend-Flow", "Sophie · 60 Min", 4]],
+  Sa: [["09:00", "Vinyasa Flow", "Sophie · 90 Min", 3], ["11:00", "Schwangerschaft", "Lena · 75 Min", 6]],
+  So: [["10:00", "Sonntags-Yin", "Mara · 90 Min", 2]]
+};
+var days = Object.keys(plan), daysEl = document.getElementById("days"), slots = document.getElementById("slots");
+var todayKey = days[(new Date().getDay() + 6) % 7];
+function show(d) {
+  daysEl.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.d === d); });
+  slots.innerHTML = plan[d].map(function (s, k) {
+    return '<li class="slot" style="animation-delay:' + k * 0.07 + 's"><time>' + s[0] + '</time><div><h3>' + s[1] + '</h3><span>' + s[2] + '</span></div><span class="free' + (s[3] < 3 ? " low" : "") + '">' + (s[3] < 3 ? "Nur noch " + s[3] + " frei" : s[3] + " Plätze frei") + '</span><a class="btn" href="#probe">Buchen</a></li>';
+  }).join("");
+}
+daysEl.innerHTML = days.map(function (d) { return '<button type="button" role="tab" data-d="' + d + '">' + d + (d === todayKey ? " · heute" : "") + '</button>'; }).join("");
+daysEl.querySelectorAll("button").forEach(function (b) { b.addEventListener("click", function () { show(b.dataset.d); }); });
+show(todayKey);
+// Probestunde
+document.getElementById("trial").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var f = e.target, n = f.querySelector(".form-note");
+  if (f.elements.vorname.value.trim().length < 2 || !/\S+@\S+\.\S+/.test(f.elements.mail.value)) { n.textContent = "Bitte Vorname und E-Mail ausfüllen."; return; }
+  n.textContent = "Schön, " + f.elements.vorname.value.trim() + "! Das ist ein Konzept – hier käme deine Bestätigung.";
+});
+</script>
+<script src="demo.js"></script>
+</body>
+</html>

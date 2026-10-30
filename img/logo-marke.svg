@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Brandner Studios">
+  <title>Brandner Studios</title>
+  <defs>
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="32" y1="4" x2="92" y2="96">
+      <stop offset="0" stop-color="#e0337a"/><stop offset=".45" stop-color="#e5a3cf"/>
+      <stop offset=".75" stop-color="#5fb0ec"/><stop offset="1" stop-color="#7d8de0"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="4" width="22" height="92" rx="6" fill="#1f1f22"/>
+    <path d="M32 4h30a22 22 0 0 1 0 44H32z" fill="url(#g)"/>
+    <path d="M32 52h36a22 22 0 0 1 0 44H32z" fill="url(#g)"/>
+    <circle cx="92" cy="11" r="7" fill="#d8ff3e"/>
+</svg>

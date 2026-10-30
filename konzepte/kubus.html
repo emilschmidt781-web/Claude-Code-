@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Quader Architektur – Design-Konzept</title>
+<meta name="description" content="Design-Konzept von Brandner Studios für ein erfundenes Architekturbüro.">
+<link rel="stylesheet" href="demo.css">
+<style>
+@font-face{font-family:Archivo;font-weight:100 900;font-display:swap;src:url(../fonts/Archivo-normal-400.woff2) format("woff2")}
+@font-face{font-family:"Archivo Wide";font-weight:800;font-display:swap;src:url(../fonts/ArchivoWide-800.woff2) format("woff2")}
+:root{--paper:#f4f2ee;--ink:#161616;--soft:#5d5b57;--line:#16161622;--red:#e2412b;--blue:#1f4bd8;--yellow:#f2c230;--pad:clamp(20px,4vw,48px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.55 Archivo,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--pad);position:relative}
+.wide{font-family:"Archivo Wide",Archivo,sans-serif;font-weight:800;letter-spacing:-.02em;text-transform:uppercase}
+.label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.label i{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:0;background:var(--red)}
+[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* Raster im Hintergrund */
+.grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:calc((100% - 2*var(--pad))/6) 100%;background-position:var(--pad) 0;opacity:.5}
+
+/* Kopf */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:20px;letter-spacing:-.02em}
+.logo svg{width:34px;height:34px}
+.nav ul{display:flex;gap:28px;list-style:none;font-weight:600;font-size:15px}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{color:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--red)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.menu-btn{display:none}
+
+/* Start */
+.hero{position:relative;padding:56px 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:32px;align-items:center;min-height:560px}
+.hero h1{font-size:clamp(46px,7.4vw,112px);line-height:.9;margin:22px 0 26px}
+.hero h1 span{display:block}
+.hero h1 .r{color:var(--red)}
+.hero p.lead{max-width:470px;font-size:19px;color:var(--soft)}
+.hero .cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.iso{width:100%;height:auto;overflow:visible}
+.iso .c{transform-box:fill-box;animation:drop .9s cubic-bezier(.16,1,.3,1) both}
+@keyframes drop{from{opacity:0;transform:translateY(-60px)}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);margin-top:48px}
+.facts div{padding:18px 18px 22px 0;border-right:1px solid var(--line)}
+.facts div:last-child{border:0}
+.facts b{display:block;font-size:30px;font-weight:900;letter-spacing:-.03em}
+.facts span{font-size:14px;color:var(--soft)}
+
+/* Laufband */
+.band{background:var(--ink);color:var(--paper);overflow:hidden;padding:18px 0;margin-top:72px}
+.band div{display:flex;gap:48px;width:max-content;animation:run 30s linear infinite}
+.band span{font-size:28px;display:flex;align-items:center;gap:48px;white-space:nowrap}
+.band span::after{content:"";width:18px;height:18px;background:var(--yellow);border-radius:50%}
+.band span:nth-child(3n+2)::after{border-radius:0;background:var(--red)}
+.band span:nth-child(3n)::after{background:var(--blue);clip-path:polygon(50% 0,100% 100%,0 100%);border-radius:0}
+@keyframes run{to{transform:translateX(-50%)}}
+
+section{padding:clamp(72px,10vw,128px) 0}
+.sec-head{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:end;margin-bottom:48px}
+.sec-head h2{font-size:clamp(34px,5vw,64px);line-height:.95}
+.sec-head p{color:var(--soft);max-width:520px}
+
+/* Projekte */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filters button{font:600 14px Archivo,sans-serif;padding:10px 16px;border:2px solid var(--ink);background:transparent;cursor:pointer;color:var(--ink)}
+.filters button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.project{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s}
+.project:hover{transform:translateY(-6px)}
+.project.hide{display:none}
+.project figure{aspect-ratio:4/3;background:#ebe8e2;position:relative;overflow:hidden}
+.project figure svg{width:100%;height:100%}
+.project figure em{position:absolute;top:12px;left:12px;font-style:normal;font-size:12px;font-weight:700;background:var(--paper);padding:5px 9px}
+.project .body{padding:20px 20px 22px}
+.project h3{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.project p{color:var(--soft);font-size:15px;margin:6px 0 16px}
+.project dl{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);padding-top:12px;font-size:13px}
+.project dt{color:var(--soft)}
+.project dd{font-weight:700}
+
+/* Leistungen */
+.dark{background:var(--ink);color:var(--paper)}
+.dark .sec-head p{color:#bdb9b2}
+.services{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #ffffff33}
+.service{padding:28px 24px 32px 0;border-right:1px solid #ffffff22;padding-left:20px}
+.service:first-child{padding-left:0}
+.service:last-child{border:0}
+.service .shape{width:52px;height:52px;margin-bottom:28px}
+.service h3{font-size:22px;margin-bottom:10px}
+.service p{color:#bdb9b2;font-size:15px}
+.service ul{list-style:none;margin-top:18px;font-size:14px}
+.service li{padding:8px 0;border-top:1px solid #ffffff1a}
+
+/* Ablauf */
+.phases{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:p}
+.phase{position:relative;padding:0 20px 0 0}
+.phase .bar{height:14px;margin-bottom:22px;transform-origin:left;transform:scaleX(0);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.phases.in .bar{transform:none}
+.phase:nth-child(1) .bar{background:var(--ink)}
+.phase:nth-child(2) .bar{background:var(--blue);transition-delay:.15s}
+.phase:nth-child(3) .bar{background:var(--yellow);transition-delay:.3s}
+.phase:nth-child(4) .bar{background:var(--red);transition-delay:.45s}
+.phase:nth-child(5) .bar{background:var(--ink);transition-delay:.6s}
+.phase b{font-size:13px;color:var(--soft);font-weight:700}
+.phase h3{font-size:22px;margin:4px 0 8px}
+.phase p{font-size:15px;color:var(--soft)}
+
+/* Haltung */
+.statement{background:var(--yellow)}
+.statement blockquote{font-size:clamp(30px,4.6vw,62px);line-height:1.05;font-weight:800;letter-spacing:-.03em;max-width:1100px}
+.statement blockquote span{background:var(--ink);color:var(--yellow);padding:0 .15em}
+.statement footer{margin-top:28px;font-weight:700}
+
+/* Team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.person .face{aspect-ratio:1;background:#ebe8e2;margin-bottom:16px}
+.person .face svg{width:100%;height:100%}
+.person h3{font-size:22px}
+.person span{color:var(--soft);font-size:15px}
+
+/* Kontakt */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact h2{font-size:clamp(40px,6vw,84px);line-height:.92;margin:16px 0 24px}
+.contact address{font-style:normal;display:grid;gap:4px;margin-bottom:28px}
+.map{border:2px solid var(--ink);aspect-ratio:16/10;background:#fff}
+form{display:grid;gap:14px;background:#fff;border:1px solid var(--line);padding:28px}
+label{display:grid;gap:6px;font-weight:700;font-size:14px}
+input,select,textarea{font:400 16px Archivo,sans-serif;padding:14px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:0;width:100%}
+textarea{min-height:120px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:block;font-weight:600}
+.chips input{position:absolute;opacity:0;width:1px}
+.chips span{display:block;padding:10px 14px;border:2px solid var(--ink);cursor:pointer}
+.chips input:checked+span{background:var(--blue);border-color:var(--blue);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--red);outline-offset:2px}
+.form-note{font-size:14px;color:var(--soft);min-height:1.4em}
+
+.foot{border-top:2px solid var(--ink);padding:40px 0 32px}
+.foot-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:14px}
+.foot .big{font-size:clamp(60px,15vw,220px);line-height:.8;letter-spacing:-.06em;font-weight:900;margin-bottom:28px}
+
+@media (max-width:960px){
+  .nav ul{display:none}
+  .hero-grid{grid-template-columns:1fr;min-height:0}
+  .iso{max-width:520px;margin:0 auto}
+  .sec-head,.contact-grid{grid-template-columns:1fr}
+  .projects{grid-template-columns:repeat(2,1fr)}
+  .services{grid-template-columns:repeat(2,1fr)}
+  .service{padding:24px 16px 28px 0 !important;border-right:0;border-bottom:1px solid #ffffff22}
+  .phases{grid-template-columns:1fr;gap:28px}
+  .team{grid-template-columns:repeat(3,1fr);gap:12px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .nav .btn{padding:11px 14px;font-size:14px}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .facts div:nth-child(2){border-right:0}
+  .facts div{border-bottom:1px solid var(--line);padding-left:0}
+  .projects,.services,.team{grid-template-columns:1fr}
+  .band span{font-size:20px}
+  form{padding:20px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Quader Architektur – nach oben">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><rect width="16" height="16" fill="#e2412b"/><circle cx="26" cy="8" r="8" fill="#1f4bd8"/><path d="M0 34 L8 18 L16 34Z" fill="#f2c230"/><rect x="18" y="18" width="16" height="16" fill="#161616"/></svg>
+      QUADER
+    </a>
+    <nav aria-label="Hauptmenü"><ul><li><a href="#projekte">Projekte</a></li><li><a href="#leistungen">Leistungen</a></li><li><a href="#ablauf">Ablauf</a></li><li><a href="#buero">Büro</a></li></ul></nav>
+    <a class="btn" href="#kontakt">Projekt anfragen</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-bottom:0">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="label"><i></i>Architekturbüro für Franken</p>
+          <h1 class="wide"><span>Räume</span><span>mit klarer</span><span class="r">Form.</span></h1>
+          <p class="lead">Wir planen Häuser, Umbauten und Arbeitsorte, die einfach funktionieren – vom ersten Gespräch bis zur Schlüsselübergabe.</p>
+          <div class="cta"><a class="btn" href="#projekte">Projekte ansehen <span aria-hidden="true">→</span></a><a class="btn ghost" href="#kontakt">Erstgespräch</a></div>
+        </div>
+        <svg class="iso" id="iso" viewBox="-290 -330 580 480" role="img" aria-label="Gezeichnetes Haus aus bunten Würfeln"></svg>
+      </div>
+      <div class="facts" data-reveal>
+        <div><b>Wohnen</b><span>Einfamilien- und Mehrfamilienhäuser</span></div>
+        <div><b>Umbau</b><span>Altbau, Scheune, Dachgeschoss</span></div>
+        <div><b>Gewerbe</b><span>Praxis, Büro, Laden</span></div>
+        <div><b>Innen</b><span>Möbel, Licht, Materialien</span></div>
+      </div>
+    </div>
+    <div class="band" aria-hidden="true"><div>
+      <span class="wide">Planen</span><span class="wide">Bauen</span><span class="wide">Umbauen</span><span class="wide">Einrichten</span><span class="wide">Begleiten</span><span class="wide">Wohnen</span>
+      <span class="wide">Planen</span><span class="wide">Bauen</span><span class="wide">Umbauen</span><span class="wide">Einrichten</span><span class="wide">Begleiten</span><span class="wide">Wohnen</span>
+    </div></div>
+  </section>
+
+  <section id="projekte">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="label"><i></i>Ausgewählte Projekte</p><h2 class="wide">Gebaut, nicht nur gezeichnet.</h2></div>
+        <p>Jedes Projekt beginnt mit der Frage, wie die Menschen darin leben und arbeiten wollen. Die Form folgt danach.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Projekte filtern">
+        <button type="button" aria-pressed="true" data-f="alle">Alle</button>
+        <button type="button" aria-pressed="false" data-f="wohnen">Wohnen</button>
+        <button type="button" aria-pressed="false" data-f="umbau">Umbau</button>
+        <button type="button" aria-pressed="false" data-f="gewerbe">Gewerbe</button>
+      </div>
+      <div class="projects">
+        <article class="project" data-cat="wohnen" data-reveal>
+          <figure><svg viewBox="0 0 400 300" aria-hidden="true"><rect x="0" y="250" width="400" height="50" fill="#d9d4cb"/><rect x="70" y="120" width="190" height="130" fill="#fff" stroke="#161616" stroke-width="3"/><rect x="200" y="70" width="130" height="180" fill="#161616"/><rect x="95" y="150" width="60" height="70" fill="#1f4bd8"/><rect x="225" y="100" width="80" height="40" fill="#f2c230"/><rect x="225" y="165" width="35" height="85" fill="#f4f2ee"/><circle cx="350" cy="60" r="22" fill="#e2412b"/></svg><em>Wohnen</em></figure>
+          <div class="body"><h3>Haus am Hang</h3><p>Zwei Körper, ein Garten: Wohnen unten, Arbeiten oben mit Blick ins Tal.</p>
+          <dl><div><dt>Ort</dt><dd>Musterdorf</dd></div><div><dt>Fläche</dt><dd>186 m²</dd></div><div><dt>Phase</dt><dd>Fertig</dd></div></dl></div>
+        </article>
+        <article class="project" data-cat="umbau" data-reveal>
+          <figure><svg viewBox="0 0 400 300" aria-hidden="true"><rect x="0" y="250" width="400" height="50" fill="#d9d4cb"/><path d="M60 250V140L200 50L340 140V250Z" fill="#c8bfb0" stroke="#161616" stroke-width="3"/><rect x="150" y="150" width="100" height="100" fill="#161616"/><rect x="160" y="160" width="80" height="90" fill="#f2c230"/><path d="M200 50L340 140H60Z" fill="#e2412b"/><rect x="80" y="170" width="40" height="40" fill="#fff" stroke="#161616" stroke-width="3"/><rect x="280" y="170" width="40" height="40" fill="#fff" stroke="#161616" stroke-width="3"/></svg><em>Umbau</em></figure>
+          <div class="body"><h3>Scheune Nord</h3><p>Aus einer alten Scheune wird ein helles Wohnhaus – die Balken bleiben sichtbar.</p>
+          <dl><div><dt>Ort</dt><dd>Beispielhof</dd></div><div><dt>Fläche</dt><dd>240 m²</dd></div><div><dt>Phase</dt><dd>Fertig</dd></div></dl></div>
+        </article>
+        <article class="project" data-cat="gewerbe" data-reveal>
+          <figure><svg viewBox="0 0 400 300" aria-hidden="true"><rect x="0" y="250" width="400" height="50" fill="#d9d4cb"/><rect x="40" y="90" width="320" height="160" fill="#fff" stroke="#161616" stroke-width="3"/><g fill="#1f4bd8"><rect x="60" y="110" width="50" height="50"/><rect x="125" y="110" width="50" height="50"/><rect x="190" y="110" width="50" height="50"/><rect x="255" y="110" width="50" height="50"/></g><rect x="60" y="180" width="245" height="70" fill="#161616"/><rect x="320" y="110" width="25" height="140" fill="#e2412b"/><rect x="40" y="70" width="320" height="20" fill="#161616"/></svg><em>Gewerbe</em></figure>
+          <div class="body"><h3>Praxis im Zentrum</h3><p>Kurze Wege, viel Tageslicht, ruhige Farben – eine Praxis, in der man gern wartet.</p>
+          <dl><div><dt>Ort</dt><dd>Musterstadt</dd></div><div><dt>Fläche</dt><dd>320 m²</dd></div><div><dt>Phase</dt><dd>Im Bau</dd></div></dl></div>
+        </article>
+        <article class="project" data-cat="wohnen" data-reveal>
+          <figure><svg viewBox="0 0 400 300" aria-hidden="true"><rect x="0" y="250" width="400" height="50" fill="#d9d4cb"/><rect x="110" y="40" width="180" height="210" fill="#fff" stroke="#161616" stroke-width="3"/><g fill="#161616"><rect x="130" y="60" width="60" height="40"/><rect x="210" y="60" width="60" height="40"/><rect x="130" y="120" width="60" height="40"/><rect x="210" y="120" width="60" height="40"/></g><rect x="180" y="180" width="40" height="70" fill="#e2412b"/><rect x="290" y="150" width="60" height="100" fill="#f2c230"/><circle cx="70" cy="200" r="40" fill="#1f4bd8"/></svg><em>Wohnen</em></figure>
+          <div class="body"><h3>Stadthaus Vier</h3><p>Vier Wohnungen auf schmalem Grund – jede mit eigenem Balkon und Abstellraum.</p>
+          <dl><div><dt>Ort</dt><dd>Musterstadt</dd></div><div><dt>Fläche</dt><dd>410 m²</dd></div><div><dt>Phase</dt><dd>Planung</dd></div></dl></div>
+        </article>
+        <article class="project" data-cat="umbau" data-reveal>
+          <figure><svg viewBox="0 0 400 300" aria-hidden="true"><rect x="0" y="250" width="400" height="50" fill="#d9d4cb"/><rect x="60" y="130" width="280" height="120" fill="#c8bfb0" stroke="#161616" stroke-width="3"/><path d="M60 130L200 60L340 130Z" fill="#161616"/><rect x="150" y="70" width="100" height="45" fill="#f2c230"/><rect x="90" y="160" width="60" height="60" fill="#fff" stroke="#161616" stroke-width="3"/><rect x="250" y="160" width="60" height="90" fill="#1f4bd8"/></svg><em>Umbau</em></figure>
+          <div class="body"><h3>Dach mit Ausblick</h3><p>Ein ungenutzter Dachboden wird zur Wohnung mit großem Fenster nach Süden.</p>
+          <dl><div><dt>Ort</dt><dd>Beispielhof</dd></div><div><dt>Fläche</dt><dd>92 m²</dd></div><div><dt>Phase</dt><dd>Fertig</dd></div></dl></div>
+        </article>
+        <article class="project" data-cat="gewerbe" data-reveal>
+          <figure><svg viewBox="0 0 400 300" aria-hidden="true"><rect x="0" y="250" width="400" height="50" fill="#d9d4cb"/><rect x="50" y="110" width="300" height="140" fill="#f2c230"/><rect x="50" y="90" width="300" height="20" fill="#161616"/><rect x="80" y="140" width="150" height="110" fill="#fff" stroke="#161616" stroke-width="3"/><rect x="255" y="140" width="65" height="110" fill="#161616"/><circle cx="155" cy="195" r="30" fill="#e2412b"/></svg><em>Gewerbe</em></figure>
+          <div class="body"><h3>Laden &amp; Werkstatt</h3><p>Vorne verkaufen, hinten arbeiten: ein Laden mit offener Werkstatt für eine Schreinerei.</p>
+          <dl><div><dt>Ort</dt><dd>Musterdorf</dd></div><div><dt>Fläche</dt><dd>150 m²</dd></div><div><dt>Phase</dt><dd>Fertig</dd></div></dl></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="leistungen">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="label"><i style="background:var(--yellow)"></i>Leistungen</p><h2 class="wide">Alles aus einer Hand.</h2></div>
+        <p>Du hast einen Ansprechpartner für das ganze Projekt. Wir kümmern uns um Pläne, Ämter und Handwerker.</p>
+      </div>
+      <div class="services">
+        <div class="service" data-reveal><svg class="shape" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" fill="#e2412b"/></svg><h3>Entwurf</h3><p>Wir hören zu, skizzieren Varianten und bauen ein Modell.</p><ul><li>Bestandsaufnahme</li><li>Skizzen und Modell</li><li>Kostenschätzung</li></ul></div>
+        <div class="service" data-reveal><svg class="shape" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="26" fill="#1f4bd8"/></svg><h3>Genehmigung</h3><p>Wir reichen alles beim Bauamt ein und klären die Fragen.</p><ul><li>Bauantrag</li><li>Energienachweis</li><li>Abstimmung mit dem Amt</li></ul></div>
+        <div class="service" data-reveal><svg class="shape" viewBox="0 0 52 52" aria-hidden="true"><path d="M26 0L52 52H0Z" fill="#f2c230"/></svg><h3>Bauleitung</h3><p>Wir sind auf der Baustelle und achten auf Termine und Kosten.</p><ul><li>Angebote vergleichen</li><li>Termine planen</li><li>Abnahme</li></ul></div>
+        <div class="service" data-reveal><svg class="shape" viewBox="0 0 52 52" aria-hidden="true"><rect x="0" y="0" width="24" height="52" fill="#fff"/><rect x="28" y="0" width="24" height="24" fill="#fff"/><rect x="28" y="28" width="24" height="24" fill="#e2412b"/></svg><h3>Innenraum</h3><p>Möbel, Licht und Farben, die zum Haus passen.</p><ul><li>Einbaumöbel</li><li>Lichtplanung</li><li>Material und Farbe</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ablauf">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="label"><i style="background:var(--blue)"></i>So läuft es ab</p><h2 class="wide">In fünf Schritten zum Haus.</h2></div>
+        <p>Du weißt immer, wo dein Projekt steht und was als Nächstes kommt.</p>
+      </div>
+      <ol class="phases" id="phases">
+        <li class="phase"><div class="bar"></div><b>01</b><h3>Kennenlernen</h3><p>Wir treffen uns vor Ort und sprechen über Wünsche und Budget.</p></li>
+        <li class="phase"><div class="bar"></div><b>02</b><h3>Entwurf</h3><p>Du bekommst Skizzen, ein Modell und eine erste Kostenschätzung.</p></li>
+        <li class="phase"><div class="bar"></div><b>03</b><h3>Antrag</h3><p>Wir reichen die Pläne ein und klären alles mit dem Amt.</p></li>
+        <li class="phase"><div class="bar"></div><b>04</b><h3>Bau</h3><p>Wir begleiten die Baustelle und halten dich auf dem Laufenden.</p></li>
+        <li class="phase"><div class="bar"></div><b>05</b><h3>Einzug</h3><p>Abnahme, Schlüssel, fertig – und wir bleiben ansprechbar.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap" data-reveal>
+      <blockquote>„Ein gutes Haus erkennt man daran, dass man <span>nicht darüber nachdenkt</span>, wie man darin lebt.“</blockquote>
+      <footer>— Haltung des Büros</footer>
+    </div>
+  </section>
+
+  <section id="buero">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="label"><i style="background:var(--yellow)"></i>Das Büro</p><h2 class="wide">Klein. Direkt. Erreichbar.</h2></div>
+        <p>Drei Menschen, ein großer Tisch, viele Modelle. Bei uns sprichst du immer mit denen, die auch planen.</p>
+      </div>
+      <div class="team">
+        <div class="person" data-reveal><div class="face"><svg viewBox="0 0 300 300" aria-hidden="true"><rect width="300" height="300" fill="#e2412b"/><circle cx="150" cy="120" r="56" fill="#f4f2ee"/><rect x="70" y="190" width="160" height="110" fill="#161616"/></svg></div><h3>Anna Beispiel</h3><span>Architektin · Entwurf</span></div>
+        <div class="person" data-reveal><div class="face"><svg viewBox="0 0 300 300" aria-hidden="true"><rect width="300" height="300" fill="#1f4bd8"/><rect x="96" y="66" width="108" height="108" fill="#f4f2ee"/><path d="M60 300L150 190L240 300Z" fill="#f2c230"/></svg></div><h3>Jonas Muster</h3><span>Architekt · Bauleitung</span></div>
+        <div class="person" data-reveal><div class="face"><svg viewBox="0 0 300 300" aria-hidden="true"><rect width="300" height="300" fill="#f2c230"/><circle cx="150" cy="120" r="56" fill="#161616"/><circle cx="150" cy="300" r="100" fill="#f4f2ee"/></svg></div><h3>Lea Probe</h3><span>Innenarchitektin</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt" style="padding-top:0">
+    <div class="wrap contact-grid">
+      <div data-reveal>
+        <p class="label"><i></i>Kontakt</p>
+        <h2 class="wide">Lass uns über dein Projekt reden.</h2>
+        <address><b>Quader Architektur</b><span>Beispielweg 12 · 00000 Musterstadt</span><span>Mo–Fr 8–17 Uhr</span><a href="#kontakt">hallo@quader-beispiel.de</a></address>
+        <svg class="map" viewBox="0 0 480 300" role="img" aria-label="Gezeichnete Karte mit Standort">
+          <rect width="480" height="300" fill="#fff"/>
+          <g stroke="#d9d4cb" stroke-width="10" fill="none"><path d="M0 90H480M0 210H480M120 0V300M300 0V300M380 0L200 300"/></g>
+          <g fill="#ebe8e2"><rect x="20" y="110" width="80" height="80"/><rect x="140" y="20" width="140" height="50"/><rect x="320" y="110" width="140" height="80"/><rect x="140" y="230" width="60" height="50"/></g>
+          <rect x="150" y="110" width="120" height="80" fill="#f2c230"/>
+          <circle cx="210" cy="150" r="16" fill="#e2412b"/><circle cx="210" cy="150" r="30" fill="none" stroke="#e2412b" stroke-width="3"/>
+        </svg>
+      </div>
+      <form id="anfrage" novalidate data-reveal>
+        <fieldset style="border:0;display:grid;gap:10px"><legend class="label" style="margin-bottom:8px">Worum geht es?</legend>
+          <div class="chips"><label><input type="radio" name="art" value="Neubau" checked><span>Neubau</span></label><label><input type="radio" name="art" value="Umbau"><span>Umbau</span></label><label><input type="radio" name="art" value="Gewerbe"><span>Gewerbe</span></label><label><input type="radio" name="art" value="Innenraum"><span>Innenraum</span></label></div>
+        </fieldset>
+        <label>Name<input name="name" autocomplete="name" required></label>
+        <label>E-Mail<input name="mail" type="email" autocomplete="email" required></label>
+        <label>Kurz beschrieben<textarea name="text" placeholder="Was hast du vor?"></textarea></label>
+        <button class="btn" type="submit" style="justify-content:center">Anfrage senden</button>
+        <p class="form-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="big" aria-hidden="true">QUADER</div>
+    <div class="foot-grid"><span>Quader Architektur · Musterstadt</span><span>Ein erfundenes Büro – Design-Konzept von Brandner Studios</span></div>
+  </div>
+</footer>
+
+<script>
+// Isometrisches Haus aus Würfeln
+(function () {
+  var svg = document.getElementById("iso"), s = 46, c = Math.cos(Math.PI / 6), n = Math.sin(Math.PI / 6);
+  var cols = { r: ["#e2412b", "#b52f1d", "#ff6a4f"], b: ["#1f4bd8", "#1636a3", "#4a72ff"], y: ["#f2c230", "#c99b14", "#ffdb63"], k: ["#161616", "#000", "#3a3a3a"], w: ["#fff", "#d9d4cb", "#fff"] };
+  var cubes = [];
+  for (var x = 0; x < 4; x++) for (var y = 0; y < 3; y++) cubes.push([x, y, 0, "w"]);
+  [[0,0,1,"r"],[1,0,1,"r"],[0,1,1,"r"],[1,1,1,"k"],[0,2,1,"w"],[3,0,1,"b"],[3,1,1,"b"],[3,2,1,"b"],[2,2,1,"w"],[0,0,2,"y"],[3,0,2,"b"],[3,1,2,"k"],[3,0,3,"y"],[0,1,2,"w"]].forEach(function (k) { cubes.push(k); });
+  cubes.sort(function (a, b) { return a[0] + a[1] + a[2] - (b[0] + b[1] + b[2]) || a[2] - b[2]; });
+  var p = function (x, y, z) { return ((x - y) * c * s).toFixed(1) + "," + ((x + y) * n * s - z * s).toFixed(1); };
+  var out = "";
+  cubes.forEach(function (k, i) {
+    var x = k[0] - 2, y = k[1] - 1.5, z = k[2], col = cols[k[3]];
+    out += '<g class="c" style="animation-delay:' + (0.3 + i * 0.09) + 's">' +
+      '<polygon fill="' + col[0] + '" points="' + [p(x,y,z+1),p(x+1,y,z+1),p(x+1,y+1,z+1),p(x,y+1,z+1)].join(" ") + '"/>' +
+      '<polygon fill="' + col[1] + '" points="' + [p(x+1,y,z),p(x+1,y+1,z),p(x+1,y+1,z+1),p(x+1,y,z+1)].join(" ") + '"/>' +
+      '<polygon fill="' + col[2] + '" points="' + [p(x,y+1,z),p(x+1,y+1,z),p(x+1,y+1,z+1),p(x,y+1,z+1)].join(" ") + '"/>' +
+      '<g fill="none" stroke="#161616" stroke-width="1.2" stroke-linejoin="round"><polygon points="' + [p(x,y,z+1),p(x+1,y,z+1),p(x+1,y+1,z+1),p(x,y+1,z+1)].join(" ") + '"/><polygon points="' + [p(x+1,y,z),p(x+1,y+1,z),p(x+1,y+1,z+1),p(x+1,y,z+1)].join(" ") + '"/><polygon points="' + [p(x,y+1,z),p(x+1,y+1,z),p(x+1,y+1,z+1),p(x,y+1,z+1)].join(" ") + '"/></g></g>';
+  });
+  out += '<circle cx="190" cy="-250" r="34" fill="#e2412b"/><path d="M-250 -220l40 -70 40 70z" fill="#1f4bd8"/>';
+  svg.innerHTML = out;
+})();
+// Projekte filtern
+document.querySelectorAll(".filters button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    document.querySelectorAll(".filters button").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+    document.querySelectorAll(".project").forEach(function (p) { p.classList.toggle("hide", b.dataset.f !== "alle" && p.dataset.cat !== b.dataset.f); });
+  });
+});
+// Ablauf-Balken
+new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { e[0].target.classList.add("in"); o.disconnect(); } }, { threshold: .3 }).observe(document.getElementById("phases"));
+// Formular (nur Konzept)
+document.getElementById("anfrage").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var f = e.target, note = f.querySelector(".form-note");
+  if (f.elements.name.value.trim().length < 2 || !/\S+@\S+\.\S+/.test(f.elements.mail.value)) { note.textContent = "Bitte Name und E-Mail ausfüllen."; return; }
+  note.textContent = "Danke, " + f.elements.name.value.trim() + "! Das ist ein Konzept – hier würde die Anfrage verschickt.";
+  f.reset();
+});
+</script>
+<script src="demo.js"></script>
+</body>
+</html>
