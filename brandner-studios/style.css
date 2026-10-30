@@ -515,13 +515,17 @@ section {
   gap: 12px;
   padding: 10px 16px 10px 10px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.94);
+  /* deckend weiß, damit die Live-Seite dahinter nicht durchscheint und flackert */
+  background: #fff;
   box-shadow: var(--shadow);
   color: var(--ink);
   text-decoration: none;
   line-height: 1.2;
   transition: transform 0.4s var(--ease);
   animation: bob 6s ease-in-out infinite;
+  /* eigene Ebene: wird beim Schweben nicht bei jedem Bild neu gezeichnet */
+  will-change: translate;
+  backface-visibility: hidden;
 }
 
 .float-card:hover {
@@ -1819,6 +1823,7 @@ section {
   }
   .float-card {
     padding: 8px 12px 8px 8px;
+    animation: none;
   }
   .ring {
     width: 42px;
