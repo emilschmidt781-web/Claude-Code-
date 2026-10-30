@@ -53,7 +53,14 @@ if (laptop && phoneScreen && !reduceMotion) {
   ];
   let i = 0;
 
-  const fit = () => screens.forEach((s) => s.frame && s.frame.style.setProperty("--s", s.box.clientWidth / s.w));
+  // Live-Seite passend verkleinern und genau bis zum unteren Rand des Bildschirms reichen lassen
+  const fit = () =>
+    screens.forEach((s) => {
+      if (!s.frame) return;
+      const scale = s.box.clientWidth / s.w;
+      s.frame.style.setProperty("--s", scale);
+      s.frame.height = Math.ceil(s.box.clientHeight / scale);
+    });
   addEventListener("resize", fit, { passive: true });
 
   // Kurz das Bild des nächsten Beispiels zeigen, dann startet darüber die Live-Seite

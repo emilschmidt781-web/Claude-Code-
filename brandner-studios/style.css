@@ -447,7 +447,17 @@ section {
   transform: none;
 }
 
-/* Live-Seite im Laptop und Handy: in echter Größe geladen und passend verkleinert */
+/* Live-Seite im Laptop und Handy: in echter Größe geladen und passend verkleinert.
+   Jeder Bildschirm bildet eine eigene Ebene, damit der Laptop nicht über den Rand des Handys malt. */
+.laptop-screen,
+.phone-screen {
+  isolation: isolate;
+}
+
+.phone {
+  z-index: 1;
+}
+
 .laptop-screen iframe.live,
 .phone-screen iframe.live {
   position: absolute;
