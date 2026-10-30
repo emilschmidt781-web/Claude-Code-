@@ -447,6 +447,13 @@ section {
   transform: none;
 }
 
+/* Lange Bilder der ganzen Seite: volle Breite, Höhe natürlich, werden per Animation gescrollt */
+.laptop-screen img.tall,
+.phone-screen img.tall {
+  bottom: auto;
+  height: auto;
+}
+
 .hero-copy {
   position: absolute;
   left: 32px;

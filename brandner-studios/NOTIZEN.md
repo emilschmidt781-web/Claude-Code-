@@ -154,3 +154,10 @@ Stand: 22. Oktober 2026
 - Abschnitte weiter unten werden erst berechnet, wenn sie in die Nähe kommen (`content-visibility`).
 - Lighthouse (lokal mit Komprimierung wie bei Netlify, 29.10.2026): Handy 100 (3 Läufe), Computer 100, Konzepte-Seite Handy 100.
   Auf der Seite steht deshalb „100 – am Computer und am Handy“. Nach dem Livegang mit pagespeed.web.dev gegenprüfen.
+
+## Startbild: Website-Tour (30.10.)
+- Laptop und Handy im Startbild scrollen nacheinander durch alle fünf Konzepte (je 9 Sekunden).
+- Lange Bilder: `img/scroll-*-pc.webp` (760 px breit) und `img/scroll-*-handy.webp` (240 px breit).
+  Nach Änderungen an einem Konzept neu erstellen (ganze Seite als Screenshot, oben zugeschnitten).
+- Startet erst 1,5 Sekunden nach dem Laden. Das nächste Bild lädt jeweils im Hintergrund vor.
+- Bei „Bewegung reduzieren“ bleibt das erste Bild stehen.
