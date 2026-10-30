@@ -155,9 +155,7 @@ Stand: 22. Oktober 2026
 - Lighthouse (lokal mit Komprimierung wie bei Netlify, 29.10.2026): Handy 100 (3 Läufe), Computer 100, Konzepte-Seite Handy 100.
   Auf der Seite steht deshalb „100 – am Computer und am Handy“. Nach dem Livegang mit pagespeed.web.dev gegenprüfen.
 
-## Startbild: Website-Tour (30.10.)
-- Laptop und Handy im Startbild scrollen nacheinander durch alle fünf Konzepte (je 9 Sekunden).
-- Lange Bilder: `img/scroll-*-pc.webp` (760 px breit) und `img/scroll-*-handy.webp` (240 px breit).
-  Nach Änderungen an einem Konzept neu erstellen (ganze Seite als Screenshot, oben zugeschnitten).
-- Startet erst 1,5 Sekunden nach dem Laden. Das nächste Bild lädt jeweils im Hintergrund vor.
+## Startbild: Wechsel-Animation (30.10.)
+- Laptop und Handy wechseln alle 3,6 Sekunden das Konzept. Das neue Bild wischt von rechts über das alte, das Handy folgt einen Tick später.
+- Die Scroll-Tour durch die ganzen Seiten wurde wieder entfernt (Wunsch: nicht nach unten scrollen).
 - Bei „Bewegung reduzieren“ bleibt das erste Bild stehen.

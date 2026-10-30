@@ -447,11 +447,40 @@ section {
   transform: none;
 }
 
-/* Lange Bilder der ganzen Seite: volle Breite, Höhe natürlich, werden per Animation gescrollt */
-.laptop-screen img.tall,
-.phone-screen img.tall {
-  bottom: auto;
-  height: auto;
+/* Wechsel: das neue Bild wischt von rechts über das alte, das Handy folgt einen Tick später */
+.laptop-screen img.on,
+.phone-screen img.on {
+  z-index: 2;
+}
+
+.laptop-screen img.prev,
+.phone-screen img.prev {
+  z-index: 1;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.laptop-screen img.wipe,
+.phone-screen img.wipe {
+  opacity: 1;
+  transition: none;
+  animation: wipe 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.phone-screen img.wipe {
+  animation-delay: 0.15s;
+}
+
+@keyframes wipe {
+  from {
+    clip-path: inset(0 0 0 100%);
+    transform: scale(1.06);
+  }
+  to {
+    clip-path: inset(0);
+    transform: none;
+  }
 }
 
 .hero-copy {

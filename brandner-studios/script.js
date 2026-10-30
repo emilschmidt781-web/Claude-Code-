@@ -39,65 +39,37 @@ if (document.fonts && document.fonts.ready) {
   start();
 }
 
-// Laptop und Handy scrollen nacheinander durch die fünf Beispiele – so sieht man die ganze Seite auf beiden Geräten
+// Laptop und Handy wechseln nacheinander die fünf Beispiele – das neue Bild wischt über das alte
 const laptop = document.querySelector(".laptop-screen");
 if (laptop && !reduceMotion) {
   const laptopImgs = [...laptop.querySelectorAll("img")];
   const phoneImgs = [...document.querySelectorAll(".phone-screen img")];
-  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
-  const visible = () =>
-    document.hidden ? new Promise((r) => document.addEventListener("visibilitychange", r, { once: true })) : null;
-  let running = [];
-
-  // Lädt das lange Bild der ganzen Seite und tauscht es erst aus, wenn es fertig ist
-  const prep = (img) =>
-    img.classList.contains("tall")
-      ? Promise.resolve()
-      : new Promise((done) => {
-          const pre = new Image();
-          pre.onload = () => {
-            img.removeAttribute("srcset");
-            img.src = img.dataset.tall;
-            img.classList.add("tall");
-            done();
-          };
-          pre.onerror = done;
-          pre.src = img.dataset.tall;
-        });
-
-  // Oben kurz stehen bleiben, langsam nach unten scrollen, unten kurz stehen bleiben
-  const scroll = (img, ms) => {
-    const dist = img.offsetHeight - img.parentElement.clientHeight;
-    if (dist <= 0 || !img.animate) return null;
-    return img.animate(
-      [
-        { translate: "0 0" },
-        { translate: "0 0", offset: 0.12 },
-        { translate: `0 ${-dist}px`, offset: 0.88 },
-        { translate: `0 ${-dist}px` },
-      ],
-      { duration: ms, easing: "ease-in-out", fill: "forwards" }
-    );
-  };
-
-  const tour = async (n) => {
-    await Promise.all([prep(laptopImgs[n]), prep(phoneImgs[n])]);
-    // Nächstes Beispiel schon im Hintergrund laden
-    const next = (n + 1) % laptopImgs.length;
-    prep(laptopImgs[next]);
-    prep(phoneImgs[next]);
-    await visible();
-    const old = running;
-    laptopImgs.forEach((img, k) => img.classList.toggle("on", k === n));
-    phoneImgs.forEach((img, k) => img.classList.toggle("on", k === n));
-    running = [scroll(laptopImgs[n], 9000), scroll(phoneImgs[n], 9000)];
-    // Das vorige Bild erst zurücksetzen, wenn es ausgeblendet ist
-    setTimeout(() => old.forEach((a) => a && a.cancel()), 900);
-    await wait(9000);
-    tour(next);
-  };
-  // Startet erst nach dem Laden, damit der erste Bildschirm ruhig und schnell steht
-  addEventListener("load", () => setTimeout(() => tour(0), 1500), { once: true });
+  let i = 0;
+  const swap = (imgs, n) =>
+    imgs.forEach((img, k) => {
+      img.classList.toggle("prev", img.classList.contains("on") && k !== n);
+      img.classList.toggle("on", k === n);
+      img.classList.toggle("wipe", k === n);
+    });
+  // Die übrigen Bilder erst nach dem Laden holen, damit der erste Bildschirm schneller steht
+  addEventListener(
+    "load",
+    () => {
+      document.querySelectorAll(".devices img[data-src]").forEach((img) => {
+        if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+        img.src = img.dataset.src;
+      });
+      setTimeout(() => {
+        setInterval(() => {
+          if (document.hidden) return;
+          i = (i + 1) % laptopImgs.length;
+          swap(laptopImgs, i);
+          swap(phoneImgs, i);
+        }, 3600);
+      }, 1500);
+    },
+    { once: true }
+  );
 }
 
 // Ring „100 Punkte“ füllt sich
