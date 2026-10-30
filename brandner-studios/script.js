@@ -56,14 +56,10 @@ if (laptop && phoneScreen && !reduceMotion) {
   const fit = () => screens.forEach((s) => s.frame && s.frame.style.setProperty("--s", s.box.clientWidth / s.w));
   addEventListener("resize", fit, { passive: true });
 
-  // Das Bild des nächsten Beispiels wischt herein, dann startet darüber die Live-Seite
-  const show = (n, first) =>
+  // Kurz das Bild des nächsten Beispiels zeigen, dann startet darüber die Live-Seite
+  const show = (n) =>
     screens.forEach((s) => {
-      s.imgs.forEach((img, k) => {
-        img.classList.toggle("prev", img.classList.contains("on") && k !== n);
-        img.classList.toggle("on", k === n);
-        img.classList.toggle("wipe", k === n && !first);
-      });
+      s.imgs.forEach((img, k) => img.classList.toggle("on", k === n));
       if (!s.frame) {
         s.frame = document.createElement("iframe");
         s.frame.className = "live";
@@ -77,7 +73,7 @@ if (laptop && phoneScreen && !reduceMotion) {
       }
       const frame = s.frame;
       frame.classList.remove("ready");
-      frame.onload = () => setTimeout(() => frame.classList.add("ready"), first ? 0 : 900);
+      frame.onload = () => frame.classList.add("ready");
       frame.src = `konzepte/${pages[n]}.html?embed`;
     });
 
@@ -90,7 +86,7 @@ if (laptop && phoneScreen && !reduceMotion) {
       });
       // Erst wenn die Seite in Ruhe steht, die Live-Vorschau starten
       setTimeout(() => {
-        show(0, true);
+        show(0);
         setInterval(() => {
           if (document.hidden) return;
           i = (i + 1) % pages.length;
