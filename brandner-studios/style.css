@@ -667,7 +667,7 @@ section {
   position: relative;
   z-index: 1;
   flex: none;
-  width: clamp(120px, 11vw, 160px);
+  width: clamp(160px, 15vw, 220px);
   margin: 0;
   cursor: pointer;
   outline: none;
@@ -1845,7 +1845,7 @@ section {
     font-size: 1rem;
   }
   .about-photo {
-    width: 34%;
+    width: 42%;
   }
   .concept,
   .concept:nth-child(even) {
