@@ -630,9 +630,18 @@ section {
   padding-block: var(--section);
 }
 
+/* Überschrift über die ganze Breite, darunter: Vorstellung mit Foto links, Zitat rechts */
 .about-stage {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
+  align-items: center;
+  gap: var(--s-8) var(--s-8);
   padding-block: clamp(40px, 6vw, 90px);
+}
+
+.about-stage .split {
+  grid-column: 1 / -1;
 }
 
 .split {
@@ -655,11 +664,10 @@ section {
 }
 
 .about-photo {
-  position: absolute;
+  position: relative;
   z-index: 1;
-  right: 0;
-  bottom: 0;
-  width: clamp(110px, 11vw, 160px);
+  flex: none;
+  width: clamp(120px, 11vw, 160px);
   margin: 0;
   cursor: pointer;
   outline: none;
@@ -694,14 +702,15 @@ section {
   text-align: center;
 }
 
-/* Am Computer liegt das Foto frei am Rand, der Vorstellungstext steht unter der Überschrift */
 .about-me {
-  display: contents;
+  display: flex;
+  align-items: center;
+  gap: var(--s-6);
 }
 
 .about-intro {
   max-width: 46ch;
-  margin: var(--s-7) 0 0 18%;
+  margin: 0;
   font-size: var(--fs-lg);
   line-height: 1.45;
   color: var(--muted);
@@ -711,11 +720,11 @@ section {
   color: var(--ink);
 }
 
-/* Sprechblase springt beim Drüberfahren links neben dem Foto heraus */
+/* Sprechblase springt beim Drüberfahren über dem Foto heraus */
 .about-photo .hello {
   position: absolute;
-  top: 18%;
-  right: calc(100% + 10px);
+  top: -10px;
+  right: 0;
   padding: 8px 12px;
   border-radius: 16px 16px 4px 16px;
   background: var(--ink);
@@ -725,7 +734,7 @@ section {
   white-space: nowrap;
   box-shadow: 0 12px 24px -12px rgba(17, 18, 22, 0.6);
   opacity: 0;
-  transform: translateX(8px) scale(0.7);
+  transform: translateY(-80%) scale(0.7);
   transform-origin: right bottom;
   transition: opacity 0.25s, transform 0.45s cubic-bezier(0.2, 1.5, 0.4, 1);
   pointer-events: none;
@@ -784,17 +793,14 @@ section {
 .about-photo:focus-visible .hello,
 .about-photo.hi .hello {
   opacity: 1;
-  transform: none;
+  transform: translateY(-100%);
   transition-delay: 0.08s;
 }
 
 /* Persönliches Wort von Edgar: großes Zitat, kleines Gesicht */
 .note-card {
-  position: absolute;
+  position: relative;
   z-index: 3;
-  right: 0;
-  top: -22%;
-  width: min(400px, 34%);
   margin: 0;
   padding: var(--s-5) var(--s-6);
   border-radius: 22px;
@@ -1723,34 +1729,9 @@ section {
   .steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .note-card {
-    top: -30%;
-  }
-  .about-me {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--s-6);
-    margin-top: var(--s-7);
-  }
-  .about-intro {
-    margin: 0;
-  }
-  .about-photo {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    flex: none;
-  }
-  .about-photo .hello {
-    top: -10px;
-    right: 0;
-    transform: translateY(-80%) scale(0.7);
-  }
-  .about-photo:hover .hello,
-  .about-photo:focus-visible .hello,
-  .about-photo.hi .hello {
-    transform: translateY(-100%);
+  .about-stage {
+    grid-template-columns: 1fr;
+    gap: var(--s-7);
   }
 }
 
@@ -1853,25 +1834,18 @@ section {
     margin-left: 0;
   }
   .about-stage {
-    display: grid;
     gap: 22px;
     padding-top: 0;
   }
   .about-me {
+    justify-content: space-between;
     gap: var(--s-4);
-    margin-top: var(--s-2);
   }
   .about-intro {
     font-size: 1rem;
   }
   .about-photo {
     width: 34%;
-  }
-  .note-card {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: 100%;
   }
   .concept,
   .concept:nth-child(even) {
