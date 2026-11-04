@@ -162,8 +162,6 @@ const renderKandidaten = (list, root) => {
 
 const stellenRoot = document.getElementById("stellen-liste");
 const kandidatenRoot = document.getElementById("kandidaten-liste");
-if (stellenRoot) renderStellen(window.STELLEN || [], stellenRoot);
-if (kandidatenRoot) renderKandidaten(window.KANDIDATEN || [], kandidatenRoot);
 
 // ---------- Suchsystem: Freitext + Kategorie + Ort ----------
 const setupSearch = (form, items) => {
@@ -293,18 +291,6 @@ const setupSearch = (form, items) => {
   apply();
 };
 
-document.querySelectorAll("form.search").forEach((form) => {
-  const items = form.dataset.target === "stellen-liste" ? window.STELLEN || [] : window.KANDIDATEN || [];
-  setupSearch(form, items);
-});
-
-// Startseite: Anzahl auf den Kacheln; alte Direktlinks auf die Unterseiten umleiten
-document.querySelectorAll(".portal-count").forEach((n) => {
-  const isStellen = n.dataset.countList === "stellen";
-  const list = isStellen ? window.STELLEN || [] : window.KANDIDATEN || [];
-  if (!list.length) n.textContent = isStellen ? "Neue Stellen in Kürze" : "Kandidaten auf Anfrage";
-  else n.textContent = isStellen ? `${list.length} offene Stellen` : `${list.length} verfügbare Profile`;
-});
 if (/^#stelle-/.test(location.hash) && !stellenRoot) location.replace(`stellen.html${location.hash}`);
 if (/^#kandidat-/.test(location.hash) && !kandidatenRoot) location.replace(`bewerberprofile.html${location.hash}`);
 
@@ -318,7 +304,26 @@ const highlightFromHash = () => {
   setTimeout(() => target.classList.remove("highlight"), 3000);
 };
 window.addEventListener("hashchange", highlightFromHash);
-highlightFromHash();
+
+// Daten kommen aus profile.js oder – falls eingerichtet – aus der Google-Tabelle (tabelle.js)
+const initProfile = () => {
+  if (stellenRoot) renderStellen(window.STELLEN || [], stellenRoot);
+  if (kandidatenRoot) renderKandidaten(window.KANDIDATEN || [], kandidatenRoot);
+  document.querySelectorAll("form.search").forEach((form) => {
+    const items = form.dataset.target === "stellen-liste" ? window.STELLEN || [] : window.KANDIDATEN || [];
+    setupSearch(form, items);
+  });
+
+  // Startseite: Anzahl auf den Kacheln
+  document.querySelectorAll(".portal-count").forEach((n) => {
+    const isStellen = n.dataset.countList === "stellen";
+    const list = isStellen ? window.STELLEN || [] : window.KANDIDATEN || [];
+    if (!list.length) n.textContent = isStellen ? "Neue Stellen in Kürze" : "Kandidaten auf Anfrage";
+    else n.textContent = isStellen ? `${list.length} offene Stellen` : `${list.length} verfügbare Profile`;
+  });
+  highlightFromHash();
+};
+(window.PROFILE_READY || Promise.resolve()).then(initProfile, initProfile);
 
 // Schwebende Kontakt-Buttons erst nach dem Hero einblenden
 const fab = document.querySelector(".fab");
