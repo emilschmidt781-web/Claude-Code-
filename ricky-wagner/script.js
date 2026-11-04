@@ -259,7 +259,7 @@ const setupSearch = (form, items) => {
     });
     const filtered = state.q || state.bereich || state.ort;
     reset.hidden = !filtered;
-    count.textContent = filtered ? `${shown} von ${cards.length} Profilen` : `${cards.length} Profile`;
+    count.textContent = filtered ? `${shown} von ${cards.length} Profilen` : `${cards.length} ${cards.length === 1 ? "Profil" : "Profile"}`;
     if (shown === 0) root.append(empty);
     else empty.remove();
   };

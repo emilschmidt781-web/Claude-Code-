@@ -66,7 +66,8 @@ window.TABELLE_LINK = "https://docs.google.com/spreadsheets/d/1-UXAy4WqYImnuti6D
   const aktiv = (o) => !/^(nein|n|no|0|false|aus|x?inaktiv|besetzt)$/i.test(pick(o, "aktiv", "online", "sichtbar"));
   const bereich = (v) => (/kauf/i.test(v) ? "kaufmaennisch" : "technisch");
   const liste = (v) => String(v || "").split(/\s*(?:;|\n|•)\s*/).map((s) => s.replace(/^[-–]\s*/, "").trim()).filter(Boolean);
-  const cleanId = (v, fallback) => (String(v || "").trim().replace(/[^A-Za-z0-9_-]+/g, "-") || fallback);
+  const cleanId = (v, fallback) =>
+    String(v || "").replace(/\s+/g, "").replace(/[^A-Za-z0-9_-]+/g, "-").replace(/-{2,}/g, "-").replace(/^-|-$/g, "") || fallback;
 
   const mapStellen = (rows) =>
     rows.filter((o) => pick(o, "titel", "stelle", "beruf") && aktiv(o)).map((o, i) => ({
