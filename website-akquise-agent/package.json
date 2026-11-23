@@ -1,0 +1,16 @@
+{
+  "name": "website-akquise-agent",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Findet Unternehmen in einer Region, prüft ihre Website auf Schwachstellen und liefert Verkaufsargumente.",
+  "bin": { "akquise": "./agent.mjs" },
+  "scripts": {
+    "start": "node agent.mjs",
+    "test": "node test/selftest.mjs"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.13.0"
+  }
+}
