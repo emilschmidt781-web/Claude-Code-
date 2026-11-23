@@ -70,6 +70,27 @@ node agent.mjs --region "Erlangen" --tag craft=plumber --no-ai
 
 **Kosten:** Pro Lead fällt eine Claude-Anfrage an, grob 1–3 Cent. Mit `--ai-top` legst du fest, für wie viele Leads Texte erzeugt werden.
 
+## Als Mac-App im Dock
+
+Die App fragt per Dialog nach Ort, Branche und Umkreis, speichert den API-Schlüssel im Mac-Schlüsselbund und öffnet am Ende den Bericht im Browser. Die Berichte landen in `Dokumente/Akquise-Berichte`.
+
+1. Node.js installieren (https://nodejs.org), falls noch nicht vorhanden.
+2. `Website-Akquise-Mac.zip` entpacken und `Website-Akquise.app` in den Ordner **Programme** ziehen.
+3. Beim ersten Start: **Rechtsklick → Öffnen → Öffnen**. Die App ist nicht von Apple signiert, deshalb fragt macOS einmal nach.
+4. Während die App läuft: **Rechtsklick auf das Symbol im Dock → Optionen → Im Dock behalten**. Alternativ ziehst du die App aus dem Programme-Ordner direkt ins Dock.
+
+Die App selbst bauen (auf Mac oder Linux):
+
+```bash
+bash mac/build-app.sh
+```
+
+Den gespeicherten API-Schlüssel ändern:
+
+```bash
+security delete-generic-password -s website-akquise-agent
+```
+
 ## Selbsttest
 
 ```bash

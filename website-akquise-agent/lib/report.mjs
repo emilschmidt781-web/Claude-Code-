@@ -1,6 +1,7 @@
 // Schreibt die Ergebnisse als Markdown-Bericht, CSV (für Excel/CRM) und JSON.
 import fs from "node:fs";
 import path from "node:path";
+import { renderHtml } from "./html.mjs";
 
 const esc = (s) => String(s ?? "").replace(/\|/g, "\\|").replace(/\n/g, " ");
 
@@ -79,5 +80,6 @@ export function writeReports(leads, { region, branche, outDir, geo }) {
   fs.writeFileSync(`${base}.md`, head + leads.map(leadMarkdown).join("\n"));
   fs.writeFileSync(`${base}.csv`, csv(leads));
   fs.writeFileSync(`${base}.json`, JSON.stringify(leads, null, 2));
-  return { md: `${base}.md`, csv: `${base}.csv`, json: `${base}.json` };
+  fs.writeFileSync(`${base}.html`, renderHtml(leads, { region, branche, geo }));
+  return { html: `${base}.html`, md: `${base}.md`, csv: `${base}.csv`, json: `${base}.json` };
 }

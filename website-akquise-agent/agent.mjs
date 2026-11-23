@@ -103,4 +103,5 @@ if (!o["no-ai"] && leads.length) {
 }
 
 const files = writeReports(leads, { region: o.region, branche: o.tag || o.branche, outDir: o.out, geo });
-log(`\n✅ Fertig:\n   Bericht: ${files.md}\n   Tabelle: ${files.csv}\n   Rohdaten: ${files.json}`);
+log(`\n✅ Fertig:\n   Bericht: ${files.html}\n   Markdown: ${files.md}\n   Tabelle: ${files.csv}\n   Rohdaten: ${files.json}`);
+console.log(files.html); // letzte Zeile auf stdout: Pfad zum Bericht (für die Mac-App)
