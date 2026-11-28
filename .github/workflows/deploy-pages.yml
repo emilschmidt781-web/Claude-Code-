@@ -1,4 +1,4 @@
-name: Deploy Angel-App, Schneiderei Yasin, Ricky Wagner & Schloss Ebracher Hof to GitHub Pages
+name: Deploy Angel-App, Schneiderei Yasin, Ricky Wagner, Schloss Ebracher Hof & Gym-Tracker to GitHub Pages
 
 on:
   push:
@@ -65,6 +65,15 @@ jobs:
             cp schloss-ebracher-hof/*.html schloss-ebracher-hof/*.css schloss-ebracher-hof/*.js dist-pages/schloss-ebracher-hof/
             cp -r schloss-ebracher-hof/fonts dist-pages/schloss-ebracher-hof/
             cp -r schloss-ebracher-hof/img dist-pages/schloss-ebracher-hof/
+          fi
+
+      # Gym-Tracker (Hantelbuch) unter /gym-tracker/ mitveröffentlichen
+      - name: Gym-Tracker hinzufügen
+        run: |
+          if [ -d gym-tracker ]; then
+            mkdir -p dist-pages/gym-tracker
+            cp gym-tracker/index.html gym-tracker/sw.js gym-tracker/manifest.webmanifest dist-pages/gym-tracker/
+            cp -r gym-tracker/icons dist-pages/gym-tracker/
           fi
 
       - name: GitHub Pages konfigurieren (aktiviert Pages bei Bedarf)
