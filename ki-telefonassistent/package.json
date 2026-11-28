@@ -1,0 +1,14 @@
+{
+  "name": "ki-telefonassistent",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "KI-Telefonassistent, der Anrufe annimmt und Essensbestellungen aufnimmt (Claude + Twilio)",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "chat": "node --env-file-if-exists=.env simulator.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.14.0"
+  }
+}
