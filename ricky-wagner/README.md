@@ -22,7 +22,7 @@ Die Website liest sie beim Aufruf aus (`tabelle.js`).
 - Reiter **Stellen**: ID · Titel · Bereich · Kategorie · Ort · Art · Beschreibung · Punkte · Aktiv
 - Reiter **Bewerber**: ID · Beruf · Bereich · Kategorie · Erfahrung · Region · Verfügbar · Stärken · Aktiv
 - Reiter **Anleitung**: Kurzanleitung für Ricky
-- Bereich: `technisch` oder `kaufmännisch` · Punkte/Stärken mit `;` trennen · Aktiv `nein` = ausgeblendet
+- Bereich: `technisch` oder `kaufmännisch` · Punkte/Stärken mit `;` (oder ` / `) trennen · Aktiv `nein` = ausgeblendet
 - Spaltenreihenfolge ist egal, Spaltennamen und Reiternamen aber nicht ändern.
 - Änderungen erscheinen beim nächsten Neuladen der Seite (ggf. 1–2 Minuten Verzögerung durch Google).
 - Ist Google nicht erreichbar oder kein Link eingetragen, nutzt die Seite die Einträge aus `profile.js`.

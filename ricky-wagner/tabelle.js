@@ -65,7 +65,7 @@ window.TABELLE_LINK = "https://docs.google.com/spreadsheets/d/1-UXAy4WqYImnuti6D
   const pick = (o, ...names) => { for (const n of names) if (o[n]) return o[n]; return ""; };
   const aktiv = (o) => !/^(nein|n|no|0|false|aus|x?inaktiv|besetzt)$/i.test(pick(o, "aktiv", "online", "sichtbar"));
   const bereich = (v) => (/kauf/i.test(v) ? "kaufmaennisch" : "technisch");
-  const liste = (v) => String(v || "").split(/\s*(?:;|\n|•)\s*/).map((s) => s.replace(/^[-–]\s*/, "").trim()).filter(Boolean);
+  const liste = (v) => String(v || "").split(/\s*(?:;|\n|•|\s\/|\/\s)\s*/).map((s) => s.replace(/^[-–]\s*/, "").trim()).filter(Boolean);
   const cleanId = (v, fallback) =>
     String(v || "").replace(/\s+/g, "").replace(/[^A-Za-z0-9_-]+/g, "-").replace(/-{2,}/g, "-").replace(/^-|-$/g, "") || fallback;
 

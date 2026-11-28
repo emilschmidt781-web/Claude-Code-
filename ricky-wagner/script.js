@@ -319,6 +319,7 @@ const initProfile = () => {
     const isStellen = n.dataset.countList === "stellen";
     const list = isStellen ? window.STELLEN || [] : window.KANDIDATEN || [];
     if (!list.length) n.textContent = isStellen ? "Neue Stellen in Kürze" : "Kandidaten auf Anfrage";
+    else if (list.length === 1) n.textContent = isStellen ? "1 offene Stelle" : "1 verfügbares Profil";
     else n.textContent = isStellen ? `${list.length} offene Stellen` : `${list.length} verfügbare Profile`;
   });
   highlightFromHash();
